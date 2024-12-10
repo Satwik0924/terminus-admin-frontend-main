@@ -9,8 +9,25 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+body {
   cursor: -webkit-image-set(
       url(https://i-p.rmcdn.net/6704dad37ea051caab873de5/image-43d04120-2be7-40ea-b343-9b6ac47e3c0a.png?w=15) 1x,
       url(https://i-p.rmcdn.net/6704dad37ea051caab873de5/image-43d04120-2be7-40ea-b343-9b6ac47e3c0a.png) 2x
     ), pointer;
+}
+
+.cursor-next {
+  cursor:
+    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text x="50%" y="50%" font-size="90" text-anchor="middle" dy=".35em">&gt;</text></svg>')
+      16 16,
+    pointer;
+}
+
+.cursor-prev {
+  cursor:
+    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text x="50%" y="50%" font-size="90" text-anchor="middle" dy=".35em">&lt;</text></svg>')
+      16 16,
+    pointer;
 }

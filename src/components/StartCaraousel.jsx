@@ -15,6 +15,7 @@ const Carousel = () => {
 
   const [currentIndex, setCurrentIndex] = useState(Math.floor((images.length - 1) / 2)); // Default to middle image
   const [fade, setFade] = useState(false);
+  const [carouselCursor, setCarouselCursor] = useState("default");
   const intervalRef = useRef(null);
 
   const resetInterval = () => {
@@ -70,21 +71,14 @@ const Carousel = () => {
     const isRightHalf = mouseX > imageRect.width / 2;
 
     // Set cursor to '<' for left side and '>' for right side '>' for right side
-    carousel.style.cursor = isRightHalf
-      ? "url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220%200%20100%20100%22><text x=%2250%25%22 y=%2250%25%22 font-size=%2290%22 text-anchor=%22middle%22 dy=%22.35em%22>%3E</text></svg>') 16 16, pointer"
-      : "url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220%200%20100%20100%22><text x=%2250%25%22 y=%2250%25%22 font-size=%2290%22 text-anchor=%22middle%22 dy=%22.35em%22>&lt;</text></svg>') 16 16, pointer";
+    setCarouselCursor(isRightHalf ? "carousel-next" : "carousel-prev");
   };
 
   return (
     <div
-      style={{
-        width: "100%",
-        height: "800px",
-        position: "relative",
-        overflow: "hidden",
-        borderRadius: "8px",
-      }}
       onMouseMove={handleMousePointer}
+      onMouseLeave={() => setCarouselCursor("default")}
+      className={`w-full h-[800px] relative overflow-hidden rounded-lg ${carouselCursor === "carousel-next" ? "cursor-next" : carouselCursor === "carousel-prev" ? "cursor-prev" : ""}`}
       onClick={(e) => handleNavigation(e.clientX > e.currentTarget.offsetWidth / 2)}
     >
       <img
