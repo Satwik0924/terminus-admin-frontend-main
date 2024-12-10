@@ -2,10 +2,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 * {
   font-family: "Geist", sans-serif;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  cursor: -webkit-image-set(
+      url(https://i-p.rmcdn.net/6704dad37ea051caab873de5/image-43d04120-2be7-40ea-b343-9b6ac47e3c0a.png?w=15) 1x,
+      url(https://i-p.rmcdn.net/6704dad37ea051caab873de5/image-43d04120-2be7-40ea-b343-9b6ac47e3c0a.png) 2x
+    ), pointer;
 }

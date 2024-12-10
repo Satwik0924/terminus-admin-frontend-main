@@ -34,7 +34,7 @@ const DrivenByMission = () => {
   const styles = {
     container: {
       fontFamily: "Arial, sans-serif",
-      padding: "20px",
+      padding: "5rem 20px",
       maxWidth: "1200px",
       margin: "auto",
     },
@@ -121,12 +121,7 @@ const DrivenByMission = () => {
   return (
     <div style={styles.container}>
       {/* Animated Title */}
-      <motion.h1
-        id="missionTitle"
-        animate={controlsTitle}
-        initial={{ color: "#D3D3D3" }}
-        style={styles.title}
-      >
+      <motion.h1 id="missionTitle" animate={controlsTitle} initial={{ color: "#D3D3D3" }} style={styles.title}>
         Driven by a Mission
       </motion.h1>
 
@@ -135,21 +130,16 @@ const DrivenByMission = () => {
         {/* Text Content */}
         <div style={styles.textContent}>
           <p>
-            <strong>Mr. S.P. Reddy</strong> is a successful entrepreneur,
-            active philanthropist, and investor whose experience spans across
-            the USA and India in domains as diverse as Information Technology,
-            Federal Government, and Real Estate Development.
+            <strong>Mr. S.P. Reddy</strong> is a successful entrepreneur, active philanthropist, and investor whose
+            experience spans across the USA and India in domains as diverse as Information Technology, Federal
+            Government, and Real Estate Development.
           </p>
           <p style={styles.readMore}>Read more</p>
         </div>
 
         {/* Image Content */}
         <div style={styles.imageContent}>
-          <img
-            src="https://via.placeholder.com/500x300"
-            alt="The Founder Chairman"
-            style={styles.image}
-          />
+          <img src="https://via.placeholder.com/500x300" alt="The Founder Chairman" style={styles.image} />
           <div style={styles.playButton}>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="#F37021">
               <path d="M8 5v14l11-7z" />
@@ -163,19 +153,15 @@ const DrivenByMission = () => {
         {/* Text Content */}
         <div style={styles.textContent}>
           <p>
-            <strong>Mr. S.P. Reddy</strong> is a visionary leader committed to
-            driving innovation and excellence in every project he undertakes.
+            <strong>Mr. S.P. Reddy</strong> is a visionary leader committed to driving innovation and excellence in
+            every project he undertakes.
           </p>
           <p style={styles.readMore}>Read more</p>
         </div>
 
         {/* Image Content */}
         <div style={styles.imageContent}>
-          <img
-            src="https://via.placeholder.com/500x300"
-            alt="Vision for the Future"
-            style={styles.image}
-          />
+          <img src="https://via.placeholder.com/500x300" alt="Vision for the Future" style={styles.image} />
           <div style={styles.playButton}>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="#F37021">
               <path d="M8 5v14l11-7z" />

@@ -36,10 +36,25 @@ const ProjectsGrid = () => {
       image:
         "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5068363/image-93324a5d-c5e7-4877-9b6f-717bbaa0383a.jpg?e=webp&cX=88&cY=0&cW=204&cH=460",
     },
-    { title: "Retail", image: "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5089501/image-07c524f0-fccb-443a-84b4-ed474e9bd278.jpg?w=1064&e=webp&cX=723&cY=0&cW=353&cH=797" },
-    { title: "Residential", image: "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5036787/image-898e55a6-fb65-48e6-8a98-f284706cbd7e.jpg?e=webp&cX=88&cY=0&cW=204&cH=460" },
-    { title: "Hospitality", image: "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5036787/image-8d40d5f5-24ac-4c8a-b60b-689f448d0319.jpg?e=webp&cX=88&cY=0&cW=204&cH=460" },
-    { title: "Life Sciences", image: "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5068970/image-a10a7f2b-0283-4585-9525-c09777fe2899.jpg" },
+    {
+      title: "Retail",
+      image:
+        "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5089501/image-07c524f0-fccb-443a-84b4-ed474e9bd278.jpg?w=1064&e=webp&cX=723&cY=0&cW=353&cH=797",
+    },
+    {
+      title: "Residential",
+      image:
+        "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5036787/image-898e55a6-fb65-48e6-8a98-f284706cbd7e.jpg?e=webp&cX=88&cY=0&cW=204&cH=460",
+    },
+    {
+      title: "Hospitality",
+      image:
+        "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5036787/image-8d40d5f5-24ac-4c8a-b60b-689f448d0319.jpg?e=webp&cX=88&cY=0&cW=204&cH=460",
+    },
+    {
+      title: "Life Sciences",
+      image: "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5068970/image-a10a7f2b-0283-4585-9525-c09777fe2899.jpg",
+    },
   ];
 
   // Inline styles for CSS-in-JSX
@@ -50,15 +65,13 @@ const ProjectsGrid = () => {
       alignItems: "center",
       justifyContent: "center",
       height: "auto ",
-      marginBottom: "5 rem"
-     
-,   
+      padding: "5rem 0",
       backgroundColor: "#f9fafb",
     },
     heading: {
       fontSize: "4rem",
       textAlign: "left",
-      
+
       marginBottom: "5rem",
       color: "#A0A0A0",
     },
@@ -113,12 +126,7 @@ const ProjectsGrid = () => {
   return (
     <section style={styles.section}>
       {/* Heading */}
-      <motion.h1
-        id="heading"
-        animate={headingAnimation}
-        initial={{ color: "#A0A0A0" }}
-        style={styles.heading}
-      >
+      <motion.h1 id="heading" animate={headingAnimation} initial={{ color: "#A0A0A0" }} style={styles.heading}>
         Explore Our Projects
       </motion.h1>
 
@@ -131,11 +139,7 @@ const ProjectsGrid = () => {
             onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.05)")}
             onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
           >
-            <img
-              src={project.image}
-              alt={project.title}
-              style={styles.cardImage}
-            />
+            <img src={project.image} alt={project.title} style={styles.cardImage} />
             <div style={styles.cardOverlay}>
               <h2 style={styles.cardTitle}>{project.title}</h2>
               <a href="#" style={styles.cardLink}>

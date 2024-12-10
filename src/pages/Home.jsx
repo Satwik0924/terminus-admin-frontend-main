@@ -1,14 +1,12 @@
 import React from "react";
-import Footer from "../components/Footer";
-import StatsSection from "../components/StatsSection";
 import ContactSection from "../components/ContactUs";
-import ProjectsGrid from "../components/ProjectGrid";
+import Footer from "../components/Footer";
 import HorizontalScrollCarousel from "../components/HorizontalScroll";
-
-
-import Carousel from "../components/StartCaraousel";
+import ProjectsGrid from "../components/ProjectGrid";
+import StatsSection from "../components/StatsSection";
 import ConsultantsAndPartners from "../components/Consultants";
 import DrivenByMission from "../components/DrivenBy";
+import Carousel from "../components/StartCaraousel";
 
 const Home = () => {
   return (

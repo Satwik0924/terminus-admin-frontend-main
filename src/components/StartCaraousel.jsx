@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 const Carousel = () => {
   const images = [
@@ -25,9 +25,7 @@ const Carousel = () => {
   const goToPrev = () => {
     setFade(true);
     setTimeout(() => {
-      setCurrentIndex((prevIndex) =>
-        prevIndex === 0 ? images.length - 1 : prevIndex - 1
-      );
+      setCurrentIndex((prevIndex) => (prevIndex === 0 ? images.length - 1 : prevIndex - 1));
       setFade(false);
     }, 1000); // Fade duration
   };
@@ -53,11 +51,8 @@ const Carousel = () => {
 
     // Set cursor to '<' for left side and '>' for right side '>' for right side
     carousel.style.cursor = isRightHalf
-    
-    ? "url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220%200%20100%20100%22><text x=%2250%25%22 y=%2250%25%22 font-size=%2290%22 text-anchor=%22middle%22 dy=%22.35em%22>%3E</text></svg>') 16 16, pointer"
-    : "url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220%200%20100%20100%22><text x=%2250%25%22 y=%2250%25%22 font-size=%2290%22 text-anchor=%22middle%22 dy=%22.35em%22>&lt;</text></svg>') 16 16, pointer";
-  
-
+      ? "url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220%200%20100%20100%22><text x=%2250%25%22 y=%2250%25%22 font-size=%2290%22 text-anchor=%22middle%22 dy=%22.35em%22>%3E</text></svg>') 16 16, pointer"
+      : "url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220%200%20100%20100%22><text x=%2250%25%22 y=%2250%25%22 font-size=%2290%22 text-anchor=%22middle%22 dy=%22.35em%22>&lt;</text></svg>') 16 16, pointer";
   };
 
   return (
@@ -65,16 +60,12 @@ const Carousel = () => {
       style={{
         width: "100%",
         height: "800px",
-        
         position: "relative",
         overflow: "hidden",
         borderRadius: "8px",
-        marginBottom: "200px",
       }}
       onMouseMove={handleMousePointer}
-      onClick={(e) =>
-        e.clientX > e.currentTarget.offsetWidth / 2 ? goToNext() : goToPrev()
-      }
+      onClick={(e) => (e.clientX > e.currentTarget.offsetWidth / 2 ? goToNext() : goToPrev())}
     >
       <img
         src={images[currentIndex]}

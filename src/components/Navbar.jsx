@@ -1,125 +1,118 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import useWindowDimensions from "../hooks/useWindowDimensions";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { width: windowWidth } = useWindowDimensions();
 
   const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
+    setIsMenuOpen((prev) => !prev);
   };
 
   const styles = {
-    nav: {
-      position: 'fixed',
-      top: 0,
-      left: 0,
-      right: 0,
-      width: '100%',
-      backgroundColor: 'rgba(255, 255, 255, 0.6)',
-      backdropFilter: 'blur(10px)',
-      zIndex: 50,
-      boxShadow: '0 2px 5px rgba(0, 0, 0, 0.1)',
-    },
     container: {
-      maxWidth: '1200px',
-      margin: '0 auto',
-      padding: '0 16px',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'space-between',
-      height: '64px',
-    },
-    logo: {
-      textDecoration: 'none',
-      fontWeight: 800,
-      fontSize: '1.25rem',
-      letterSpacing: '-0.5px',
-      textTransform: 'uppercase',
+      width: "95%",
+      margin: "0 auto",
+      padding: "0 16px",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "space-between",
+      height: "6rem",
+      overflow: "hidden",
     },
     menuButton: {
-      display: 'none',
-      background: 'none',
-      border: 'none',
-      cursor: 'pointer',
+      display: "none",
+      background: "none",
+      border: "none",
+      cursor: "pointer",
     },
     desktopNavList: {
-      display: 'flex',
-      alignItems: 'center',
-      listStyle: 'none',
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "space-between",
+      listStyle: "none",
+      width: "100%",
       margin: 0,
       padding: 0,
-      gap: '16px',
+      flex: 1,
     },
     navLink: {
-      textDecoration: 'none',
+      textDecoration: "none",
       fontWeight: 500,
-      fontSize: '0.95rem',
-      letterSpacing: '-0.2px',
-      transition: 'opacity 0.2s ease',
+      fontSize: "0.95rem",
+      letterSpacing: "-0.2px",
+      transition: "opacity 0.2s ease",
+      color: "#727272",
     },
     mobileMenu: {
-      display: 'none',
-      position: 'absolute',
+      display: "none",
+      position: "absolute",
       left: 0,
       right: 0,
-      top: '64px',
-      backgroundColor: 'white',
-      boxShadow: '0 2px 5px rgba(0, 0, 0, 0.1)',
+      top: "6rem",
+      boxShadow: "0 2px 5px rgba(0, 0, 0, 0.1)",
+      transition: "opacity 0.3s ease-in-out",
+      backgroundColor: "white",
+      opacity: 1,
     },
     mobileNavList: {
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      listStyle: 'none',
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      listStyle: "none",
       margin: 0,
-      padding: '16px 0',
-      gap: '16px',
+      padding: "16px 0",
+      gap: "16px",
+      color: "#727272",
     },
   };
 
   // Responsive adjustments
-  const isMobile = window.innerWidth < 768;
+  const isMobile = windowWidth < 768;
   if (isMobile) {
-    styles.menuButton.display = 'block';
-    styles.desktopNavList.display = 'none';
-    styles.mobileMenu.display = isMenuOpen ? 'block' : 'none';
+    styles.menuButton.display = "block";
+    styles.desktopNavList.display = "none";
+    styles.mobileMenu.display = isMobile ? "block" : "none";
+    styles.mobileMenu.opacity = isMenuOpen ? "1" : "0";
   }
 
   const navLinks = [
-    { href: '/about', label: 'About' },
-    { href: '/contact', label: 'Contact' },
-    { href: '/news', label: 'News' },
-    { href: '/projects', label: 'Projects' }
+    { href: "/about", label: "About" },
+    { href: "/contact", label: "Contact" },
+    { href: "/news", label: "News" },
+    { href: "/projects", label: "Projects" },
   ];
 
   return (
-    <nav style={styles.nav}>
+    <nav className="sticky w-full top-0 left-0 right-0 z-50 shadow-sm shadow-gray-200/50 backdrop-blur-md bg-white/30">
       <div style={styles.container}>
-        {/* Logo */}
-        <a href="/" style={styles.logo}>
-          Terminus
-        </a>
+        {/* Change this with the Logo */}
+        <div className="flex-1">
+          <Link to="/" className="inline-block relative overflow-hidden w-64 h-64">
+            <img
+              srcSet="https://i-p.rmcdn.net/6704dad37ea051caab873de5/5036787/image-27f5270f-9dd9-4b1e-9dad-9d96ce0f1455.png?w=302&amp;e=webp&amp;nll=true&amp;cX=0&amp;cY=9&amp;cW=1299&amp;cH=172 2x, https://i-p.rmcdn.net/6704dad37ea051caab873de5/5036787/image-27f5270f-9dd9-4b1e-9dad-9d96ce0f1455.png?w=453&amp;e=webp&amp;nll=true&amp;cX=0&amp;cY=9&amp;cW=1299&amp;cH=172 3x"
+              src="https://i-p.rmcdn.net/6704dad37ea051caab873de5/5036787/image-27f5270f-9dd9-4b1e-9dad-9d96ce0f1455.png?w=302&amp;e=webp&amp;nll=true&amp;cX=0&amp;cY=9&amp;cW=1299&amp;cH=172"
+              className="object-contain w-full h-full"
+            />
+          </Link>
+        </div>
 
         {/* Mobile Menu Button */}
-        <button 
-          onClick={toggleMenu} 
-          style={styles.menuButton}
-        >
-          {isMenuOpen ? '✕' : '☰'}
+        <button onClick={toggleMenu} style={styles.menuButton}>
+          {isMenuOpen ? "✕" : "☰"}
         </button>
 
         {/* Desktop Navigation */}
         <ul style={styles.desktopNavList}>
           {navLinks.map((link) => (
             <li key={link.href}>
-              <a 
-                href={link.href} 
-                style={{
-                  ...styles.navLink,
-                  ':hover': { opacity: 0.75 }
-                }}
+              <Link
+                to={link.href}
+                className="hover:text-orange-500 text-[#727272] transition-opacity duration-200 ease-in-out lg:text-2xl text-lg font-bold"
               >
                 {link.label}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
@@ -129,16 +122,15 @@ const Navbar = () => {
           <ul style={styles.mobileNavList}>
             {navLinks.map((link) => (
               <li key={link.href}>
-                <a 
-                  href={link.href} 
+                <Link
+                  to={link.href}
                   style={{
                     ...styles.navLink,
-                    ':hover': { opacity: 0.75 }
                   }}
                   onClick={toggleMenu}
                 >
                   {link.label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
