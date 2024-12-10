@@ -1,4 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+
+const CHANGE_IMAGE_INTERVAL = 6 * 1000;
 
 const Carousel = () => {
   const images = [
@@ -11,8 +13,17 @@ const Carousel = () => {
     "https://th.bing.com/th/id/OIP.w9lFQGzKhUkbou-H0YqXBgAAAA?w=208&h=272&c=7&r=0&o=5&dpr=1.3&pid=1.7",
   ];
 
-  const [currentIndex, setCurrentIndex] = useState(2); // Default to middle image
+  const [currentIndex, setCurrentIndex] = useState(Math.floor((images.length - 1) / 2)); // Default to middle image
   const [fade, setFade] = useState(false);
+  const intervalRef = useRef(null);
+
+  const resetInterval = () => {
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+    }
+
+    intervalRef.current = setInterval(goToNext, CHANGE_IMAGE_INTERVAL);
+  };
 
   const goToNext = () => {
     setFade(true);
@@ -32,9 +43,18 @@ const Carousel = () => {
 
   // Automatically change images every 6 seconds
   useEffect(() => {
-    const interval = setInterval(goToNext, 6000);
-    return () => clearInterval(interval); // Cleanup on unmount
-  }, [images.length]);
+    resetInterval(); // Start the interval on component mount
+    return () => clearInterval(intervalRef.current); // Cleanup on unmount
+  }, []);
+
+  const handleNavigation = (isNext) => {
+    if (isNext) {
+      goToNext();
+    } else {
+      goToPrev();
+    }
+    resetInterval(); // Reset the interval whenever a user navigates manually
+  };
 
   const handleMousePointer = (e) => {
     const carousel = e.currentTarget;
@@ -65,7 +85,7 @@ const Carousel = () => {
         borderRadius: "8px",
       }}
       onMouseMove={handleMousePointer}
-      onClick={(e) => (e.clientX > e.currentTarget.offsetWidth / 2 ? goToNext() : goToPrev())}
+      onClick={(e) => handleNavigation(e.clientX > e.currentTarget.offsetWidth / 2)}
     >
       <img
         src={images[currentIndex]}
