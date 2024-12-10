@@ -20,14 +20,14 @@ body {
 
 .cursor-next {
   cursor:
-    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text x="50%" y="50%" font-size="90" text-anchor="middle" dy=".35em">&gt;</text></svg>')
+    url("data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='120' height='120' style='fill: rgb(255, 255, 255);'>%09%09%09%09%09%09%09<path d='M16.5 11.5 L24.5 19.5 L16.5 27.5' stroke-linejoin='round' stroke-linecap='round' style='fill:none; stroke:%23ffffff; stroke-width:5px'></path>%09%09%09%09%09%09</svg>")
       16 16,
     pointer;
 }
 
 .cursor-prev {
   cursor:
-    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text x="50%" y="50%" font-size="90" text-anchor="middle" dy=".35em">&lt;</text></svg>')
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' width='120' height='120' style='fill:rgb(255,255,255);'%3E%3Cpath d='M23.5 11.5 L15.5 19.5 L23.5 27.5' stroke-linejoin='round' stroke-linecap='round' style='fill:none;stroke:%23ffffff;stroke-width:5px'%3E%3C/path%3E%3C/svg%3E")
       16 16,
     pointer;
 }

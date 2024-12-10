@@ -78,7 +78,7 @@ const Carousel = () => {
     <div
       onMouseMove={handleMousePointer}
       onMouseLeave={() => setCarouselCursor("default")}
-      className={`w-full h-[800px] relative overflow-hidden rounded-lg ${carouselCursor === "carousel-next" ? "cursor-next" : carouselCursor === "carousel-prev" ? "cursor-prev" : ""}`}
+      className={`w-full h-dvh relative overflow-hidden rounded-lg ${carouselCursor === "carousel-next" ? "cursor-next" : carouselCursor === "carousel-prev" ? "cursor-prev" : ""}`}
       onClick={(e) => handleNavigation(e.clientX > e.currentTarget.offsetWidth / 2)}
     >
       <img
