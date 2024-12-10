@@ -70,8 +70,7 @@ const ProjectsGrid = () => {
     },
     heading: {
       fontSize: "4rem",
-      textAlign: "left",
-
+      textAlign: "center",
       marginBottom: "5rem",
       color: "#A0A0A0",
     },
@@ -124,20 +123,19 @@ const ProjectsGrid = () => {
   };
 
   return (
-    <section style={styles.section}>
+    <section className="flex flex-col items-center justify-center h-auto lg:py-40 py-20 bg-[#f9fafb]">
       {/* Heading */}
       <motion.h1 id="heading" animate={headingAnimation} initial={{ color: "#A0A0A0" }} style={styles.heading}>
         Explore Our Projects
       </motion.h1>
-
       {/* Responsive Grid */}
       <div style={styles.grid}>
         {projects.map((project, index) => (
           <div
             key={index}
-            style={styles.card}
-            onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.05)")}
-            onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
+            className="w-48 h-80 max-sm:w-[95%] rounded-lg shadow-md shadow-black/10 overflow-hidden relative hover:scale-105 transition-transform duration-300 ease-in-out bg-white"
+            // onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.05)")}
+            // onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
           >
             <img src={project.image} alt={project.title} style={styles.cardImage} />
             <div style={styles.cardOverlay}>

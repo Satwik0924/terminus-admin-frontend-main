@@ -1,14 +1,28 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useCallback, useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import useWindowDimensions from "../hooks/useWindowDimensions";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { width: windowWidth } = useWindowDimensions();
+  const pathname = useLocation().pathname;
+  const [isVisible, setIsVisible] = useState(true);
+
+  console.log("pathname", pathname);
 
   const toggleMenu = () => {
     setIsMenuOpen((prev) => !prev);
   };
+
+  const handleScroll = useCallback(() => {
+    const cur = window.scrollY;
+    setIsVisible(cur > 50);
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [handleScroll]);
 
   const styles = {
     container: {
@@ -85,7 +99,9 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="sticky w-full top-0 left-0 right-0 z-50 shadow-sm shadow-gray-200/50 backdrop-blur-md bg-white/30">
+    <nav
+      className={`${pathname === "/" ? "fixed" : "sticky"} ${isVisible ? "shadow-md shadow-gray-200/50 backdrop-blur-2xl bg-white/30" : "bg-transparent"} w-full top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out`}
+    >
       <div style={styles.container}>
         {/* Change this with the Logo */}
         <div className="flex-1">

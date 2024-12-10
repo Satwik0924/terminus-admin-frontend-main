@@ -1,15 +1,8 @@
 import React from "react";
+
 const ContactSection = () => {
-  
   return (
-    <section
-      style={{
-        display: "flex",
-        maxWidth: "1200px",
-        margin: "0 auto",
-        padding: "20px",
-      }}
-    >
+    <section className="flex max-w-7xl mx-auto p-5 lg:py-40 py-20 max-lg:flex-col max-lg:gap-6">
       <div style={{ flex: 1 }}>
         <img
           src="https://via.placeholder.com/600x400" // Replace this with the actual map image or embed
@@ -20,10 +13,7 @@ const ContactSection = () => {
       <div style={{ flex: 1, padding: "0 20px" }}>
         <form>
           <div style={{ marginBottom: "15px" }}>
-            <label
-              htmlFor="name"
-              style={{ display: "block", marginBottom: "5px" }}
-            >
+            <label htmlFor="name" style={{ display: "block", marginBottom: "5px" }}>
               Name
             </label>
             <input
@@ -39,10 +29,7 @@ const ContactSection = () => {
             />
           </div>
           <div style={{ marginBottom: "15px" }}>
-            <label
-              htmlFor="email"
-              style={{ display: "block", marginBottom: "5px" }}
-            >
+            <label htmlFor="email" style={{ display: "block", marginBottom: "5px" }}>
               Email
             </label>
             <input
@@ -58,10 +45,7 @@ const ContactSection = () => {
             />
           </div>
           <div style={{ marginBottom: "15px" }}>
-            <label
-              htmlFor="phone"
-              style={{ display: "block", marginBottom: "5px" }}
-            >
+            <label htmlFor="phone" style={{ display: "block", marginBottom: "5px" }}>
               Ph. No.
             </label>
             <input
@@ -77,10 +61,7 @@ const ContactSection = () => {
             />
           </div>
           <div style={{ marginBottom: "15px" }}>
-            <label
-              htmlFor="message"
-              style={{ display: "block", marginBottom: "5px" }}
-            >
+            <label htmlFor="message" style={{ display: "block", marginBottom: "5px" }}>
               Message
             </label>
             <textarea
@@ -93,7 +74,7 @@ const ContactSection = () => {
                 border: "1px solid #ccc",
                 borderRadius: "4px",
               }}
-            ></textarea>
+            />
           </div>
           <button
             type="submit"

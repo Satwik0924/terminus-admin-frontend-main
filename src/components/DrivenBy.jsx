@@ -43,7 +43,6 @@ const DrivenByMission = () => {
       fontWeight: "bold",
       margin: "0 0 40px 0",
       transition: "color 0.9s ease",
-      textAlign: "left",
     },
     section: {
       display: "flex",
@@ -54,7 +53,7 @@ const DrivenByMission = () => {
     },
     textContent: {
       flex: 1,
-      fontSize: "1.2rem",
+      fontSize: "1rem",
       color: "#333",
       lineHeight: "1.8",
     },
@@ -121,12 +120,18 @@ const DrivenByMission = () => {
   return (
     <div style={styles.container}>
       {/* Animated Title */}
-      <motion.h1 id="missionTitle" animate={controlsTitle} initial={{ color: "#D3D3D3" }} style={styles.title}>
+      <motion.h1
+        id="missionTitle"
+        animate={controlsTitle}
+        initial={{ color: "#D3D3D3" }}
+        style={styles.title}
+        className="md:text-left text-center"
+      >
         Driven by a Mission
       </motion.h1>
 
       {/* Sections */}
-      <div style={styles.section}>
+      <div className="flex items-start mb-28 gap-5 max-md:flex-col-reverse max-md:items-center max-md:text-center">
         {/* Text Content */}
         <div style={styles.textContent}>
           <p>
@@ -136,7 +141,6 @@ const DrivenByMission = () => {
           </p>
           <p style={styles.readMore}>Read more</p>
         </div>
-
         {/* Image Content */}
         <div style={styles.imageContent}>
           <img src="https://via.placeholder.com/500x300" alt="The Founder Chairman" style={styles.image} />
@@ -149,7 +153,7 @@ const DrivenByMission = () => {
         </div>
       </div>
 
-      <div style={styles.section}>
+      <div className="flex items-start mb-16 gap-5 max-md:flex-col-reverse max-md:items-center max-md:text-center">
         {/* Text Content */}
         <div style={styles.textContent}>
           <p>

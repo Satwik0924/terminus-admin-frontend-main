@@ -34,14 +34,7 @@ const ConsultantsAndPartners = () => {
   }, [controls, hasTriggered]);
 
   return (
-    <div
-      style={{
-        padding: "5rem 2rem",
-        fontFamily: "Arial, sans-serif",
-        maxWidth: "1200px",
-        margin: "0 auto",
-      }}
-    >
+    <div className="py-20 px-8 font-[Arial,sans-serif] max-w-7xl mx-auto">
       {/* Section Header */}
       <motion.h1
         id="consultants-header"
