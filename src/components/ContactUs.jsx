@@ -2,91 +2,56 @@ import React from "react";
 
 const ContactSection = () => {
   return (
-    <section className="flex max-w-7xl mx-auto p-5 lg:py-40 py-20 max-lg:flex-col max-lg:gap-6">
-      <div style={{ flex: 1 }}>
+    <section className="flex max-w-7xl mx-auto py-20 max-lg:flex-col max-lg:gap-6">
+      {/* Map Section */}
+      <div className="flex-2">
         <img
-          src="https://via.placeholder.com/600x400" // Replace this with the actual map image or embed
+          src="https://via.placeholder.com/800x400" // Replace this with the actual map image or embed
           alt="Map"
-          style={{ width: "100%", height: "auto" }}
+          className="w-full h-auto"
         />
       </div>
-      <div style={{ flex: 1, padding: "0 20px" }}>
+
+      {/* Form Section */}
+      <div className="flex-1 px-2">
         <form>
-          <div style={{ marginBottom: "15px" }}>
-            <label htmlFor="name" style={{ display: "block", marginBottom: "5px" }}>
-              Name
-            </label>
+          <div className="mb-4">
             <input
               type="text"
               id="name"
               name="name"
-              style={{
-                width: "100%",
-                padding: "10px",
-                border: "1px solid #ccc",
-                borderRadius: "4px",
-              }}
+              placeholder="Your Name"
+              className="w-full p-3 border border-gray-300 "
             />
           </div>
-          <div style={{ marginBottom: "15px" }}>
-            <label htmlFor="email" style={{ display: "block", marginBottom: "5px" }}>
-              Email
-            </label>
+          <div className="mb-4">
             <input
               type="email"
               id="email"
               name="email"
-              style={{
-                width: "100%",
-                padding: "10px",
-                border: "1px solid #ccc",
-                borderRadius: "4px",
-              }}
+              placeholder="Your Email"
+              className="w-full p-3 border border-gray-300 "
             />
           </div>
-          <div style={{ marginBottom: "15px" }}>
-            <label htmlFor="phone" style={{ display: "block", marginBottom: "5px" }}>
-              Ph. No.
-            </label>
+          <div className="mb-4">
             <input
               type="text"
               id="phone"
               name="phone"
-              style={{
-                width: "100%",
-                padding: "10px",
-                border: "1px solid #ccc",
-                borderRadius: "4px",
-              }}
+              placeholder="Your Phone Number"
+              className="w-full p-3 border border-gray-300 "
             />
           </div>
-          <div style={{ marginBottom: "15px" }}>
-            <label htmlFor="message" style={{ display: "block", marginBottom: "5px" }}>
-              Message
-            </label>
+          <div className="mb-4">
             <textarea
               id="message"
               name="message"
               rows="4"
-              style={{
-                width: "100%",
-                padding: "10px",
-                border: "1px solid #ccc",
-                borderRadius: "4px",
-              }}
+              placeholder="Your Message"
+              className="w-full p-3 border border-gray-300 "
             />
           </div>
-          <button
-            type="submit"
-            style={{
-              backgroundColor: "#F47216",
-              color: "white",
-              padding: "10px 20px",
-              border: "none",
-              borderRadius: "4px",
-              cursor: "pointer",
-            }}
-          >
+          <button type="submit" className="bg-orange-500 w-full text-white py-3 px-6  cursor-pointer">
             Get In Touch
           </button>
         </form>

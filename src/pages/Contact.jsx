@@ -1,10 +1,12 @@
 import React from "react";
 import Footer from "../components/Footer";
 import ContactSection from "../components/ContactUs";
+import ContactDetails from "../components/ContactDetails";
 const Contact = () => {
   return (
     <>
-    <ContactSection />
+      <ContactDetails />
+      <ContactSection />
       <Footer />
     </>
   );
