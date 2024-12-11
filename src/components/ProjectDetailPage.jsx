@@ -1,10 +1,52 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import Footer from "./Footer";
 
-const SingleProjectPage = ({ project }) => {
+const ProjectDetailPage = () => {
+  const navigate = useNavigate();
+  const { id } = useParams();
+  const [project, setProject] = useState(null);
+  const [youtubeVideoID, setYoutubeVideoID] = useState("");
+
+  useEffect(() => {
+    if (!id || !Number.parseInt(id)) navigate("/projects");
+
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`https://terminus-group-backend-1in9.onrender.com/forms/project/${id}`);
+        if (response.data) setProject(response.data);
+        else return; // Return if the project data is not found
+
+        // Set the YouTube video ID based on the hostname
+        const youtubeVideo = new URL(response.data.youtubeVideoUrl);
+
+        switch (youtubeVideo.hostname) {
+          case "www.youtube.com":
+            setYoutubeVideoID(youtubeVideo.searchParams.get("v"));
+            break;
+          case "youtu.be":
+            setYoutubeVideoID(youtubeVideo.pathname.slice(1));
+            break;
+        }
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   if (!project) {
     return (
-      <div style={{ textAlign: "center", marginTop: "50px", fontFamily: "Arial, sans-serif" }}>
-        No Project Data Available
+      <div
+        style={{
+          textAlign: "center",
+          marginTop: "50px",
+          fontFamily: "Arial, sans-serif",
+        }}
+      >
+        Loading Project Data...
       </div>
     );
   }
@@ -58,6 +100,7 @@ const SingleProjectPage = ({ project }) => {
       width: "100%",
       borderRadius: "8px",
       marginTop: "20px",
+      objectFit: "contain",
     },
     detailsTitle: {
       fontWeight: "bold",
@@ -83,6 +126,7 @@ const SingleProjectPage = ({ project }) => {
       width: "100%",
       marginBottom: "20px",
       borderRadius: "8px",
+      objectFit: "contain",
     },
     videoSection: {
       marginTop: "40px",
@@ -102,22 +146,24 @@ const SingleProjectPage = ({ project }) => {
         <div style={styles.leftSection}>
           <h1 style={styles.title}>{project.title}</h1>
           <p style={styles.subTitle}>Location {project.location}</p>
-          <p style={styles.date}>Date {new Date(project.createdAt).toLocaleString('default', { month: 'long', year: 'numeric' })}</p>
-          <img
-            src={project.images && project.images[0]}
-            alt={`${project.title} main`}
-            style={styles.image}
-          />
+          <p style={styles.date}>
+            Date{" "}
+            {new Date(project.createdAt).toLocaleString("default", {
+              month: "long",
+              year: "numeric",
+            })}
+          </p>
+          <img src={project.images && project.images[0]} alt={`${project.title} main`} style={styles.image} />
         </div>
 
         <div style={styles.rightSection}>
           <p style={styles.description}>
             {project.description || (
               <>
-                Short Description Goes Here<br />
-                Most people are dismayed if deprived of their pleasures. The right course belongs to
-                him who relishes even the passing away of the reason for his joy and is not bitter.
-                — Pascal
+                Short Description Goes Here
+                <br />
+                Most people are dismayed if deprived of their pleasures. The right course belongs to him who relishes
+                even the passing away of the reason for his joy and is not bitter. — Pascal
               </>
             )}
           </p>
@@ -141,41 +187,41 @@ const SingleProjectPage = ({ project }) => {
         </div>
       </div>
 
-   {/* Additional Images Section */}
-{project.images && project.images.length > 0 && (
-  <div style={styles.additionalImagesSection}>
-    <h2>Additional Images</h2>
-    {project.images.map((imageUrl, index) => (
-      <img
-        key={index}
-        src={imageUrl}
-        alt={`Additional ${index +1 }`}
-        style={{
-          ...styles.additionalImage,
-          width: "96%", // Set image width to 96% of the screen
-          margin: "2% auto", // Center the image with margins
-          display: "block", // Ensure block display for full width
-        }}
-      />
-    ))}
-  </div>
-)}
-
+      {/* Additional Images Section */}
+      {project.images && project.images.length > 0 && (
+        <div style={styles.additionalImagesSection}>
+          <h2>Additional Images</h2>
+          {project.images.map((imageUrl, index) => (
+            <img
+              key={index}
+              src={imageUrl}
+              alt={`Additional ${index + 1}`}
+              style={{
+                ...styles.additionalImage,
+                width: "96%", // Set image width to 96% of the screen
+                margin: "2% auto", // Center the image with margins
+                display: "block", // Ensure block display for full width
+              }}
+            />
+          ))}
+        </div>
+      )}
 
       {/* YouTube Video Section */}
-      {project.youtubeVideoUrl && (
+      {project.youtubeVideoUrl && youtubeVideoID.length > 0 && (
         <div style={styles.videoSection}>
-         
           <iframe
-            src={`https://www.youtube.com/embed/${new URL(project.youtubeVideoUrl).searchParams.get("v")}`}
+            src={`https://www.youtube.com/embed/${youtubeVideoID}`}
             title="Project Video"
             style={styles.iframe}
             allowFullScreen
+            loading="lazy"
           ></iframe>
         </div>
       )}
+      <Footer />
     </div>
   );
 };
 
-export default SingleProjectPage;
+export default ProjectDetailPage;
