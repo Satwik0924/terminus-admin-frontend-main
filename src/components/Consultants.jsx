@@ -11,13 +11,13 @@ const ConsultantsAndPartners = () => {
       if (!element) return;
 
       const rect = element.getBoundingClientRect();
-      const isFullyVisible = rect.top >= 0 && rect.bottom <= window.innerHeight;
-      const isBeyondThreshold = window.scrollY > 700; // Adjust threshold height here
+      const isFullyVisible = rect.top >= 0 && rect.bottom <= window.innerHeight / 2;
+      const isBeyondThreshold = window.scrollY > 800; // Adjust threshold height here
 
       if (isFullyVisible && isBeyondThreshold && !hasTriggered) {
         controls.start({
           color: "#FF5733",
-          transition: { duration: 0.3 },
+          transition: { duration: 0.7 },
         });
         setHasTriggered(true);
       } else if (!isFullyVisible) {
@@ -41,10 +41,10 @@ const ConsultantsAndPartners = () => {
         animate={controls}
         initial={{ color: "#D3D3D3" }}
         style={{
-          fontSize: "2.5rem",
-          marginBottom: "2rem",
-          fontWeight: "700",
-          textAlign: "center",
+          fontSize: "4.5rem",
+          marginBottom: "3rem",
+          fontWeight: "400",
+          textAlign: "left",
         }}
       >
         Consultants & Partners
