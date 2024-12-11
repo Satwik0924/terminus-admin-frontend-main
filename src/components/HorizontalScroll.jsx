@@ -48,10 +48,31 @@ export default function HorizontalScrollCarousel() {
   });
 
   // Trigger horizontal scroll only after user has scrolled past half the screen
-  const x = useTransform(scrollYProgress, [0, 0.3, 1], ["0%", "0%", "-80%"]);
+  const x = useTransform(scrollYProgress, [0, 0.1, 1], ["0%", "0%", "-80%"]);
+
+  // Color transformation for the heading
+  const headingColor = useTransform(scrollYProgress, [0, 0.2], ["#A0A0A0", "#FF5733"]);
 
   return (
-    <section ref={targetRef} style={{ position: "relative", height: "300vh" }}>
+    <section ref={targetRef} style={{ position: "relative", height: "400vh" }}>
+      {/* Heading Section */}
+      <div
+        style={{
+          position: "absolute",
+          top: "-100px",
+          left: "5%",
+        }}
+      >
+        <motion.h1
+          style={{ color: headingColor }}
+          initial={{ color: "#A0A0A0" }}
+          className="text-7xl mb-7 text-left tracking-tighter"
+        >
+          Milestones
+        </motion.h1>
+      </div>
+
+      {/* Horizontal Scroll Section */}
       <div
         style={{
           position: "sticky",
@@ -65,102 +86,87 @@ export default function HorizontalScrollCarousel() {
         <motion.div
           style={{
             display: "flex",
-            gap: "32px", // Increased gap between cards
+            gap: "32px",
             x,
           }}
         >
-          {images.map((image, index) =>
-            index === 0 ? (
-              <div className="flex items-center gap-2 ml-6">
-                <h1 className="text-5xl font-bold text-orange-500 text-center">Milestones</h1>
-                <ArrowRight className="fill-orange-500 stroke-orange-500 size-10" />
-              </div>
-            ) : (
-              <div
-                key={index}
+          {images.map((image, index) => (
+            <div
+              key={index}
+              style={{
+                position: "relative",
+                width: "350px",
+                height: "500px", // Ensure the height is consistent
+                overflow: "hidden",
+                transition: "transform 0.3s",
+                cursor: "pointer",
+              }}
+              onMouseEnter={(e) => {
+                const overlay = e.currentTarget.querySelector(".overlay");
+                overlay.style.opacity = "1";
+              }}
+              onMouseLeave={(e) => {
+                const overlay = e.currentTarget.querySelector(".overlay");
+                overlay.style.opacity = "0";
+              }}
+            >
+              <img
+                src={image.src}
+                alt={`Image ${index}`}
                 style={{
-                  position: "relative",
-                  width: "300px",
-                  height: "400px",
-                  borderRadius: "8px",
-                  overflow: "hidden",
-                  transition: "transform 0.3s",
-                  cursor: "pointer",
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
                 }}
-                onMouseEnter={(e) => {
-                  const overlay = e.currentTarget.querySelector(".overlay");
-                  overlay.style.opacity = "1";
-                }}
-                onMouseLeave={(e) => {
-                  const overlay = e.currentTarget.querySelector(".overlay");
-                  overlay.style.opacity = "0";
+              />
+              <div
+                className="overlay text-orange-500"
+                style={{
+                  position: "absolute",
+                  top: "0",
+                  left: "0",
+                  width: "100%",
+                  height: "100%",
+                  backgroundColor: "rgba(255, 255, 255, 0.8)",
+
+                  display: "flex",
+                  justifyContent: "left",
+                  alignItems: "top",
+                  opacity: "0",
+                  transition: "opacity 0.3s",
+                  fontSize: "18px",
+                  verticalAlign: "top",
                 }}
               >
-                <img
-                  src={image.src}
-                  alt={``}
-                  style={{
-                    width: "100%",
-                    height: "100%",
-                    objectFit: "cover",
-                  }}
-                />
-                <div
-                  className="overlay"
-                  style={{
-                    position: "absolute",
-                    top: "0",
-                    left: "0",
-                    width: "100%",
-                    height: "100%",
-                    backgroundColor: "rgba(255, 255, 255, 0.8)",
-                    color: "#000",
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    opacity: "0",
-                    transition: "opacity 0.3s",
-                    fontSize: "18px",
-                    fontWeight: "bold",
-                    textAlign: "center",
-                  }}
-                >
-                  {image.text}
-                </div>
+                {image.text}
               </div>
-            )
-          )}
-          {/* Add text aligned with the images */}
+            </div>
+          ))}
+
+          {/* Additional Content */}
           <div
             style={{
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",
-              alignItems: "center",
-              marginLeft: "16px", // space between the images and the text
-              width: "300px", // keep it same width as images
+              alignItems: "left",
+              marginLeft: "2px",
+              width: "800px",
             }}
           >
             <p
               className="text-orange-500"
               style={{
-                fontSize: "32px",
-                fontWeight: "bold",
-                textAlign: "center",
+                fontSize: "52px",
+                fontWeight: "700",
+                textAlign: "left",
               }}
             >
-              Setting Milestones
-            </p>
-            <p
-              className="text-orange-500"
-              style={{
-                fontSize: "24px",
-                textAlign: "center",
-              }}
-            >
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Setting milestones that<br></br> redefine industries and<br></br> resonate for generations.
             </p>
           </div>
+
+          {/* Placeholder Images */}
           <div
             style={{
               position: "relative",

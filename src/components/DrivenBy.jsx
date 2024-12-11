@@ -40,7 +40,7 @@ const DrivenByMission = () => {
     },
     title: {
       fontSize: "4rem",
-      fontWeight: "bold",
+
       margin: "0 0 40px 0",
       transition: "color 0.9s ease",
     },
@@ -125,7 +125,7 @@ const DrivenByMission = () => {
         animate={controlsTitle}
         initial={{ color: "#D3D3D3" }}
         style={styles.title}
-        className="md:text-left text-center"
+        className="md:text-left text-center tracking-tighter"
       >
         Driven by a Mission
       </motion.h1>
