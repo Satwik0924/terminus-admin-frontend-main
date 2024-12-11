@@ -1,10 +1,11 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 import { useRef } from "react";
 
 const images = [
-  { src: "https://www.pngmart.com/files/22/White-Background-PNG-Photo.png", text: "" },
+  //   { src: "https://www.pngmart.com/files/22/White-Background-PNG-Photo.png", text: "" },
   {
     src: "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5068988/image-78b21707-b60f-4e60-a57c-717aabc6732b.jpg?e=webp&cX=105.98305084745763&cY=0&cW=122.03389830508475&cH=160",
     text: "Text for Image 1",
@@ -51,8 +52,6 @@ export default function HorizontalScrollCarousel() {
 
   return (
     <section ref={targetRef} style={{ position: "relative", height: "300vh" }}>
-      <h1 className="text-5xl font-bold mx-50px text-orange-500 text-left px-11">Milestones</h1>
-
       <div
         style={{
           position: "sticky",
@@ -70,60 +69,67 @@ export default function HorizontalScrollCarousel() {
             x,
           }}
         >
-          {images.map((image, index) => (
-            <div
-              key={index}
-              style={{
-                position: "relative",
-                width: "300px",
-                height: "400px",
-                borderRadius: "8px",
-                overflow: "hidden",
-                transition: "transform 0.3s",
-                cursor: "pointer",
-              }}
-              onMouseEnter={(e) => {
-                const overlay = e.currentTarget.querySelector(".overlay");
-                overlay.style.opacity = "1";
-              }}
-              onMouseLeave={(e) => {
-                const overlay = e.currentTarget.querySelector(".overlay");
-                overlay.style.opacity = "0";
-              }}
-            >
-              <img
-                src={image.src}
-                alt={``}
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "cover",
-                }}
-              />
+          {images.map((image, index) =>
+            index === 0 ? (
+              <div className="flex items-center gap-2 ml-6">
+                <h1 className="text-5xl font-bold text-orange-500 text-center">Milestones</h1>
+                <ArrowRight className="fill-orange-500 stroke-orange-500 size-10" />
+              </div>
+            ) : (
               <div
-                className="overlay"
+                key={index}
                 style={{
-                  position: "absolute",
-                  top: "0",
-                  left: "0",
-                  width: "100%",
-                  height: "100%",
-                  backgroundColor: "rgba(255, 255, 255, 0.8)",
-                  color: "#000",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  opacity: "0",
-                  transition: "opacity 0.3s",
-                  fontSize: "18px",
-                  fontWeight: "bold",
-                  textAlign: "center",
+                  position: "relative",
+                  width: "300px",
+                  height: "400px",
+                  borderRadius: "8px",
+                  overflow: "hidden",
+                  transition: "transform 0.3s",
+                  cursor: "pointer",
+                }}
+                onMouseEnter={(e) => {
+                  const overlay = e.currentTarget.querySelector(".overlay");
+                  overlay.style.opacity = "1";
+                }}
+                onMouseLeave={(e) => {
+                  const overlay = e.currentTarget.querySelector(".overlay");
+                  overlay.style.opacity = "0";
                 }}
               >
-                {image.text}
+                <img
+                  src={image.src}
+                  alt={``}
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                  }}
+                />
+                <div
+                  className="overlay"
+                  style={{
+                    position: "absolute",
+                    top: "0",
+                    left: "0",
+                    width: "100%",
+                    height: "100%",
+                    backgroundColor: "rgba(255, 255, 255, 0.8)",
+                    color: "#000",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    opacity: "0",
+                    transition: "opacity 0.3s",
+                    fontSize: "18px",
+                    fontWeight: "bold",
+                    textAlign: "center",
+                  }}
+                >
+                  {image.text}
+                </div>
               </div>
-            </div>
-          ))}
+            )
+          )}
           {/* Add text aligned with the images */}
           <div
             style={{

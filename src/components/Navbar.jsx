@@ -6,7 +6,7 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { width: windowWidth } = useWindowDimensions();
   const pathname = useLocation().pathname;
-  const [isVisible, setIsVisible] = useState(true);
+  const [isVisible, setIsVisible] = useState(false);
 
   console.log("pathname", pathname);
 
