@@ -4,13 +4,12 @@ const CHANGE_IMAGE_INTERVAL = 6 * 1000;
 
 const Carousel = () => {
   const images = [
-    "https://th.bing.com/th/id/OIP.K_QqOOtJJiUtFeGU9IjX8gHaE8?w=208&h=139&c=7&r=0&o=5&dpr=1.3&pid=1.7",
-    "https://th.bing.com/th/id/OIP.w9lFQGzKhUkbou-H0YqXBgAAAA?w=208&h=272&c=7&r=0&o=5&dpr=1.3&pid=1.7",
-    "https://th.bing.com/th/id/OIP.fI8GFMq9G3gj_tpF9_UxygHaKW?rs=1&pid=ImgDetMain",
-    "https://th.bing.com/th/id/OIP.CHfxdB3yfEavHWUpVl0EdAHaFD?w=208&h=142&c=7&r=0&o=5&dpr=1.3&pid=1.7",
-    "https://th.bing.com/th/id/OIP.UMI42HuYAMyKGXQEG7vwBQHaJQ?w=208&h=260&c=7&r=0&o=5&dpr=1.3&pid=1.7",
-    "https://th.bing.com/th/id/OIP.mn4EXbmz7bbjTYdH97Ly5wAAAA?w=208&h=277&c=7&r=0&o=5&dpr=1.3&pid=1.7",
-    "https://th.bing.com/th/id/OIP.w9lFQGzKhUkbou-H0YqXBgAAAA?w=208&h=272&c=7&r=0&o=5&dpr=1.3&pid=1.7",
+    "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5068988/image-6420d017-c5bd-4361-8ef3-da73f2d4dc76.jpg?e=webp",
+    "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5068988/image-df771d05-0bc8-4f7b-a4c9-7211ab5352b9.jpg?e=webp",
+    "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5068988/image-bf158649-9f0a-48b6-acd4-beba9731e014.jpg?e=webp",
+    "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5068988/image-11d6a912-c669-4449-9c2e-cd588515044f.jpg?e=webp",
+    "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5068988/image-18270383-28fe-447d-b206-e0a18e68950d.jpg?e=webp",
+    "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5068988/image-727410b2-8a87-43f9-bb12-b3ef77f01209.jpg?e=webp",
   ];
 
   const [currentIndex, setCurrentIndex] = useState(Math.floor((images.length - 1) / 2)); // Default to middle image
