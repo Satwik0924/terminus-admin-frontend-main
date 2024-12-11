@@ -145,7 +145,7 @@ const Projects = () => {
             <div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
                 {projects.map((project) => (
-                  <div key={project._id} className="shadow-md rounded-md overflow-hidden group max-w-xs mx-auto">
+                  <div key={project._id} className="shadow-md  overflow-hidden group max-w-xs mx-auto">
                     <div className="relative w-full h-80 overflow-hidden">
                       <a href={`/projects/${project._id}`} className="relative w-full h-60 overflow-hidden">
                         {/* Image */}
@@ -155,7 +155,7 @@ const Projects = () => {
                           className="w-full h-full object-cover transition duration-500 group-hover:blur-sm"
                         />
                         {/* Overlay description fetched from backend */}
-                        <div className="absolute inset-0 flex justify-center items-center bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 transition duration-500">
+                        <div className="absolute inset-0 flex justify-center items-center bg-black bg-opacity-90 opacity-0 group-hover:opacity-100 transition duration-500">
                           <p className="text-white text-center text-sm px-4">
                             {project.description || "No description available"}
                           </p>

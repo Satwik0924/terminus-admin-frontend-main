@@ -53,7 +53,8 @@ const ProjectsGrid = () => {
     },
     {
       title: "Life Sciences",
-      image: "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5068970/image-a10a7f2b-0283-4585-9525-c09777fe2899.jpg",
+      image:
+        "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5036787/image-8d40d5f5-24ac-4c8a-b60b-689f448d0319.jpg?e=webp&cX=88&cY=0&cW=204&cH=460",
     },
   ];
 
@@ -70,8 +71,9 @@ const ProjectsGrid = () => {
     },
     heading: {
       fontSize: "4rem",
-      textAlign: "center",
+      textAlign: "left",
       marginBottom: "5rem",
+      marginleft: "5rem",
       color: "#A0A0A0",
     },
     grid: {
@@ -123,24 +125,40 @@ const ProjectsGrid = () => {
   };
 
   return (
-    <section className="flex flex-col items-center justify-center h-auto lg:py-40 py-20 bg-[#f9fafb]">
+    <section className="flex flex-col justify-center h-auto lg:py-40 py-20  px-12">
       {/* Heading */}
-      <motion.h1 id="heading" animate={headingAnimation} initial={{ color: "#A0A0A0" }} style={styles.heading}>
+      <motion.h1
+        id="heading"
+        animate={headingAnimation}
+        initial={{ color: "#A0A0A0" }}
+        style={styles.heading}
+        className="text-5xl  text-gray-800 mb-8 text-left tracking-tighter"
+      >
         Explore Our Projects
       </motion.h1>
+
       {/* Responsive Grid */}
       <div style={styles.grid}>
         {projects.map((project, index) => (
           <div
             key={index}
-            className="w-48 h-80 max-sm:w-[95%] rounded-lg shadow-md shadow-black/10 overflow-hidden relative hover:scale-105 transition-transform duration-300 ease-in-out bg-white"
-            // onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.05)")}
-            // onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
+            className="w-52 h-81 max-sm:w-full shadow-md shadow-black/10 overflow-hidden relative hover:scale-105 transition-transform duration-300 ease-in-out bg-white flex flex-col"
           >
-            <img src={project.image} alt={project.title} style={styles.cardImage} />
-            <div style={styles.cardOverlay}>
-              <h2 style={styles.cardTitle}>{project.title}</h2>
-              <a href="#" style={styles.cardLink}>
+            {/* Image Section */}
+            <div className="flex-grow">
+              <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
+            </div>
+
+            {/* Overlay Section */}
+            <div className="absolute inset-0 p-4 flex flex-col justify-between bg-gradient-to-t from-black/80 via-transparent to-transparent">
+              {/* Heading at Top Left */}
+              <h2 className="text-white text-3xl font-bold">{project.title}</h2>
+
+              {/* "View Projects" at Bottom Left */}
+              <a
+                href="#"
+                className="text-orange-500 hover:text-white transition-colors text-md text-center font-medium"
+              >
                 View Projects →
               </a>
             </div>
