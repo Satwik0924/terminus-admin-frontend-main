@@ -51,6 +51,8 @@ export default function HorizontalScrollCarousel() {
 
   return (
     <section ref={targetRef} style={{ position: "relative", height: "300vh" }}>
+      <h1 className="text-5xl font-bold mx-50px text-orange-500 text-left px-11">Milestones</h1>
+
       <div
         style={{
           position: "sticky",
@@ -134,20 +136,20 @@ export default function HorizontalScrollCarousel() {
             }}
           >
             <p
+              className="text-orange-500"
               style={{
-                fontSize: "24px",
+                fontSize: "32px",
                 fontWeight: "bold",
                 textAlign: "center",
-                color: "#333",
               }}
             >
               Setting Milestones
             </p>
             <p
+              className="text-orange-500"
               style={{
-                fontSize: "18px",
+                fontSize: "24px",
                 textAlign: "center",
-                color: "#555",
               }}
             >
               Lorem ipsum dolor sit amet, consectetur adipiscing elit.
