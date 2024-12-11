@@ -96,22 +96,22 @@ const Projects = () => {
             <h1 className="mb-2 text-gray-500 ">Key Projects</h1> {/* Font size kept the same as the list items */}
           </li>
           <li>
-            <a href="#commercial" className="no-underline text-inherit text-gray-400 hover:text-orange-500">
+            <a href="#commercial" className="no-underline text-gray-400 hover:text-orange-500">
               Commercial
             </a>
           </li>
           <li>
-            <a href="#residential" className="no-underline text-inherit text-gray-400 hover:text-orange-500">
+            <a href="#residential" className="no-underline  text-gray-400 hover:text-orange-500">
               Residential
             </a>
           </li>
           <li>
-            <a href="#hospitality" className="no-underline text-inherit text-gray-400 hover:text-orange-500">
+            <a href="#hospitality" className="no-underline  text-gray-400 hover:text-orange-500">
               Hospitality
             </a>
           </li>
           <li>
-            <a href="#lifesciences" className="no-underline text-inherit text-gray-400 hover:text-orange-500">
+            <a href="#lifesciences" className="no-underline text-gray-400 hover:text-orange-500">
               Life Sciences
             </a>
           </li>
