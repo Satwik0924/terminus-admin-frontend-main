@@ -45,7 +45,7 @@ const Projects = () => {
 
           if (isVisible) {
             controls.start({
-              color: ["#FF5733", "#FFC300"], // Orange gradient
+              color: ["#FF5733"], // Orange gradient
               transition: { duration: 1 },
             });
           } else {
@@ -91,34 +91,27 @@ const Projects = () => {
           display: window.innerWidth > 768 ? "block" : "none",
         }}
       >
-        <ul
-          style={{
-            listStyleType: "none",
-            paddingLeft: "30px",
-            fontSize: "2rem",
-            lineHeight: "1.5",
-          }}
-        >
+        <ul className="list-none pl-8 text-4xl leading-relaxed">
           <li>
-            <h1 className="mb-2">Key Projects</h1>
+            <h1 className="mb-2 text-gray-500 ">Key Projects</h1> {/* Font size kept the same as the list items */}
           </li>
           <li>
-            <a href="#commercial" style={{ textDecoration: "none", color: "inherit" }}>
+            <a href="#commercial" className="no-underline text-inherit text-gray-500 hover:text-orange-500">
               Commercial
             </a>
           </li>
           <li>
-            <a href="#residential" style={{ textDecoration: "none", color: "inherit" }}>
+            <a href="#residential" className="no-underline text-inherit text-gray-500 hover:text-orange-500">
               Residential
             </a>
           </li>
           <li>
-            <a href="#hospitality" style={{ textDecoration: "none", color: "inherit" }}>
+            <a href="#hospitality" className="no-underline text-inherit text-gray-500 hover:text-orange-500">
               Hospitality
             </a>
           </li>
           <li>
-            <a href="#lifesciences" style={{ textDecoration: "none", color: "inherit" }}>
+            <a href="#lifesciences" className="no-underline text-inherit text-gray-500 hover:text-orange-500">
               Life Sciences
             </a>
           </li>
@@ -141,7 +134,7 @@ const Projects = () => {
             animate={controlsCommercial}
             initial={{ color: "#D3D3D3" }}
             style={{
-              fontWeight: "300",
+              fontWeight: "500",
               fontSize: "4rem",
               margin: "20px 0",
             }}
@@ -149,38 +142,77 @@ const Projects = () => {
             Commercial
           </motion.h1>
           <div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
-            <p style={{ fontWeight: "bold", fontSize: "24px", marginBottom: "10px" }}>Clientele</p>
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(auto-fit, minmax(120px, 1fr))",
-                gap: "16px",
-              }}
-            >
-              {[...Array(8)].map((_, index) => (
-                <p
-                  key={index}
-                  style={{ padding: "10px", borderRadius: "5px", textAlign: "center", fontWeight: "bold" }}
-                >
-                  Google
-                </p>
-              ))}
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
               {projects.map((project) => (
-                <div key={project._id} className="shadow-md rounded-md overflow-hidden max-w-sm max-h-120">
-                  <img src={project.images?.[0]} alt={project.title} className="w-full h-60 object-cover" />
-                  <div className="p-4">
-                    <h2 className="font-light text-2xl mb-2">{project.title}</h2>
-                    <p className="font-normal text-lg mb-2">{project.location}</p>
-                    <p className="font-normal text-lg mb-2">{project.yearOfCompletion}</p>
-                    <p className="font-normal text-lg mb-2">{project.status}</p>
-                    <a href={`/projects/${project._id}`} className="font-normal text-lg no-underline text-inherit">
-                      View Project Details
-                    </a>
+                <div key={project._id} className="shadow-md rounded-md overflow-hidden group max-w-xs mx-auto">
+                  {/* Image container with hover effects */}
+                  <div className="relative w-full h-80 overflow-hidden">
+                    {/* Image */}
+                    <img
+                      src={project.images?.[0]}
+                      alt={project.title}
+                      className="w-full h-full object-cover transition duration-500 group-hover:blur-sm"
+                    />
+                    {/* Overlay description fetched from backend */}
+                    <div className="absolute inset-0 flex justify-center items-center bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 transition duration-500">
+                      <p className="text-white text-center text-sm px-4">
+                        {project.description || "No description available"}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Project details */}
+                  <div className="p-4 bg-white">
+                    <h2 className="font-semibold text-lg mb-1">{project.title}</h2>
+                    <p className="text-sm text-gray-600 mb-1">{project.location}</p>
+                    <p className="text-sm text-gray-600 mb-3">{project.yearOfCompletion}</p>
+                    <div className="flex gap-2 flex-wrap mb-2">
+                      {/* Render tags */}
+                      {project.tags?.map((tag, index) => (
+                        <span
+                          key={index}
+                          className="px-2 py-1 text-xs bg-gray-200 font-medium transition duration-300 ease-in-out hover:bg-orange-500"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    {/* Render status */}
+                    <div className="mt-2">
+                      <span className="px-2 py-1 text-xs bg-gray-200 font-medium transition duration-300 ease-in-out hover:bg-orange-500">
+                        {project.status}
+                      </span>
+                    </div>
                   </div>
                 </div>
               ))}
+            </div>
+            <div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
+              <p style={{ fontWeight: "bold", fontSize: "24px", marginBottom: "10px" }}>Clientele</p>
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(auto-fit, minmax(120px, 1fr))",
+                  gap: "16px",
+                }}
+              >
+                {["Microchip", "ADP", "NetenRich", "Amazon", "Verizon", "Samsung", "Google", "Intel"].map(
+                  (company, index) => (
+                    <p
+                      key={index}
+                      style={{
+                        padding: "10px",
+                        borderRadius: "5px",
+                        textAlign: "center",
+                        fontWeight: "bold",
+                        // Optional background for better visibility
+                      }}
+                    >
+                      {company}
+                    </p>
+                  )
+                )}
+              </div>
             </div>
           </div>
         </div>
@@ -191,7 +223,7 @@ const Projects = () => {
             animate={controlsResidential}
             initial={{ color: "#D3D3D3" }}
             style={{
-              fontWeight: "300",
+              fontWeight: "500",
               fontSize: "4rem",
               margin: "20px 0",
             }}
@@ -207,14 +239,22 @@ const Projects = () => {
                 gap: "16px",
               }}
             >
-              {[...Array(8)].map((_, index) => (
-                <p
-                  key={index}
-                  style={{ padding: "10px", borderRadius: "5px", textAlign: "center", fontWeight: "bold" }}
-                >
-                  Google
-                </p>
-              ))}
+              {["Microchip", "ADP", "NetenRich", "Amazon", "Verizon", "Samsung", "Google", "Intel"].map(
+                (company, index) => (
+                  <p
+                    key={index}
+                    style={{
+                      padding: "10px",
+                      borderRadius: "5px",
+                      textAlign: "center",
+                      fontWeight: "bold",
+                      // Optional background for better visibility
+                    }}
+                  >
+                    {company}
+                  </p>
+                )
+              )}
             </div>
           </div>
         </div>
@@ -225,7 +265,7 @@ const Projects = () => {
             animate={controlsHospitality}
             initial={{ color: "#D3D3D3" }}
             style={{
-              fontWeight: "300",
+              fontWeight: "500",
               fontSize: "4rem",
               margin: "20px 0",
             }}
@@ -241,14 +281,22 @@ const Projects = () => {
                 gap: "16px",
               }}
             >
-              {[...Array(8)].map((_, index) => (
-                <p
-                  key={index}
-                  style={{ padding: "10px", borderRadius: "5px", textAlign: "center", fontWeight: "bold" }}
-                >
-                  Google
-                </p>
-              ))}
+              {["Microchip", "ADP", "NetenRich", "Amazon", "Verizon", "Samsung", "Google", "Intel"].map(
+                (company, index) => (
+                  <p
+                    key={index}
+                    style={{
+                      padding: "10px",
+                      borderRadius: "5px",
+                      textAlign: "center",
+                      fontWeight: "bold",
+                      // Optional background for better visibility
+                    }}
+                  >
+                    {company}
+                  </p>
+                )
+              )}
             </div>
           </div>
         </div>
@@ -259,7 +307,7 @@ const Projects = () => {
             animate={controlsLifeSciences}
             initial={{ color: "#D3D3D3" }}
             style={{
-              fontWeight: "300",
+              fontWeight: "500",
               fontSize: "4rem",
               margin: "20px 0",
             }}
@@ -275,14 +323,22 @@ const Projects = () => {
                 gap: "16px",
               }}
             >
-              {[...Array(8)].map((_, index) => (
-                <p
-                  key={index}
-                  style={{ padding: "10px", borderRadius: "5px", textAlign: "center", fontWeight: "bold" }}
-                >
-                  Google
-                </p>
-              ))}
+              {["Microchip", "ADP", "NetenRich", "Amazon", "Verizon", "Samsung", "Google", "Intel"].map(
+                (company, index) => (
+                  <p
+                    key={index}
+                    style={{
+                      padding: "10px",
+                      borderRadius: "5px",
+                      textAlign: "center",
+                      fontWeight: "bold",
+                      // Optional background for better visibility
+                    }}
+                  >
+                    {company}
+                  </p>
+                )
+              )}
             </div>
           </div>
         </div>
