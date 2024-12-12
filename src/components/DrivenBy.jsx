@@ -64,7 +64,7 @@ const DrivenByMission = () => {
                 {/* 16:9 aspect ratio */}
                 <iframe
                   className="absolute top-0 left-0 w-full h-full"
-                  src="https://www.youtube.com/embed/dQw4w9WgXcQ" // Replace with your video URL
+                  src="https://www.youtube.com/embed/SQPGpfRQ4Q4?si=Tn8DrTzXoyO1usGt" // Replace with your video URL
                   title="YouTube video"
                   allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
@@ -100,7 +100,7 @@ const DrivenByMission = () => {
                 {/* 16:9 aspect ratio */}
                 <iframe
                   className="absolute top-0 left-0 w-full h-full"
-                  src="https://www.youtube.com/embed/dQw4w9WgXcQ" // Replace with your video URL
+                  src="https://www.youtube.com/embed/SQPGpfRQ4Q4?si=Tn8DrTzXoyO1usGt" // Replace with your video URL
                   title="YouTube video"
                   allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
