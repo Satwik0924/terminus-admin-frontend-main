@@ -4,13 +4,12 @@ import axios from "axios";
 const NewsMedia = () => {
   const [newsData, setNewsData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     const fetchNewsData = async () => {
       try {
-        const response = await axios.get(
-          "https://terminus-group-backend-1in9.onrender.com/forms/news"
-        );
+        const response = await axios.get("https://terminus-group-backend-1in9.onrender.com/forms/news");
         const transformedData = response.data.map((news) => ({
           id: news._id,
           title: news.header,
@@ -27,78 +26,38 @@ const NewsMedia = () => {
     };
 
     fetchNewsData();
+
+    const handleScroll = () => {
+      const scrollThreshold = window.innerHeight / 20;
+      const section = document.getElementById("news-section");
+      const rect = section.getBoundingClientRect();
+      setScrolled(rect.top <= scrollThreshold);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <div
-      style={{
-        padding: "50px 20px",
-        fontFamily: "Arial, sans-serif",
-        maxWidth: "1200px",
-        margin: "0 auto",
-      }}
-    >
+    <div id="news-section" className="px-5 py-12 max-w-screen-xl mx-auto">
       <h1
-        style={{
-          fontSize: "36px",
-          fontWeight: "bold",
-          color: "orange",
-          textAlign: "center",
-          marginBottom: "40px",
-        }}
+        className={`text-7xl leading-5  mb-12 transition-colors duration-300 ${
+          scrolled ? "text-orange-500" : "text-gray-400"
+        }`}
       >
         News & Media
       </h1>
       {loading ? (
-        <p style={{ textAlign: "center" }}>Loading news data...</p>
+        <p className="text-center">Loading news data...</p>
       ) : (
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-            gap: "20px",
-          }}
-        >
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {newsData.map((news) => (
-            <div
-              key={news.id}
-              style={{
-                border: "1px solid #ddd",
-                borderRadius: "8px",
-                overflow: "hidden",
-                textAlign: "center",
-                backgroundColor: "#fff",
-              }}
-            >
-              <a
-                href={news.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{ textDecoration: "none", color: "inherit" }}
-              >
-                <img
-                  src={news.image}
-                  alt={news.title}
-                  style={{
-                    width: "100%",
-                    height: "200px",
-                    objectFit: "cover",
-                  }}
-                />
-                <div style={{ padding: "15px" }}>
-                  <h3
-                    style={{
-                      fontSize: "18px",
-                      fontWeight: "bold",
-                      color: "#333",
-                      marginBottom: "10px",
-                    }}
-                  >
-                    {news.title}
-                  </h3>
-                  <p style={{ fontSize: "14px", color: "#555" }}>
-                    {news.caption}
-                  </p>
+            <div key={news.id} className=" overflow-hidden bg-white ">
+              <a href={news.link} target="_blank" rel="noopener noreferrer" className="block text-inherit">
+                <img src={news.image} alt={news.title} className="w-full h-64 object-cover" />
+                <div className="p-0">
+                  <h3 className="text-lg mt-3 tracking-tighter leading-4 font-bold  text-black">{news.title}</h3>
+                  <p className="text-md leading-6 tracking-tighter text-black mt-1">{news.caption}</p>
                 </div>
               </a>
             </div>

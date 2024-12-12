@@ -4,13 +4,12 @@ import axios from "axios";
 const AwardsComponent = () => {
   const [awardsData, setAwardsData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     const fetchAwardsData = async () => {
       try {
-        const response = await axios.get(
-          "https://terminus-group-backend-1in9.onrender.com/forms/awards"
-        );
+        const response = await axios.get("https://terminus-group-backend-1in9.onrender.com/forms/awards");
         const transformedData = response.data.map((award) => ({
           id: award._id,
           title: award.name,
@@ -26,92 +25,43 @@ const AwardsComponent = () => {
     };
 
     fetchAwardsData();
+
+    const handleScroll = () => {
+      const scrollThreshold = window.innerHeight / 2;
+      const section = document.getElementById("awards-section");
+      const rect = section.getBoundingClientRect();
+      setScrolled(rect.top <= scrollThreshold);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <div
-      style={{
-        padding: "50px 20px",
-        fontFamily: "Arial, sans-serif",
-        maxWidth: "1200px",
-        margin: "0 auto",
-      }}
-    >
+    <div id="awards-section" className="px-5 py-12 max-w-screen-xl mx-auto">
       <h1
-        style={{
-          fontSize: "36px",
-          fontWeight: "bold",
-          color: "orange",
-          textAlign: "center",
-          marginBottom: "40px",
-        }}
+        className={`text-7xl  leading-4  mb-12 transition-colors duration-300 ${
+          scrolled ? "text-orange-500" : "text-gray-400"
+        }`}
       >
         Awards
       </h1>
       {loading ? (
-        <p style={{ textAlign: "center" }}>Loading awards data...</p>
+        <p className="text-center">Loading awards data...</p>
       ) : (
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
-            gap: "20px",
-          }}
-        >
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {awardsData.map((award) => (
-            <div
-              key={award.id}
-              style={{
-                textAlign: "center",
-                overflow: "hidden",
-                borderRadius: "8px",
-                boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
-                backgroundColor: "#fff",
-              }}
-            >
-              <div
-                style={{
-                  overflow: "hidden",
-                  transition: "transform 0.3s, filter 0.3s",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.filter = "blur(1px)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.filter = "none";
-                }}
-              >
+            <div key={award.id} className="  overflow-hidden bg-white ">
+              <div className="w-full h-64 overflow-hidden">
                 <img
                   src={award.image}
                   alt={award.title}
-                  style={{
-                    width: "100%",
-                    height: "200px",
-                    objectFit: "cover",
-                    borderRadius: "8px 8px 0 0",
-                  }}
+                  className="w-full h-full object-cover transition-transform duration-300 hover:blur-sm"
                 />
               </div>
-              <div style={{ padding: "15px" }}>
-                <p
-                  style={{
-                    fontSize: "16px",
-                    fontWeight: "bold",
-                    color: "#333",
-                    marginBottom: "8px",
-                  }}
-                >
-                  {award.title}
-                </p>
-                <p
-                  style={{
-                    fontSize: "14px",
-                    color: "#666",
-                    lineHeight: "1.5",
-                  }}
-                >
-                  {award.description}
-                </p>
+              <div className="p-0">
+                <h3 className="text-3xl tracking-tighter  text-black mb-2">{award.title}</h3>
+                <p className="text-lg text-black">{award.description}</p>
               </div>
             </div>
           ))}
