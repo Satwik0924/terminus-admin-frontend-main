@@ -8,23 +8,23 @@ const images = [
   //   { src: "https://www.pngmart.com/files/22/White-Background-PNG-Photo.png", text: "" },
   {
     src: "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5068988/image-78b21707-b60f-4e60-a57c-717aabc6732b.jpg?e=webp&cX=105.98305084745763&cY=0&cW=122.03389830508475&cH=160",
-    text: "Text for Image 1",
+    text: "Terminus Group was established in 2010, and since then, the company has been rapidly expanding, building Class-A properties in strategic locations across Hyderabad. The company has a portfolio of diversified projects in premium residential high rises, mixed-use commercial spaces, premium office towers, villa communities, 5-star serviced apartments and life science spaces. Endowed with a pool of experienced technical staff, project management teams, the company is leading the change with its expertise in multiple disciplines of construction industry.",
   },
   {
     src: "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5068988/image-5f67c8eb-7a08-41ca-a7bb-1e5b91bff03e.jpg?e=webp&cX=0&cY=17.04444444444445&cW=334&cH=437.9111111111111",
-    text: "Text for Image 2",
+    text: "SLN TERMINUS Shop. Dine. Work. Live.A pioneering Mixed-use commercial building located on Kondapur-Gachibowli Road, Hyderabad. It has a fine mix of premium office spaces, fine dining, retail, and a multiplex that attracts thousands of footfalls every day.",
   },
   {
     src: "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5068988/image-4df42c0e-8c08-4e22-ad25-e2333cca4f7c.jpg?e=webp&cX=106.17675544794189&cY=0&cW=121.64648910411623&cH=160",
-    text: "Text for Image 3",
+    text: "KRINSS VILLASA premium gated community of villas in Financial District, Hyderabad. Located just a few steps away from Outer Ring Road, KRINSS has luxury triplex villas with an enviable clubhouse.",
   },
   {
     src: "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5068988/image-a34f793c-c89f-4d8f-b81b-890799cf8f72.jpg?e=webp&cX=0&cY=17.04444444444445&cW=334&cH=437.9111111111111",
-    text: "Text for Image 4",
+    text: "HAMPTONS APARTMENTS <br />A gated community of luxury apartments tower with clubhouse amenities is located in Kondapur, Hyderabad.",
   },
   {
     src: "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5068988/image-3d0348ad-fb97-4804-abad-21c7950f61e7.jpg?e=webp&cX=0&cY=17.04444444444445&cW=334&cH=437.9111111111111",
-    text: "Text for Image 5",
+    text: "ONE WESTA 24-floors imposing corporate tower abutting Outer Ring Road offering Grade-A office spaces to brands like ADP. It is located in Financial District, Nanakramguda.",
   },
   {
     src: "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5068988/image-26f45099-2bd3-4f7e-8f04-6d2c021b56f6.jpg?e=webp&cX=80.12348668280872&cY=0&cW=189.75302663438256&cH=248",
