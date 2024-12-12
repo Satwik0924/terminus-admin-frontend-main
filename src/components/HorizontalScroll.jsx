@@ -1,11 +1,8 @@
-"use client";
-
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowRight } from "lucide-react";
 import { useRef } from "react";
 
 const images = [
-  //   { src: "https://www.pngmart.com/files/22/White-Background-PNG-Photo.png", text: "" },
+  { src: "https://www.pngmart.com/files/22/White-Background-PNG-Photo.png", text: "" },
   {
     src: "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5068988/image-78b21707-b60f-4e60-a57c-717aabc6732b.jpg?e=webp&cX=105.98305084745763&cY=0&cW=122.03389830508475&cH=160",
     text: "Text for Image 1",
@@ -51,26 +48,11 @@ export default function HorizontalScrollCarousel() {
   const x = useTransform(scrollYProgress, [0, 0.1, 1], ["0%", "0%", "-80%"]);
 
   // Color transformation for the heading
-  const headingColor = useTransform(scrollYProgress, [0, 0.2], ["#A0A0A0", "#FF5733"]);
+  const headingColor = useTransform(scrollYProgress, [0, 0.2], ["#A0A0A0", "#F58220"]);
 
   return (
     <section ref={targetRef} style={{ position: "relative", height: "400vh" }}>
       {/* Heading Section */}
-      <div
-        style={{
-          position: "absolute",
-          top: "-100px",
-          left: "5%",
-        }}
-      >
-        <motion.h1
-          style={{ color: headingColor }}
-          initial={{ color: "#A0A0A0" }}
-          className="text-7xl mb-7 text-left tracking-tighter"
-        >
-          Milestones
-        </motion.h1>
-      </div>
 
       {/* Horizontal Scroll Section */}
       <div
@@ -79,10 +61,25 @@ export default function HorizontalScrollCarousel() {
           top: 0,
           display: "flex",
           alignItems: "center",
-          height: "100vh",
+          height: "120vh",
           overflow: "hidden",
         }}
       >
+        <div
+          style={{
+            position: "absolute",
+            top: "10%",
+            left: "5%",
+          }}
+        >
+          <motion.h1
+            style={{ color: headingColor }}
+            initial={{ color: "#A0A0A0" }}
+            className="transition-colors duration-900 ease-in-out md:text-[5.3rem] leading-none text-5xl mb-10 text-[#A0A0A0] text-left tracking-tighter"
+          >
+            Milestones
+          </motion.h1>
+        </div>
         <motion.div
           style={{
             display: "flex",
@@ -93,14 +90,15 @@ export default function HorizontalScrollCarousel() {
           {images.map((image, index) => (
             <div
               key={index}
-              style={{
-                position: "relative",
-                width: "350px",
-                height: "500px", // Ensure the height is consistent
-                overflow: "hidden",
-                transition: "transform 0.3s",
-                cursor: "pointer",
-              }}
+              //   style={{
+              //     position: "relative",
+              //     width: "500px",
+              //     height: "600px", // Ensure the height is consistent
+              //     overflow: "hidden",
+              //     transition: "transform 0.3s",
+              //     cursor: "pointer",
+              //   }}
+              className="relative w-[500px] h-[70vh] overflow-hidden transition-transform duration-300"
               onMouseEnter={(e) => {
                 const overlay = e.currentTarget.querySelector(".overlay");
                 overlay.style.opacity = "1";
@@ -120,7 +118,7 @@ export default function HorizontalScrollCarousel() {
                 }}
               />
               <div
-                className="overlay text-orange-500"
+                className="overlay text-primary-foreground"
                 style={{
                   position: "absolute",
                   top: "0",
@@ -154,14 +152,7 @@ export default function HorizontalScrollCarousel() {
               width: "800px",
             }}
           >
-            <p
-              className="text-orange-500"
-              style={{
-                fontSize: "52px",
-                fontWeight: "700",
-                textAlign: "left",
-              }}
-            >
+            <p className="text-primary-foreground text-left text-7xl font-bold tracking-tighter">
               Setting milestones that<br></br> redefine industries and<br></br> resonate for generations.
             </p>
           </div>

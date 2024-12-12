@@ -1,123 +1,79 @@
 import React from "react";
+import LogoFooter from "../assets/tg_logo_footer.webp";
+
+const projectLinks = [
+  { label: "Commercial", href: "#" },
+  { label: "Residential", href: "#" },
+  { label: "Hospitality", href: "#" },
+  { label: "Life Sciences", href: "#" },
+];
+
+const aboutLinks = [
+  { label: "Team", href: "#" },
+  { label: "News & Media", href: "#" },
+  { label: "Philanthropy", href: "#" },
+];
+
+const contactLinks = [
+  { label: "Reach Us", href: "#" },
+  { label: "Careers", href: "#" },
+];
+
+const socialLinks = [
+  { label: "Facebook", href: "#" },
+  { label: "Instagram", href: "#" },
+  { label: "Twitter", href: "#" },
+  { label: "Pinterest", href: "#" },
+];
 
 const Footer = () => {
   return (
-    <footer
-      style={{
-        backgroundColor: "#F47216",
-        color: "white",
-      }}
-    >
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          flexWrap: "wrap",
-          maxWidth: "1200px",
-          margin: "0 auto",
-          padding: "2rem",
-        }}
-        className="footer-container"
-      >
-        {/* Brand Section */}
-        <div style={{ flex: "1 1 100%", textAlign: "center", marginBottom: "1rem" }}>
-          <h1 style={{ color: "#d6d6d6", marginBottom: "10px" }}>TERMINUS</h1>
-          <p>2024</p>
+    <footer className="bg-primary-foreground w-full">
+      <div className="flex justify-between mx-auto py-16 lg:px-16 w-full">
+        <div className="flex-1 max-lg:hidden">
+          <div className="h-64 w-64 overflow-hidden">
+            <img src={LogoFooter} alt="Terminus" className="object-cover h-auto w-full" />
+          </div>
+          <h1 className="text-2xl">{new Date().getFullYear()}</h1>
         </div>
-
-        {/* Projects Section */}
-        <div
-          style={{
-            flex: "1 1 calc(25% - 20px)",
-            minWidth: "200px",
-            textAlign: "center",
-            marginBottom: "1rem",
-          }}
-          className="footer-section"
-        >
-          <h4 style={{ marginBottom: "10px" }}>Projects</h4>
-          <ul style={{ listStyleType: "none", padding: 0, margin: 0 }}>
-            <li>Commercial</li>
-            <li>Residential</li>
-            <li>Hospitality</li>
-            <li>Life Sciences</li>
-          </ul>
-        </div>
-
-        {/* About Section */}
-        <div
-          style={{
-            flex: "1 1 calc(25% - 20px)",
-            minWidth: "200px",
-            textAlign: "center",
-            marginBottom: "1rem",
-          }}
-          className="footer-section"
-        >
-          <h4 style={{ marginBottom: "10px" }}>About</h4>
-          <ul style={{ listStyleType: "none", padding: 0, margin: 0 }}>
-            <li>Team</li>
-            <li>News & Media</li>
-            <li>Philanthropy</li>
-          </ul>
-        </div>
-
-        {/* Contact Section */}
-        <div
-          style={{
-            flex: "1 1 calc(25% - 20px)",
-            minWidth: "200px",
-            textAlign: "center",
-            marginBottom: "1rem",
-          }}
-          className="footer-section"
-        >
-          <h4 style={{ marginBottom: "10px" }}>Contact</h4>
-          <ul style={{ listStyleType: "none", padding: 0, margin: 0 }}>
-            <li>Reach Us</li>
-            <li>Careers</li>
-            <li>Facebook</li>
-            <li>Instagram</li>
-            <li>Twitter</li>
-            <li>Pinterest</li>
-          </ul>
+        <div className="flex-1 max-lg:w-full">
+          <div className="grid grid-cols-3 gap-6 place-items-center items-start w-full max-sm:grid-cols-2">
+            {/* Projects */}
+            <ul className="space-y-3 text-2xl font-normal">
+              <h3 className="text-white font-serif">Projects</h3>
+              {projectLinks.map((project, index) => (
+                <li className="font-serif hover:underline hover:underline-offset-4" key={`${project.label}-${index}`}>
+                  {project.label}
+                </li>
+              ))}
+            </ul>
+            {/* About */}
+            <ul className="space-y-3 text-2xl font-normal">
+              <h3 className="text-white font-serif">About</h3>
+              {aboutLinks.map((project, index) => (
+                <li className="font-serif hover:underline hover:underline-offset-4" key={`${project.label}-${index}`}>
+                  {project.label}
+                </li>
+              ))}
+            </ul>
+            {/* Contact */}
+            <ul className="space-y-3 text-2xl font-normal">
+              <h3 className="text-white font-serif">Contact</h3>
+              {contactLinks.map((project, index) => (
+                <li className="font-serif hover:underline hover:underline-offset-4" key={`${project.label}-${index}`}>
+                  {project.label}
+                </li>
+              ))}
+              <li className="h-6 my-3"></li> {/* Adds a subtle dividing line */}
+              {socialLinks.map((project, index) => (
+                <li className="font-serif hover:underline hover:underline-offset-4" key={`${project.label}-${index}`}>
+                  {project.label}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
-
-      {/* Responsive Styles */}
-      <style>
-        {`
-          @media (max-width: 768px) {
-            .footer-container {
-              flex-direction: column;
-              padding: 1rem;
-              text-align: center;
-            }
-
-            .footer-section {
-              flex: 1 1 100%;
-            }
-          }
-
-          @media (max-width: 480px) {
-            .footer-container {
-              padding: 0.5rem;
-            }
-
-            .footer-section ul {
-              padding-left: 0;
-            }
-
-            .footer-section h4 {
-              font-size: 1rem;
-            }
-
-            .footer-section li {
-              font-size: 0.9rem;
-            }
-          }
-        `}
-      </style>
     </footer>
   );
 };
