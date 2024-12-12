@@ -12,7 +12,7 @@
 
 @layer base {
   * {
-    font-family: "Geist", sans-serif;
+    font-family: "Inter", sans-serif;
     font-synthesis: none;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
