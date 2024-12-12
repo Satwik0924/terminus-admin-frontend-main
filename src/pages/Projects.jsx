@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Footer from "../components/Footer";
 import { motion, useAnimation } from "framer-motion";
+import React, { useEffect, useState } from "react";
+import Footer from "../components/Footer";
 
 const Projects = () => {
   const [projects, setProjects] = useState([]);
@@ -55,7 +55,7 @@ const Projects = () => {
 
           if (isVisible) {
             controls.start({
-              color: ["#FF5733"], // Orange gradient
+              color: ["#F58220"],
               transition: { duration: 1 },
             });
           } else {
@@ -93,32 +93,33 @@ const Projects = () => {
             display: window.innerWidth > 768 ? "block" : "none",
           }}
         >
-          <ul className="list-none pl-8 text-4xl leading-2 tracking-tight">
+          <ul className="list-none pl-8 text-5xl leading-2 tracking-tight space-y-2">
             <li>
-              <h1 className="mb-2 text-gray-500 ">Key Projects</h1> {/* Font size kept the same as the list items */}
+              <h1 className="mb-2 text-primary-foreground">Key Projects</h1>{" "}
+              {/* Font size kept the same as the list items */}
             </li>
             <li>
-              <a href="#commercial" className="no-underline text-gray-400 hover:text-orange-500">
+              <a href="#commercial" className="no-underline text-foreground hover:text-primary-foreground">
                 Commercial
               </a>
             </li>
             <li>
-              <a href="#residential" className="no-underline text-gray-400 hover:text-orange-500">
+              <a href="#residential" className="no-underline text-foreground hover:text-primary-foreground">
                 Residential
               </a>
             </li>
             <li>
-              <a href="#hospitality" className="no-underline text-gray-400 hover:text-orange-500">
+              <a href="#hospitality" className="no-underline text-foreground hover:text-primary-foreground">
                 Hospitality
               </a>
             </li>
             <li>
-              <a href="#lifesciences" className="no-underline text-gray-400 hover:text-orange-500">
+              <a href="#lifesciences" className="no-underline text-foreground hover:text-primary-foreground">
                 Life Sciences
               </a>
             </li>
             <li>
-              <a href="#lifesciences" className="no-underline text-gray-400 hover:text-orange-500">
+              <a href="#lifesciences" className="no-underline text-foreground hover:text-primary-foreground">
                 Retail
               </a>
             </li>
@@ -140,11 +141,7 @@ const Projects = () => {
             <motion.h1
               animate={controlsCommercial}
               initial={{ color: "#D3D3D3" }}
-              style={{
-                fontWeight: "500",
-                fontSize: "4rem",
-                margin: "20px 0",
-              }}
+              className="md:text-[5.3rem] leading-none text-5xl py-10 font-medium text-[#A0A0A0] text-left tracking-tighter"
             >
               Commercial
             </motion.h1>
@@ -154,17 +151,17 @@ const Projects = () => {
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
                 {commercialProjects.map((project) => (
                   <div key={project._id} className=" overflow-hidden group max-w-xs mx-auto">
-                    <div className="relative w-full h-80 overflow-hidden">
+                    <div className="relative w-full h-[450px] overflow-hidden mb-3">
                       <a href={`/projects/${project._id}`} className="relative w-full h-80 overflow-hidden">
                         {/* Image */}
                         <img
                           src={project.images?.[0]}
                           alt={project.title}
-                          className="w-full h-full object-cover transition duration-500 group-hover:blur-sm"
+                          className="w-full h-full object-cover transition duration-500 group-hover:blur-[2px]"
                         />
                         {/* Overlay description */}
-                        <div className="absolute inset-0 flex justify-top items-top bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 transition duration-500">
-                          <p className="text-white text-center text-md leading-4 px-4">
+                        <div className="absolute inset-0 flex justify-top items-top bg-white/30 bg-opacity-70 opacity-0 group-hover:opacity-100 transition duration-500 [word-spacing:4px]">
+                          <p className="text-black text-left text-xl p-4">
                             {project.description || "No description available"}
                           </p>
                         </div>
@@ -173,13 +170,13 @@ const Projects = () => {
 
                     {/* Project Details */}
                     <div className="p-0 bg-white">
-                      <h2 className="font-bold text-2xl tracking-tight ">{project.title}</h2>
-                      <p className="text-lg text-black leading-3">{project.location}</p>
-                      <p className="text-sm text-black mb-4  mt-3 leading-4 ">{project.yearOfCompletion}</p>
-                      <div className="flex flex-wrap col-2 gap-2">
+                      <h2 className="font-bold text-2xl tracking-tight text-black mb-1">{project.title}</h2>
+                      <p className="text-2xl text-black leading-3">{project.location}</p>
+                      <p className="text-2xl text-black mb-4 mt-3 leading-4 ">{project.yearOfCompletion}</p>
+                      <div className="grid grid-cols-2 gap-2 w-full">
                         {project.tags?.map((tag, index) => (
-                          <div key={index} className="flex col-2 items-center justify-center" style={{ width: "44%" }}>
-                            <span className="px-2 py-1 text-xs text-gray-500 font-bold bg-gray-200 text-center border border-gray-300 transition duration-300 ease-in-out hover:bg-orange-500 hover:text-white w-full">
+                          <div key={index} className="flex items-center justify-center">
+                            <span className="px-2 py-1 text-sm text-foreground font-bold bg-foreground/20 text-center transition duration-300 ease-in-out hover:bg-primary-foreground hover:text-white w-full">
                               {tag}
                             </span>
                           </div>
@@ -187,7 +184,7 @@ const Projects = () => {
                       </div>
 
                       <div className="grid grid-cols-2 gap-2 mt-2">
-                        <span className="px-2 py-1 text-xs bg-gray-200 text-gray-500 text-center font-bold border border-gray-300 transition duration-300 ease-in-out hover:bg-orange-500 hover:text-white">
+                        <span className="px-2 py-1 text-sm bg-foreground/20 text-foreground text-center font-bold transition duration-300 ease-in-out hover:bg-primary-foreground hover:text-white">
                           {project.status}
                         </span>
                       </div>
@@ -222,6 +219,7 @@ const Projects = () => {
                         fontWeight: "bold",
                         marginTop: index === 0 ? "0" : "unset", // No margin for the first company
                       }}
+                      className="!text-foreground !font-bold !text-2xl"
                     >
                       {company}
                     </p>
@@ -331,6 +329,7 @@ const Projects = () => {
                           fontWeight: "bold",
                           marginTop: index === 0 ? "0" : "unset", // No margin for the first company
                         }}
+                        className="!text-foreground !font-bold !text-2xl"
                       >
                         {company}
                       </p>
