@@ -11,14 +11,18 @@ const ProjectDetailPage = () => {
 
   useEffect(() => {
     if (!id || !Number.parseInt(id)) navigate("/projects");
-
+    const handleDownload = () => {
+      const link = document.createElement("a");
+      link.href = project.brochureUrl; // The URL of the PDF
+      link.download = "brochure.pdf"; // You can set a custom filename here
+      link.click(); // Programmatically click the link to start the download
+    };
     const fetchData = async () => {
       try {
         const response = await axios.get(`https://terminus-group-backend-1in9.onrender.com/forms/project/${id}`);
         if (response.data) setProject(response.data);
-        else return; // Return if the project data is not found
+        else return;
 
-        // Set the YouTube video ID based on the hostname
         const youtubeVideo = new URL(response.data.youtubeVideoUrl);
 
         switch (youtubeVideo.hostname) {
@@ -38,187 +42,90 @@ const ProjectDetailPage = () => {
   }, []);
 
   if (!project) {
-    return (
-      <div
-        style={{
-          textAlign: "center",
-          marginTop: "50px",
-          fontFamily: "Arial, sans-serif",
-        }}
-      >
-        Loading Project Data...
-      </div>
-    );
+    return <div className="text-center mt-12 font-sans">Loading Project Data...</div>;
   }
 
-  const styles = {
-    container: {
-      display: "flex",
-      flexDirection: "column",
-      padding: "40px",
-      fontFamily: "Arial, sans-serif",
-      maxWidth: "1200px",
-      margin: "0 auto",
-      color: "#333",
-    },
-    topSection: {
-      display: "flex",
-      flexDirection: "row",
-      justifyContent: "space-between",
-    },
-    leftSection: {
-      flex: 2,
-      paddingRight: "20px",
-    },
-    rightSection: {
-      flex: 1,
-      paddingLeft: "20px",
-      fontSize: "14px",
-    },
-    title: {
-      fontSize: "42px",
-      fontWeight: "bold",
-      color: "#ff6600",
-      marginBottom: "10px",
-    },
-    subTitle: {
-      fontSize: "18px",
-      color: "#777",
-      marginBottom: "10px",
-    },
-    date: {
-      fontSize: "16px",
-      color: "#555",
-      marginBottom: "20px",
-    },
-    description: {
-      marginTop: "20px",
-      lineHeight: "1.6",
-      color: "#555",
-    },
-    image: {
-      width: "100%",
-      borderRadius: "8px",
-      marginTop: "20px",
-      objectFit: "contain",
-    },
-    detailsTitle: {
-      fontWeight: "bold",
-      marginTop: "20px",
-    },
-    detail: {
-      margin: "10px 0",
-    },
-    button: {
-      display: "inline-block",
-      marginTop: "20px",
-      padding: "10px 20px",
-      fontSize: "14px",
-      backgroundColor: "#ff6600",
-      color: "#fff",
-      textDecoration: "none",
-      borderRadius: "5px",
-    },
-    additionalImagesSection: {
-      marginTop: "40px",
-    },
-    additionalImage: {
-      width: "100%",
-      marginBottom: "20px",
-      borderRadius: "8px",
-      objectFit: "contain",
-    },
-    videoSection: {
-      marginTop: "40px",
-    },
-    iframe: {
-      width: "100%",
-      height: "450px",
-      borderRadius: "8px",
-      border: "none",
-    },
-  };
-
   return (
-    <div style={styles.container}>
-      {/* Top Section: Title, Location, Image */}
-      <div style={styles.topSection}>
-        <div style={styles.leftSection}>
-          <h1 style={styles.title}>{project.title}</h1>
-          <p style={styles.subTitle}>Location {project.location}</p>
-          <p style={styles.date}>
-            Date{" "}
-            {new Date(project.createdAt).toLocaleString("default", {
-              month: "long",
-              year: "numeric",
-            })}
+    <div>
+      <div className="flex flex-col p-12 max-w-full mx-10  text-gray-800">
+        {/* Top Section: Title, Location, Image */}
+        <div>
+          <h1 className="text-7xl font-bold text-orange-500 mb-2">{project.title}</h1>
+          <p className="text-2xl text-black mb-2 leading-5">Location {project.location}</p>
+          <p className="text-lg text-black mb-5 leading-8">
+            Date {new Date(project.createdAt).toLocaleString("default", { month: "long", year: "numeric" })}
           </p>
-          <img src={project.images && project.images[0]} alt={`${project.title} main`} style={styles.image} />
         </div>
-
-        <div style={styles.rightSection}>
-          <p style={styles.description}>
-            {project.description || (
-              <>
-                Short Description Goes Here
-                <br />
-                Most people are dismayed if deprived of their pleasures. The right course belongs to him who relishes
-                even the passing away of the reason for his joy and is not bitter. — Pascal
-              </>
-            )}
-          </p>
-          <p style={styles.detailsTitle}>Status</p>
-          <p style={styles.detail}>{project.status}</p>
-          <p style={styles.detailsTitle}>Address</p>
-          <p style={styles.detail}>{project.location}</p>
-          <p style={styles.detailsTitle}>Type</p>
-          <p style={styles.detail}>{project.tags ? project.tags.join(", ") : "N/A"}</p>
-          <p style={styles.detailsTitle}>Year of Completion</p>
-          <p style={styles.detail}>{project.yearOfCompletion || "N/A"}</p>
-          <p style={styles.detailsTitle}>Architect</p>
-          <p style={styles.detail}>{project.architect || "N/A"}</p>
-          <p style={styles.detailsTitle}>Landscape Architect</p>
-          <p style={styles.detail}>{project.landscapeArchitect || "N/A"}</p>
-          {project.brochureUrl && (
-            <a href={project.brochureUrl} style={styles.button} target="_blank" rel="noopener noreferrer">
-              Download Brochure
-            </a>
-          )}
-        </div>
-      </div>
-
-      {/* Additional Images Section */}
-      {project.images && project.images.length > 0 && (
-        <div style={styles.additionalImagesSection}>
-          <h2>Additional Images</h2>
-          {project.images.map((imageUrl, index) => (
+        <div className="flex">
+          {/* Left Section: Image */}
+          <div className="w-2/3 pr-10">
             <img
-              key={index}
-              src={imageUrl}
-              alt={`Additional ${index + 1}`}
-              style={{
-                ...styles.additionalImage,
-                width: "96%", // Set image width to 96% of the screen
-                margin: "2% auto", // Center the image with margins
-                display: "block", // Ensure block display for full width
-              }}
+              src={project.images && project.images[0]}
+              alt={`${project.title} main`}
+              className="w-full h-auto  object-contain"
             />
-          ))}
-        </div>
-      )}
+          </div>
 
-      {/* YouTube Video Section */}
-      {project.youtubeVideoUrl && youtubeVideoID.length > 0 && (
-        <div style={styles.videoSection}>
-          <iframe
-            src={`https://www.youtube.com/embed/${youtubeVideoID}`}
-            title="Project Video"
-            style={styles.iframe}
-            allowFullScreen
-            loading="lazy"
-          ></iframe>
+          {/* Right Section: Text */}
+          <div className="w-1/3 pl-20 flex flex-col justify-start">
+            <p className="leading-10 text-xl tracking-tighter text-gray-600">
+              {project.description || (
+                <>
+                  Short Description Goes Here
+                  <br />
+                  Most people are dismayed if deprived of their pleasures. The right course belongs to him who relishes
+                  even the passing away of the reason for his joy and is not bitter. — Pascal
+                </>
+              )}
+            </p>
+            <p className="font-extrabold mt-5 tracking-tighter">Status</p>
+            <p>{project.status}</p>
+            <p className="font-extrabold mt-5 tracking-tighter">Address</p>
+            <p>{project.location}</p>
+            <p className="font-extrabold mt-5 tracking-tighter">Type</p>
+            <p>{project.tags ? project.tags.join(", ") : "N/A"}</p>
+            <p className="font-extrabold mt-5 tracking-tighter">Year of Completion</p>
+            <p>{project.yearOfCompletion || "N/A"}</p>
+            <p className="font-extrabold mt-5 tracking-tighter">Architect</p>
+            <p>{project.architect || "N/A"}</p>
+            <p className="font-extrabold mt-5 tracking-tighter">Landscape Architect</p>
+            <p>{project.landscapeArchitect || "N/A"}</p>
+            {project.brochureUrl && (
+              <a
+                href={project.brochureUrl}
+                className="inline-block mt-5 px-6 py-2 bg-orange-500 text-white text-center "
+                target="_blank"
+                rel="noopener noreferrer"
+                download // This triggers the download
+              >
+                Download Brochure
+              </a>
+            )}
+          </div>
         </div>
-      )}
+
+        {/* Additional Images Section */}
+        {project.images && project.images.length > 0 && (
+          <div className="mt-10">
+            {project.images.map((imageUrl, index) => (
+              <img key={index} src={imageUrl} alt={`Additional ${index + 1}`} className="w-full mb-5  object-contain" />
+            ))}
+          </div>
+        )}
+
+        {/* YouTube Video Section */}
+        {project.youtubeVideoUrl && youtubeVideoID.length > 0 && (
+          <div className="mt-10">
+            <iframe
+              src={`https://www.youtube.com/embed/${youtubeVideoID}`}
+              title="Project Video"
+              className="w-full h-[450px] border-none"
+              allowFullScreen
+              loading="lazy"
+            ></iframe>
+          </div>
+        )}
+      </div>
       <Footer />
     </div>
   );
