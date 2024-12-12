@@ -55,7 +55,7 @@ const ProjectsGrid = () => {
     {
       title: "Life Sciences",
       image:
-        "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5036787/image-8d40d5f5-24ac-4c8a-b60b-689f448d0319.jpg?e=webp&cX=88&cY=0&cW=204&cH=460",
+        "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5068970/image-a10a7f2b-0283-4585-9525-c09777fe2899.jpg?w=559&e=webp&cX=811&cY=0&cW=846&cH=1920",
     },
   ];
 
@@ -81,7 +81,6 @@ const ProjectsGrid = () => {
       width: "12rem",
       height: "20rem",
       borderRadius: "0.5rem",
-      boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
       overflow: "hidden",
       position: "relative",
       transform: "scale(1)",
@@ -136,7 +135,7 @@ const ProjectsGrid = () => {
           {projects.map((project, index) => (
             <div
               key={index}
-              className="w-[17rem] h-81 max-sm:w-full shadow-md shadow-black/10 overflow-hidden relative hover:scale-[1.03] transition-transform duration-500 ease-in-out bg-white flex flex-col"
+              className="w-72 h-[70dvh] max-sm:w-full overflow-hidden relative hover:scale-[1.03] transition-transform duration-500 ease-in-out bg-white flex flex-col"
             >
               {/* Image Section */}
               <div className="flex-grow">
@@ -144,14 +143,14 @@ const ProjectsGrid = () => {
               </div>
 
               {/* Overlay Section */}
-              <div className="absolute inset-0 p-8 flex flex-col justify-between bg-gradient-to-t from-black/80 via-transparent to-transparent">
+              <div className="absolute inset-0 p-8 flex flex-col justify-between">
                 {/* Heading at Top Left */}
                 <h2 className="text-white text-4xl font-bold">{project.title}</h2>
 
                 {/* "View Projects" at Bottom Left */}
                 <a
                   href="#"
-                  className="text-orange-500 hover:text-white transition-colors text-md mx-auto gap-2 font-medium flex items-center text-2xl font-serif"
+                  className="text-primary-foreground hover:text-white transition-colors text-md mx-auto gap-2 font-medium flex items-center text-2xl font-serif"
                 >
                   View Projects
                   <ArrowRight className="stroke-white size-6" />
