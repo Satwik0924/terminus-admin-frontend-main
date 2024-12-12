@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { motion, useAnimation } from "framer-motion";
 import axios from "axios";
 
 const OfficeComponent = () => {
@@ -8,9 +9,7 @@ const OfficeComponent = () => {
   useEffect(() => {
     const fetchTeamData = async () => {
       try {
-        const response = await axios.get(
-          "https://terminus-group-backend-1in9.onrender.com/forms/team"
-        );
+        const response = await axios.get("https://terminus-group-backend-1in9.onrender.com/forms/team");
         const transformedData = response.data.map((member) => ({
           id: member._id,
           name: member.name,
@@ -28,6 +27,54 @@ const OfficeComponent = () => {
 
     fetchTeamData();
   }, []);
+
+  const controlsLine1 = useAnimation();
+  const controlsLine2 = useAnimation();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const heading1 = document.getElementById("heading1");
+      const heading2 = document.getElementById("heading2");
+
+      if (heading1) {
+        const rect1 = heading1.getBoundingClientRect();
+        const isVisible1 = rect1.top >= 0 && rect1.top < window.innerHeight / 2;
+
+        if (isVisible1) {
+          controlsLine1.start({
+            color: ["#f58220cc", "#F58220"], // Orange gradient
+            transition: { duration: 1 },
+          });
+        } else {
+          controlsLine1.start({
+            color: "#D3D3D3", // Gray color when out of view
+            transition: { duration: 1 },
+          });
+        }
+      }
+
+      if (heading2) {
+        const rect2 = heading2.getBoundingClientRect();
+        const isVisible1 = rect2.top >= 0 && rect2.top < window.innerHeight / 2;
+
+        if (isVisible1) {
+          controlsLine2.start({
+            color: ["#f58220cc", "#F58220"], // Orange gradient
+            transition: { duration: 1 },
+          });
+        } else {
+          controlsLine2.start({
+            color: "#D3D3D3", // Gray color when out of view
+            transition: { duration: 1 },
+          });
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [controlsLine1, controlsLine2]);
 
   return (
     <div
@@ -49,18 +96,27 @@ const OfficeComponent = () => {
           display: window.innerWidth > 768 ? "block" : "none", // Hide for smaller screens
         }}
       >
-        <ul
-          style={{
-            listStyleType: "none",
-            paddingLeft: "20px",
-            fontSize: "20px",
-            lineHeight: "2",
-          }}
-        >
-          <li><a href="#team" style={{ textDecoration: "none", color: "inherit" }}>Team</a></li>
-          <li><a href="#philanthropy" style={{ textDecoration: "none", color: "inherit" }}>Philanthropy</a></li>
-          <li><a href="#news" style={{ textDecoration: "none", color: "inherit" }}>News & Media</a></li>
-          <li><a href="#partners" style={{ textDecoration: "none", color: "inherit" }}>Consultants & Partners</a></li>
+        <ul className="list-none pl-8 text-4xl leading-2 tracking-tight">
+          <li>
+            <a href="#commercial" className="no-underline text-gray-500 hover:text-orange-500">
+              Team
+            </a>
+          </li>
+          <li>
+            <a href="#residential" className="no-underline text-gray-500 hover:text-orange-500">
+              Philanthropy
+            </a>
+          </li>
+          <li>
+            <a href="#hospitality" className="no-underline text-gray-500 hover:text-orange-500">
+              News & Media
+            </a>
+          </li>
+          <li>
+            <a href="#lifesciences" className="no-underline text-gray-500 hover:text-orange-500">
+              Consultants & Partners
+            </a>
+          </li>
         </ul>
       </div>
 
@@ -85,27 +141,87 @@ const OfficeComponent = () => {
               borderRadius: "8px",
             }}
           />
-          <h1
+          <motion.h1
+            id="heading1"
             style={{
-              fontWeight: "300",
-              fontSize: "36px",
+              height: "60px",
+              width: "100%",
+              fontWeight: "500",
+              fontSize: "60px",
               margin: "20px 0",
+              letterSpacing: "-2px",
+              lineHeight: "60px",
+              marginBottom: "7px",
             }}
+            animate={controlsLine1}
+            initial={{ color: "#D3D3D3" }}
           >
             The Finest.
-          </h1>
-          <p style={{ fontSize: "16px", lineHeight: "1.6", marginBottom: "20px" }}>
-            Featuring an established track record of creating luxury, retail, and
-            corporate properties by partnering with experts in the engineering and
-            architecture industry.
+          </motion.h1>
+          <p
+            style={{
+              color: "#727272",
+              opacity: "0.5",
+              fontSize: "18px",
+              letterSpacing: "-0.7px",
+              lineHeight: "1.6",
+              marginBottom: "20px",
+            }}
+          >
+            Featuring an established track record of creating luxury,
+            <br /> retail and corporate properties by partnering with
+            <br /> experts in the engineering and architecture industry
           </p>
+          <p
+            style={{
+              color: "#727272",
+              opacity: "0.5",
+              fontSize: "18px",
+              letterSpacing: "-0.7px",
+              lineHeight: "1.6",
+              marginBottom: "20px",
+            }}
+          >
+            Over adecade of delivering projects that are at the
+            <br /> forefront of modern design, every time setting a<br /> benchmark in Hyderabad
+          </p>
+          <motion.p
+            style={{
+              color: "#727272",
+              opacity: "0.6",
+              fontSize: "18px",
+              letterSpacing: "-0.7px",
+              lineHeight: "1.6",
+              marginBottom: "20px",
+              fontWeight: "bold",
+            }}
+            whileHover={{ color: "#f58220" }}
+          >
+            <a style={{ all: "unset" }} href="#" target="_blank" rel="noopener noreferrer">
+              Hear from our Founder Chairman
+            </a>
+          </motion.p>
         </div>
 
         {/* Team Section */}
         <div id="philanthropy" style={{ textAlign: "left" }}>
-          <h2 style={{ fontWeight: "300", fontSize: "28px", margin: "10px 0" }}>
+          <motion.h1
+            id="heading2"
+            style={{
+              height: "60px",
+              width: "100%",
+              fontWeight: "500",
+              fontSize: "60px",
+              margin: "20px 0",
+              letterSpacing: "-2px",
+              lineHeight: "60px",
+              marginBottom: "7px",
+            }}
+            animate={controlsLine2}
+            initial={{ color: "#D3D3D3" }}
+          >
             The Team
-          </h2>
+          </motion.h1>
           <img
             src="https://i-p.rmcdn.net/6704dad37ea051caab873de5/5068988/image-82fc00d4-be74-4e76-887a-d79cdf4ee721.jpg"
             alt="The Team"
@@ -116,10 +232,63 @@ const OfficeComponent = () => {
               borderRadius: "8px",
             }}
           />
-          <p style={{ fontSize: "16px", lineHeight: "1.6", marginTop: "20px" }}>
-            We believe that you can achieve the best product if you have the best people
-            in your team. We have a diverse team from all fields of expertise in
-            engineering, design, and management.
+          <p
+            style={{
+              color: "#727272",
+              opacity: "0.5",
+              fontSize: "18px",
+              letterSpacing: "-0.7px",
+              lineHeight: "1.6",
+              marginBottom: "20px",
+            }}
+          >
+            We believe that you can achieve the best product if you
+            <br /> have the best people in your team.
+          </p>
+          <p
+            style={{
+              color: "#727272",
+              opacity: "0.5",
+              fontSize: "18px",
+              letterSpacing: "-0.7px",
+              lineHeight: "1.6",
+              marginBottom: "20px",
+            }}
+          >
+            We have a diverse team from all fields of expertise in
+            <br /> architecture, legal, finance and facility management.
+            <br /> Together as a team, we have a wealth of experience
+            <br /> and skills to incorporate and bring the best-in-class
+            <br /> architectural wonders!
+          </p>
+          <p
+            style={{
+              color: "#727272",
+              opacity: "0.5",
+              fontSize: "18px",
+              letterSpacing: "-0.7px",
+              lineHeight: "1.6",
+              marginBottom: "20px",
+            }}
+          >
+            Each of our team members is innovative, tech-driven
+            <br /> and well-trained to contribute skilfully to our diverse
+            <br /> range of projects.
+          </p>
+          <p
+            style={{
+              color: "#727272",
+              opacity: "0.5",
+              fontSize: "18px",
+              letterSpacing: "-0.7px",
+              lineHeight: "1.6",
+              marginBottom: "20px",
+            }}
+          >
+            A talented group with a shared vision of delivering
+            <br /> consistently great results for our clients, we can proudly
+            <br /> say teamwork has always made planning easier, targets
+            <br /> achievable and quality uncompromisable.
           </p>
         </div>
 
@@ -161,9 +330,7 @@ const OfficeComponent = () => {
                       }}
                     />
                   </a>
-                  <p style={{ fontWeight: "bold", marginTop: "10px" }}>
-                    {member.name}
-                  </p>
+                  <p style={{ fontWeight: "bold", marginTop: "10px" }}>{member.name}</p>
                   <p>{member.role}</p>
                 </div>
               ))}

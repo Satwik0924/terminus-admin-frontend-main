@@ -244,11 +244,7 @@ const Projects = () => {
               <motion.h1
                 animate={controls}
                 initial={{ color: "#D3D3D3" }}
-                style={{
-                  fontWeight: "500",
-                  fontSize: "4rem",
-                  margin: "20px 0",
-                }}
+                className="md:text-[5.3rem] leading-none text-5xl py-10 font-medium text-[#A0A0A0] text-left tracking-tighter"
               >
                 {title}
               </motion.h1>
@@ -258,16 +254,16 @@ const Projects = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
                   {projects.map((project) => (
                     <div key={project._id} className=" overflow-hidden group max-w-xs mx-auto">
-                      <div className="relative w-full h-80 overflow-hidden">
+                      <div className="relative w-full h-[450px] overflow-hidden mb-3">
                         <a href={`/projects/${project._id}`} className="relative w-full h-80 overflow-hidden">
                           {/* Image */}
                           <img
                             src={project.images?.[0]}
                             alt={project.title}
-                            className="w-full h-full object-cover transition duration-500 group-hover:blur-sm"
+                            className="w-full h-full object-cover transition duration-500 group-hover:blur-[2px]"
                           />
                           {/* Overlay description */}
-                          <div className="absolute inset-0 flex justify-top items-top bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 transition duration-500">
+                          <div className="absolute inset-0 flex justify-top items-top bg-white/30 bg-opacity-70 opacity-0 group-hover:opacity-100 transition duration-500">
                             <p className="text-white text-center text-sm px-4">
                               {project.description || "No description available"}
                             </p>
