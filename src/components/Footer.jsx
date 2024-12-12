@@ -2,27 +2,27 @@ import React from "react";
 import LogoFooter from "../assets/tg_logo_footer.webp";
 
 const projectLinks = [
-  { label: "Commercial", href: "#" },
-  { label: "Residential", href: "#" },
-  { label: "Hospitality", href: "#" },
-  { label: "Life Sciences", href: "#" },
+  { label: "Commercial", href: "/projects#commercial" },
+  { label: "Residential", href: "/projects#residential" },
+  { label: "Hospitality", href: "/projects#hospitality" },
+  { label: "Life Sciences", href: "/projects#lifesciences" },
 ];
 
 const aboutLinks = [
-  { label: "Team", href: "#" },
-  { label: "News & Media", href: "#" },
-  { label: "Philanthropy", href: "#" },
+  { label: "Team", href: "/about#team" },
+  { label: "News & Media", href: "/about#news_media" },
+  { label: "Philanthropy", href: "/about#philanthropy" },
 ];
 
 const contactLinks = [
-  { label: "Reach Us", href: "#" },
-  { label: "Careers", href: "#" },
+  { label: "Reach Us", href: "/contact#reach_us" },
+  { label: "Careers", href: "/contact#careers" },
 ];
 
 const socialLinks = [
-  { label: "Facebook", href: "#" },
-  { label: "Instagram", href: "#" },
-  { label: "Twitter", href: "#" },
+  { label: "Facebook", href: "https://www.facebook.com/terminusindiaindia" },
+  { label: "Instagram", href: "https://www.instagram.com/terminus_group_" },
+  { label: "Twitter", href: "https://x.com/Terminus_Group_" },
   { label: "Pinterest", href: "#" },
 ];
 
@@ -43,7 +43,9 @@ const Footer = () => {
               <h3 className="text-white font-serif">Projects</h3>
               {projectLinks.map((project, index) => (
                 <li className="font-serif hover:underline hover:underline-offset-4" key={`${project.label}-${index}`}>
-                  {project.label}
+                  <a style={{ all: "unset" }} href={`${project.href}`}>
+                    {project.label}
+                  </a>
                 </li>
               ))}
             </ul>
@@ -52,7 +54,9 @@ const Footer = () => {
               <h3 className="text-white font-serif">About</h3>
               {aboutLinks.map((project, index) => (
                 <li className="font-serif hover:underline hover:underline-offset-4" key={`${project.label}-${index}`}>
-                  {project.label}
+                  <a style={{ all: "unset" }} href={`${project.href}`}>
+                    {project.label}
+                  </a>
                 </li>
               ))}
             </ul>
@@ -61,13 +65,17 @@ const Footer = () => {
               <h3 className="text-white font-serif">Contact</h3>
               {contactLinks.map((project, index) => (
                 <li className="font-serif hover:underline hover:underline-offset-4" key={`${project.label}-${index}`}>
-                  {project.label}
+                  <a style={{ all: "unset" }} href={`${project.href}`}>
+                    {project.label}
+                  </a>
                 </li>
               ))}
               <li className="h-6 my-3"></li> {/* Adds a subtle dividing line */}
               {socialLinks.map((project, index) => (
                 <li className="font-serif hover:underline hover:underline-offset-4" key={`${project.label}-${index}`}>
-                  {project.label}
+                  <a style={{ all: "unset" }} href={`${project.href}`}>
+                    {project.label}
+                  </a>
                 </li>
               ))}
             </ul>

@@ -295,43 +295,21 @@ const OfficeComponent = () => {
         {/* Team Members Section */}
         <div id="news">
           {loading ? (
-            <p>Loading team data...</p>
+            <p className="text-gray-600 text-lg">Loading team data...</p>
           ) : (
-            <div
-              style={{
-                display: "flex",
-                gap: "20px",
-                flexWrap: "wrap",
-                justifyContent: "center",
-              }}
-            >
+            <div className="flex flex-wrap gap-5 justify-start">
               {teamData.map((member) => (
-                <div
-                  key={member.id}
-                  style={{
-                    width: "200px",
-                    textAlign: "center",
-                    marginBottom: "20px",
-                  }}
-                >
+                <div key={member.id} className="w-64 text-left mb-5">
                   <a
                     href={member.linkedinUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    style={{ textDecoration: "none" }}
+                    className="block hover:opacity-80"
                   >
-                    <img
-                      src={member.image}
-                      alt={member.name}
-                      style={{
-                        width: "100%",
-                        borderRadius: "8px",
-                        cursor: "pointer",
-                      }}
-                    />
+                    <img src={member.image} alt={member.name} className="w-70 h-full cursor-pointer object-cover" />
                   </a>
-                  <p style={{ fontWeight: "bold", marginTop: "10px" }}>{member.name}</p>
-                  <p>{member.role}</p>
+                  <p className="font-bold mt-2 text-gray-800">{member.name}</p>
+                  <p className="text-gray-600">{member.role}</p>
                 </div>
               ))}
             </div>
