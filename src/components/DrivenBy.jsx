@@ -43,11 +43,7 @@ const DrivenByMission = () => {
           Driven by a Mission
         </motion.h1>
         <div className="font-sans items-center">
-          {/* Animated Title */}
-
-          {/* First Section */}
           <div className="flex items-start mb-28 gap-6 flex-col-reverse lg:flex-row max-lg:text-left max-lg:items-center">
-            {/* Text Content */}
             <div className="flex-1 text-lg xl:text-2xl text-[rgba(114,114,114,0.6)] !leading-7 tracking-tighter">
               <p>
                 <strong>Mr. S.P. Reddy</strong> is a successful entrepreneur, active philanthropist, and investor whose
@@ -57,11 +53,9 @@ const DrivenByMission = () => {
               <p className="text-[rgba(114,114,114,0.6)] font-bold mt-5 cursor-pointer">Read more</p>
             </div>
 
-            {/* Video Content */}
             <div className="flex-[2] w-full h-full">
               <div className="relative w-full h-full" style={{ paddingBottom: "56.25%" }}>
                 {" "}
-                {/* 16:9 aspect ratio */}
                 <iframe
                   className="absolute top-0 left-0 w-full h-full"
                   src="https://www.youtube.com/embed/SQPGpfRQ4Q4?si=Tn8DrTzXoyO1usGt" // Replace with your video URL
@@ -93,14 +87,12 @@ const DrivenByMission = () => {
               {/* <p className="text-[rgba(114,114,114,0.6)] font-bold mt-5 cursor-pointer">Read more</p> */}
             </div>
 
-            {/* Video Content */}
             <div className="flex-[2] w-full h-full max-w-full">
               <div className="relative w-full h-full" style={{ paddingBottom: "56.25%" }}>
                 {" "}
-                {/* 16:9 aspect ratio */}
                 <iframe
                   className="absolute top-0 left-0 w-full h-full"
-                  src="https://www.youtube.com/embed/SQPGpfRQ4Q4?si=Tn8DrTzXoyO1usGt" // Replace with your video URL
+                  src="https://www.youtube.com/embed/SQPGpfRQ4Q4?si=Tn8DrTzXoyO1usGt"
                   title="YouTube video"
                   allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen

@@ -5,8 +5,10 @@ import { motion, useAnimation } from "framer-motion";
 
 const Projects = () => {
   const [projects, setProjects] = useState([]);
-  const [filteredProjects, setFilteredProjects] = useState([]);
-  const [activeFilter, setActiveFilter] = useState("All");
+  const [commercialProjects, setCommercialProjects] = useState([]);
+  const [residentialProjects, setResidentialProjects] = useState([]);
+  const [hospitalityProjects, setHospitalityProjects] = useState([]);
+  const [lifeSciencesProjects, setLifeSciencesProjects] = useState([]);
 
   // Animation controls for headings
   const controlsCommercial = useAnimation();
@@ -20,11 +22,19 @@ const Projects = () => {
         const response = await axios.get("https://terminus-group-backend-1in9.onrender.com/forms/project");
         if (response.data && response.data.length > 0) {
           setProjects(response.data);
-          setFilteredProjects(response.data);
+          categorizeProjects(response.data);
         }
       } catch (error) {
         console.error("Error fetching data:", error);
       }
+    };
+
+    // Categorize projects into different sections based on type
+    const categorizeProjects = (projects) => {
+      setCommercialProjects(projects.filter((project) => project.type === "commercial"));
+      setResidentialProjects(projects.filter((project) => project.type === "residential"));
+      setHospitalityProjects(projects.filter((project) => project.type === "hospitality"));
+      setLifeSciencesProjects(projects.filter((project) => project.type === "life Sciences"));
     };
 
     fetchData();
@@ -62,15 +72,6 @@ const Projects = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleFilter = (filter) => {
-    setActiveFilter(filter);
-    if (filter === "All") {
-      setFilteredProjects(projects);
-    } else {
-      setFilteredProjects(projects.filter((project) => project.tags && project.tags.includes(filter)));
-    }
-  };
-
   return (
     <div>
       <div
@@ -92,7 +93,7 @@ const Projects = () => {
             display: window.innerWidth > 768 ? "block" : "none",
           }}
         >
-          <ul className="list-none pl-8 text-4xl leading-relaxed">
+          <ul className="list-none pl-8 text-4xl leading-2 tracking-tight">
             <li>
               <h1 className="mb-2 text-gray-500 ">Key Projects</h1> {/* Font size kept the same as the list items */}
             </li>
@@ -102,18 +103,23 @@ const Projects = () => {
               </a>
             </li>
             <li>
-              <a href="#residential" className="no-underline  text-gray-400 hover:text-orange-500">
+              <a href="#residential" className="no-underline text-gray-400 hover:text-orange-500">
                 Residential
               </a>
             </li>
             <li>
-              <a href="#hospitality" className="no-underline  text-gray-400 hover:text-orange-500">
+              <a href="#hospitality" className="no-underline text-gray-400 hover:text-orange-500">
                 Hospitality
               </a>
             </li>
             <li>
               <a href="#lifesciences" className="no-underline text-gray-400 hover:text-orange-500">
                 Life Sciences
+              </a>
+            </li>
+            <li>
+              <a href="#lifesciences" className="no-underline text-gray-400 hover:text-orange-500">
+                Retail
               </a>
             </li>
           </ul>
@@ -142,46 +148,46 @@ const Projects = () => {
             >
               Commercial
             </motion.h1>
+
+            {/* Projects */}
             <div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-                {projects.map((project) => (
-                  <div key={project._id} className="shadow-md  overflow-hidden group max-w-xs mx-auto">
+                {commercialProjects.map((project) => (
+                  <div key={project._id} className=" overflow-hidden group max-w-xs mx-auto">
                     <div className="relative w-full h-80 overflow-hidden">
-                      <a href={`/projects/${project._id}`} className="relative w-full h-60 overflow-hidden">
+                      <a href={`/projects/${project._id}`} className="relative w-full h-80 overflow-hidden">
                         {/* Image */}
                         <img
                           src={project.images?.[0]}
                           alt={project.title}
                           className="w-full h-full object-cover transition duration-500 group-hover:blur-sm"
                         />
-                        {/* Overlay description fetched from backend */}
-                        <div className="absolute inset-0 flex justify-center items-center bg-black bg-opacity-90 opacity-0 group-hover:opacity-100 transition duration-500">
-                          <p className="text-white text-center text-sm px-4">
+                        {/* Overlay description */}
+                        <div className="absolute inset-0 flex justify-top items-top bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 transition duration-500">
+                          <p className="text-white text-center text-md leading-4 px-4">
                             {project.description || "No description available"}
                           </p>
                         </div>
                       </a>
                     </div>
 
-                    {/* Project details */}
-                    <div className="p-4 bg-white">
-                      <h2 className="font-semibold text-lg mb-1">{project.title}</h2>
-                      <p className="text-sm text-gray-600 mb-1">{project.location}</p>
-                      <p className="text-sm text-gray-600 mb-3">{project.yearOfCompletion}</p>
-                      <div className="flex gap-2 flex-wrap mb-2">
-                        {/* Render tags */}
+                    {/* Project Details */}
+                    <div className="p-0 bg-white">
+                      <h2 className="font-bold text-2xl tracking-tight ">{project.title}</h2>
+                      <p className="text-lg text-black leading-3">{project.location}</p>
+                      <p className="text-sm text-black mb-4  mt-3 leading-4 ">{project.yearOfCompletion}</p>
+                      <div className="flex flex-wrap col-2 gap-2">
                         {project.tags?.map((tag, index) => (
-                          <span
-                            key={index}
-                            className="px-2 py-1 text-xs bg-gray-200 font-medium transition duration-300 ease-in-out hover:bg-orange-500"
-                          >
-                            {tag}
-                          </span>
+                          <div key={index} className="flex col-2 items-center justify-center" style={{ width: "44%" }}>
+                            <span className="px-2 py-1 text-xs text-gray-500 font-bold bg-gray-200 text-center border border-gray-300 transition duration-300 ease-in-out hover:bg-orange-500 hover:text-white w-full">
+                              {tag}
+                            </span>
+                          </div>
                         ))}
                       </div>
-                      {/* Render status */}
-                      <div className="mt-2">
-                        <span className="px-2 py-1 text-xs bg-gray-200 font-medium transition duration-300 ease-in-out hover:bg-orange-500">
+
+                      <div className="grid grid-cols-2 gap-2 mt-2">
+                        <span className="px-2 py-1 text-xs bg-gray-200 text-gray-500 text-center font-bold border border-gray-300 transition duration-300 ease-in-out hover:bg-orange-500 hover:text-white">
                           {project.status}
                         </span>
                       </div>
@@ -189,8 +195,126 @@ const Projects = () => {
                   </div>
                 ))}
               </div>
+            </div>
+            <div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
+              <p
+                style={{
+                  fontWeight: "bold",
+                  fontSize: "24px",
+                  marginBottom: "10px",
+                }}
+              >
+                Clientele
+              </p>
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(auto-fit, minmax(120px, 1fr))",
+                  gap: "16px",
+                }}
+              >
+                {["Microchip", "ADP", "NetenRich", "Amazon", "Verizon", "Samsung", "Google", "Intel"].map(
+                  (company, index) => (
+                    <p
+                      key={index}
+                      style={{
+                        textAlign: "left",
+                        fontWeight: "bold",
+                        marginTop: index === 0 ? "0" : "unset", // No margin for the first company
+                      }}
+                    >
+                      {company}
+                    </p>
+                  )
+                )}
+              </div>
+            </div>
+          </div>
+
+          {/* Other Sections */}
+          {[
+            { id: "residential", title: "Residential", projects: residentialProjects, controls: controlsResidential },
+            { id: "hospitality", title: "Hospitality", projects: hospitalityProjects, controls: controlsHospitality },
+            {
+              id: "lifesciences",
+              title: "Life Sciences",
+              projects: lifeSciencesProjects,
+              controls: controlsLifeSciences,
+            },
+          ].map(({ id, title, projects, controls }) => (
+            <div key={id} id={id} style={{ textAlign: "left" }}>
+              <motion.h1
+                animate={controls}
+                initial={{ color: "#D3D3D3" }}
+                style={{
+                  fontWeight: "500",
+                  fontSize: "4rem",
+                  margin: "20px 0",
+                }}
+              >
+                {title}
+              </motion.h1>
+
+              {/* Projects */}
               <div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
-                <p style={{ fontWeight: "bold", fontSize: "24px", marginBottom: "10px" }}>Clientele</p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+                  {projects.map((project) => (
+                    <div key={project._id} className=" overflow-hidden group max-w-xs mx-auto">
+                      <div className="relative w-full h-80 overflow-hidden">
+                        <a href={`/projects/${project._id}`} className="relative w-full h-80 overflow-hidden">
+                          {/* Image */}
+                          <img
+                            src={project.images?.[0]}
+                            alt={project.title}
+                            className="w-full h-full object-cover transition duration-500 group-hover:blur-sm"
+                          />
+                          {/* Overlay description */}
+                          <div className="absolute inset-0 flex justify-top items-top bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 transition duration-500">
+                            <p className="text-white text-center text-sm px-4">
+                              {project.description || "No description available"}
+                            </p>
+                          </div>
+                        </a>
+                      </div>
+
+                      {/* Project Details */}
+                      <div className="p-0 bg-white">
+                        <h2 className="font-bold text-2xl tracking-tight ">{project.title}</h2>
+                        <p className="text-lg text-black leading-3">{project.location}</p>
+                        <p className="text-sm text-black mb-2 leading-loose ">{project.yearOfCompletion}</p>
+                        <div className="flex flex-wrap col-2 gap-2">
+                          {project.tags?.map((tag, index) => (
+                            <div
+                              key={index}
+                              className="flex col-2 items-center justify-center"
+                              style={{ width: "44%" }}
+                            >
+                              <span className="px-2 py-1 text-xs text-gray-500 font-bold bg-gray-200 text-center border border-gray-300 transition duration-300 ease-in-out hover:bg-orange-500 hover:text-white w-full">
+                                {tag}
+                              </span>
+                            </div>
+                          ))}
+                        </div>
+                        <div className="grid grid-cols-2 gap-2 mt-2">
+                          <span className="px-2 py-1 text-xs bg-gray-200 text-center border border-gray-300 transition duration-300 ease-in-out hover:bg-orange-500">
+                            {project.status}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
+                <p
+                  style={{
+                    fontWeight: "bold",
+                    fontSize: "24px",
+                    marginBottom: "10px",
+                  }}
+                >
+                  Clientele
+                </p>
                 <div
                   style={{
                     display: "grid",
@@ -203,11 +327,9 @@ const Projects = () => {
                       <p
                         key={index}
                         style={{
-                          padding: "10px",
-                          borderRadius: "5px",
-                          textAlign: "center",
+                          textAlign: "left",
                           fontWeight: "bold",
-                          // Optional background for better visibility
+                          marginTop: index === 0 ? "0" : "unset", // No margin for the first company
                         }}
                       >
                         {company}
@@ -217,133 +339,7 @@ const Projects = () => {
                 </div>
               </div>
             </div>
-          </div>
-
-          {/* Residential Section */}
-          <div id="residential" style={{ textAlign: "left" }}>
-            <motion.h1
-              animate={controlsResidential}
-              initial={{ color: "#D3D3D3" }}
-              style={{
-                fontWeight: "500",
-                fontSize: "4rem",
-                margin: "20px 0",
-              }}
-            >
-              Residential
-            </motion.h1>
-            <div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
-              <p style={{ fontWeight: "bold", fontSize: "24px", marginBottom: "10px" }}>Clientele</p>
-              <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "repeat(auto-fit, minmax(120px, 1fr))",
-                  gap: "16px",
-                }}
-              >
-                {["Microchip", "ADP", "NetenRich", "Amazon", "Verizon", "Samsung", "Google", "Intel"].map(
-                  (company, index) => (
-                    <p
-                      key={index}
-                      style={{
-                        padding: "10px",
-                        borderRadius: "5px",
-                        textAlign: "center",
-                        fontWeight: "bold",
-                        // Optional background for better visibility
-                      }}
-                    >
-                      {company}
-                    </p>
-                  )
-                )}
-              </div>
-            </div>
-          </div>
-
-          {/* Hospitality Section */}
-          <div id="hospitality" style={{ textAlign: "left" }}>
-            <motion.h1
-              animate={controlsHospitality}
-              initial={{ color: "#D3D3D3" }}
-              style={{
-                fontWeight: "500",
-                fontSize: "4rem",
-                margin: "20px 0",
-              }}
-            >
-              Hospitality
-            </motion.h1>
-            <div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
-              <p style={{ fontWeight: "bold", fontSize: "24px", marginBottom: "10px" }}>Clientele</p>
-              <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "repeat(auto-fit, minmax(120px, 1fr))",
-                  gap: "16px",
-                }}
-              >
-                {["Microchip", "ADP", "NetenRich", "Amazon", "Verizon", "Samsung", "Google", "Intel"].map(
-                  (company, index) => (
-                    <p
-                      key={index}
-                      style={{
-                        padding: "10px",
-                        borderRadius: "5px",
-                        textAlign: "center",
-                        fontWeight: "bold",
-                        // Optional background for better visibility
-                      }}
-                    >
-                      {company}
-                    </p>
-                  )
-                )}
-              </div>
-            </div>
-          </div>
-
-          {/* Life Sciences Section */}
-          <div id="lifesciences" style={{ textAlign: "left" }}>
-            <motion.h1
-              animate={controlsLifeSciences}
-              initial={{ color: "#D3D3D3" }}
-              style={{
-                fontWeight: "500",
-                fontSize: "4rem",
-                margin: "20px 0",
-              }}
-            >
-              Life Sciences
-            </motion.h1>
-            <div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
-              <p style={{ fontWeight: "bold", fontSize: "24px", marginBottom: "10px" }}>Clientele</p>
-              <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "repeat(auto-fit, minmax(120px, 1fr))",
-                  gap: "16px",
-                }}
-              >
-                {["Microchip", "ADP", "NetenRich", "Amazon", "Verizon", "Samsung", "Google", "Intel"].map(
-                  (company, index) => (
-                    <p
-                      key={index}
-                      style={{
-                        padding: "10px",
-                        borderRadius: "5px",
-                        textAlign: "center",
-                        fontWeight: "bold",
-                        // Optional background for better visibility
-                      }}
-                    >
-                      {company}
-                    </p>
-                  )
-                )}
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
       <Footer />
