@@ -18,7 +18,7 @@ const StatsSection = () => {
 
         if (isVisible1) {
           controlsLine1.start({
-            color: ["#FF5733", "#FFC300"], // Orange gradient
+            color: ["#f58220cc", "#F58220"], // Orange gradient
             transition: { duration: 1 },
           });
         } else {
@@ -35,7 +35,7 @@ const StatsSection = () => {
 
         if (isVisible2) {
           controlsLine2.start({
-            color: ["#FF5733", "#FFC300"], // Light orange gradient
+            color: ["#f58220cc", "#F58220"], // Light orange gradient
             transition: { duration: 1 },
           });
         } else {
@@ -52,7 +52,7 @@ const StatsSection = () => {
 
         if (isVisible3) {
           controlsLine3.start({
-            color: ["#FF5733", "#FFC300"], // Orange gradient
+            color: ["#f58220cc", "#F58220"], // Orange gradient
             transition: { duration: 1 },
           });
         } else {
@@ -71,7 +71,7 @@ const StatsSection = () => {
 
   return (
     <div style={{ margin: "0 0", position: "relative" }} className="sm:py-40 py-24">
-      <div className="sm:w-[90%] w-[95%] mx-auto font-bold xl:text-9xl sm:text-7xl text-5xl">
+      <div className="sm:w-[90%] w-[95%] mx-auto font-bold xl:text-9xl sm:text-7xl text-5xl tracking-tighter">
         <motion.h1 id="line1" animate={controlsLine1} initial={{ color: "#D3D3D3" }}>
           7,340 MILLION SQ.FT. BUILT
         </motion.h1>

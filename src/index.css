@@ -3,19 +3,40 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-  font-family: "Geist", sans-serif;
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@layer base {
+  :root {
+    --foreground: 0 0% 45%;
+    --primary-foreground: 28 91% 54%;
+  }
 }
 
-body {
-  cursor: -webkit-image-set(
+@layer base {
+  * {
+    font-family: "Geist", sans-serif;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  body {
+    cursor: -webkit-image-set(
       url(https://i-p.rmcdn.net/6704dad37ea051caab873de5/image-43d04120-2be7-40ea-b343-9b6ac47e3c0a.png?w=15) 1x,
       url(https://i-p.rmcdn.net/6704dad37ea051caab873de5/image-43d04120-2be7-40ea-b343-9b6ac47e3c0a.png) 2x
     ), pointer;
+  }
+}
+
+@layer utilities {
+  ::-moz-selection {
+    /* Code for Firefox */
+    background: #a2a2a2;
+    color: white;
+  }
+
+  ::selection {
+    background: #a2a2a2;
+    color: white;
+  }
 }
 
 .cursor-next {

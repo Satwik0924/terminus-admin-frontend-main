@@ -1,14 +1,18 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import LogoT from "../assets/tg_logo_t.svg";
+import fullLogo from "../assets/tg_logo_full.webp";
 import useWindowDimensions from "../hooks/useWindowDimensions";
+
+// const  =
+//   "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5036787/image-27f5270f-9dd9-4b1e-9dad-9d96ce0f1455.png?w=302&amp;e=webp&amp;nll=true&amp;cX=0&amp;cY=9&amp;cW=1299&amp;cH=172 2x;";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { width: windowWidth } = useWindowDimensions();
   const pathname = useLocation().pathname;
   const [isVisible, setIsVisible] = useState(false);
-
-  console.log("pathname", pathname);
+  const [logo, setLogo] = useState(fullLogo);
 
   const toggleMenu = () => {
     setIsMenuOpen((prev) => !prev);
@@ -17,6 +21,11 @@ const Navbar = () => {
   const handleScroll = useCallback(() => {
     const cur = window.scrollY;
     setIsVisible(cur > 50);
+    if (cur > 400) {
+      setLogo(LogoT);
+    } else {
+      setLogo(fullLogo);
+    }
   }, []);
 
   useEffect(() => {
@@ -92,10 +101,10 @@ const Navbar = () => {
   }
 
   const navLinks = [
-    { href: "/about", label: "About" },
-    { href: "/contact", label: "Contact" },
-    { href: "/news", label: "News" },
     { href: "/projects", label: "Projects" },
+    { href: "/about", label: "About" },
+    { href: "/news", label: "News & Media" },
+    { href: "/contact", label: "Contact" },
   ];
 
   return (
@@ -105,12 +114,11 @@ const Navbar = () => {
       <div style={styles.container}>
         {/* Change this with the Logo */}
         <div className="flex-1">
-          <Link to="/" className="inline-block relative overflow-hidden w-64 h-64">
-            <img
-              srcSet="https://i-p.rmcdn.net/6704dad37ea051caab873de5/5036787/image-27f5270f-9dd9-4b1e-9dad-9d96ce0f1455.png?w=302&amp;e=webp&amp;nll=true&amp;cX=0&amp;cY=9&amp;cW=1299&amp;cH=172 2x, https://i-p.rmcdn.net/6704dad37ea051caab873de5/5036787/image-27f5270f-9dd9-4b1e-9dad-9d96ce0f1455.png?w=453&amp;e=webp&amp;nll=true&amp;cX=0&amp;cY=9&amp;cW=1299&amp;cH=172 3x"
-              src="https://i-p.rmcdn.net/6704dad37ea051caab873de5/5036787/image-27f5270f-9dd9-4b1e-9dad-9d96ce0f1455.png?w=302&amp;e=webp&amp;nll=true&amp;cX=0&amp;cY=9&amp;cW=1299&amp;cH=172"
-              className="object-contain w-full h-full"
-            />
+          <Link
+            to="/"
+            className={`inline-block relative overflow-hidden ${logo === fullLogo ? "lg:w-64 lg:h-64 w-52 h-52" : "w-8 h-8"}`}
+          >
+            <img src={logo} alt="Terminus" className="object-contain w-full h-full" />
           </Link>
         </div>
 
@@ -120,12 +128,12 @@ const Navbar = () => {
         </button>
 
         {/* Desktop Navigation */}
-        <ul style={styles.desktopNavList}>
+        <ul style={styles.desktopNavList} className="max-lg:!flex-[1.5]">
           {navLinks.map((link) => (
             <li key={link.href}>
               <Link
                 to={link.href}
-                className="hover:text-orange-500 text-[#727272] transition-opacity duration-200 ease-in-out lg:text-2xl text-lg font-bold"
+                className="hover:text-primary-foreground text-[#727272] transition-opacity duration-200 ease-in-out lg:text-2xl text-lg font-bold"
               >
                 {link.label}
               </Link>

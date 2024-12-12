@@ -1,5 +1,6 @@
-import React, { useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
+import { ArrowRight } from "lucide-react";
+import React, { useEffect } from "react";
 
 const ProjectsGrid = () => {
   const headingAnimation = useAnimation();
@@ -13,7 +14,7 @@ const ProjectsGrid = () => {
 
         if (isVisible) {
           headingAnimation.start({
-            color: "#FF5733", // Bright orange
+            color: "#F58220",
             transition: { duration: 0.7 },
           });
         } else {
@@ -54,7 +55,7 @@ const ProjectsGrid = () => {
     {
       title: "Life Sciences",
       image:
-        "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5036787/image-8d40d5f5-24ac-4c8a-b60b-689f448d0319.jpg?e=webp&cX=88&cY=0&cW=204&cH=460",
+        "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5068970/image-a10a7f2b-0283-4585-9525-c09777fe2899.jpg?w=559&e=webp&cX=811&cY=0&cW=846&cH=1920",
     },
   ];
 
@@ -69,13 +70,6 @@ const ProjectsGrid = () => {
       padding: "5rem 0",
       backgroundColor: "#f9fafb",
     },
-    heading: {
-      fontSize: "4rem",
-      textAlign: "left",
-      marginBottom: "5rem",
-      marginleft: "5rem",
-      color: "#A0A0A0",
-    },
     grid: {
       display: "flex",
       flexWrap: "wrap",
@@ -87,7 +81,6 @@ const ProjectsGrid = () => {
       width: "12rem",
       height: "20rem",
       borderRadius: "0.5rem",
-      boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
       overflow: "hidden",
       position: "relative",
       transform: "scale(1)",
@@ -117,7 +110,7 @@ const ProjectsGrid = () => {
       fontWeight: "600",
     },
     cardLink: {
-      color: "#FF5733",
+      color: "#F58220",
       fontSize: "0.875rem",
       textDecoration: "none",
       marginTop: "0.5rem",
@@ -125,45 +118,47 @@ const ProjectsGrid = () => {
   };
 
   return (
-    <section className="flex flex-col justify-center h-auto lg:py-40 py-20  px-12">
-      {/* Heading */}
-      <motion.h1
-        id="heading"
-        animate={headingAnimation}
-        initial={{ color: "#A0A0A0" }}
-        style={styles.heading}
-        className="text-5xl  text-gray-800 mb-8 text-left tracking-tighter"
-      >
-        Explore Our Projects
-      </motion.h1>
+    <section className="flex flex-col justify-center items-center h-auto lg:py-40 py-20 w-full">
+      <div className="sm:w-[90%] w-[95%]">
+        {/* Heading */}
+        <motion.h1
+          id="heading"
+          animate={headingAnimation}
+          initial={{ color: "#A0A0A0" }}
+          style={styles.heading}
+          className="md:text-[5.3rem] leading-none text-5xl mb-20 font-medium text-[#A0A0A0] text-left tracking-tighter"
+        >
+          Explore Our Projects
+        </motion.h1>
+        {/* Responsive Grid */}
+        <div className="flex flex-wrap gap-8 justify-center items-center">
+          {projects.map((project, index) => (
+            <div
+              key={index}
+              className="w-72 h-[70dvh] max-sm:w-full overflow-hidden relative hover:scale-[1.03] transition-transform duration-500 ease-in-out bg-white flex flex-col"
+            >
+              {/* Image Section */}
+              <div className="flex-grow">
+                <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
+              </div>
 
-      {/* Responsive Grid */}
-      <div style={styles.grid}>
-        {projects.map((project, index) => (
-          <div
-            key={index}
-            className="w-52 h-81 max-sm:w-full shadow-md shadow-black/10 overflow-hidden relative hover:scale-105 transition-transform duration-300 ease-in-out bg-white flex flex-col"
-          >
-            {/* Image Section */}
-            <div className="flex-grow">
-              <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
+              {/* Overlay Section */}
+              <div className="absolute inset-0 p-8 flex flex-col justify-between">
+                {/* Heading at Top Left */}
+                <h2 className="text-white text-4xl font-bold">{project.title}</h2>
+
+                {/* "View Projects" at Bottom Left */}
+                <a
+                  href="#"
+                  className="text-primary-foreground hover:text-white transition-colors text-md mx-auto gap-2 font-medium flex items-center text-2xl font-serif"
+                >
+                  View Projects
+                  <ArrowRight className="stroke-white size-6" />
+                </a>
+              </div>
             </div>
-
-            {/* Overlay Section */}
-            <div className="absolute inset-0 p-4 flex flex-col justify-between bg-gradient-to-t from-black/80 via-transparent to-transparent">
-              {/* Heading at Top Left */}
-              <h2 className="text-white text-3xl font-bold">{project.title}</h2>
-
-              {/* "View Projects" at Bottom Left */}
-              <a
-                href="#"
-                className="text-orange-500 hover:text-white transition-colors text-md text-center font-medium"
-              >
-                View Projects →
-              </a>
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
   );
