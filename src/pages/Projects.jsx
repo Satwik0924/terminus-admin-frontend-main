@@ -276,21 +276,18 @@ const Projects = () => {
                         <h2 className="font-bold text-2xl tracking-tight ">{project.title}</h2>
                         <p className="text-lg text-black leading-3">{project.location}</p>
                         <p className="text-sm text-black mb-2 leading-loose ">{project.yearOfCompletion}</p>
-                        <div className="flex flex-wrap col-2 gap-2">
+                        <div className="grid grid-cols-2 gap-2 w-full">
                           {project.tags?.map((tag, index) => (
-                            <div
-                              key={index}
-                              className="flex col-2 items-center justify-center"
-                              style={{ width: "44%" }}
-                            >
-                              <span className="px-2 py-1 text-xs text-gray-500 font-bold bg-gray-200 text-center border border-gray-300 transition duration-300 ease-in-out hover:bg-orange-500 hover:text-white w-full">
+                            <div key={index} className="flex items-center justify-center">
+                              <span className="px-2 py-1 text-sm text-foreground font-bold bg-foreground/20 text-center transition duration-300 ease-in-out hover:bg-primary-foreground hover:text-white w-full">
                                 {tag}
                               </span>
                             </div>
                           ))}
                         </div>
+
                         <div className="grid grid-cols-2 gap-2 mt-2">
-                          <span className="px-2 py-1 text-xs bg-gray-200 text-center border border-gray-300 transition duration-300 ease-in-out hover:bg-orange-500">
+                          <span className="px-2 py-1 text-sm bg-foreground/20 text-foreground text-center font-bold transition duration-300 ease-in-out hover:bg-primary-foreground hover:text-white">
                             {project.status}
                           </span>
                         </div>
