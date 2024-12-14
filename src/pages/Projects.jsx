@@ -124,6 +124,17 @@ const Projects = () => {
               </a>
             </li>
           </ul>
+          <div className="grid grid-cols-2 mt-8 px-2 gap-2 w-3/4">
+            {projects
+              ?.flatMap((project) => project.tags)
+              .map((tag, index) => (
+                <div key={index} className="flex items-center justify-center">
+                  <span className="px-2 py-1 text-sm text-foreground font-bold bg-foreground/20 text-center transition duration-300 ease-in-out hover:bg-primary-foreground hover:text-white w-full">
+                    {tag}
+                  </span>
+                </div>
+              ))}
+          </div>
         </div>
 
         {/* Main Content */}
@@ -263,8 +274,8 @@ const Projects = () => {
                             className="w-full h-full object-cover transition duration-500 group-hover:blur-[2px]"
                           />
                           {/* Overlay description */}
-                          <div className="absolute inset-0 flex justify-top items-top bg-white/30 bg-opacity-70 opacity-0 group-hover:opacity-100 transition duration-500">
-                            <p className="text-white text-center text-sm px-4">
+                          <div className="absolute inset-0 flex justify-top items-top bg-white/30 bg-opacity-70 opacity-0 group-hover:opacity-100 transition duration-500 [word-spacing:4px]">
+                            <p className="text-black text-left text-xl p-4">
                               {project.description || "No description available"}
                             </p>
                           </div>
@@ -273,9 +284,9 @@ const Projects = () => {
 
                       {/* Project Details */}
                       <div className="p-0 bg-white">
-                        <h2 className="font-bold text-2xl tracking-tight ">{project.title}</h2>
-                        <p className="text-lg text-black leading-3">{project.location}</p>
-                        <p className="text-sm text-black mb-2 leading-loose ">{project.yearOfCompletion}</p>
+                        <h2 className="font-bold text-2xl tracking-tight text-black mb-1">{project.title}</h2>
+                        <p className="text-2xl text-black leading-3">{project.location}</p>
+                        <p className="text-2xl text-black mb-4 mt-3 leading-4 ">{project.yearOfCompletion}</p>
                         <div className="grid grid-cols-2 gap-2 w-full">
                           {project.tags?.map((tag, index) => (
                             <div key={index} className="flex items-center justify-center">
