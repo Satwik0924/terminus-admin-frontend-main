@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import LogoT from "../assets/tg_logo_t.svg";
 import fullLogo from "../assets/tg_logo_full.webp";
 import useWindowDimensions from "../hooks/useWindowDimensions";
+import ProjectSearch from "./ProjectSearch";
 
 // const  =
 //   "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5036787/image-27f5270f-9dd9-4b1e-9dad-9d96ce0f1455.png?w=302&amp;e=webp&amp;nll=true&amp;cX=0&amp;cY=9&amp;cW=1299&amp;cH=172 2x;";
@@ -123,9 +124,12 @@ const Navbar = () => {
         </div>
 
         {/* Mobile Menu Button */}
-        <button onClick={toggleMenu} style={styles.menuButton}>
-          {isMenuOpen ? "✕" : "☰"}
-        </button>
+        <div className="flex gap-5 items-center">
+          <button onClick={toggleMenu} style={styles.menuButton}>
+            {isMenuOpen ? "✕" : "☰"}
+          </button>
+          <ProjectSearch className="md:hidden" />
+        </div>
 
         {/* Desktop Navigation */}
         <ul style={styles.desktopNavList} className="max-lg:!flex-[1.5]">
@@ -139,6 +143,9 @@ const Navbar = () => {
               </Link>
             </li>
           ))}
+          <li>
+            <ProjectSearch />
+          </li>
         </ul>
 
         {/* Mobile Menu */}

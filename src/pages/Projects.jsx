@@ -1,6 +1,6 @@
 import axios from "axios";
 import { motion, useAnimation } from "framer-motion";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Footer from "../components/Footer";
 
 const Projects = () => {
@@ -24,6 +24,7 @@ const Projects = () => {
       try {
         const response = await axios.get("https://terminus-group-backend-1in9.onrender.com/forms/project");
         if (response.data && response.data.length > 0) {
+          console.log("projects data:", response.data);
           setProjects(response.data);
           categorizeProjects(response.data);
         }
