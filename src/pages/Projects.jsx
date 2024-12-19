@@ -9,12 +9,15 @@ const Projects = () => {
   const [residentialProjects, setResidentialProjects] = useState([]);
   const [hospitalityProjects, setHospitalityProjects] = useState([]);
   const [lifeSciencesProjects, setLifeSciencesProjects] = useState([]);
+  const [activeSection, setActiveSection] = useState("");
 
   // Animation controls for headings
   const controlsCommercial = useAnimation();
   const controlsResidential = useAnimation();
   const controlsHospitality = useAnimation();
   const controlsLifeSciences = useAnimation();
+  const controlsRetail = useAnimation();
+  const controlsEducation = useAnimation();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -39,12 +42,36 @@ const Projects = () => {
 
     fetchData();
 
+    // Create intersection observer for navigation highlighting
+    const navObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      {
+        rootMargin: "-50% 0px -50% 0px",
+        threshold: 0,
+      }
+    );
+
+    // Observe all sections for navigation
+    const sections = ["commercial", "residential", "hospitality", "lifesciences", "retail", "education"];
+    sections.forEach((id) => {
+      const element = document.getElementById(id);
+      if (element) navObserver.observe(element);
+    });
+
     const handleScroll = () => {
       const sections = [
         { id: "commercial", controls: controlsCommercial },
         { id: "residential", controls: controlsResidential },
         { id: "hospitality", controls: controlsHospitality },
         { id: "lifesciences", controls: controlsLifeSciences },
+        { id: "retail", controls: controlsRetail },
+        { id: "education", controls: controlsEducation },
       ];
 
       sections.forEach(({ id, controls }) => {
@@ -60,7 +87,7 @@ const Projects = () => {
             });
           } else {
             controls.start({
-              color: "#D3D3D3", // Gray color when out of view
+              color: "#D3D3D3",
               transition: { duration: 1 },
             });
           }
@@ -69,7 +96,13 @@ const Projects = () => {
     };
 
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      sections.forEach((id) => {
+        const element = document.getElementById(id);
+        if (element) navObserver.unobserve(element);
+      });
+    };
   }, []);
 
   return (
@@ -95,41 +128,27 @@ const Projects = () => {
         >
           <ul className="list-none pl-8 text-5xl leading-1 tracking-tighter space-y-0">
             <li>
-              <h1 className="mb-5 text-primary-foreground">Key Projects</h1>{" "}
+              <h1 className="mb-5 text-primary-foreground">Key Projects</h1>
             </li>
-            <li>
-              <a href="#commercial" className="no-underline text-4xl text-foreground hover:text-primary-foreground">
-                Commercial
-              </a>
-            </li>
-            <li>
-              <a href="#residential" className="no-underline text-4xl text-foreground hover:text-primary-foreground">
-                Residential
-              </a>
-            </li>
-            <li>
-              <a
-                href="#hospitality"
-                className="no-underline text-4xl mb-0  text-foreground hover:text-primary-foreground"
-              >
-                Hospitality
-              </a>
-            </li>
-            <li>
-              <a href="#lifesciences" className="no-underline text-4xl text-foreground hover:text-primary-foreground">
-                Life Sciences
-              </a>
-            </li>
-            <li>
-              <a href="#lifesciences" className="no-underline  text-4xl text-foreground hover:text-primary-foreground">
-                Retail
-              </a>
-            </li>
-            <li>
-              <a href="#lifesciences" className="no-underline  text-4xl text-foreground hover:text-primary-foreground">
-                Education
-              </a>
-            </li>
+            {[
+              { id: "commercial", label: "Commercial" },
+              { id: "residential", label: "Residential" },
+              { id: "hospitality", label: "Hospitality" },
+              { id: "lifesciences", label: "Life Sciences" },
+              { id: "retail", label: "Retail" },
+              { id: "education", label: "Education" },
+            ].map(({ id, label }) => (
+              <li key={id}>
+                <a
+                  href={`#${id}`}
+                  className={`no-underline text-4xl transition-colors duration-300 ${
+                    activeSection === id ? "text-[#F58220]" : "text-foreground hover:text-primary-foreground"
+                  }`}
+                >
+                  {label}
+                </a>
+              </li>
+            ))}
           </ul>
           <div className="grid grid-cols-2 mt-8 px-2 gap-2 w-full">
             <div className="flex space-x-4">
@@ -168,6 +187,7 @@ const Projects = () => {
             <div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
                 {commercialProjects.map((project) => (
+                  // ... Commercial projects content (unchanged)
                   <div key={project._id} className=" overflow-hidden group max-w-xs mx-auto">
                     <div className="relative w-full h-[450px] overflow-hidden mb-3">
                       <a href={`/projects/${project._id}`} className="relative w-full h-80 overflow-hidden">
@@ -189,11 +209,13 @@ const Projects = () => {
                     {/* Project Details */}
                     <div className="p-0 bg-white">
                       <h2 className="font-bold text-2xl tracking-tight text-black mb-1">{project.title}</h2>
-                      <p className="text-2xl text-black leading-3">{project.location}</p>
-                      <p className="text-2xl text-black mb-4 mt-3 leading-4 ">{project.yearOfCompletion}</p>
+                      <div className="flex items-center space-x-4">
+                        <p className="text-2xl text-black leading-3">{project.location}</p>
+                        <p className="text-2xl text-black leading-4">{project.yearOfCompletion}</p>
+                      </div>
                       <div className="grid grid-cols-2 gap-2 w-full"></div>
 
-                      <div className="grid grid-cols-2 gap-2 mt-2">
+                      <div className="grid grid-cols-2 gap-2 mt-8">
                         <span className="px-2 py-1 text-sm bg-foreground/20 text-foreground text-center font-bold transition duration-300 ease-in-out hover:bg-primary-foreground hover:text-white">
                           {project.status}
                         </span>
@@ -203,7 +225,10 @@ const Projects = () => {
                 ))}
               </div>
             </div>
+
+            {/* Clientele section */}
             <div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
+              {/* ... Clientele content (unchanged) ... */}
               <p
                 style={{
                   fontWeight: "bold",
@@ -227,7 +252,7 @@ const Projects = () => {
                       style={{
                         textAlign: "left",
                         fontWeight: "bold",
-                        marginTop: index === 0 ? "0" : "unset", // No margin for the first company
+                        marginTop: index === 0 ? "0" : "unset",
                       }}
                       className="!text-foreground !font-bold !text-2xl"
                     >
@@ -284,12 +309,15 @@ const Projects = () => {
                       {/* Project Details */}
                       <div className="p-0 bg-white">
                         <h2 className="font-bold text-2xl tracking-tight text-black mb-1">{project.title}</h2>
-                        <p className="text-2xl text-black leading-3">{project.location}</p>
-                        <p className="text-2xl text-black mb-4 mt-3 leading-4 ">{project.yearOfCompletion}</p>
+                        <div className="flex items-center space-x-4">
+                          <p className="text-2xl text-black leading-3">{project.location}</p>
+                          <p className="text-2xl text-black leading-4">{project.yearOfCompletion}</p>
+                        </div>
+
                         <div className="grid grid-cols-2 gap-2 w-full"></div>
 
-                        <div className="grid grid-cols-2 gap-2 mt-2">
-                          <span className="px-2 py-1 text-sm bg-foreground/20 text-foreground text-center font-bold transition duration-300 ease-in-out hover:bg-primary-foreground hover:text-white">
+                        <div className="grid grid-cols-2 gap-2 mt-8">
+                          <span className="px-2 py-1  text-sm bg-foreground/20 text-foreground text-center font-bold transition duration-300 ease-in-out hover:bg-primary-foreground hover:text-white">
                             {project.status}
                           </span>
                         </div>
@@ -334,6 +362,78 @@ const Projects = () => {
               </div>
             </div>
           ))}
+          <div id="retail" style={{ textAlign: "left" }}>
+            <motion.h1
+              animate={controlsRetail}
+              initial={{ color: "#D3D3D3" }}
+              className="md:text-[5.3rem] leading-none text-5xl py-10 font-medium text-[#A0A0A0] text-left tracking-tighter"
+            >
+              Retail
+            </motion.h1>
+
+            {/* Projects */}
+
+            {/* Logo Grid */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-9 mt-2">
+              {[
+                "/assets/image1.jpg",
+                "/assets/image2.png",
+                "/assets/image3.png",
+                "/assets/image4.png",
+                "/assets/image5.png",
+                "/assets/image6.png",
+                "/assets/image7.png",
+                "/assets/image8.png",
+                "/assets/image9.jpg",
+                "/assets/image10.png",
+                "/assets/image11.png",
+                "/assets/image12.png",
+                "/assets/image13.png",
+                "/assets/image14.png",
+
+                "/assets/image16.png",
+                "/assets/image17.png",
+                "/assets/image19.png",
+
+                "/assets/image19.png",
+                "/assets/image20.png",
+                "/assets/image21.png",
+                "/assets/image22.png",
+                "/assets/image23.png",
+              ].map((logo, index) => (
+                <div key={index} className="flex items-center justify-center p-4">
+                  <img src={logo} alt={`Logo ${index + 1}`} className="max-w-full h-auto" />
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div id="education" style={{ textAlign: "left" }}>
+            <motion.h1
+              animate={controlsEducation}
+              initial={{ color: "#D3D3D3" }}
+              className="md:text-[5.3rem] leading-none text-5xl py-10 font-medium text-[#A0A0A0] text-left tracking-tighter"
+            >
+              Education
+            </motion.h1>
+
+            {/* Description */}
+            <p className="text-md text-gray-600 mb-4 w-2/3 tracking-tigher">
+              In 2023, Terminus group deepened their relationship with Capella – India’s leading edu infra company.
+              Their commitment to reshaping the educational experience aims to meet the growing demand for quality
+              education through state-of-the-art facilities and a unique business model. By leveraging their expertise
+              in educational infrastructure, Capella is positioning itself as a key player in revolutionizing the
+              education sector in India, focusing on building sustainable, cutting-edge environments that support both
+              learning and professional development. This partnership combines Capella’s education-focused
+              infrastructure with Terminus’s real estate expertise, thus creating a robust platform to advance industry
+              standards and help elevate real estate education across the country.
+            </p>
+
+            {/* Read More */}
+            <a href="#" className="text-md font-bold text-gray-600 text-bold hover:text-primary-foreground">
+              Read More
+            </a>
+          </div>
         </div>
       </div>
       <Footer />

@@ -1,5 +1,5 @@
 import React from "react";
-import LogoFooter from "../assets/tg_logo_footer.webp";
+import LogoFooter from "../assets/tg_logo_full.webp";
 
 const projectLinks = [
   { label: "Commercial", href: "/projects#commercial" },
