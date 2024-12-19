@@ -28,10 +28,10 @@ const socialLinks = [
 
 const Footer = () => {
   return (
-    <footer className="bg-primary-foreground w-full">
+    <footer className="bg-white w-full">
       <div className="flex justify-between mx-auto py-16 lg:px-16 w-full">
         <div className="flex-1 max-lg:hidden">
-          <div className="h-64 w-64 overflow-hidden">
+          <div className="h-52 w-52 overflow-hidden">
             <img src={LogoFooter} alt="Terminus" className="object-cover h-auto w-full" />
           </div>
           <h1 className="text-2xl">{new Date().getFullYear()}</h1>
@@ -39,8 +39,8 @@ const Footer = () => {
         <div className="flex-1 max-lg:w-full">
           <div className="grid grid-cols-3 gap-6 place-items-center items-start w-full max-sm:grid-cols-2">
             {/* Projects */}
-            <ul className="space-y-3 text-2xl font-normal">
-              <h3 className="text-white font-serif">Projects</h3>
+            <ul className="space-y-3 text-md font-normal">
+              <h3 className="text-primary-foreground font-serif">Projects</h3>
               {projectLinks.map((project, index) => (
                 <li className="font-serif hover:underline hover:underline-offset-4" key={`${project.label}-${index}`}>
                   <a style={{ all: "unset" }} href={`${project.href}`}>
@@ -50,8 +50,8 @@ const Footer = () => {
               ))}
             </ul>
             {/* About */}
-            <ul className="space-y-3 text-2xl font-normal">
-              <h3 className="text-white font-serif">About</h3>
+            <ul className="space-y-3 text-md font-normal">
+              <h3 className="text-primary-foreground font-serif">About</h3>
               {aboutLinks.map((project, index) => (
                 <li className="font-serif hover:underline hover:underline-offset-4" key={`${project.label}-${index}`}>
                   <a style={{ all: "unset" }} href={`${project.href}`}>
@@ -61,8 +61,8 @@ const Footer = () => {
               ))}
             </ul>
             {/* Contact */}
-            <ul className="space-y-3 text-2xl font-normal">
-              <h3 className="text-white font-serif">Contact</h3>
+            <ul className="space-y-3 text-md font-normal">
+              <h3 className="text-primary-foreground font-serif">Contact</h3>
               {contactLinks.map((project, index) => (
                 <li className="font-serif hover:underline hover:underline-offset-4" key={`${project.label}-${index}`}>
                   <a style={{ all: "unset" }} href={`${project.href}`}>

@@ -93,47 +93,54 @@ const Projects = () => {
             display: window.innerWidth > 768 ? "block" : "none",
           }}
         >
-          <ul className="list-none pl-8 text-5xl leading-2 tracking-tight space-y-2">
+          <ul className="list-none pl-8 text-5xl leading-1 tracking-tighter space-y-0">
             <li>
-              <h1 className="mb-2 text-primary-foreground">Key Projects</h1>{" "}
-              {/* Font size kept the same as the list items */}
+              <h1 className="mb-5 text-primary-foreground">Key Projects</h1>{" "}
             </li>
             <li>
-              <a href="#commercial" className="no-underline text-foreground hover:text-primary-foreground">
+              <a href="#commercial" className="no-underline text-4xl text-foreground hover:text-primary-foreground">
                 Commercial
               </a>
             </li>
             <li>
-              <a href="#residential" className="no-underline text-foreground hover:text-primary-foreground">
+              <a href="#residential" className="no-underline text-4xl text-foreground hover:text-primary-foreground">
                 Residential
               </a>
             </li>
             <li>
-              <a href="#hospitality" className="no-underline text-foreground hover:text-primary-foreground">
+              <a
+                href="#hospitality"
+                className="no-underline text-4xl mb-0  text-foreground hover:text-primary-foreground"
+              >
                 Hospitality
               </a>
             </li>
             <li>
-              <a href="#lifesciences" className="no-underline text-foreground hover:text-primary-foreground">
+              <a href="#lifesciences" className="no-underline text-4xl text-foreground hover:text-primary-foreground">
                 Life Sciences
               </a>
             </li>
             <li>
-              <a href="#lifesciences" className="no-underline text-foreground hover:text-primary-foreground">
+              <a href="#lifesciences" className="no-underline  text-4xl text-foreground hover:text-primary-foreground">
                 Retail
               </a>
             </li>
+            <li>
+              <a href="#lifesciences" className="no-underline  text-4xl text-foreground hover:text-primary-foreground">
+                Education
+              </a>
+            </li>
           </ul>
-          <div className="grid grid-cols-2 mt-8 px-2 gap-2 w-3/4">
-            {projects
-              ?.flatMap((project) => project.tags)
-              .map((tag, index) => (
-                <div key={index} className="flex items-center justify-center">
-                  <span className="px-2 py-1 text-sm text-foreground font-bold bg-foreground/20 text-center transition duration-300 ease-in-out hover:bg-primary-foreground hover:text-white w-full">
-                    {tag}
+          <div className="grid grid-cols-2 mt-8 px-2 gap-2 w-full">
+            <div className="flex space-x-4">
+              {["completed", "incompleted"].map((status, index) => (
+                <div key={index} className="flex items-center justify-center flex-1">
+                  <span className="px-4 py-2 text-sm text-foreground font-bold bg-foreground/20 text-center transition duration-300 ease-in-out hover:bg-primary-foreground hover:text-white w-full">
+                    {status}
                   </span>
                 </div>
               ))}
+            </div>
           </div>
         </div>
 
@@ -184,15 +191,7 @@ const Projects = () => {
                       <h2 className="font-bold text-2xl tracking-tight text-black mb-1">{project.title}</h2>
                       <p className="text-2xl text-black leading-3">{project.location}</p>
                       <p className="text-2xl text-black mb-4 mt-3 leading-4 ">{project.yearOfCompletion}</p>
-                      <div className="grid grid-cols-2 gap-2 w-full">
-                        {project.tags?.map((tag, index) => (
-                          <div key={index} className="flex items-center justify-center">
-                            <span className="px-2 py-1 text-sm text-foreground font-bold bg-foreground/20 text-center transition duration-300 ease-in-out hover:bg-primary-foreground hover:text-white w-full">
-                              {tag}
-                            </span>
-                          </div>
-                        ))}
-                      </div>
+                      <div className="grid grid-cols-2 gap-2 w-full"></div>
 
                       <div className="grid grid-cols-2 gap-2 mt-2">
                         <span className="px-2 py-1 text-sm bg-foreground/20 text-foreground text-center font-bold transition duration-300 ease-in-out hover:bg-primary-foreground hover:text-white">
@@ -287,15 +286,7 @@ const Projects = () => {
                         <h2 className="font-bold text-2xl tracking-tight text-black mb-1">{project.title}</h2>
                         <p className="text-2xl text-black leading-3">{project.location}</p>
                         <p className="text-2xl text-black mb-4 mt-3 leading-4 ">{project.yearOfCompletion}</p>
-                        <div className="grid grid-cols-2 gap-2 w-full">
-                          {project.tags?.map((tag, index) => (
-                            <div key={index} className="flex items-center justify-center">
-                              <span className="px-2 py-1 text-sm text-foreground font-bold bg-foreground/20 text-center transition duration-300 ease-in-out hover:bg-primary-foreground hover:text-white w-full">
-                                {tag}
-                              </span>
-                            </div>
-                          ))}
-                        </div>
+                        <div className="grid grid-cols-2 gap-2 w-full"></div>
 
                         <div className="grid grid-cols-2 gap-2 mt-2">
                           <span className="px-2 py-1 text-sm bg-foreground/20 text-foreground text-center font-bold transition duration-300 ease-in-out hover:bg-primary-foreground hover:text-white">
