@@ -57,6 +57,11 @@ const ProjectsGrid = () => {
       image:
         "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5068970/image-a10a7f2b-0283-4585-9525-c09777fe2899.jpg?w=559&e=webp&cX=811&cY=0&cW=846&cH=1920",
     },
+    {
+      title: "Education",
+      image:
+        "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5068970/image-a10a7f2b-0283-4585-9525-c09777fe2899.jpg?w=559&e=webp&cX=811&cY=0&cW=846&cH=1920",
+    },
   ];
 
   // Inline styles for CSS-in-JSX
