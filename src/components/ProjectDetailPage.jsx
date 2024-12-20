@@ -19,7 +19,7 @@ const ProjectDetailPage = () => {
     };
     const fetchData = async () => {
       try {
-        const response = await axios.get(`https://terminus-group-backend-1in9.onrender.com/forms/project/${id}`);
+        const response = await axios.get(`https://api.terminus-group.com/forms/project/${id}`);
         if (response.data) setProject(response.data);
         else return;
 

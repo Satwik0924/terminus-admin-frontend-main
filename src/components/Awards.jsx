@@ -9,7 +9,7 @@ const AwardsComponent = () => {
   useEffect(() => {
     const fetchAwardsData = async () => {
       try {
-        const response = await axios.get("https://terminus-group-backend-1in9.onrender.com/forms/awards");
+        const response = await axios.get("https://api.terminus-group.com/forms/awards");
         const transformedData = response.data.map((award) => ({
           id: award._id,
           title: award.name,

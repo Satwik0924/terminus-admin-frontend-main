@@ -9,7 +9,7 @@ const NewsMedia = () => {
   useEffect(() => {
     const fetchNewsData = async () => {
       try {
-        const response = await axios.get("https://terminus-group-backend-1in9.onrender.com/forms/news");
+        const response = await axios.get("https://api.terminus-group.com/forms/news");
         const transformedData = response.data.map((news) => ({
           id: news._id,
           title: news.header,

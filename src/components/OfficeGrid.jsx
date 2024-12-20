@@ -9,7 +9,7 @@ const OfficeComponent = () => {
   useEffect(() => {
     const fetchTeamData = async () => {
       try {
-        const response = await axios.get("https://terminus-group-backend-1in9.onrender.com/forms/team");
+        const response = await axios.get("https://api.terminus-group.com/forms/team");
         const transformedData = response.data.map((member) => ({
           id: member._id,
           name: member.name,

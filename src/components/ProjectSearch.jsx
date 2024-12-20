@@ -36,7 +36,7 @@ export default function ProjectSearch({ className }) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("https://terminus-group-backend-1in9.onrender.com/forms/project");
+        const response = await axios.get("https://api.terminus-group.com/forms/project");
         if (response.data && response.data.length > 0) {
           console.log("projects data:", response.data);
           categorizeProjects(response.data);
