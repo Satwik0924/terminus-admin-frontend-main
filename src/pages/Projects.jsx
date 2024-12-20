@@ -151,11 +151,15 @@ const Projects = () => {
               </li>
             ))}
           </ul>
-          <div className="grid grid-cols-2 mt-8 px-2 gap-2 w-full">
-            <div className="flex space-x-4">
-              {["completed", "incompleted"].map((status, index) => (
+          <div className="grid grid-cols-3 mt-8 px-0 gap-1 w-full">
+            <div className="flex space-x-1">
+              {["Completed", "Ongoing", "Launching Soon"].map((status, index) => (
                 <div key={index} className="flex items-center justify-center flex-1">
-                  <span className="px-4 py-2 text-sm text-foreground font-bold bg-foreground/20 text-center transition duration-300 ease-in-out hover:bg-primary-foreground hover:text-white w-full">
+                  <span
+                    className={`px-4 py-2 text-sm text-foreground font-bold bg-foreground/20 text-center transition duration-300 ease-in-out hover:bg-primary-foreground hover:text-white w-full ${
+                      status === "Launching Soon" ? "whitespace-nowrap" : ""
+                    }`}
+                  >
                     {status}
                   </span>
                 </div>
@@ -210,10 +214,11 @@ const Projects = () => {
                     {/* Project Details */}
                     <div className="p-0 bg-white">
                       <h2 className="font-bold text-2xl tracking-tight text-black mb-1">{project.title}</h2>
-                      <div className="flex items-center space-x-4">
-                        <p className="text-2xl text-black leading-3">{project.location}</p>
-                        <p className="text-2xl text-black leading-4">{project.yearOfCompletion}</p>
+                      <div className="flex items-center space-x-2">
+                        <p className="text-2xl text-foreground leading-3">{`${project.location},`}</p>
+                        <p className="text-2xl text-foreground leading-4">{project.yearOfCompletion}</p>
                       </div>
+
                       <div className="grid grid-cols-2 gap-2 w-full"></div>
 
                       <div className="grid grid-cols-2 gap-2 mt-8">
@@ -310,9 +315,9 @@ const Projects = () => {
                       {/* Project Details */}
                       <div className="p-0 bg-white">
                         <h2 className="font-bold text-2xl tracking-tight text-black mb-1">{project.title}</h2>
-                        <div className="flex items-center space-x-4">
-                          <p className="text-2xl text-black leading-3">{project.location}</p>
-                          <p className="text-2xl text-black leading-4">{project.yearOfCompletion}</p>
+                        <div className="flex items-center space-x-2">
+                          <p className="text-2xl text-foreground leading-3">{`${project.location},`}</p>
+                          <p className="text-2xl text-foreground leading-4">{project.yearOfCompletion}</p>
                         </div>
 
                         <div className="grid grid-cols-2 gap-2 w-full"></div>
