@@ -1,6 +1,7 @@
 import { motion, useAnimation } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import React, { useEffect } from "react";
+import Balancer from "react-wrap-balancer"; // Ensure react-wrap-balancer is imported
 
 const ProjectsGrid = () => {
   const headingAnimation = useAnimation();
@@ -19,7 +20,7 @@ const ProjectsGrid = () => {
           });
         } else {
           headingAnimation.start({
-            color: "#A0A0A0", // Light gray
+            color: "#A0A0A0",
             transition: { duration: 0.7 },
           });
         }
@@ -64,64 +65,6 @@ const ProjectsGrid = () => {
     },
   ];
 
-  // Inline styles for CSS-in-JSX
-  const styles = {
-    section: {
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-      justifyContent: "center",
-      height: "auto ",
-      padding: "5rem 0",
-      backgroundColor: "#f9fafb",
-    },
-    grid: {
-      display: "flex",
-      flexWrap: "wrap",
-      gap: "1.5rem",
-      justifyContent: "center",
-      alignItems: "center",
-    },
-    card: {
-      width: "12rem",
-      height: "20rem",
-      borderRadius: "0.5rem",
-      overflow: "hidden",
-      position: "relative",
-      transform: "scale(1)",
-      transition: "transform 0.3s ease-in-out",
-      backgroundColor: "#ffffff",
-    },
-    cardHover: {
-      transform: "scale(1.05)",
-    },
-    cardImage: {
-      width: "100%",
-      height: "100%",
-      objectFit: "cover",
-    },
-    cardOverlay: {
-      position: "absolute",
-      inset: 0,
-      background: "linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0.3), transparent)",
-      display: "flex",
-      flexDirection: "column",
-      justifyContent: "flex-end",
-      padding: "1rem",
-    },
-    cardTitle: {
-      color: "white",
-      fontSize: "1.25rem",
-      fontWeight: "600",
-    },
-    cardLink: {
-      color: "#F58220",
-      fontSize: "0.875rem",
-      textDecoration: "none",
-      marginTop: "0.5rem",
-    },
-  };
-
   return (
     <section className="flex flex-col justify-center items-center h-auto lg:py-40 py-20 w-full">
       <div className="sm:w-[90%] w-[95%]">
@@ -130,13 +73,12 @@ const ProjectsGrid = () => {
           id="heading"
           animate={headingAnimation}
           initial={{ color: "#A0A0A0" }}
-          style={styles.heading}
           className="md:text-[5.3rem] leading-none text-5xl mb-20 font-medium text-[#A0A0A0] text-left tracking-tighter"
         >
-          Explore Our Projects
+          <Balancer>Explore Our Projects</Balancer>
         </motion.h1>
         {/* Responsive Grid */}
-        <div className="flex flex-wrap gap-8 justify-center items-center">
+        <div className="flex flex-wrap gap-4 justify-start items-start">
           {projects.map((project, index) => (
             <div
               key={index}
@@ -150,7 +92,9 @@ const ProjectsGrid = () => {
               {/* Overlay Section */}
               <div className="absolute inset-0 p-8 flex flex-col justify-between">
                 {/* Heading at Top Left */}
-                <h2 className="text-white text-4xl font-bold">{project.title}</h2>
+                <h2 className="text-white text-4xl font-bold">
+                  <Balancer>{project.title}</Balancer>
+                </h2>
 
                 {/* "View Projects" at Bottom Left */}
                 <a
