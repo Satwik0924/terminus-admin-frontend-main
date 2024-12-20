@@ -39,13 +39,6 @@ const AwardsComponent = () => {
 
   return (
     <div id="awards-section" className="px-5 py-12 max-w-screen-xl mx-auto">
-      <h1
-        className={`text-7xl  leading-4  mb-12 transition-colors duration-300 ${
-          scrolled ? "text-orange-500" : "text-gray-400"
-        }`}
-      >
-        Awards
-      </h1>
       {loading ? (
         <p className="text-center">Loading awards data...</p>
       ) : (

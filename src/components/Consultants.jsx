@@ -34,20 +34,11 @@ const ConsultantsAndPartners = () => {
   }, [controls, hasTriggered]);
 
   return (
-    <div className="py-20 px-8 font-[Arial,sans-serif] flex items-center justify-center w-full">
+    <div className="py-20 px-8 font-[Arial,sans-serif] flex items-left justify-left w-full">
       <div className="sm:w-[90%] w-[95%]">
         {/* Section Header */}
-        <motion.h1
-          id="consultants-header"
-          animate={controls}
-          initial={{ color: "#D3D3D3" }}
-          className="md:text-[5.3rem] leading-none text-5xl mb-20 font-medium text-[#A0A0A0] text-left tracking-tighter"
-        >
-          Consultants & Partners
-        </motion.h1>
 
-        {/* Responsive Grid Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-16 px-4 justify-center items-center place-items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-16 px-4 justify-left items-left place-items-left">
           {/* Logos */}
           {[
             {

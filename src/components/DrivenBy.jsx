@@ -32,7 +32,7 @@ const DrivenByMission = () => {
   }, [controlsTitle]);
 
   return (
-    <div className="font-sans py-20 lg:py-20 w-full flex items-center justify-center">
+    <div className="font-sans py-20 lg:py-20 w-full flex items-center justify-left">
       <div className="w-[95%] lg:pl-10">
         <motion.h1
           id="missionTitle"

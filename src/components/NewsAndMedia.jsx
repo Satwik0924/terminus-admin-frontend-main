@@ -40,13 +40,6 @@ const NewsMedia = () => {
 
   return (
     <div id="news-section" className="px-5 py-12 max-w-screen-xl mx-auto">
-      <h1
-        className={`text-7xl leading-5  mb-12 transition-colors duration-300 ${
-          scrolled ? "text-orange-500" : "text-gray-400"
-        }`}
-      >
-        News & Media
-      </h1>
       {loading ? (
         <p className="text-center">Loading news data...</p>
       ) : (

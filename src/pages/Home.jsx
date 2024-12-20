@@ -14,9 +14,9 @@ const Home = () => {
       <Carousel />
       <StatsSection />
       <ProjectsGrid />
-      <DrivenByMission />
+
       <HorizontalScrollCarousel />
-      <ConsultantsAndPartners />
+
       <ContactSection />
       <Footer />
     </>

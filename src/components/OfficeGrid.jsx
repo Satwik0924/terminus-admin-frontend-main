@@ -30,7 +30,7 @@ const OfficeComponent = () => {
 
   const controlsLine1 = useAnimation();
   const controlsLine2 = useAnimation();
-
+  const controlsLine3 = useAnimation();
   useEffect(() => {
     const handleScroll = () => {
       const heading1 = document.getElementById("heading1");
@@ -47,6 +47,22 @@ const OfficeComponent = () => {
           });
         } else {
           controlsLine1.start({
+            color: "#D3D3D3", // Gray color when out of view
+            transition: { duration: 1 },
+          });
+        }
+      }
+      if (heading3) {
+        const rect3 = heading3.getBoundingClientRect();
+        const isVisible1 = rect3.top >= 0 && rect3.top < window.innerHeight / 2;
+
+        if (isVisible1) {
+          controlsLine3.start({
+            color: ["#f58220cc", "#F58220"], // Orange gradient
+            transition: { duration: 1 },
+          });
+        } else {
+          controlsLine3.start({
             color: "#D3D3D3", // Gray color when out of view
             transition: { duration: 1 },
           });
@@ -85,41 +101,6 @@ const OfficeComponent = () => {
         padding: "20px",
       }}
     >
-      {/* Side Sticky Section */}
-      <div
-        style={{
-          flex: "1",
-          position: "sticky",
-          top: "100px", // Sticky offset from the top
-          height: "100%", // Ensures it stays within view
-          paddingRight: "20px",
-          display: window.innerWidth > 768 ? "block" : "none", // Hide for smaller screens
-        }}
-      >
-        <ul className="list-none pl-8 text-4xl leading-2 tracking-tight">
-          <li>
-            <a href="#commercial" className="no-underline text-gray-500 hover:text-orange-500">
-              Team
-            </a>
-          </li>
-          <li>
-            <a href="#residential" className="no-underline text-gray-500 hover:text-orange-500">
-              Philanthropy
-            </a>
-          </li>
-          <li>
-            <a href="#hospitality" className="no-underline text-gray-500 hover:text-orange-500">
-              News & Media
-            </a>
-          </li>
-          <li>
-            <a href="#lifesciences" className="no-underline text-gray-500 hover:text-orange-500">
-              Consultants & Partners
-            </a>
-          </li>
-        </ul>
-      </div>
-
       {/* Main Content */}
       <div
         style={{
@@ -294,6 +275,23 @@ const OfficeComponent = () => {
 
         {/* Team Members Section */}
         <div id="news">
+          <motion.h1
+            id="heading3"
+            style={{
+              height: "60px",
+              width: "100%",
+              fontWeight: "500",
+              fontSize: "48px",
+              margin: "20px 0",
+              letterSpacing: "-2px",
+              lineHeight: "60px",
+              marginBottom: "7px",
+            }}
+            animate={controlsLine3}
+            initial={{ color: "#D3D3D3" }}
+          >
+            Leadership
+          </motion.h1>
           {loading ? (
             <p className="text-gray-600 text-lg">Loading team data...</p>
           ) : (
