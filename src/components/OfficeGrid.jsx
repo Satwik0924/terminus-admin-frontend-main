@@ -283,17 +283,27 @@ const OfficeComponent = () => {
           ) : (
             <div className="flex flex-wrap gap-5 justify-start">
               {teamData.map((member) => (
-                <div key={member.id} className="w-64 text-left mb-5">
+                <div key={member.id} className="w-1/3 sm:w-1/4 text-left mb-5 relative group">
                   <a
                     href={member.linkedinUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="block hover:opacity-80"
                   >
-                    <img src={member.image} alt={member.name} className="w-70 h-full cursor-pointer object-cover" />
+                    <div className="relative">
+                      <img
+                        src={member.image}
+                        alt={member.name}
+                        className="w-full h-64 object-cover transition-opacity duration-500 ease-in-out group-hover:opacity-80"
+                      />
+                      {/* Hover overlay */}
+                      <div className="absolute inset-0 bg-white/30 bg-opacity-50 flex opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                        <span className="text-black mt-3 ml-3 text-lg text-left align-top font-medium">View More</span>
+                      </div>
+                    </div>
                   </a>
-                  <p className="font-bold mt-2 text-gray-800">{member.name}</p>
-                  <p className="text-gray-600">{member.role}</p>
+                  <p className="font-semibold mt-2 text-xl tracking-tight text-black">{member.name}</p>
+                  <p className="text-foreground">{member.role}</p>
                 </div>
               ))}
             </div>
