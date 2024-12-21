@@ -67,7 +67,7 @@ const ProjectsGrid = () => {
 
   return (
     <section className="flex flex-col justify-center items-center h-auto lg:py-40 py-20 w-full">
-      <div className="sm:w-[90%] w-[95%]">
+      <div className="sm:w-[90%] w-full">
         {/* Heading */}
         <motion.h1
           id="heading"
@@ -78,36 +78,37 @@ const ProjectsGrid = () => {
           <Balancer>Explore Our Projects</Balancer>
         </motion.h1>
         {/* Responsive Grid */}
-        <div className="flex flex-wrap gap-4 justify-start items-start">
-          {projects.map((project, index) => (
-            <div
-              key={index}
-              className="w-72 h-[70dvh] max-sm:w-full overflow-hidden relative hover:scale-[1.03] transition-transform duration-500 ease-in-out bg-white flex flex-col"
-            >
-              {/* Image Section */}
-              <div className="flex-grow">
-                <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
-              </div>
-
-              {/* Overlay Section */}
-              <div className="absolute inset-0 p-8 flex flex-col justify-between">
-                {/* Heading at Top Left */}
-                <h2 className="text-white text-4xl font-bold">
-                  <Balancer>{project.title}</Balancer>
-                </h2>
-
-                {/* "View Projects" at Bottom Left */}
-                <a
-                  href="#"
-                  className="text-primary-foreground hover:text-white transition-colors text-md mx-auto gap-2 font-medium flex items-center text-2xl font-serif"
+        <Balancer>
+          <div className="flex justify-center items-center">
+            <div className="flex flex-wrap gap-4 justify-center items-center">
+              {projects.map((project, index) => (
+                <div
+                  key={index}
+                  className={`w-72 h-[70dvh] max-sm:w-full overflow-hidden relative hover:scale-[1.03] transition-transform duration-500 ease-in-out bg-white flex flex-col ${index >= 3 ? "justify-start" : "justify-center"}`}
                 >
-                  View Projects
-                  <ArrowRight className="stroke-white size-6" />
-                </a>
-              </div>
+                  <div className="flex-grow">
+                    <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
+                  </div>
+
+                  <div className="absolute inset-0 p-8 flex flex-col justify-between">
+                    <h2 className="text-white text-4xl font-bold">
+                      <Balancer>{project.title}</Balancer>
+                    </h2>
+
+                    {/* "View Projects" at Bottom Left */}
+                    <a
+                      href="#"
+                      className="text-primary-foreground hover:text-white transition-colors text-md mx-auto gap-2 font-medium flex items-center text-2xl font-serif"
+                    >
+                      View Projects
+                      <ArrowRight className="stroke-white size-6" />
+                    </a>
+                  </div>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
+          </div>
+        </Balancer>
       </div>
     </section>
   );
