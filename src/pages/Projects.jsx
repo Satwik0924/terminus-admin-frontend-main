@@ -38,7 +38,7 @@ const Projects = () => {
       setCommercialProjects(projects.filter((project) => project.type === "commercial"));
       setResidentialProjects(projects.filter((project) => project.type === "residential"));
       setHospitalityProjects(projects.filter((project) => project.type === "hospitality"));
-      setLifeSciencesProjects(projects.filter((project) => project.type === "life Sciences"));
+      setLifeSciencesProjects(projects.filter((project) => project.type === "life_sciences"));
     };
 
     fetchData();
@@ -114,6 +114,7 @@ const Projects = () => {
           flexDirection: "row",
           fontFamily: "Arial, sans-serif",
           padding: "20px",
+          gap: "10rem",
         }}
       >
         {/* Side Sticky Section */}
@@ -127,9 +128,9 @@ const Projects = () => {
             display: window.innerWidth > 768 ? "block" : "none",
           }}
         >
-          <ul className="list-none pl-8 text-5xl leading-1 tracking-tighter space-y-0">
+          <ul className="list-none pl-8 text-5xl tracking-tighter -space-y-1">
             <li>
-              <h1 className="mb-5 text-primary-foreground">Key Projects</h1>
+              <h1 className="mb-5 text-primary-foreground font-semibold">Key Projects</h1>
             </li>
             {[
               { id: "commercial", label: "Commercial" },
@@ -151,10 +152,10 @@ const Projects = () => {
               </li>
             ))}
           </ul>
-          <div className="grid grid-cols-3 mt-8 px-0 gap-1 w-full">
-            <div className="flex space-x-1">
+          <div className="grid mt-12 px-0 w-full pl-8">
+            <div className="grid grid-cols-2 w-full gap-3">
               {["Completed", "Ongoing", "Launching Soon"].map((status, index) => (
-                <div key={index} className="flex items-center justify-center flex-1">
+                <div key={index} className="flex items-center justify-center">
                   <span
                     className={`px-4 py-2 text-sm text-foreground font-bold bg-foreground/20 text-center transition duration-300 ease-in-out hover:bg-primary-foreground hover:text-white w-full ${
                       status === "Launching Soon" ? "whitespace-nowrap" : ""
@@ -190,12 +191,12 @@ const Projects = () => {
 
             {/* Projects */}
             <div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+              <div className="flex items-center flex-wrap gap-6">
                 {commercialProjects.map((project) => (
                   // ... Commercial projects content (unchanged)
-                  <div key={project._id} className=" overflow-hidden group max-w-xs mx-auto">
-                    <div className="relative w-full h-[450px] overflow-hidden mb-3">
-                      <a href={`/projects/${project._id}`} className="relative w-full h-80 overflow-hidden">
+                  <div key={project._id} className="overflow-hidden group max-w-xs">
+                    <div className="relative w-[300px] h-[450px] overflow-hidden mb-3">
+                      <a href={`/projects/${project._id}`} className="relative w-full h-full overflow-hidden">
                         {/* Image */}
                         <img
                           src={project.images?.[0]}
@@ -215,8 +216,7 @@ const Projects = () => {
                     <div className="p-0 bg-white">
                       <h2 className="font-bold text-2xl tracking-tight text-black mb-1">{project.title}</h2>
                       <div className="flex items-center space-x-2">
-                        <p className="text-2xl text-foreground leading-3">{`${project.location},`}</p>
-                        <p className="text-2xl text-foreground leading-4">{project.yearOfCompletion}</p>
+                        <p className="text-xl text-foreground leading-3 tracking-tighter">{`${project.location}, ${project.yearOfCompletion}`}</p>
                       </div>
 
                       <div className="grid grid-cols-2 gap-2 w-full"></div>
@@ -292,16 +292,16 @@ const Projects = () => {
 
               {/* Projects */}
               <div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+                <div className="flex items-center flex-wrap gap-6">
                   {projects.map((project) => (
-                    <div key={project._id} className=" overflow-hidden group max-w-xs mx-auto">
-                      <div className="relative w-full h-[450px] overflow-hidden mb-3">
-                        <a href={`/projects/${project._id}`} className="relative w-full h-80 overflow-hidden">
+                    <div key={project._id} className="overflow-hidden group max-w-xs">
+                      <div className="relative w-[300px] h-[450px] overflow-hidden mb-3">
+                        <a href={`/projects/${project._id}`} className="relative w-full h-full overflow-hidden">
                           {/* Image */}
                           <img
                             src={project.images?.[0]}
                             alt={project.title}
-                            className="w-full h-full object-cover transition duration-500 group-hover:blur-[2px]"
+                            className="w-full h-full object-cover object-center transition duration-500 group-hover:blur-[2px]"
                           />
                           {/* Overlay description */}
                           <div className="absolute inset-0 flex justify-top items-top bg-white/30 bg-opacity-70 opacity-0 group-hover:opacity-100 transition duration-500 [word-spacing:4px]">
@@ -316,8 +316,7 @@ const Projects = () => {
                       <div className="p-0 bg-white">
                         <h2 className="font-bold text-2xl tracking-tight text-black mb-1">{project.title}</h2>
                         <div className="flex items-center space-x-2">
-                          <p className="text-2xl text-foreground leading-3">{`${project.location},`}</p>
-                          <p className="text-2xl text-foreground leading-4">{project.yearOfCompletion}</p>
+                          <p className="text-xl text-foreground leading-3 tracking-tighter">{`${project.location}, ${project.yearOfCompletion}`}</p>
                         </div>
 
                         <div className="grid grid-cols-2 gap-2 w-full"></div>
@@ -424,19 +423,22 @@ const Projects = () => {
             </motion.h1>
 
             {/* Description */}
-            <p className="text-md text-gray-600 mb-4 w-2/3 tracking-tigher">
-              In 2023, Terminus group deepened their relationship with Capella – India’s leading edu infra company.
-              Their commitment to reshaping the educational experience aims to meet the growing demand for quality
-              education through state-of-the-art facilities and a unique business model. By leveraging their expertise
-              in educational infrastructure, Capella is positioning itself as a key player in revolutionizing the
-              education sector in India, focusing on building sustainable, cutting-edge environments that support both
-              learning and professional development. This partnership combines Capella’s education-focused
-              infrastructure with Terminus’s real estate expertise, thus creating a robust platform to advance industry
-              standards and help elevate real estate education across the country.
+            <p className="text-md xl:text-lg text-foreground mb-4 tracking-tigher !leading-tight [word-spacing:1px] max-w-xl">
+              In 2023, Terminus group deepened their relationship with Capella &ndash; India&apos;s leading edu infra
+              company. Their commitment to reshaping the educational experience aims to meet the growing demand for
+              quality education through state-of-the-art facilities and a unique business model. By leveraging their
+              expertise in educational infrastructure, Capella is positioning itself as a key player in revolutionizing
+              the education sector in India, focusing on building sustainable, cutting-edge environments that support
+              both learning and professional development. This partnership combines Capella&apos;s education-focused
+              infrastructure with Terminus&apos;s real estate expertise, thus creating a robust platform to advance
+              industry standards and help elevate real estate education across the country.
             </p>
 
             {/* Read More */}
-            <a href="#" className="text-md font-bold text-gray-600 text-bold hover:text-primary-foreground">
+            <a
+              href="#"
+              className="text-md font-extrabold tracking-tighter text-foreground hover:text-primary-foreground"
+            >
               Read More
             </a>
           </div>
