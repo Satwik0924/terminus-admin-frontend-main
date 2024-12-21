@@ -132,7 +132,7 @@ const About = () => {
         >
           <div id="commercial" style={{ textAlign: "left" }}>
             <OfficeComponent />
-            <DrivenByMission />
+            {/* <DrivenByMission /> */}
           </div>
 
           <div id="residential" style={{ textAlign: "left" }}>
@@ -153,7 +153,7 @@ const About = () => {
             >
               Philanthrophy
             </motion.h1>
-            <div className="philanthropy-section mx-0 text-left  max-w-6xl px-4 py-8">
+            <div className="philanthropy-section mx-0 text-left w-fulll px-4 py-8">
               <div className="philanthropy-text mb-6 left text-gray-800">
                 <p className="text-lg text-left leading-relaxed tracking-tight">
                   At Terminus Group, we believe in giving back to the community. Our<br></br> philanthropic efforts

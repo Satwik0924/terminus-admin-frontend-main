@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
 import axios from "axios";
+import DrivenByMission from "./DrivenBy";
 
 const OfficeComponent = () => {
   const [teamData, setTeamData] = useState([]);
@@ -182,7 +183,7 @@ const OfficeComponent = () => {
             </a>
           </motion.p>
         </div>
-
+        <DrivenByMission />
         {/* Team Section */}
         <div id="philanthropy" style={{ textAlign: "left" }}>
           <motion.h1
