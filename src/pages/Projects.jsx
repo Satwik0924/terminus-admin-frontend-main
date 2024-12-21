@@ -2,6 +2,7 @@ import axios from "axios";
 import { motion, useAnimation } from "framer-motion";
 import { useEffect, useState } from "react";
 import Footer from "../components/Footer";
+import { Link } from "react-router-dom";
 
 const Projects = () => {
   const [projects, setProjects] = useState([]);
@@ -197,19 +198,21 @@ const Projects = () => {
                   // ... Commercial projects content (unchanged)
                   <div key={project._id} className="overflow-hidden group max-w-xs">
                     <div className="relative w-[300px] h-[450px] overflow-hidden mb-3">
-                      <a href={`/projects/${project._id}`} className="relative w-full h-full overflow-hidden">
+                      <Link to={`/projects/${project._id}`} className="relative w-full h-full overflow-hidden">
                         {/* Image */}
                         <img
                           src={project.images?.[0]}
                           alt={project.title}
                           className="w-full h-full object-cover transition duration-500 group-hover:blur-[2px]"
                         />
-                        <div className="absolute inset-0 flex justify-top items-top bg-white/30 bg-opacity-70 opacity-0 group-hover:opacity-100 transition duration-500 [word-spacing:4px]">
-                          <p className="text-black text-left text-xl p-4">
-                            {project.description.substr(0, 88) + "..."}
-                          </p>
+                        <div className="absolute inset-0 flex justify-top items-top bg-white/50 bg-opacity-70 opacity-0 group-hover:opacity-100 transition duration-500 [word-spacing:4px]">
+                          <div className="p-4">
+                            <p className="text-black text-left text-lg !line-clamp-4 !text-ellipsis">
+                              {project.description}
+                            </p>
+                          </div>
                         </div>
-                      </a>
+                      </Link>
                     </div>
 
                     {/* Project Details */}
@@ -296,7 +299,7 @@ const Projects = () => {
                   {projects.map((project) => (
                     <div key={project._id} className="overflow-hidden group max-w-xs">
                       <div className="relative w-[300px] h-[450px] overflow-hidden mb-3">
-                        <a href={`/projects/${project._id}`} className="relative w-full h-full overflow-hidden">
+                        <Link to={`/projects/${project._id}`} className="relative w-full h-full overflow-hidden">
                           {/* Image */}
                           <img
                             src={project.images?.[0]}
@@ -304,22 +307,14 @@ const Projects = () => {
                             className="w-full h-full object-cover object-center transition duration-500 group-hover:blur-[2px]"
                           />
                           {/* Overlay description */}
-                          <div className="absolute inset-0 flex justify-top items-top bg-white/30 bg-opacity-70 opacity-0 group-hover:opacity-100 transition duration-500">
-                            <p
-                              className="text-black text-left text-xl p-4"
-                              style={{
-                                display: "-webkit-box", // Ensures multi-line text truncation works
-                                WebkitBoxOrient: "vertical", // Sets the box orientation to vertical
-                                WebkitLineClamp: 1, // Restricts visible lines to 4
-                                overflow: "hidden", // Hides the overflow text
-                                textOverflow: "ellipsis", // Adds "..." to indicate truncation
-                                whiteSpace: "normal", // Allows text to wrap
-                              }}
-                            >
-                              {project.description.substr(0, 88) || "No description available"}
-                            </p>
+                          <div className="absolute inset-0 flex justify-top items-top bg-white/50 bg-opacity-70 opacity-0 group-hover:opacity-100 transition duration-500">
+                            <div className="p-4">
+                              <p className="text-black text-left text-lg !line-clamp-4 !text-ellipsis">
+                                {project.description}
+                              </p>
+                            </div>
                           </div>
-                        </a>
+                        </Link>
                       </div>
 
                       {/* Project Details */}
@@ -445,12 +440,12 @@ const Projects = () => {
             </p>
 
             {/* Read More */}
-            <a
-              href="#"
+            <Link
+              to="#"
               className="text-md font-extrabold tracking-tighter text-foreground hover:text-primary-foreground"
             >
               Read More
-            </a>
+            </Link>
           </div>
         </div>
       </div>
