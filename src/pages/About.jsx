@@ -163,38 +163,53 @@ const About = () => {
               </div>
               <div className="philanthropy-images">
                 <ImageSlider />
-                <div className="secondary-images grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+
+                <div className="secondary-images grid grid-cols-1 sm:grid-cols-2 mb-9 md:grid-cols-3 gap-4">
                   {/* Image 1 */}
-                  <div className="relative w-full h-[450px] overflow-hidden mb-3 group">
-                    {/* Image */}
-                    <img
-                      src="https://i-p.rmcdn.net/6704dad37ea051caab873de5/5089501/image-4c92c200-0b12-4881-9dca-0d54008841f0.jpg?e=webp&cX=21&cY=219&cW=497&cH=730"
-                      alt="Philanthropy event 1"
-                      className="w-full h-full object-cover transition duration-500 group-hover:"
-                    />
-
-                    {/* Overlay description */}
-                    <div className="absolute inset-0 flex justify-start items-start bg-white/30 bg-opacity-70 opacity-0 group-hover:opacity-100 transition duration-500 [word-spacing:4px]"></div>
+                  <div className="flex flex-col">
+                    <div className="relative w-full h-[450px] overflow-hidden mb-3">
+                      <img
+                        src="https://i-p.rmcdn.net/6704dad37ea051caab873de5/5089501/image-4c92c200-0b12-4881-9dca-0d54008841f0.jpg?e=webp&cX=21&cY=219&cW=497&cH=730"
+                        alt="Philanthropy event 1"
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <h3 className="text-xl font-semibold mb-2">Rural Education Initiative</h3>
+                    <p className="text-gray-600 text-sm leading-relaxed">Supporting educational development</p>
                   </div>
 
-                  <div className="relative w-full h-[450px] overflow-hidden mb-3 group">
-                    <img
-                      src="https://i-p.rmcdn.net/6704dad37ea051caab873de5/5089501/image-53ca596e-3d84-4dd1-8fb9-53c83ebc53b5.jpg?w=298&e=webp&cX=349.824200913242&cY=0&cW=580.351598173516&cH=853"
-                      alt="Philanthropy event 2"
-                      className="w-full h-full object-cover transition duration-500 group-hover:"
-                    />
-                    <div className="absolute inset-0 flex justify-start items-start bg-white/30 bg-opacity-70 opacity-0 group-hover:opacity-100 transition duration-500 [word-spacing:4px]"></div>
+                  {/* Image 2 */}
+                  <div className="flex flex-col">
+                    <div className="relative w-full h-[450px] overflow-hidden mb-3">
+                      <img
+                        src="https://i-p.rmcdn.net/6704dad37ea051caab873de5/5089501/image-53ca596e-3d84-4dd1-8fb9-53c83ebc53b5.jpg?w=298&e=webp&cX=349.824200913242&cY=0&cW=580.351598173516&cH=853"
+                        alt="Philanthropy event 2"
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <h3 className="text-xl font-semibold mb-2">Healthcare Outreach</h3>
+                    <p className="text-gray-600 text-sm leading-relaxed">Providing accessible healthcare</p>
                   </div>
 
-                  <div className="relative w-full h-[450px] overflow-hidden mb-3 group">
-                    <img
-                      src="https://i-p.rmcdn.net/6704dad37ea051caab873de5/5089501/image-610e2dc9-d97d-4c7e-aae1-f14a11d76a30.jpg?w=632&e=webp&cX=28.53881278538813&cY=0&cW=1442.9223744292237&cH=1000"
-                      alt="Philanthropy event 3"
-                      className="w-full h-full object-cover transition duration-500 group-hover:"
-                    />
-                    <div className="absolute inset-0 flex justify-start items-start bg-white/30 bg-opacity-70 opacity-0 group-hover:opacity-100 transition duration-500 [word-spacing:4px]"></div>
+                  {/* Image 3 */}
+                  <div className="flex flex-col">
+                    <div className="relative w-full h-[450px] overflow-hidden mb-3">
+                      <img
+                        src="https://i-p.rmcdn.net/6704dad37ea051caab873de5/5089501/image-610e2dc9-d97d-4c7e-aae1-f14a11d76a30.jpg?w=632&e=webp&cX=28.53881278538813&cY=0&cW=1442.9223744292237&cH=1000"
+                        alt="Philanthropy event 3"
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <h3 className="text-xl font-semibold mb-2">Community Development</h3>
+                    <p className="text-gray-600 text-sm leading-relaxed">Implementing sustainable</p>
                   </div>
                 </div>
+                <a
+                  href="#"
+                  className="text-md font-extrabold mt-11 tracking-tighter text-foreground hover:text-primary-foreground"
+                >
+                  View more
+                </a>
               </div>
             </div>
           </div>

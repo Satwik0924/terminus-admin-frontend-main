@@ -166,22 +166,9 @@ const OfficeComponent = () => {
             Over adecade of delivering projects that are at the
             <br /> forefront of modern design, every time setting a<br /> benchmark in Hyderabad
           </p>
-          <motion.p
-            style={{
-              color: "#727272",
-              opacity: "0.6",
-              fontSize: "18px",
-              letterSpacing: "-0.7px",
-              lineHeight: "1.6",
-              marginBottom: "20px",
-              fontWeight: "bold",
-            }}
-            whileHover={{ color: "#f58220" }}
-          >
-            <a style={{ all: "unset" }} href="#" target="_blank" rel="noopener noreferrer">
-              Hear from our Founder Chairman
-            </a>
-          </motion.p>
+          <a href="#" className="text-lg font-bold mt-11 mb-11  text-foreground hover:text-primary-foreground">
+            Hear from our founder chairman
+          </a>
         </div>
         <DrivenByMission />
         {/* Team Section */}
