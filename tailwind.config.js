@@ -55,5 +55,5 @@ export default {
       },
     },
   },
-  plugins: [animate, require("@tailwindcss/line-clamp")],
+  plugins: [animate],
 };
