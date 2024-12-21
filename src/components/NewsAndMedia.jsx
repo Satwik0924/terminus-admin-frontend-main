@@ -45,12 +45,26 @@ const NewsMedia = () => {
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {newsData.map((news) => (
-            <div key={news.id} className=" overflow-hidden bg-white ">
+            <div key={news.id} className="overflow-hidden bg-white relative group">
               <a href={news.link} target="_blank" rel="noopener noreferrer" className="block text-inherit">
-                <img src={news.image} alt={news.title} className="w-full h-64 object-cover" />
-                <div className="p-0">
-                  <h3 className="text-lg mt-3 tracking-tighter leading-4 font-bold  text-black">{news.title}</h3>
-                  <p className="text-md leading-6 tracking-tighter text-black mt-1">{news.caption}</p>
+                {/* Image container */}
+                <div className="relative">
+                  <img
+                    src={news.image}
+                    alt={news.title}
+                    className="w-full h-80 object-cover transition-opacity duration-500 ease-in-out group-hover:opacity-80"
+                  />
+                  {/* Hover overlay */}
+                  <div className="absolute inset-0 bg-white/30 bg-opacity-50 flex  opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                    <span className="text-gray-700 font-bold text-left align-top mt-3 ml-3 text-lg ">View More</span>
+                  </div>
+                </div>
+                {/* Content */}
+                <div className="p-3">
+                  <h3 className="text-lg mt-3 tracking-tighter leading-normal font-semibold text-black">
+                    {news.title}
+                  </h3>
+                  <p className="text-md leading-6 tracking-tighter text-foreground mt-3">{news.caption}</p>
                 </div>
               </a>
             </div>

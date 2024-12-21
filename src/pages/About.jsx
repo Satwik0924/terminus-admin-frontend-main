@@ -3,6 +3,7 @@ import ConsultantsAndPartners from "@/components/Consultants";
 import DrivenByMission from "@/components/DrivenBy";
 import Footer from "@/components/Footer";
 import ImageSlider from "@/components/imageslider";
+import NewsMedia from "@/components/NewsAndMedia";
 import OfficeComponent from "@/components/OfficeGrid";
 import { motion, useAnimation } from "framer-motion";
 import { useEffect, useState } from "react";
@@ -143,6 +144,7 @@ const About = () => {
             >
               News & Media
             </motion.h1>
+            <NewsMedia />
           </div>
 
           <div id="hospitality" style={{ textAlign: "left" }}>
@@ -175,7 +177,6 @@ const About = () => {
                       />
                     </div>
                     <h3 className="text-xl font-semibold mb-2">Rural Education Initiative</h3>
-                    <p className="text-gray-600 text-sm leading-relaxed">Supporting educational development</p>
                   </div>
 
                   {/* Image 2 */}
@@ -188,7 +189,6 @@ const About = () => {
                       />
                     </div>
                     <h3 className="text-xl font-semibold mb-2">Healthcare Outreach</h3>
-                    <p className="text-gray-600 text-sm leading-relaxed">Providing accessible healthcare</p>
                   </div>
 
                   {/* Image 3 */}
@@ -201,7 +201,6 @@ const About = () => {
                       />
                     </div>
                     <h3 className="text-xl font-semibold mb-2">Community Development</h3>
-                    <p className="text-gray-600 text-sm leading-relaxed">Implementing sustainable</p>
                   </div>
                 </div>
                 <a
