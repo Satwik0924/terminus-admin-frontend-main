@@ -162,6 +162,7 @@ const About = () => {
                 </p>
               </div>
               <div className="philanthropy-images">
+                <ImageSlider />
                 <div className="secondary-images grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                   {/* Image 1 */}
                   <div className="relative w-full h-[450px] overflow-hidden mb-3 group">

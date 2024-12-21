@@ -119,7 +119,6 @@ const OfficeComponent = () => {
             style={{
               width: "100%",
               height: "auto",
-              borderRadius: "8px",
             }}
           />
           <motion.h1
@@ -210,7 +209,6 @@ const OfficeComponent = () => {
               width: "100%",
               height: "auto",
               margin: "20px 0",
-              borderRadius: "8px",
             }}
           />
           <p

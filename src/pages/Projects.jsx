@@ -205,7 +205,9 @@ const Projects = () => {
                           className="w-full h-full object-cover transition duration-500 group-hover:blur-[2px]"
                         />
                         <div className="absolute inset-0 flex justify-top items-top bg-white/30 bg-opacity-70 opacity-0 group-hover:opacity-100 transition duration-500 [word-spacing:4px]">
-                          <p className="text-black text-left text-xl p-4">{project.description.substr(0, 88)}</p>
+                          <p className="text-black text-left text-xl p-4">
+                            {project.description.substr(0, 88) + "..."}
+                          </p>
                         </div>
                       </a>
                     </div>

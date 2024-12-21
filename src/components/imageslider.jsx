@@ -1,44 +1,54 @@
-import React from "react";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import React, { useState } from "react";
 
 const ImageSlider = () => {
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    arrows: true,
-    nextArrow: (
-      <div className="absolute top-1/2 right-4 transform -translate-y-1/2 text-white bg-black rounded-full p-2 shadow-lg cursor-pointer">
-        &rarr;
-      </div>
-    ),
-    prevArrow: (
-      <div className="absolute top-1/2 left-4 transform -translate-y-1/2 text-white bg-black rounded-full p-2 shadow-lg cursor-pointer">
-        &larr;
-      </div>
-    ),
+  const images = [
+    {
+      src: "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5089501/image-4c92c200-0b12-4881-9dca-0d54008841f0.jpg?e=webp&cX=21&cY=219&cW=497&cH=730",
+      link: "https://example.com/your-link1",
+    },
+    {
+      src: "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5089501/image-4c92c200-0b12-4881-9dca-0d54008841f0.jpg?e=webp&cX=21&cY=219&cW=497&cH=730",
+      link: "https://example.com/your-link2",
+    },
+    { src: "https://example.com/path/to/image3.jpg", link: "https://example.com/your-link3" },
+  ];
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const nextSlide = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
   };
 
   return (
-    <div className="relative max-w-4xl mx-auto">
-      <Slider {...settings}>
-        <div className="relative">
-          <img src="https://via.placeholder.com/600x400" alt="Slide 1" className="w-full h-auto" />
-        </div>
-        <div className="relative">
-          <img src="https://via.placeholder.com/600x400" alt="Slide 2" className="w-full h-auto" />
-        </div>
-        <div className="relative">
-          <img src="https://via.placeholder.com/600x400" alt="Slide 3" className="w-full h-auto" />
-        </div>
-        <div className="relative">
-          <img src="https://via.placeholder.com/600x400" alt="Slide 4" className="w-full h-auto" />
-        </div>
-      </Slider>
+    <div className="relative w-full mb-7 ">
+      {/* Image Slider */}
+      <div className="relative">
+        <a href={images[currentIndex].link}>
+          <img
+            src={images[currentIndex].src}
+            alt={`Image ${currentIndex + 1}`}
+            className="w-full  transition-transform duration-100"
+          />
+        </a>
+      </div>
+
+      {/* Left Arrow */}
+      <button onClick={prevSlide} className="absolute top-1/2 left-0 transform -translate-y-1/2 p-2 ">
+        <svg className="w-10 h-9" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="white">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M15 19l-7-7 7-7" />
+        </svg>
+      </button>
+
+      {/* Right Arrow */}
+      <button onClick={nextSlide} className="absolute top-1/2 right-0 transform -translate-y-1/2 p-2">
+        <svg className="w-10 h-8" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="white">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
     </div>
   );
 };
