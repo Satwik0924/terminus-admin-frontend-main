@@ -281,7 +281,7 @@ const OfficeComponent = () => {
               width: "100%",
               fontWeight: "500",
               fontSize: "48px",
-              margin: "20px 0",
+
               letterSpacing: "-2px",
               lineHeight: "60px",
               marginBottom: "7px",
