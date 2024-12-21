@@ -24,9 +24,10 @@ const Projects = () => {
       try {
         const response = await axios.get("https://api.terminus-group.com/forms/project");
         if (response.data && response.data.length > 0) {
-          console.log("projects data:", response.data);
+          // console.log("projects data:", response.data);
           setProjects(response.data);
           categorizeProjects(response.data);
+          // console.log(response.data[0].description.substr(0, 88));
         }
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -203,11 +204,8 @@ const Projects = () => {
                           alt={project.title}
                           className="w-full h-full object-cover transition duration-500 group-hover:blur-[2px]"
                         />
-                        {/* Overlay description */}
                         <div className="absolute inset-0 flex justify-top items-top bg-white/30 bg-opacity-70 opacity-0 group-hover:opacity-100 transition duration-500 [word-spacing:4px]">
-                          <p className="text-black text-left text-xl p-4">
-                            {project.description || "No description available"}
-                          </p>
+                          <p className="text-black text-left text-xl p-4">{project.description.substr(0, 88)}</p>
                         </div>
                       </a>
                     </div>
@@ -304,9 +302,19 @@ const Projects = () => {
                             className="w-full h-full object-cover object-center transition duration-500 group-hover:blur-[2px]"
                           />
                           {/* Overlay description */}
-                          <div className="absolute inset-0 flex justify-top items-top bg-white/30 bg-opacity-70 opacity-0 group-hover:opacity-100 transition duration-500 [word-spacing:4px]">
-                            <p className="text-black text-left text-xl p-4">
-                              {project.description || "No description available"}
+                          <div className="absolute inset-0 flex justify-top items-top bg-white/30 bg-opacity-70 opacity-0 group-hover:opacity-100 transition duration-500">
+                            <p
+                              className="text-black text-left text-xl p-4"
+                              style={{
+                                display: "-webkit-box", // Ensures multi-line text truncation works
+                                WebkitBoxOrient: "vertical", // Sets the box orientation to vertical
+                                WebkitLineClamp: 1, // Restricts visible lines to 4
+                                overflow: "hidden", // Hides the overflow text
+                                textOverflow: "ellipsis", // Adds "..." to indicate truncation
+                                whiteSpace: "normal", // Allows text to wrap
+                              }}
+                            >
+                              {project.description.substr(0, 88) || "No description available"}
                             </p>
                           </div>
                         </a>
