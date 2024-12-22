@@ -7,24 +7,37 @@ const ProjectDetailPage = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const [project, setProject] = useState(null);
+  const [relatedProjects, setRelatedProjects] = useState([]);
   const [youtubeVideoID, setYoutubeVideoID] = useState("");
 
   useEffect(() => {
     if (!id || !Number.parseInt(id)) navigate("/projects");
-    const handleDownload = () => {
-      const link = document.createElement("a");
-      link.href = project.brochureUrl; // The URL of the PDF
-      link.download = "brochure.pdf"; // You can set a custom filename here
-      link.click(); // Programmatically click the link to start the download
-    };
+
     const fetchData = async () => {
       try {
+        // Fetch the current project
         const response = await axios.get(`https://api.terminus-group.com/forms/project/${id}`);
-        if (response.data) setProject(response.data);
-        else return;
+        const currentProject = response.data;
 
-        const youtubeVideo = new URL(response.data.youtubeVideoUrl);
+        if (currentProject) {
+          setProject(currentProject);
 
+          // Fetch all projects
+          const allProjectsResponse = await axios.get(`https://api.terminus-group.com/forms/project`);
+          const allProjects = allProjectsResponse.data || [];
+
+          // Filter related projects by type
+          const related = allProjects.filter(
+            (proj) => proj.type === currentProject.type && proj._id !== currentProject._id
+          );
+          console.log(related);
+          setRelatedProjects(related);
+        } else {
+          console.error("No project data found.");
+        }
+
+        // Extract YouTube video ID if available
+        const youtubeVideo = new URL(currentProject.youtubeVideoUrl);
         switch (youtubeVideo.hostname) {
           case "www.youtube.com":
             setYoutubeVideoID(youtubeVideo.searchParams.get("v"));
@@ -39,7 +52,7 @@ const ProjectDetailPage = () => {
     };
 
     fetchData();
-  }, []);
+  }, [id, navigate]);
 
   if (!project) {
     return <div className="text-center mt-12 font-sans">Loading Project Data...</div>;
@@ -123,6 +136,40 @@ const ProjectDetailPage = () => {
                 className="w-full mb-5 object-cover h-[80dvh] object-center"
               />
             ))}
+          </div>
+        )}
+        {relatedProjects.length > 0 && (
+          <div style={{ padding: "20px" }}>
+            <h1 className="text-6xl text-primary-foreground font-bold mb-7">Related Projects</h1>
+            <div className="flex items-center flex-wrap gap-6">
+              {relatedProjects.map((project) => (
+                <div key={project._id} className="overflow-hidden group max-w-xs">
+                  <div className="relative w-[300px] h-[450px] overflow-hidden mb-3">
+                    <a href={`/projects/${project._id}`} className="relative w-full h-full overflow-hidden">
+                      <img
+                        src={project.images?.[0]}
+                        alt={project.title}
+                        className="w-full h-full object-cover transition duration-500 group-hover:blur-[2px]"
+                      />
+                      <div className="absolute inset-0 flex justify-top items-top bg-white/30 bg-opacity-70 opacity-0 group-hover:opacity-100 transition duration-500 [word-spacing:4px]">
+                        <p className="text-black text-left text-xl p-4">{project.description.substr(0, 88) + "..."}</p>
+                      </div>
+                    </a>
+                  </div>
+                  <div className="p-0 bg-white">
+                    <h2 className="font-bold text-2xl tracking-tight text-black mb-1">{project.title}</h2>
+                    <div className="flex items-center space-x-2">
+                      <p className="text-xl text-foreground leading-3 tracking-tighter">{`${project.location}, ${project.yearOfCompletion}`}</p>
+                    </div>
+                    <div className="grid grid-cols-2 gap-2 mt-8">
+                      <span className="px-2 py-1 text-sm bg-foreground/20 text-foreground text-center font-bold transition duration-300 ease-in-out hover:bg-primary-foreground hover:text-white">
+                        {project.status}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         )}
       </div>
