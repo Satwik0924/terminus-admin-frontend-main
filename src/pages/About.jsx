@@ -84,22 +84,23 @@ const About = () => {
 
   return (
     <div>
-      <div style={{ display: "flex", flexDirection: "row", fontFamily: "Arial, sans-serif", padding: "20px" }}>
+      <div className="flex p-5">
         {/* Side Sticky Section */}
         <div
-          style={{
-            flex: "2",
-            position: "sticky",
-            top: "150px",
-            height: "100%",
-            paddingRight: "20px",
-            display: window.innerWidth > 768 ? "block" : "none",
-          }}
+          //   style={{
+          //     flex: "2",
+          //     position: "sticky",
+          //     top: "150px",
+          //     height: "100%",
+          //     paddingRight: "20px",
+          //     display: window.innerWidth > 768 ? "block" : "none",
+          //   }}
+          className="flex-[2] sticky top-[150px] h-full pr-5 max-lg:hidden"
         >
-          <ul className="list-none pl-8 text-5xl leading-1 tracking-tighter space-y-0">
+          <ul className="list-none pl-8 text-5xl !leading-3 tracking-tight space-y-0">
             {[
               { id: "commercial", label: "Team" },
-              { id: "residential", label: "News&Media" },
+              { id: "residential", label: "News & Media" },
               { id: "hospitality", label: "Philanthropy" },
               { id: "lifesciences", label: "Awards" },
               { id: "retail", label: "Consultants & Partners" },
@@ -126,8 +127,8 @@ const About = () => {
             display: "flex",
             flexDirection: "column",
             gap: "40px",
-            paddingRight: "30px",
-            marginRight: "30px",
+            // paddingRight: "30px",
+            // marginRight: "30px",
             width: "100%",
           }}
         >
@@ -151,22 +152,22 @@ const About = () => {
             <motion.h1
               animate={controlsHospitality}
               initial={{ color: "#D3D3D3" }}
-              className="md:text-[5.3rem] leading-none text-5xl py-10 font-medium text-[#A0A0A0] text-left tracking-tighter"
+              className="md:text-[5.3rem] leading-none text-5xl pt-10 font-medium text-[#A0A0A0] text-left tracking-tighter"
             >
               Philanthrophy
             </motion.h1>
-            <div className="philanthropy-section mx-0 text-left w-fulll px-4 py-8">
-              <div className="philanthropy-text mb-6 left text-gray-800">
-                <p className="text-lg text-left leading-relaxed tracking-tight">
+            <div className="philanthropy-section text-left w-full pb-8">
+              <div className="philanthropy-text mb-6 mt-2 left text-foreground/70">
+                <p className="text-lg text-left !leading-snug tracking-tighter">
                   At Terminus Group, we believe in giving back to the community. Our<br></br> philanthropic efforts
                   focus on creating lasting, positive impact by<br></br> supporting initiatives that foster education,
                   sustainability, and social<br></br> equity. Together, we aim to build a better tomorrow.
                 </p>
               </div>
-              <div className="philanthropy-images">
+              <div className="philanthropy-images mt-24">
                 <ImageSlider />
 
-                <div className="secondary-images grid grid-cols-1 sm:grid-cols-2 mb-9 md:grid-cols-3 gap-4">
+                <div className="secondary-images grid grid-cols-1 sm:grid-cols-2 mb-9 md:grid-cols-3 gap-6 mt-16">
                   {/* Image 1 */}
                   <div className="flex flex-col">
                     <div className="relative w-full h-[450px] overflow-hidden mb-3">
@@ -176,7 +177,9 @@ const About = () => {
                         className="w-full h-full object-cover"
                       />
                     </div>
-                    <h3 className="text-xl font-semibold mb-2">Rural Education Initiative</h3>
+                    <h3 className="text-lg tracking-tighter text-black leading-tight mb-2">
+                      Rural Education Initiative
+                    </h3>
                   </div>
 
                   {/* Image 2 */}
@@ -188,7 +191,7 @@ const About = () => {
                         className="w-full h-full object-cover"
                       />
                     </div>
-                    <h3 className="text-xl font-semibold mb-2">Healthcare Outreach</h3>
+                    <h3 className="text-lg tracking-tighter text-black leading-tight mb-2">Healthcare Outreach</h3>
                   </div>
 
                   {/* Image 3 */}
@@ -200,7 +203,7 @@ const About = () => {
                         className="w-full h-full object-cover"
                       />
                     </div>
-                    <h3 className="text-xl font-semibold mb-2">Community Development</h3>
+                    <h3 className="text-lg tracking-tighter text-black leading-tight mb-2">Community Development</h3>
                   </div>
                 </div>
                 <a

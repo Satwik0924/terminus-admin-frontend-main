@@ -1,7 +1,9 @@
 import axios from "axios";
 import { motion, useAnimation } from "framer-motion";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
+import Balancer from "react-wrap-balancer";
 
 const Projects = () => {
   const [projects, setProjects] = useState([]);
@@ -109,27 +111,19 @@ const Projects = () => {
 
   return (
     <div>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          fontFamily: "Arial, sans-serif",
-          padding: "20px",
-          gap: "10rem",
-        }}
-      >
+      <div className="flex sm:!pb-32 !pb-16 xl:p-5 max-md:p-5 gap-32">
         {/* Side Sticky Section */}
         <div
-          style={{
-            flex: "1",
-            position: "sticky",
-            top: "150px",
-            height: "100%",
-            paddingRight: "20px",
-            display: window.innerWidth > 768 ? "block" : "none",
-          }}
+          //   style={{
+          //     flex: "1",
+          //     position: "sticky",
+          //     top: "150px",
+          //     height: "100%",
+          //     display: window.innerWidth > 768 ? "block" : "none",
+          //   }}
+          className="sticky flex-1 top-[150px] h-full max-md:hidden"
         >
-          <ul className="list-none pl-8 text-5xl tracking-tighter -space-y-1">
+          <ul className="list-none pl-8 xl:text-5xl text-3xl tracking-tighter -space-y-1">
             <li>
               <h1 className="mb-5 text-primary-foreground font-semibold">Key Projects</h1>
             </li>
@@ -144,7 +138,7 @@ const Projects = () => {
               <li key={id}>
                 <a
                   href={`#${id}`}
-                  className={`no-underline text-4xl transition-colors duration-300 ${
+                  className={`no-underline xl:text-4xl text-2xl transition-colors duration-300 ${
                     activeSection === id ? "text-[#F58220]" : "text-foreground hover:text-primary-foreground"
                   }`}
                 >
@@ -154,7 +148,7 @@ const Projects = () => {
             ))}
           </ul>
           <div className="grid mt-12 px-0 w-full pl-8">
-            <div className="grid grid-cols-2 w-full gap-3">
+            <div className="grid grid-cols-2 max-[1440px]:grid-cols-1 w-full gap-3">
               {["Completed", "Ongoing", "Launching Soon"].map((status, index) => (
                 <div key={index} className="flex items-center justify-center">
                   <span
@@ -185,43 +179,47 @@ const Projects = () => {
             <motion.h1
               animate={controlsCommercial}
               initial={{ color: "#D3D3D3" }}
-              className="md:text-[5.3rem] leading-none text-5xl py-10 font-medium text-[#A0A0A0] text-left tracking-tighter"
+              className="xl:text-[5.3rem] leading-none text-6xl py-10 font-medium text-[#A0A0A0] text-left tracking-tighter"
             >
               Commercial
             </motion.h1>
 
             {/* Projects */}
             <div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
-              <div className="flex items-center flex-wrap gap-6">
+              <div className="grid grid-cols-4 max-[1440px]:grid-cols-3 max-xl:grid-cols-2 max-[569px]:grid-cols-1 gap-6 gap-y-24">
                 {commercialProjects.map((project) => (
                   // ... Commercial projects content (unchanged)
-                  <div key={project._id} className="overflow-hidden group max-w-xs">
-                    <div className="relative w-[300px] h-[450px] overflow-hidden mb-3">
-                      <a href={`/projects/${project._id}`} className="relative w-full h-full overflow-hidden">
+                  <div key={project._id} className="overflow-hidden group">
+                    <div className="relative w-full h-[400px] overflow-hidden mb-3">
+                      <Link to={`/projects/${project._id}`} className="relative w-full h-full overflow-hidden">
                         {/* Image */}
                         <img
                           src={project.images?.[0]}
                           alt={project.title}
                           className="w-full h-full object-cover transition duration-500 group-hover:blur-[2px]"
                         />
-                        <div className="absolute inset-0 flex justify-top items-top bg-white/30 bg-opacity-70 opacity-0 group-hover:opacity-100 transition duration-500 [word-spacing:4px]">
-                          <p className="text-black text-left text-xl p-4">
-                            {project.description.substr(0, 88) + "..."}
-                          </p>
+                        <div className="absolute inset-0 flex justify-top items-top bg-white/50 bg-opacity-70 opacity-0 group-hover:opacity-100 transition duration-500 [word-spacing:4px]">
+                          <div className="p-4">
+                            <p className="text-black text-left text-lg !line-clamp-4 !text-ellipsis">
+                              {project.description}
+                            </p>
+                          </div>
                         </div>
-                      </a>
+                      </Link>
                     </div>
 
                     {/* Project Details */}
                     <div className="p-0 bg-white">
-                      <h2 className="font-bold text-2xl tracking-tight text-black mb-1">{project.title}</h2>
+                      <h2 className="font-bold text-2xl tracking-tight text-black mb-1 line-clamp-1 text-ellipsis">
+                        {project.title}
+                      </h2>
                       <div className="flex items-center space-x-2">
                         <p className="text-xl text-foreground leading-3 tracking-tighter">{`${project.location}, ${project.yearOfCompletion}`}</p>
                       </div>
 
                       <div className="grid grid-cols-2 gap-2 w-full"></div>
 
-                      <div className="grid grid-cols-2 gap-2 mt-8">
+                      <div className="grid grid-cols-1 gap-2 mt-8">
                         <span className="px-2 py-1 text-sm bg-foreground/20 text-foreground text-center font-bold transition duration-300 ease-in-out hover:bg-primary-foreground hover:text-white">
                           {project.status}
                         </span>
@@ -233,23 +231,16 @@ const Projects = () => {
             </div>
 
             {/* Clientele section */}
-            <div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
+            <div className="p-5 my-16">
               {/* ... Clientele content (unchanged) ... */}
-              <p
-                style={{
-                  fontWeight: "bold",
-                  fontSize: "24px",
-                  marginBottom: "10px",
-                }}
-              >
-                Clientele
-              </p>
+              <p className="font-bold text-2xl mb-3 text-black tracking-tighter">Clientele</p>
               <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "repeat(auto-fit, minmax(120px, 1fr))",
-                  gap: "16px",
-                }}
+                // style={{
+                //   display: "grid",
+                //   gridTemplateColumns: "repeat(auto-fit, minmax(120px, 1fr))",
+                //   gap: "16px",
+                // }}
+                className="grid grid-cols-[repeat(auto-fit,minmax(150px,1fr))] gap-4"
               >
                 {["Microchip", "ADP", "NetenRich", "Amazon", "Verizon", "Samsung", "Google", "Intel"].map(
                   (company, index) => (
@@ -292,11 +283,11 @@ const Projects = () => {
 
               {/* Projects */}
               <div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
-                <div className="flex items-center flex-wrap gap-6">
+                <div className="grid grid-cols-4 max-[1440px]:grid-cols-3 max-xl:grid-cols-2 max-[569px]:grid-cols-1 gap-6 gap-y-24">
                   {projects.map((project) => (
-                    <div key={project._id} className="overflow-hidden group max-w-xs">
-                      <div className="relative w-[300px] h-[450px] overflow-hidden mb-3">
-                        <a href={`/projects/${project._id}`} className="relative w-full h-full overflow-hidden">
+                    <div key={project._id} className="overflow-hidden group">
+                      <div className="relative w-full h-[400px] overflow-hidden mb-3">
+                        <Link to={`/projects/${project._id}`} className="relative w-full h-full overflow-hidden">
                           {/* Image */}
                           <img
                             src={project.images?.[0]}
@@ -304,35 +295,29 @@ const Projects = () => {
                             className="w-full h-full object-cover object-center transition duration-500 group-hover:blur-[2px]"
                           />
                           {/* Overlay description */}
-                          <div className="absolute inset-0 flex justify-top items-top bg-white/30 bg-opacity-70 opacity-0 group-hover:opacity-100 transition duration-500">
-                            <p
-                              className="text-black text-left text-xl p-4"
-                              style={{
-                                display: "-webkit-box", // Ensures multi-line text truncation works
-                                WebkitBoxOrient: "vertical", // Sets the box orientation to vertical
-                                WebkitLineClamp: 1, // Restricts visible lines to 4
-                                overflow: "hidden", // Hides the overflow text
-                                textOverflow: "ellipsis", // Adds "..." to indicate truncation
-                                whiteSpace: "normal", // Allows text to wrap
-                              }}
-                            >
-                              {project.description.substr(0, 88) || "No description available"}
-                            </p>
+                          <div className="absolute inset-0 flex justify-top items-top bg-white/50 bg-opacity-70 opacity-0 group-hover:opacity-100 transition duration-500">
+                            <div className="p-4">
+                              <p className="text-black text-left text-lg !line-clamp-4 !text-ellipsis">
+                                {project.description}
+                              </p>
+                            </div>
                           </div>
-                        </a>
+                        </Link>
                       </div>
 
                       {/* Project Details */}
                       <div className="p-0 bg-white">
-                        <h2 className="font-bold text-2xl tracking-tight text-black mb-1">{project.title}</h2>
+                        <h2 className="font-bold text-2xl tracking-tight text-black mb-1 line-clamp-1 text-ellipsis">
+                          {project.title}
+                        </h2>
                         <div className="flex items-center space-x-2">
                           <p className="text-xl text-foreground leading-3 tracking-tighter">{`${project.location}, ${project.yearOfCompletion}`}</p>
                         </div>
 
                         <div className="grid grid-cols-2 gap-2 w-full"></div>
 
-                        <div className="grid grid-cols-2 gap-2 mt-8">
-                          <span className="px-2 py-1  text-sm bg-foreground/20 text-foreground text-center font-bold transition duration-300 ease-in-out hover:bg-primary-foreground hover:text-white">
+                        <div className="grid grid-cols-1 gap-2 mt-8">
+                          <span className="px-2 py-1 text-sm bg-foreground/20 text-foreground text-center font-bold transition duration-300 ease-in-out hover:bg-primary-foreground hover:text-white">
                             {project.status}
                           </span>
                         </div>
@@ -341,22 +326,15 @@ const Projects = () => {
                   ))}
                 </div>
               </div>
-              <div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
-                <p
-                  style={{
-                    fontWeight: "bold",
-                    fontSize: "24px",
-                    marginBottom: "10px",
-                  }}
-                >
-                  Clientele
-                </p>
+              <div className="p-5 my-16">
+                <p className="font-bold text-2xl mb-3 text-black tracking-tighter">Clientele</p>
                 <div
-                  style={{
-                    display: "grid",
-                    gridTemplateColumns: "repeat(auto-fit, minmax(120px, 1fr))",
-                    gap: "16px",
-                  }}
+                  // style={{
+                  //   display: "grid",
+                  //   gridTemplateColumns: "repeat(auto-fit, minmax(120px, 1fr))",
+                  //   gap: "16px",
+                  // }}
+                  className="grid grid-cols-[repeat(auto-fit,minmax(150px,1fr))] gap-4"
                 >
                   {["Microchip", "ADP", "NetenRich", "Amazon", "Verizon", "Samsung", "Google", "Intel"].map(
                     (company, index) => (
@@ -427,30 +405,33 @@ const Projects = () => {
             <motion.h1
               animate={controlsEducation}
               initial={{ color: "#D3D3D3" }}
-              className="md:text-[5.3rem] leading-none text-5xl py-10 font-medium text-[#A0A0A0] text-left tracking-tighter"
+              className="md:text-[5.3rem] leading-none text-5xl mt-10 pb-3 font-medium text-[#A0A0A0] text-left tracking-tighter"
             >
               Education
             </motion.h1>
 
             {/* Description */}
-            <p className="text-md xl:text-lg text-foreground mb-4 tracking-tigher !leading-tight [word-spacing:1px] max-w-xl">
-              In 2023, Terminus group deepened their relationship with Capella &ndash; India&apos;s leading edu infra
-              company. Their commitment to reshaping the educational experience aims to meet the growing demand for
-              quality education through state-of-the-art facilities and a unique business model. By leveraging their
-              expertise in educational infrastructure, Capella is positioning itself as a key player in revolutionizing
-              the education sector in India, focusing on building sustainable, cutting-edge environments that support
-              both learning and professional development. This partnership combines Capella&apos;s education-focused
-              infrastructure with Terminus&apos;s real estate expertise, thus creating a robust platform to advance
-              industry standards and help elevate real estate education across the country.
+            <p className="text-md xl:text-lg text-foreground mb-8 tracking-tigher !leading-tight [word-spacing:1px] max-w-xl">
+              <Balancer>
+                In 2023, Terminus group deepened their relationship with Capella &ndash; India&apos;s leading edu infra
+                company. Their commitment to reshaping the educational experience aims to meet the growing demand for
+                quality education through state-of-the-art facilities and a unique business model. By leveraging their
+                expertise in educational infrastructure, Capella is positioning itself as a key player in
+                revolutionizing the education sector in India, focusing on building sustainable, cutting-edge
+                environments that support both learning and professional development. This partnership combines
+                Capella&apos;s education-focused infrastructure with Terminus&apos;s real estate expertise, thus
+                creating a robust platform to advance industry standards and help elevate real estate education across
+                the country.
+              </Balancer>
             </p>
 
             {/* Read More */}
-            <a
-              href="#"
+            <Link
+              to="#"
               className="text-md font-extrabold tracking-tighter text-foreground hover:text-primary-foreground"
             >
               Read More
-            </a>
+            </Link>
           </div>
         </div>
       </div>

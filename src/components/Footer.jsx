@@ -1,4 +1,3 @@
-import React from "react";
 import LogoFooter from "../assets/tg_logo_full.webp";
 
 const projectLinks = [
@@ -6,6 +5,8 @@ const projectLinks = [
   { label: "Residential", href: "/projects#residential" },
   { label: "Hospitality", href: "/projects#hospitality" },
   { label: "Life Sciences", href: "/projects#lifesciences" },
+  { label: "Retail", href: "/projects#retail" },
+  { label: "Education", href: "/projects#education" },
 ];
 
 const aboutLinks = [
@@ -23,7 +24,6 @@ const socialLinks = [
   { label: "Facebook", href: "https://www.facebook.com/terminusindiaindia" },
   { label: "Instagram", href: "https://www.instagram.com/terminus_group_" },
   { label: "Twitter", href: "https://x.com/Terminus_Group_" },
-  { label: "Pinterest", href: "#" },
 ];
 
 const Footer = () => {
@@ -39,10 +39,13 @@ const Footer = () => {
         <div className="flex-1 max-lg:w-full">
           <div className="grid grid-cols-3 gap-6 place-items-center items-start w-full max-sm:grid-cols-2">
             {/* Projects */}
-            <ul className="space-y-3 text-md font-normal">
-              <h3 className="text-primary-foreground font-serif">Projects</h3>
+            <ul className="space-y-1 text-md font-normal">
+              <h3 className="text-primary-foreground font-medium tracking-tighter">Projects</h3>
               {projectLinks.map((project, index) => (
-                <li className="font-serif hover:underline hover:underline-offset-4" key={`${project.label}-${index}`}>
+                <li
+                  className="hover:underline hover:underline-offset-4 text-black tracking-tighter"
+                  key={`${project.label}-${index}`}
+                >
                   <a style={{ all: "unset" }} href={`${project.href}`}>
                     {project.label}
                   </a>
@@ -50,10 +53,13 @@ const Footer = () => {
               ))}
             </ul>
             {/* About */}
-            <ul className="space-y-3 text-md font-normal">
-              <h3 className="text-primary-foreground font-serif">About</h3>
+            <ul className="space-y-1 text-md font-normal">
+              <h3 className="text-primary-foreground font-medium tracking-tighter">About</h3>
               {aboutLinks.map((project, index) => (
-                <li className="font-serif hover:underline hover:underline-offset-4" key={`${project.label}-${index}`}>
+                <li
+                  className="hover:underline hover:underline-offset-4 text-black tracking-tighter"
+                  key={`${project.label}-${index}`}
+                >
                   <a style={{ all: "unset" }} href={`${project.href}`}>
                     {project.label}
                   </a>
@@ -61,10 +67,13 @@ const Footer = () => {
               ))}
             </ul>
             {/* Contact */}
-            <ul className="space-y-3 text-md font-normal">
-              <h3 className="text-primary-foreground font-serif">Contact</h3>
+            <ul className="space-y-1 text-md font-normal">
+              <h3 className="text-primary-foreground font-medium tracking-tighter">Contact</h3>
               {contactLinks.map((project, index) => (
-                <li className="font-serif hover:underline hover:underline-offset-4" key={`${project.label}-${index}`}>
+                <li
+                  className="hover:underline hover:underline-offset-4 text-black tracking-tighter"
+                  key={`${project.label}-${index}`}
+                >
                   <a style={{ all: "unset" }} href={`${project.href}`}>
                     {project.label}
                   </a>
@@ -72,7 +81,10 @@ const Footer = () => {
               ))}
               <li className="h-6 my-3"></li> {/* Adds a subtle dividing line */}
               {socialLinks.map((project, index) => (
-                <li className="font-serif hover:underline hover:underline-offset-4" key={`${project.label}-${index}`}>
+                <li
+                  className="hover:underline hover:underline-offset-4 text-black tracking-tighter"
+                  key={`${project.label}-${index}`}
+                >
                   <a style={{ all: "unset" }} href={`${project.href}`}>
                     {project.label}
                   </a>

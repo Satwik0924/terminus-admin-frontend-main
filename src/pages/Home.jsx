@@ -1,7 +1,4 @@
-import React from "react";
-import ConsultantsAndPartners from "../components/Consultants";
 import ContactSection from "../components/ContactUs";
-import DrivenByMission from "../components/DrivenBy";
 import Footer from "../components/Footer";
 import HorizontalScrollCarousel from "../components/HorizontalScroll";
 import ProjectsGrid from "../components/ProjectGrid";
@@ -14,9 +11,7 @@ const Home = () => {
       <Carousel />
       <StatsSection />
       <ProjectsGrid />
-
       <HorizontalScrollCarousel />
-
       <ContactSection />
       <Footer />
     </>

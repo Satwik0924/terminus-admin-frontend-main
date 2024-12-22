@@ -76,15 +76,15 @@ const DrivenByMission = () => {
           <img
             src="https://i-p.rmcdn.net/6704dad37ea051caab873de5/5089501/image-f38d4117-aff3-479c-8b59-fcc5ebdc66db.jpg?w=1903&e=webp&cX=41&cY=3337&cW=5222&cH=3084"
             alt="Founder Chairman Portrait"
-            className="w-[95%] h-auto mb-6 "
+            className="w-[95%] h-auto mb-2"
           />
 
           <h1 className="text-primary-foreground text-3xl font-bold mb-6">The Founder Chairman</h1>
 
-          <div className="space-y-3 w-2/3 text-gray-600">
+          <div className="space-y-3 w-2/3 !text-foreground/70">
             <p className="leading-relaxed tracking-tighter">
-              Mr. S.P. Reddy is an accomplished entrepreneur, philanthropist, and investor with a diverse career
-              spanning Information Technology, Federal Government, and Real Estate Development.
+              <strong>Mr. S.P. Reddy</strong> is an accomplished entrepreneur, philanthropist, and investor with a
+              diverse career spanning Information Technology, Federal Government, and Real Estate Development.
             </p>
 
             <p className="leading-relaxed tracking-tighter">
@@ -100,7 +100,7 @@ const DrivenByMission = () => {
               including Hospitality, Healthcare, Life Sciences, Commercial, Retail and Education.
             </p>
 
-            <p className="leading-relaxed tracking-tighter">
+            <p className="leading-relaxed tracking-tighter !mb-5">
               In addition to his business accomplishments, Mr. Reddy is deeply committed to philanthropy, spearheading
               initiatives like IMPACT, Sparsh, and the AIG Rural Outreach Program. His contributions to both industry
               and society have earned him numerous accolades.
@@ -108,7 +108,7 @@ const DrivenByMission = () => {
 
             <a
               href="#"
-              className="text-md font-extrabold mt-10 tracking-tighter text-foreground hover:text-primary-foreground"
+              className="text-md font-extrabold tracking-tighter text-foreground/70 hover:text-primary-foreground"
             >
               Read More
             </a>

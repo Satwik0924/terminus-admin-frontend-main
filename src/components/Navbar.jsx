@@ -137,7 +137,7 @@ const Navbar = () => {
             <li key={link.href}>
               <Link
                 to={link.href}
-                className="hover:text-primary-foreground text-[#727272] transition-opacity duration-200 ease-in-out lg:text-2xl text-lg font-bold"
+                className="hover:text-primary-foreground text-[#727272] transition-opacity duration-200 ease-in-out xl:text-2xl text-lg font-bold"
               >
                 {link.label}
               </Link>

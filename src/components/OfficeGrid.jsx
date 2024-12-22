@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { motion, useAnimation } from "framer-motion";
 import axios from "axios";
+import { motion, useAnimation } from "framer-motion";
+import { useEffect, useState } from "react";
+import Balancer from "react-wrap-balancer";
 import DrivenByMission from "./DrivenBy";
 
 const OfficeComponent = () => {
@@ -113,7 +114,7 @@ const OfficeComponent = () => {
         }}
       >
         {/* Top Section */}
-        <div id="team" style={{ textAlign: "left" }}>
+        <div id="team" style={{ textAlign: "left", marginBottom: "3rem" }}>
           <img
             src="https://c-p.rmcdn1.net/6704dad37ea051caab873de5/5089501/Image-6f2f2b02-4bf3-40e7-b6ba-f6a5ddfcafc7.gif"
             alt="Office Scene"
@@ -128,8 +129,8 @@ const OfficeComponent = () => {
               height: "60px",
               width: "100%",
               fontWeight: "500",
-              fontSize: "60px",
-              margin: "20px 0",
+              fontSize: "5rem",
+              margin: "3rem 0 30px",
               letterSpacing: "-2px",
               lineHeight: "60px",
               marginBottom: "7px",
@@ -147,27 +148,26 @@ const OfficeComponent = () => {
               letterSpacing: "-0.7px",
               lineHeight: "1.6",
               marginBottom: "20px",
+              maxWidth: "40rem",
             }}
           >
-            Featuring an established track record of creating luxury,
-            <br /> retail and corporate properties by partnering with
-            <br /> experts in the engineering and architecture industry
+            <Balancer>
+              Terminus aims to create a design-led future of cities, with visionary projects across India.
+              <br />
+              <br /> By focusing on the evolving needs of our clients and communities, we create spaces that foster
+              growth and productivity, advancing individual and societal goals through innovation and collaboration with
+              the finest designers and consultants. <br />
+              <br /> We are the builders of a new era, with a proven track record across a diverse set of properties,
+              operating across business verticals such as residential, commercial, mixed-use buildings, hospitality,
+              healthcare, life sciences, and education. Our services across the value chain include investment,
+              development, and asset and facility management.
+            </Balancer>
           </p>
-          <p
-            style={{
-              color: "#727272",
-              opacity: "0.5",
-              fontSize: "18px",
-              letterSpacing: "-0.7px",
-              lineHeight: "1.6",
-              marginBottom: "20px",
-            }}
+          <a
+            href="#"
+            className="text-lg font-bold mt-11 !text-foreground/70 tracking-tighter hover:!text-primary-foreground"
           >
-            Over adecade of delivering projects that are at the
-            <br /> forefront of modern design, every time setting a<br /> benchmark in Hyderabad
-          </p>
-          <a href="#" className="text-lg font-bold mt-11 mb-11  text-foreground hover:text-primary-foreground">
-            Hear from our founder chairman
+            Hear from our Founder Chairman
           </a>
         </div>
         <DrivenByMission />
@@ -180,7 +180,7 @@ const OfficeComponent = () => {
               width: "100%",
               fontWeight: "500",
               fontSize: "60px",
-              margin: "20px 0",
+              marginTop: "3rem",
               letterSpacing: "-2px",
               lineHeight: "60px",
               marginBottom: "7px",
@@ -199,64 +199,60 @@ const OfficeComponent = () => {
               margin: "20px 0",
             }}
           />
-          <p
-            style={{
-              color: "#727272",
-              opacity: "0.5",
-              fontSize: "18px",
-              letterSpacing: "-0.7px",
-              lineHeight: "1.6",
-              marginBottom: "20px",
-            }}
-          >
-            We believe that you can achieve the best product if you
-            <br /> have the best people in your team.
-          </p>
-          <p
-            style={{
-              color: "#727272",
-              opacity: "0.5",
-              fontSize: "18px",
-              letterSpacing: "-0.7px",
-              lineHeight: "1.6",
-              marginBottom: "20px",
-            }}
-          >
-            We have a diverse team from all fields of expertise in
-            <br /> architecture, legal, finance and facility management.
-            <br /> Together as a team, we have a wealth of experience
-            <br /> and skills to incorporate and bring the best-in-class
-            <br /> architectural wonders!
-          </p>
-          <p
-            style={{
-              color: "#727272",
-              opacity: "0.5",
-              fontSize: "18px",
-              letterSpacing: "-0.7px",
-              lineHeight: "1.6",
-              marginBottom: "20px",
-            }}
-          >
-            Each of our team members is innovative, tech-driven
-            <br /> and well-trained to contribute skilfully to our diverse
-            <br /> range of projects.
-          </p>
-          <p
-            style={{
-              color: "#727272",
-              opacity: "0.5",
-              fontSize: "18px",
-              letterSpacing: "-0.7px",
-              lineHeight: "1.6",
-              marginBottom: "20px",
-            }}
-          >
-            A talented group with a shared vision of delivering
-            <br /> consistently great results for our clients, we can proudly
-            <br /> say teamwork has always made planning easier, targets
-            <br /> achievable and quality uncompromisable.
-          </p>
+          <div className="max-w-lg">
+            <p
+              style={{
+                color: "#727272",
+                opacity: "0.8",
+                fontSize: "18px",
+                letterSpacing: "-0.7px",
+                lineHeight: "1.6",
+                marginBottom: "20px",
+              }}
+            >
+              We believe that you can achieve the best product if you have the best people in your team.
+            </p>
+            <p
+              style={{
+                color: "#727272",
+                opacity: "0.8",
+                fontSize: "18px",
+                letterSpacing: "-0.7px",
+                lineHeight: "1.6",
+                marginBottom: "20px",
+              }}
+            >
+              We have a diverse team from all fields of expertise in architecture, legal, finance and facility
+              management. Together as a team, we have a wealth of experience and skills to incorporate and bring the
+              best-in-class architectural wonders!
+            </p>
+            <p
+              style={{
+                color: "#727272",
+                opacity: "0.8",
+                fontSize: "18px",
+                letterSpacing: "-0.7px",
+                lineHeight: "1.6",
+                marginBottom: "20px",
+              }}
+            >
+              Each of our team members is innovative, tech-driven and well-trained to contribute skilfully to our
+              diverse range of projects.
+            </p>
+            <p
+              style={{
+                color: "#727272",
+                opacity: "0.8",
+                fontSize: "18px",
+                letterSpacing: "-0.7px",
+                lineHeight: "1.6",
+                marginBottom: "20px",
+              }}
+            >
+              A talented group with a shared vision of delivering consistently great results for our clients, we can
+              proudly say teamwork has always made planning easier, targets achievable and quality uncompromisable.
+            </p>
+          </div>
         </div>
 
         {/* Team Members Section */}
@@ -281,20 +277,20 @@ const OfficeComponent = () => {
           {loading ? (
             <p className="text-gray-600 text-lg">Loading team data...</p>
           ) : (
-            <div className="flex flex-wrap gap-5 justify-start">
+            <div className="grid grid-cols-3 max-xl:grid-cols-2 max-[569px]:grid-cols-1 gap-6">
               {teamData.map((member) => (
-                <div key={member.id} className="w-1/3 sm:w-1/4 text-left mb-5 relative group">
+                <div key={member.id} className="h-full w-full text-left mb-5 relative group">
                   <a
                     href={member.linkedinUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="block hover:opacity-80"
                   >
-                    <div className="relative">
+                    <div className="relative h-[400px] overflow-hidden w-full">
                       <img
                         src={member.image}
                         alt={member.name}
-                        className="w-full h-64 object-cover transition-opacity duration-500 ease-in-out group-hover:opacity-80"
+                        className="w-full h-full object-cover object-center transition-opacity duration-500 ease-in-out group-hover:opacity-80"
                       />
                       {/* Hover overlay */}
                       <div className="absolute inset-0 bg-white/30 bg-opacity-50 flex opacity-0 transition-opacity duration-300 group-hover:opacity-100">
