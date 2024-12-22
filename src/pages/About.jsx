@@ -1,6 +1,5 @@
 import AwardsComponent from "@/components/Awards";
 import ConsultantsAndPartners from "@/components/Consultants";
-import DrivenByMission from "@/components/DrivenBy";
 import Footer from "@/components/Footer";
 import ImageSlider from "@/components/imageslider";
 import NewsMedia from "@/components/NewsAndMedia";
@@ -83,7 +82,7 @@ const About = () => {
   }, []);
 
   return (
-    <div>
+    <div id="head">
       <div className="flex p-5">
         {/* Side Sticky Section */}
         <div

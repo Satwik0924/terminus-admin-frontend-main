@@ -1,7 +1,8 @@
+import { cn } from "@/lib/utils";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-const NewsMedia = () => {
+const NewsMedia = ({ className }) => {
   const [newsData, setNewsData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [scrolled, setScrolled] = useState(false);
@@ -39,7 +40,7 @@ const NewsMedia = () => {
   }, []);
 
   return (
-    <div id="news-section" className="py-12 max-w-screen-xl mx-auto">
+    <div id="news-section" className={cn("py-12 max-w-screen-xl", className)}>
       {loading ? (
         <p className="text-center">Fetching latest news...</p>
       ) : (

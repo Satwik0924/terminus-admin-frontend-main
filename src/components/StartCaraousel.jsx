@@ -17,6 +17,11 @@ const Carousel = () => {
   const [carouselCursor, setCarouselCursor] = useState("default");
   const intervalRef = useRef(null);
 
+  const scrollToProjects = () => {
+    const projects = document.getElementById("explore-projects");
+    if (projects) projects.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  };
+
   const resetInterval = () => {
     if (intervalRef.current) {
       clearInterval(intervalRef.current);
@@ -91,19 +96,19 @@ const Carousel = () => {
       />
 
       {/* Rotated Right-facing Arrow SVG */}
-      <a href="#explore-projects">
-        <svg
-          className="absolute bottom-4 left-1/2 transform -translate-x-1/2 rotate-90"
-          width="48"
-          height="48"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          stroke="white"
-        >
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="4" d="M9 5l7 7-7 7" />
-        </svg>
-      </a>
+
+      <svg
+        className="absolute bottom-4 left-1/2 transform -translate-x-1/2 rotate-90 cursor-pointer"
+        width="48"
+        height="48"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        stroke="white"
+        onClick={scrollToProjects}
+      >
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="4" d="M9 5l7 7-7 7" />
+      </svg>
     </div>
   );
 };

@@ -1,7 +1,8 @@
+import { cn } from "@/lib/utils";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-const AwardsComponent = () => {
+const AwardsComponent = ({ className }) => {
   const [awardsData, setAwardsData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [scrolled, setScrolled] = useState(false);
@@ -38,7 +39,7 @@ const AwardsComponent = () => {
   }, []);
 
   return (
-    <div id="awards-section" className="mt-5 mb-12">
+    <div id="awards-section" className={cn("mt-5 mb-12", className)}>
       {loading ? (
         <p className="text-center">Fetching our awards...</p>
       ) : (
