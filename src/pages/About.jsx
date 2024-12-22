@@ -224,6 +224,7 @@ const About = () => {
             >
               Awards
             </motion.h1>
+            <AwardsComponent />
           </div>
 
           <div id="retail" style={{ textAlign: "left" }}>
