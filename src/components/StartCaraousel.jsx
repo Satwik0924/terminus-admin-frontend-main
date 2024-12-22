@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const CHANGE_IMAGE_INTERVAL = 6 * 1000;
 
@@ -91,17 +91,19 @@ const Carousel = () => {
       />
 
       {/* Rotated Right-facing Arrow SVG */}
-      <svg
-        className="absolute bottom-4 left-1/2 transform -translate-x-1/2 rotate-90"
-        width="48"
-        height="48"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        stroke="white"
-      >
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="4" d="M9 5l7 7-7 7" />
-      </svg>
+      <a href="#explore-projects">
+        <svg
+          className="absolute bottom-4 left-1/2 transform -translate-x-1/2 rotate-90"
+          width="48"
+          height="48"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          stroke="white"
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="4" d="M9 5l7 7-7 7" />
+        </svg>
+      </a>
     </div>
   );
 };

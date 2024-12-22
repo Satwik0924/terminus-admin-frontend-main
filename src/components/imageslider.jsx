@@ -10,7 +10,10 @@ const ImageSlider = () => {
       src: "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5089501/image-4c92c200-0b12-4881-9dca-0d54008841f0.jpg?e=webp&cX=21&cY=219&cW=497&cH=730",
       link: "https://example.com/your-link2",
     },
-    { src: "https://example.com/path/to/image3.jpg", link: "https://example.com/your-link3" },
+    {
+      src: "https://assets.manutd.com/AssetPicker/images/0/0/10/126/687707/Legends-Profile_Cristiano-Ronaldo1523460877263.jpg",
+      link: "#",
+    },
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -24,14 +27,14 @@ const ImageSlider = () => {
   };
 
   return (
-    <div className="relative w-full mb-7 ">
+    <div className="relative w-full mb-7">
       {/* Image Slider */}
       <div className="relative">
         <a href={images[currentIndex].link}>
           <img
             src={images[currentIndex].src}
             alt={`Image ${currentIndex + 1}`}
-            className="w-full  transition-transform duration-100"
+            className="w-full transition-transform duration-100 h-[75vh] object-cover object-center"
           />
         </a>
       </div>

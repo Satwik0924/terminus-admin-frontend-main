@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useEffect, useState } from "react";
 
 const AwardsComponent = () => {
   const [awardsData, setAwardsData] = useState([]);
@@ -38,23 +38,23 @@ const AwardsComponent = () => {
   }, []);
 
   return (
-    <div id="awards-section" className="px-5 py-12 max-w-screen-xl mx-auto">
+    <div id="awards-section" className="mt-5 mb-12">
       {loading ? (
-        <p className="text-center">Loading awards data...</p>
+        <p className="text-center">Fetching our awards...</p>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {awardsData.map((award) => (
-            <div key={award.id} className="  overflow-hidden bg-white ">
-              <div className="w-full h-64 overflow-hidden">
+            <div key={award.id} className="overflow-hidden bg-white ">
+              <div className="w-full h-[400px] overflow-hidden">
                 <img
                   src={award.image}
                   alt={award.title}
                   className="w-full h-full object-cover transition-transform duration-300 hover:blur-sm"
                 />
               </div>
-              <div className="p-0">
-                <h3 className="text-3xl tracking-tighter  text-black mb-2">{award.title}</h3>
-                <p className="text-lg text-black">{award.description}</p>
+              <div className="mt-4">
+                <h3 className="text-3xl tracking-tighter text-black line-clamp-1">{award.title}</h3>
+                <p className="text-lg text-black tracking-tighter !leading-tight line-clamp-2">{award.description}</p>
               </div>
             </div>
           ))}

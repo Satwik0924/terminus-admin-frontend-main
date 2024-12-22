@@ -95,7 +95,7 @@ const About = () => {
           //     paddingRight: "20px",
           //     display: window.innerWidth > 768 ? "block" : "none",
           //   }}
-          className="flex-[2] sticky top-[150px] h-full pr-5 max-lg:hidden"
+          className="flex-1 sticky top-[150px] h-full pr-5 max-lg:hidden"
         >
           <ul className="list-none pl-8 text-5xl !leading-3 tracking-tight space-y-0">
             {[
@@ -109,7 +109,7 @@ const About = () => {
               <li key={id}>
                 <a
                   href={`#${id}`}
-                  className={`no-underline text-4xl transition-colors duration-300 ${
+                  className={`no-underline text-3xl transition-colors duration-300 !leading-8 ${
                     activeSection === id ? "text-[#F58220]" : "text-foreground hover:text-primary-foreground"
                   }`}
                 >
@@ -123,7 +123,7 @@ const About = () => {
         {/* Main Content */}
         <div
           style={{
-            flex: "3",
+            flex: "2",
             display: "flex",
             flexDirection: "column",
             gap: "40px",
@@ -132,7 +132,7 @@ const About = () => {
             width: "100%",
           }}
         >
-          <div id="commercial" style={{ textAlign: "left" }}>
+          <div style={{ textAlign: "left" }}>
             <OfficeComponent />
             {/* <DrivenByMission /> */}
           </div>
@@ -141,7 +141,7 @@ const About = () => {
             <motion.h1
               animate={controlsResidential}
               initial={{ color: "#D3D3D3" }}
-              className="md:text-[5.3rem] leading-none text-5xl py-10 font-medium text-[#A0A0A0] text-left tracking-tighter"
+              className="md:text-[5.3rem] leading-none text-5xl mt-10 mb-2 font-medium text-[#A0A0A0] text-left tracking-tighter"
             >
               News & Media
             </motion.h1>
@@ -167,9 +167,9 @@ const About = () => {
               <div className="philanthropy-images mt-24">
                 <ImageSlider />
 
-                <div className="secondary-images grid grid-cols-1 sm:grid-cols-2 mb-9 md:grid-cols-3 gap-6 mt-16">
+                <div className="secondary-images grid grid-cols-1 sm:grid-cols-2 mb-9 xl:grid-cols-4 gap-6 mt-16">
                   {/* Image 1 */}
-                  <div className="flex flex-col">
+                  <div className="flex flex-col xl:col-span-1">
                     <div className="relative w-full h-[450px] overflow-hidden mb-3">
                       <img
                         src="https://i-p.rmcdn.net/6704dad37ea051caab873de5/5089501/image-4c92c200-0b12-4881-9dca-0d54008841f0.jpg?e=webp&cX=21&cY=219&cW=497&cH=730"
@@ -183,7 +183,7 @@ const About = () => {
                   </div>
 
                   {/* Image 2 */}
-                  <div className="flex flex-col">
+                  <div className="flex flex-col xl:col-span-1">
                     <div className="relative w-full h-[450px] overflow-hidden mb-3">
                       <img
                         src="https://i-p.rmcdn.net/6704dad37ea051caab873de5/5089501/image-53ca596e-3d84-4dd1-8fb9-53c83ebc53b5.jpg?w=298&e=webp&cX=349.824200913242&cY=0&cW=580.351598173516&cH=853"
@@ -195,7 +195,7 @@ const About = () => {
                   </div>
 
                   {/* Image 3 */}
-                  <div className="flex flex-col">
+                  <div className="flex flex-col xl:col-span-2">
                     <div className="relative w-full h-[450px] overflow-hidden mb-3">
                       <img
                         src="https://i-p.rmcdn.net/6704dad37ea051caab873de5/5089501/image-610e2dc9-d97d-4c7e-aae1-f14a11d76a30.jpg?w=632&e=webp&cX=28.53881278538813&cY=0&cW=1442.9223744292237&cH=1000"

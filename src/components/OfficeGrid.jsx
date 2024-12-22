@@ -125,31 +125,32 @@ const OfficeComponent = () => {
           />
           <motion.h1
             id="heading1"
-            style={{
-              height: "60px",
-              width: "100%",
-              fontWeight: "500",
-              fontSize: "5rem",
-              margin: "3rem 0 30px",
-              letterSpacing: "-2px",
-              lineHeight: "60px",
-              marginBottom: "7px",
-            }}
+            // style={{
+            //   height: "60px",
+            //   width: "100%",
+            //   fontWeight: "500",
+            //   fontSize: "5rem",
+            //   letterSpacing: "-2px",
+            //   lineHeight: "60px",
+            //   marginBottom: "1rem",
+            // }}
+            className="text-8xl tracking-tighter mt-16 mb-5"
             animate={controlsLine1}
             initial={{ color: "#D3D3D3" }}
           >
             The Finest.
           </motion.h1>
           <p
-            style={{
-              color: "#727272",
-              opacity: "0.5",
-              fontSize: "18px",
-              letterSpacing: "-0.7px",
-              lineHeight: "1.6",
-              marginBottom: "20px",
-              maxWidth: "40rem",
-            }}
+            // style={{
+            //   color: "#727272",
+            //   opacity: "0.5",
+            //   fontSize: "18px",
+            //   letterSpacing: "-0.7px",
+            //   lineHeight: "1.6",
+            //   marginBottom: "20px",
+            //   maxWidth: "35rem",
+            // }}
+            className="text-foreground/70 text-lg tracking-tighter !leading-snug mb-5 max-w-xl"
           >
             <Balancer>
               Terminus aims to create a design-led future of cities, with visionary projects across India.
@@ -172,7 +173,7 @@ const OfficeComponent = () => {
         </div>
         <DrivenByMission />
         {/* Team Section */}
-        <div id="philanthropy" style={{ textAlign: "left" }}>
+        <div id="commercial" style={{ textAlign: "left" }}>
           <motion.h1
             id="heading2"
             style={{
@@ -201,53 +202,57 @@ const OfficeComponent = () => {
           />
           <div className="max-w-lg">
             <p
-              style={{
-                color: "#727272",
-                opacity: "0.8",
-                fontSize: "18px",
-                letterSpacing: "-0.7px",
-                lineHeight: "1.6",
-                marginBottom: "20px",
-              }}
+              //   style={{
+              //     color: "#727272",
+              //     opacity: "0.8",
+              //     fontSize: "18px",
+              //     letterSpacing: "-0.7px",
+              //     lineHeight: "1.6",
+              //     marginBottom: "20px",
+              //   }}
+              className="text-foreground/70 text-lg tracking-tighter leading-snug mb-5"
             >
               We believe that you can achieve the best product if you have the best people in your team.
             </p>
             <p
-              style={{
-                color: "#727272",
-                opacity: "0.8",
-                fontSize: "18px",
-                letterSpacing: "-0.7px",
-                lineHeight: "1.6",
-                marginBottom: "20px",
-              }}
+              //   style={{
+              //     color: "#727272",
+              //     opacity: "0.8",
+              //     fontSize: "18px",
+              //     letterSpacing: "-0.7px",
+              //     lineHeight: "1.6",
+              //     marginBottom: "20px",
+              //   }}
+              className="text-foreground/70 text-lg tracking-tighter leading-snug mb-5"
             >
               We have a diverse team from all fields of expertise in architecture, legal, finance and facility
               management. Together as a team, we have a wealth of experience and skills to incorporate and bring the
               best-in-class architectural wonders!
             </p>
             <p
-              style={{
-                color: "#727272",
-                opacity: "0.8",
-                fontSize: "18px",
-                letterSpacing: "-0.7px",
-                lineHeight: "1.6",
-                marginBottom: "20px",
-              }}
+              //   style={{
+              //     color: "#727272",
+              //     opacity: "0.8",
+              //     fontSize: "18px",
+              //     letterSpacing: "-0.7px",
+              //     lineHeight: "1.6",
+              //     marginBottom: "20px",
+              //   }}
+              className="text-foreground/70 text-lg tracking-tighter leading-snug mb-5"
             >
               Each of our team members is innovative, tech-driven and well-trained to contribute skilfully to our
               diverse range of projects.
             </p>
             <p
-              style={{
-                color: "#727272",
-                opacity: "0.8",
-                fontSize: "18px",
-                letterSpacing: "-0.7px",
-                lineHeight: "1.6",
-                marginBottom: "20px",
-              }}
+              //   style={{
+              //     color: "#727272",
+              //     opacity: "0.8",
+              //     fontSize: "18px",
+              //     letterSpacing: "-0.7px",
+              //     lineHeight: "1.6",
+              //     marginBottom: "20px",
+              //   }}
+              className="text-foreground/70 text-lg tracking-tighter leading-snug mb-5"
             >
               A talented group with a shared vision of delivering consistently great results for our clients, we can
               proudly say teamwork has always made planning easier, targets achievable and quality uncompromisable.
@@ -275,9 +280,9 @@ const OfficeComponent = () => {
             Leadership
           </motion.h1>
           {loading ? (
-            <p className="text-gray-600 text-lg">Loading team data...</p>
+            <p className="text-foreground/70 text-lg">Getting the team ready...</p>
           ) : (
-            <div className="grid grid-cols-3 max-xl:grid-cols-2 max-[569px]:grid-cols-1 gap-6">
+            <div className="grid grid-cols-4 max-[1440px]:grid-cols-3 max-xl:grid-cols-2 max-[569px]:grid-cols-1 gap-6">
               {teamData.map((member) => (
                 <div key={member.id} className="h-full w-full text-left mb-5 relative group">
                   <a
