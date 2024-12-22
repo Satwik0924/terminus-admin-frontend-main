@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useEffect, useState } from "react";
 
 const NewsMedia = () => {
   const [newsData, setNewsData] = useState([]);
@@ -43,7 +43,7 @@ const NewsMedia = () => {
       {loading ? (
         <p className="text-center">Loading news data...</p>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 w-full">
           {newsData.map((news) => (
             <div key={news.id} className="overflow-hidden bg-white relative group">
               <a href={news.link} target="_blank" rel="noopener noreferrer" className="block text-inherit">
@@ -52,19 +52,19 @@ const NewsMedia = () => {
                   <img
                     src={news.image}
                     alt={news.title}
-                    className="w-full h-80 object-cover transition-opacity duration-500 ease-in-out group-hover:opacity-80"
+                    className="w-full h-[400px] object-cover transition-opacity duration-500 ease-in-out group-hover:opacity-80"
                   />
                   {/* Hover overlay */}
-                  <div className="absolute inset-0 bg-white/30 bg-opacity-50 flex  opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                    <span className="text-gray-700 font-bold text-left align-top mt-3 ml-3 text-lg ">View More</span>
+                  <div className="absolute inset-0 bg-white/30 bg-opacity-50 flex opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                    <span className="text-foreground font-bold text-left align-top p-4 text-lg ">View More</span>
                   </div>
                 </div>
                 {/* Content */}
-                <div className="p-3">
-                  <h3 className="text-lg mt-3 tracking-tighter leading-normal font-semibold text-black">
+                <div className="">
+                  <h3 className="text-lg mt-3 tracking-tighter !leading-snug font-semibold text-black line-clamp-1">
                     {news.title}
                   </h3>
-                  <p className="text-md leading-6 tracking-tighter text-foreground mt-3">{news.caption}</p>
+                  <p className="text-lg leading-6 tracking-tighter text-foreground line-clamp-2">{news.caption}</p>
                 </div>
               </a>
             </div>
