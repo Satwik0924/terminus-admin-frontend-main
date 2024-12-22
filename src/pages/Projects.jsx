@@ -21,6 +21,14 @@ const Projects = () => {
   const controlsRetail = useAnimation();
   const controlsEducation = useAnimation();
 
+  // Categorize projects into different sections based on type
+  const categorizeProjects = (projects) => {
+    setCommercialProjects(projects.filter((project) => project.type === "commercial"));
+    setResidentialProjects(projects.filter((project) => project.type === "residential"));
+    setHospitalityProjects(projects.filter((project) => project.type === "hospitality"));
+    setLifeSciencesProjects(projects.filter((project) => project.type === "life_sciences"));
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -34,14 +42,6 @@ const Projects = () => {
       } catch (error) {
         console.error("Error fetching data:", error);
       }
-    };
-
-    // Categorize projects into different sections based on type
-    const categorizeProjects = (projects) => {
-      setCommercialProjects(projects.filter((project) => project.type === "commercial"));
-      setResidentialProjects(projects.filter((project) => project.type === "residential"));
-      setHospitalityProjects(projects.filter((project) => project.type === "hospitality"));
-      setLifeSciencesProjects(projects.filter((project) => project.type === "life_sciences"));
     };
 
     fetchData();
@@ -150,7 +150,19 @@ const Projects = () => {
           <div className="grid mt-12 px-0 w-full pl-8">
             <div className="grid grid-cols-2 max-[1440px]:grid-cols-1 w-full gap-3">
               {["Completed", "Ongoing", "Launching Soon"].map((status, index) => (
-                <div key={index} className="flex items-center justify-center">
+                <div
+                  key={index}
+                  className="flex items-center justify-center"
+                  onClick={(e) => {
+                    if (e) e.preventDefault(); // Prevent default behavior
+
+                    // Filter projects based on status
+                    const filteredProjects = projects.filter(
+                      (project) => project.status.toLowerCase() === status.toLowerCase()
+                    );
+                    categorizeProjects(filteredProjects);
+                  }}
+                >
                   <span
                     className={`px-4 py-2 text-sm text-foreground font-bold bg-foreground/20 text-center transition duration-300 ease-in-out hover:bg-primary-foreground hover:text-white w-full ${
                       status === "Launching Soon" ? "whitespace-nowrap" : ""
