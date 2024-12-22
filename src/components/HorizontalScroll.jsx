@@ -66,16 +66,17 @@ export default function HorizontalScrollCarousel() {
         }}
       >
         <div
-          style={{
-            position: "absolute",
-            top: "10%",
-            left: "5%",
-          }}
+          //   style={{
+          //     position: "absolute",
+          //     top: "12%",
+          //     left: "5%",
+          //   }}
+          className="left-[5%] top-[12%] absolute"
         >
           <motion.h1
             style={{ color: headingColor }}
             initial={{ color: "#A0A0A0" }}
-            className="transition-colors duration-900 ease-in-out md:text-[5.3rem] leading-none text-5xl mb-10 text-[#A0A0A0] text-left tracking-tighter"
+            className="transition-colors duration-900 ease-in-out md:text-[5rem] leading-none text-5xl mb-10 text-[#A0A0A0] text-left tracking-tighter"
           >
             Milestones
           </motion.h1>
