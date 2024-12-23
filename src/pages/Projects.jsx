@@ -228,8 +228,11 @@ const Projects = () => {
                       <h2 className="font-bold text-2xl tracking-tight text-black mb-1 line-clamp-1 text-ellipsis">
                         {project.title}
                       </h2>
-                      <div className="flex items-center space-x-2">
-                        <p className="text-xl text-foreground line-clamp-1 tracking-tighter">{`${project.location}, ${project.yearOfCompletion}`}</p>
+                      <div className="flex flex-col items-start space-y-1">
+                        <p className="text-xl text-foreground line-clamp-1 tracking-tighter">{project.location}</p>
+                        <p className="text-xl text-foreground line-clamp-1 tracking-tighter">
+                          {project.yearOfCompletion}
+                        </p>
                       </div>
 
                       <div className="grid grid-cols-2 gap-2 w-full"></div>
