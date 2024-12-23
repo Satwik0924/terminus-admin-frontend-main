@@ -280,21 +280,14 @@ const OfficeComponent = () => {
             <div className="grid grid-cols-3 max-xl:grid-cols-2 max-[569px]:grid-cols-1 gap-6">
               {teamData.map((member) => (
                 <div key={member.id} className="h-full w-full text-left mb-5 relative group">
-                  <a
-                    href={member.linkedinUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block hover:opacity-80"
-                  >
+                  <a href={member.linkedinUrl} target="_blank" rel="noopener noreferrer" className="block">
                     <div className="relative h-[400px] overflow-hidden w-full">
-                      <img
-                        src={member.image}
-                        alt={member.name}
-                        className="w-full h-full object-cover object-center transition-opacity duration-500 ease-in-out group-hover:opacity-80"
-                      />
+                      <img src={member.image} alt={member.name} className="w-full h-full object-cover object-center" />
                       {/* Hover overlay */}
-                      <div className="absolute inset-0 bg-white/30 bg-opacity-50 flex opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                        <span className="text-black mt-3 ml-3 text-lg text-left align-top font-medium">View More</span>
+                      <div className="absolute inset-0 flex justify-top items-top bg-white/50 bg-opacity-70 opacity-0 group-hover:opacity-100 transition duration-500 [word-spacing:4px]">
+                        <div className="p-4">
+                          <p className="text-black text-left text-lg font-semibold">View More</p>
+                        </div>
                       </div>
                     </div>
                   </a>

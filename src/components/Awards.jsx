@@ -44,16 +44,19 @@ const AwardsComponent = () => {
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {awardsData.map((award) => (
-            <div key={award.id} className="  overflow-hidden bg-white ">
-              <div className="w-full h-64 overflow-hidden">
-                <img
-                  src={award.image}
-                  alt={award.title}
-                  className="w-full h-full object-cover transition-transform duration-300 hover:blur-sm"
-                />
+            <div key={award.id} className="relative group overflow-hidden bg-white">
+              {/* Image container with hover effect */}
+              <div className="relative w-full h-64 overflow-hidden">
+                <img src={award.image} alt={award.title} className="w-full h-full object-cover" />
+                <div className="absolute inset-0 flex justify-top items-top bg-white/50 bg-opacity-70 opacity-0 group-hover:opacity-100 transition duration-500 [word-spacing:4px]">
+                  <div className="p-4">
+                    <p className="text-black text-left text-lg font-semibold">View More</p>
+                  </div>
+                </div>
               </div>
+              {/* Text content */}
               <div className="p-0">
-                <h3 className="text-3xl tracking-tighter  text-black mb-2">{award.title}</h3>
+                <h3 className="text-3xl tracking-tighter text-black mb-2">{award.title}</h3>
                 <p className="text-lg text-black">{award.description}</p>
               </div>
             </div>

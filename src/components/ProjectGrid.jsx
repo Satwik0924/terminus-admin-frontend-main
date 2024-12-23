@@ -97,7 +97,7 @@ const ProjectsGrid = () => {
 
                   {/* "View Projects" at Bottom Left */}
                   <a
-                    href="#"
+                    href="/projects"
                     className="text-primary-foreground hover:text-white transition-colors text-md mx-auto gap-2 font-medium flex items-center text-2xl font-serif"
                   >
                     View Projects

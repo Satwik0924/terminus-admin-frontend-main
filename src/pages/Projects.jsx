@@ -12,6 +12,18 @@ const Projects = () => {
   const [hospitalityProjects, setHospitalityProjects] = useState([]);
   const [lifeSciencesProjects, setLifeSciencesProjects] = useState([]);
   const [activeSection, setActiveSection] = useState("");
+  const [filterStatus, setFilterStatus] = useState(""); // State to track active filter
+
+  const handleStatusClick = (status) => {
+    if (filterStatus === status) {
+      setFilterStatus(""); // Remove the filter
+      categorizeProjects(projects); // Show all projects again
+    } else {
+      setFilterStatus(status); // Apply the new filter
+      const filteredProjects = projects.filter((project) => project.status.toLowerCase() === status.toLowerCase());
+      categorizeProjects(filteredProjects); // Categorize based on the selected filter
+    }
+  };
 
   // Animation controls for headings
   const controlsCommercial = useAnimation();
@@ -46,7 +58,6 @@ const Projects = () => {
 
     fetchData();
 
-    // Create intersection observer for navigation highlighting
     const navObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -153,15 +164,7 @@ const Projects = () => {
                 <div
                   key={index}
                   className="flex items-center justify-center"
-                  onClick={(e) => {
-                    if (e) e.preventDefault(); // Prevent default behavior
-
-                    // Filter projects based on status
-                    const filteredProjects = projects.filter(
-                      (project) => project.status.toLowerCase() === status.toLowerCase()
-                    );
-                    categorizeProjects(filteredProjects);
-                  }}
+                  onClick={() => handleStatusClick(status)} // Use the new toggle logic
                 >
                   <span
                     className={`px-4 py-2 text-sm text-foreground font-bold bg-foreground/20 text-center transition duration-300 ease-in-out hover:bg-primary-foreground hover:text-white w-full ${

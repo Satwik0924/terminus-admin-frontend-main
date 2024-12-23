@@ -55,8 +55,10 @@ const NewsMedia = () => {
                     className="w-full h-[400px] object-cover transition-opacity duration-500 ease-in-out group-hover:opacity-80"
                   />
                   {/* Hover overlay */}
-                  <div className="absolute inset-0 bg-white/30 bg-opacity-50 flex opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                    <span className="text-foreground font-bold text-left align-top p-4 text-lg ">View More</span>
+                  <div className="absolute inset-0 flex justify-top items-top bg-white/50 bg-opacity-70 opacity-0 group-hover:opacity-100 transition duration-500 [word-spacing:4px]">
+                    <div className="p-4">
+                      <p className="text-black text-left text-lg font-semibold">View More</p>
+                    </div>
                   </div>
                 </div>
                 {/* Content */}
