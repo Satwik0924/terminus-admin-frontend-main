@@ -169,7 +169,7 @@ const Projects = () => {
                   <span
                     className={`px-4 py-2 text-sm text-foreground font-bold bg-foreground/20 text-center transition duration-300 ease-in-out hover:bg-primary-foreground hover:text-white w-full ${
                       status === "Launching Soon" ? "whitespace-nowrap" : ""
-                    }`}
+                    } ${filterStatus === status ? "bg-primary-foreground text-white" : ""}`}
                   >
                     {status}
                   </span>

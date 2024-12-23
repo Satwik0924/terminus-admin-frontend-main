@@ -1,6 +1,7 @@
 import { motion, useAnimation } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
 import Balancer from "react-wrap-balancer"; // Ensure react-wrap-balancer is imported
 
 const ProjectsGrid = () => {
@@ -80,29 +81,27 @@ const ProjectsGrid = () => {
         {/* Responsive Grid */}
 
         <div className="flex justify-center items-center max-sm:px-10">
-          <div className="grid 2xl:grid-cols-5 lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 xl:grid-cols-4 gap-6">
+          <div className="grid xl:grid-cols-6 lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-6">
             {projects.map((project, index) => (
               <div
                 key={index}
-                className={`w-full h-[70dvh] max-sm:w-full overflow-hidden relative hover:scale-[1.03] transition-transform duration-500 ease-in-out bg-white flex flex-col ${index >= 3 ? "justify-start" : "justify-center"}`}
+                className={`w-full h-[70dvh] max-sm:w-full overflow-hidden relative hover:scale-[1.03] transition-transform duration-500 ease-in-out bg-white flex flex-col justify-center`}
               >
                 <div className="flex-grow">
                   <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
                 </div>
 
-                <div className="absolute inset-0 p-8 flex flex-col justify-between">
-                  <h2 className="text-white text-4xl font-bold">
-                    <Balancer>{project.title}</Balancer>
-                  </h2>
+                <div className="absolute inset-0 p-8 flex flex-col justify-between items-center">
+                  <h2 className="text-white text-3xl font-bold">{project.title}</h2>
 
                   {/* "View Projects" at Bottom Left */}
-                  <a
-                    href="/projects"
-                    className="text-primary-foreground hover:text-white transition-colors text-md mx-auto gap-2 font-medium flex items-center text-2xl font-serif"
+                  <Link
+                    to="/projects"
+                    className="text-primary-foreground hover:text-white transition-colors text-lg mx-auto gap-2 font-medium flex items-center font-serif"
                   >
                     View Projects
                     <ArrowRight className="stroke-white size-6" />
-                  </a>
+                  </Link>
                 </div>
               </div>
             ))}

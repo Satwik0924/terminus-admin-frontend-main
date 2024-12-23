@@ -108,7 +108,7 @@ const About = () => {
               <li key={id}>
                 <a
                   href={`#${id}`}
-                  className={`no-underline text-3xl transition-colors duration-300 !leading-8 ${
+                  className={`no-underline xl:text-4xl text-2xl transition-colors duration-300 !leading-10 ${
                     activeSection === id ? "text-[#F58220]" : "text-foreground hover:text-primary-foreground"
                   }`}
                 >
@@ -205,12 +205,12 @@ const About = () => {
                     <h3 className="text-lg tracking-tighter text-black leading-tight mb-2">Community Development</h3>
                   </div>
                 </div>
-                <a
+                {/* <a
                   href="#"
                   className="text-md font-extrabold mt-11 tracking-tighter text-foreground hover:text-primary-foreground"
                 >
                   View more
-                </a>
+                </a> */}
               </div>
             </div>
           </div>

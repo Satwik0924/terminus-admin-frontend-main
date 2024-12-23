@@ -164,12 +164,12 @@ const OfficeComponent = () => {
               development, and asset and facility management.
             </Balancer>
           </p>
-          <a
+          {/* <a
             href="#"
             className="text-lg font-bold mt-11 !text-foreground/70 tracking-tighter hover:!text-primary-foreground"
           >
             Hear from our Founder Chairman
-          </a>
+          </a> */}
         </div>
         <DrivenByMission />
         {/* Team Section */}

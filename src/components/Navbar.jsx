@@ -118,9 +118,11 @@ const Navbar = () => {
     { href: "/contact", label: "Contact" },
   ];
 
+  // shadow-md shadow-gray-200/50 backdrop-blur-2xl bg-white/30
+
   return (
     <nav
-      className={`${pathname === "/" ? "fixed" : "sticky"} ${isVisible ? "shadow-md shadow-gray-200/50 backdrop-blur-2xl bg-white/30" : "bg-transparent"} w-full top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out`}
+      className={`${pathname === "/" ? "fixed" : "sticky"} ${isVisible ? "bg-white" : "bg-transparent"} w-full top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out`}
     >
       <div style={styles.container}>
         {/* Change this with the Logo */}

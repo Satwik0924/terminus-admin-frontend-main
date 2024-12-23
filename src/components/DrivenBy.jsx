@@ -106,12 +106,12 @@ const DrivenByMission = () => {
               and society have earned him numerous accolades.
             </p>
 
-            <a
+            {/* <a
               href="#"
               className="text-md font-extrabold tracking-tighter text-foreground/70 hover:text-primary-foreground"
             >
               Read More
-            </a>
+            </a> */}
           </div>
         </div>
       </div>
