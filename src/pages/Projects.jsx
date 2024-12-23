@@ -225,14 +225,11 @@ const Projects = () => {
 
                     {/* Project Details */}
                     <div className="p-0 bg-white">
-                      <h2 className="font-bold text-2xl tracking-tight text-black mb-1 line-clamp-1 text-ellipsis">
+                      <h2 className="font-bold text-2xl tracking-tight text-black line-clamp-1 text-ellipsis">
                         {project.title}
                       </h2>
-                      <div className="flex flex-col items-start space-y-1">
-                        <p className="text-xl text-foreground line-clamp-1 tracking-tighter">{project.location}</p>
-                        <p className="text-xl text-foreground line-clamp-1 tracking-tighter">
-                          {project.yearOfCompletion}
-                        </p>
+                      <div className="flex items-center space-x-2">
+                        <p className="text-xl text-foreground leading-3 tracking-tighter">{`${project.location}${project.yearOfCompletion ? ", " + project.yearOfCompletion : ""}`}</p>
                       </div>
 
                       <div className="grid grid-cols-2 gap-2 w-full"></div>
@@ -329,7 +326,7 @@ const Projects = () => {
                           {project.title}
                         </h2>
                         <div className="flex items-center space-x-2">
-                          <p className="text-xl text-foreground leading-3 tracking-tighter">{`${project.location}, ${project.yearOfCompletion}`}</p>
+                          <p className="text-xl text-foreground leading-3 tracking-tighter">{`${project.location}${project.yearOfCompletion ? ", " + project.yearOfCompletion : ""}`}</p>
                         </div>
 
                         <div className="grid grid-cols-2 gap-2 w-full"></div>
@@ -344,33 +341,35 @@ const Projects = () => {
                   ))}
                 </div>
               </div>
-              <div className="p-5 my-16">
-                <p className="font-bold text-2xl mb-3 text-black tracking-tighter">Clientele</p>
-                <div
-                  // style={{
-                  //   display: "grid",
-                  //   gridTemplateColumns: "repeat(auto-fit, minmax(120px, 1fr))",
-                  //   gap: "16px",
-                  // }}
-                  className="grid grid-cols-[repeat(auto-fit,minmax(150px,1fr))] gap-4"
-                >
-                  {["Microchip", "ADP", "NetenRich", "Amazon", "Verizon", "Samsung", "Google", "Intel"].map(
-                    (company, index) => (
-                      <p
-                        key={index}
-                        style={{
-                          textAlign: "left",
-                          fontWeight: "bold",
-                          marginTop: index === 0 ? "0" : "unset", // No margin for the first company
-                        }}
-                        className="!text-foreground !font-bold !text-2xl"
-                      >
-                        {company}
-                      </p>
-                    )
-                  )}
+              {title === "Hospitality" && (
+                <div className="p-5 my-16">
+                  <p className="font-bold text-2xl mb-3 text-black tracking-tighter">Clientele</p>
+                  <div
+                    // style={{
+                    //   display: "grid",
+                    //   gridTemplateColumns: "repeat(auto-fit, minmax(120px, 1fr))",
+                    //   gap: "16px",
+                    // }}
+                    className="grid grid-cols-[repeat(auto-fit,minmax(150px,1fr))] gap-4"
+                  >
+                    {["Microchip", "ADP", "NetenRich", "Amazon", "Verizon", "Samsung", "Google", "Intel"].map(
+                      (company, index) => (
+                        <p
+                          key={index}
+                          style={{
+                            textAlign: "left",
+                            fontWeight: "bold",
+                            marginTop: index === 0 ? "0" : "unset", // No margin for the first company
+                          }}
+                          className="!text-foreground !font-bold !text-2xl"
+                        >
+                          {company}
+                        </p>
+                      )
+                    )}
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
           ))}
           <div id="retail" style={{ textAlign: "left" }}>

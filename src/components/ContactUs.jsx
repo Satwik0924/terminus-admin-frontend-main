@@ -1,5 +1,5 @@
 import React from "react";
-import LocationMap from "../assets/tg_location_map.webp";
+import LocationMap from "../assets/tg_location_map.png";
 
 const ContactSection = () => {
   return (

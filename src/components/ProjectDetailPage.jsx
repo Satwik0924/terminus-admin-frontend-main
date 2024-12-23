@@ -161,9 +161,9 @@ const ProjectDetailPage = () => {
                     </a>
                   </div>
                   <div className="p-0 bg-white">
-                    <h2 className="font-bold text-2xl tracking-tight text-black mb-1">{project.title}</h2>
-                    <div className="flex items-center space-x-2">
-                      <p className="text-xl text-foreground leading-3 tracking-tighter">{`${project.location}, ${project.yearOfCompletion}`}</p>
+                    <h2 className="font-bold text-2xl tracking-tight text-black line-clamp-1">{project.title}</h2>
+                    <div className="flex items-center">
+                      <p className="text-xl text-foreground tracking-tighter line-clamp-1">{`${project.location}${project.yearOfCompletion ? ", " + project.yearOfCompletion : ""}`}</p>
                     </div>
                     <div className="grid grid-cols-2 gap-2 mt-8">
                       <span className="px-2 py-1 text-sm bg-foreground/20 text-foreground text-center font-bold transition duration-300 ease-in-out hover:bg-primary-foreground hover:text-white">
