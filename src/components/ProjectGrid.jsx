@@ -37,17 +37,17 @@ const ProjectsGrid = () => {
     {
       title: "Commercial",
       image:
-        "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5068363/image-93324a5d-c5e7-4877-9b6f-717bbaa0383a.jpg?e=webp&cX=88&cY=0&cW=204&cH=460",
+        "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5089501/image-e1aeea35-eb19-4411-bf06-ea474d8dcd48.jpg?w=421&e=webp&cX=501.04166666666663&cY=0&cW=1447.9166666666667&cH=3500",
     },
     {
       title: "Residential",
       image:
-        "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5036787/image-898e55a6-fb65-48e6-8a98-f284706cbd7e.jpg?e=webp&cX=88&cY=0&cW=204&cH=460",
+        "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5089501/image-c602d24d-ca60-4276-9563-169d82db46a8.jpg?w=421&e=webp&cX=523.3392857142858&cY=0&cW=1345.3214285714284&cH=3252",
     },
     {
       title: "Hospitality",
       image:
-        "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5036787/image-8d40d5f5-24ac-4c8a-b60b-689f448d0319.jpg?e=webp&cX=88&cY=0&cW=204&cH=460",
+        "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5089501/image-f972e3e1-d950-4d85-8d21-37b0b46a4771.jpg?w=421&e=webp&cX=463.5610119047619&cY=0&cW=352.8779761904762&cH=853",
     },
     {
       title: "Life Sciences",
@@ -57,12 +57,12 @@ const ProjectsGrid = () => {
     {
       title: "Retail",
       image:
-        "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5089501/image-07c524f0-fccb-443a-84b4-ed474e9bd278.jpg?w=1064&e=webp&cX=723&cY=0&cW=353&cH=797",
+        "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5089501/image-94b06840-2b4a-46c5-855c-877b82cc57b6.jpg?w=421&e=webp&cX=379.28571428571433&cY=0&cW=1191.4285714285713&cH=2880",
     },
     {
       title: "Education",
       image:
-        "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5068970/image-a10a7f2b-0283-4585-9525-c09777fe2899.jpg?w=559&e=webp&cX=811&cY=0&cW=846&cH=1920",
+        "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5089501/image-ff9ab9c6-5d2b-4940-91c6-1b8dce7fb6a5.jpg?w=421&e=webp&cX=1006&cY=0&cW=794&cH=1920",
     },
   ];
 
