@@ -45,16 +45,17 @@ const AwardsComponent = ({ className }) => {
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {awardsData.map((award) => (
-            <div key={award.id} className="overflow-hidden bg-white ">
+            <div key={award.id} className="overflow-hidden bg-white group relative">
               <div className="w-full h-[400px] overflow-hidden">
                 <img
                   src={award.image}
                   alt={award.title}
-                  className="w-full h-full object-cover transition-transform duration-300 hover:blur-sm"
+                  className="w-full h-full object-cover transition-transform duration-300"
                 />
+                {/* Overlay added */}
                 <div className="absolute inset-0 flex justify-top items-top bg-white/50 bg-opacity-70 opacity-0 group-hover:opacity-100 transition duration-500 [word-spacing:4px]">
                   <div className="p-4">
-                    <p className="text-black text-left text-lg font-semibold">View More</p>
+                    <p className="text-foreground text-left text-lg font-bold">View More</p>
                   </div>
                 </div>
               </div>
