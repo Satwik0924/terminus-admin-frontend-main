@@ -53,7 +53,7 @@ const News = () => {
         >
           News & Media
         </motion.h1>
-        <NewsMedia />
+        <NewsMedia className="ml-16" />
       </div>
 
       <div id="awards" style={{ textAlign: "left", padding: "2rem 1rem" }}>
@@ -64,7 +64,7 @@ const News = () => {
         >
           Awards
         </motion.h1>
-        <AwardsComponent />
+        <AwardsComponent className="ml-16" />
       </div>
 
       <Footer />

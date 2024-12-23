@@ -66,7 +66,7 @@ const ProjectsGrid = () => {
   ];
 
   return (
-    <section className="flex flex-col justify-center items-center h-auto lg:py-40 py-20 w-full">
+    <section className="flex flex-col justify-center items-center h-auto lg:py-40 py-20 w-full" id="explore-projects">
       <div className="sm:w-[90%] w-full">
         {/* Heading */}
         <motion.h1

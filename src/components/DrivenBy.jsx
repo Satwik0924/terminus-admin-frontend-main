@@ -81,26 +81,26 @@ const DrivenByMission = () => {
 
           <h1 className="text-primary-foreground text-3xl font-bold mb-6">The Founder Chairman</h1>
 
-          <div className="space-y-3 w-2/3 !text-foreground/70">
-            <p className="leading-relaxed tracking-tighter">
+          <div className="space-y-3 max-w-xl !text-foreground/70">
+            <p className="leading-snug tracking-tighter">
               <strong>Mr. S.P. Reddy</strong> is an accomplished entrepreneur, philanthropist, and investor with a
               diverse career spanning Information Technology, Federal Government, and Real Estate Development.
             </p>
 
-            <p className="leading-relaxed tracking-tighter">
+            <p className="leading-snug tracking-tighter">
               In 1995, Mr. Reddy founded enGenius Consulting Group in Atlanta, USA, growing it into a global
               organization with over 250 employees across 30 U.S. locations and five countries. His leadership has been
               pivotal in the company's success for over 25 years.
             </p>
 
-            <p className="leading-relaxed tracking-tighter">
+            <p className="leading-snug tracking-tighter">
               Relocating to India in 2007, Mr. Reddy established Terminus Group, a leading real estate development firm
               in Hyderabad. Under his guidance, the company has completed over six million square feet of construction,
               with an additional ten million square feet under development. Terminus operates across multiple sectors,
               including Hospitality, Healthcare, Life Sciences, Commercial, Retail and Education.
             </p>
 
-            <p className="leading-relaxed tracking-tighter !mb-5">
+            <p className="leading-snug tracking-tighter !mb-5">
               In addition to his business accomplishments, Mr. Reddy is deeply committed to philanthropy, spearheading
               initiatives like IMPACT, Sparsh, and the AIG Rural Outreach Program. His contributions to both industry
               and society have earned him numerous accolades.

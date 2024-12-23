@@ -1,7 +1,8 @@
+import { cn } from "@/lib/utils";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-const NewsMedia = () => {
+const NewsMedia = ({ className }) => {
   const [newsData, setNewsData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [scrolled, setScrolled] = useState(false);
@@ -39,13 +40,16 @@ const NewsMedia = () => {
   }, []);
 
   return (
-    <div id="news-section" className="px-5 py-12 max-w-screen-xl mx-auto">
+    <div id="news-section" className={cn("py-12 max-w-screen-xl", className)}>
       {loading ? (
-        <p className="text-center">Loading news data...</p>
+        <p className="text-center">Fetching latest news...</p>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 w-full">
-          {newsData.map((news) => (
-            <div key={news.id} className="overflow-hidden bg-white relative group">
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-10 w-full sm:gap-y-24">
+          {newsData.map((news, index) => (
+            <div
+              key={news.id}
+              className={`overflow-hidden bg-white relative group ${index === 0 ? "xl:col-span-2" : index > 2 ? "xl:col-span-2" : "xl:col-span-1"}`}
+            >
               <a href={news.link} target="_blank" rel="noopener noreferrer" className="block text-inherit">
                 {/* Image container */}
                 <div className="relative">

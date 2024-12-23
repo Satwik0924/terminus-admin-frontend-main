@@ -1,7 +1,7 @@
-import React, { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import LogoT from "../assets/tg_logo_t.svg";
 import fullLogo from "../assets/tg_logo_full.webp";
+import LogoT from "../assets/tg_logo_t.svg";
 import useWindowDimensions from "../hooks/useWindowDimensions";
 import ProjectSearch from "./ProjectSearch";
 
@@ -14,6 +14,7 @@ const Navbar = () => {
   const pathname = useLocation().pathname;
   const [isVisible, setIsVisible] = useState(false);
   const [logo, setLogo] = useState(fullLogo);
+  const location = useLocation();
 
   const toggleMenu = () => {
     setIsMenuOpen((prev) => !prev);
@@ -33,6 +34,15 @@ const Navbar = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, [handleScroll]);
+
+  useEffect(() => {
+    if (location.hash) {
+      const element = document.getElementById(location.hash.substring(1));
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
+  }, [location]);
 
   const styles = {
     container: {
@@ -104,7 +114,7 @@ const Navbar = () => {
   const navLinks = [
     { href: "/projects", label: "Projects" },
     { href: "/about", label: "About" },
-    { href: "/news", label: "News & Media" },
+    { href: "/about#residential", label: "News & Media" },
     { href: "/contact", label: "Contact" },
   ];
 

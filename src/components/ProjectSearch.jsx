@@ -20,6 +20,7 @@ export default function ProjectSearch({ className }) {
   const [residentialProjects, setResidentialProjects] = useState([]);
   const [hospitalityProjects, setHospitalityProjects] = useState([]);
   const [lifeSciencesProjects, setLifeSciencesProjects] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     const down = (e) => {
