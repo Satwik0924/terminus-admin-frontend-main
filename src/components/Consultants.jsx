@@ -73,6 +73,25 @@ const ConsultantsAndPartners = () => {
               src: "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5068988/image-9c57e515-69b2-4e8e-a8bc-d05e7c950094.png?e=webp&nll=true&cX=0&cY=1&cW=360&cH=97",
               alt: "Aufait",
             },
+            {
+              src: "   https://i-p.rmcdn.net/6704dad37ea051caab873de5/5089501/image-a23a131d-e9d1-495a-a224-935e657c4333.jpg?e=webp&cX=0&cY=28&cW=189&cH=139",
+              alt: "Aufait",
+            },
+            {
+              src: "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5089501/image-b14cb5af-4b65-4e26-8cc8-eec685f899c0.png?w=232&e=webp&nll=true&cX=16&cY=0&cW=274&cH=242",
+            },
+            {
+              src: "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5089501/image-0993c830-eeb0-4c96-a426-e297027966d6.jpg?e=webp&cX=0&cY=28.181818181818187&cW=200&cH=143.63636363636363",
+            },
+            {
+              src: "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5089501/image-a85f7340-4519-42bd-ac90-9a1451584a24.png?e=webp&nll=true",
+            },
+            {
+              src: "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5089501/image-2af047c7-5d26-4ac1-81d2-5387245d4be9.png?w=327&e=webp&nll=true",
+            },
+            {
+              src: "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5089501/image-cdcfd155-01a8-4884-9a25-2e63188b2137.png?w=327&e=webp&nll=true",
+            },
           ].map((logo, index) => (
             <div key={index}>
               <img

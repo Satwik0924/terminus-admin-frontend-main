@@ -229,7 +229,7 @@ const Projects = () => {
                         {project.title}
                       </h2>
                       <div className="flex items-center space-x-2">
-                        <p className="text-xl text-foreground leading-3 tracking-tighter">{`${project.location}, ${project.yearOfCompletion}`}</p>
+                        <p className="text-xl text-foreground line-clamp-1 tracking-tighter">{`${project.location}, ${project.yearOfCompletion}`}</p>
                       </div>
 
                       <div className="grid grid-cols-2 gap-2 w-full"></div>
