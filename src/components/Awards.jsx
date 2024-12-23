@@ -52,6 +52,11 @@ const AwardsComponent = ({ className }) => {
                   alt={award.title}
                   className="w-full h-full object-cover transition-transform duration-300 hover:blur-sm"
                 />
+                <div className="absolute inset-0 flex justify-top items-top bg-white/50 bg-opacity-70 opacity-0 group-hover:opacity-100 transition duration-500 [word-spacing:4px]">
+                  <div className="p-4">
+                    <p className="text-black text-left text-lg font-semibold">View More</p>
+                  </div>
+                </div>
               </div>
               <div className="mt-4">
                 <h3 className="text-3xl tracking-tighter text-black line-clamp-1">{award.title}</h3>
