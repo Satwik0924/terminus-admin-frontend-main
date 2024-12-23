@@ -257,21 +257,30 @@ const Projects = () => {
                 // }}
                 className="grid grid-cols-[repeat(auto-fit,minmax(150px,1fr))] gap-4"
               >
-                {["Microchip", "ADP", "NetenRich", "Amazon", "Verizon", "Samsung", "Google", "Intel"].map(
-                  (company, index) => (
-                    <p
-                      key={index}
-                      style={{
-                        textAlign: "left",
-                        fontWeight: "bold",
-                        marginTop: index === 0 ? "0" : "unset",
-                      }}
-                      className="!text-foreground !font-bold !text-2xl"
-                    >
-                      {company}
-                    </p>
-                  )
-                )}
+                {[
+                  "ADP",
+                  "Microchip",
+                  "GlaxoSmithKline",
+                  "FedEx",
+                  "Netenrich",
+                  "TATA Communications",
+                  "CK Birla Group",
+                  "HDFC Bank",
+                  "ICICI Bank",
+                  "Kotak Mahindra Bank",
+                ].map((company, index) => (
+                  <p
+                    key={index}
+                    style={{
+                      textAlign: "left",
+                      fontWeight: "bold",
+                      marginTop: index === 0 ? "0" : "unset",
+                    }}
+                    className="!text-foreground !font-bold !text-2xl"
+                  >
+                    {company}
+                  </p>
+                ))}
               </div>
             </div>
           </div>
@@ -352,21 +361,19 @@ const Projects = () => {
                     // }}
                     className="grid grid-cols-[repeat(auto-fit,minmax(150px,1fr))] gap-4"
                   >
-                    {["Microchip", "ADP", "NetenRich", "Amazon", "Verizon", "Samsung", "Google", "Intel"].map(
-                      (company, index) => (
-                        <p
-                          key={index}
-                          style={{
-                            textAlign: "left",
-                            fontWeight: "bold",
-                            marginTop: index === 0 ? "0" : "unset", // No margin for the first company
-                          }}
-                          className="!text-foreground !font-bold !text-2xl"
-                        >
-                          {company}
-                        </p>
-                      )
-                    )}
+                    {["Marriott", "JW Marriott", "IHCL", "Moxy", "Westin"].map((company, index) => (
+                      <p
+                        key={index}
+                        style={{
+                          textAlign: "left",
+                          fontWeight: "bold",
+                          marginTop: index === 0 ? "0" : "unset", // No margin for the first company
+                        }}
+                        className="!text-foreground !font-bold !text-2xl"
+                      >
+                        {company}
+                      </p>
+                    ))}
                   </div>
                 </div>
               )}
