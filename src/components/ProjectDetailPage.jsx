@@ -92,6 +92,8 @@ const ProjectDetailPage = () => {
               <p className="tracking-tighter font-medium">{project.location || "N/A"}</p>
               <p className="font-extrabold mt-5 tracking-tighter !leading-3">Type</p>
               <p className="tracking-tighter font-medium">{project.type || "N/A"}</p>
+              <p className="font-extrabold mt-5 tracking-tighter !leading-3">Year Of Completion</p>
+              <p className="tracking-tighter font-medium">{project.yearOfCompletion || "N/A"}</p>
               <p className="font-extrabold mt-5 tracking-tighter !leading-3">Build Up Area</p>
               <p className="tracking-tighter font-medium">{project.builtUpArea || "N/A"}</p>
 
