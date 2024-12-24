@@ -64,7 +64,7 @@ const ProjectDetailPage = () => {
       <div className="flex flex-col py-12 max-w-full text-gray-800">
         {/* Top Section: Title, Location, Image */}
         <div className="xl:mx-20 mx-10">
-          <h1 className="text-8xl text-primary-foreground mb-2 tracking-tighter">{project.title}</h1>
+          <h1 className="text-8xl text-primary-foreground mb-3 tracking-tighter">{project.title}</h1>
           <p className="text-xl text-black mb-20 leading-5 tracking-tighter">{project.location}</p>
           {/* <p className="text-lg text-black mb-5 leading-8">
             Date {new Date(project.createdAt).toLocaleString("default", { month: "long", year: "numeric" })}
@@ -91,13 +91,12 @@ const ProjectDetailPage = () => {
               <p className="font-extrabold mt-5 tracking-tighter !leading-3 text-lg">Address</p>
               <p className="tracking-tighter font-medium text-lg">{project.location || "N/A"}</p>
               <p className="font-extrabold mt-5 tracking-tighter !leading-3 text-lg">Type</p>
-              <p className="tracking-tighter font-medium text-lg">{project.tags ? project.tags.join(", ") : "N/A"}</p>
-              <p className="font-extrabold mt-5 tracking-tighter !leading-3 text-lg">Year of Completion</p>
+              <p className="tracking-tighter font-medium text-lg">{project.type || "N/A"}</p>
+              <p className="font-extrabold mt-5 tracking-tighter !leading-3 text-lg">Year Of Completion</p>
               <p className="tracking-tighter font-medium text-lg">{project.yearOfCompletion || "N/A"}</p>
-              <p className="font-extrabold mt-5 tracking-tighter !leading-3 text-lg">Architect</p>
-              <p className="tracking-tighter font-medium text-lg">{project.architect || "N/A"}</p>
-              <p className="font-extrabold mt-5 tracking-tighter !leading-3 text-lg">Landscape Architect</p>
-              <p className="tracking-tighter font-medium text-lg">{project.landscapeArchitect || "N/A"}</p>
+              <p className="font-extrabold mt-5 tracking-tighter !leading-3 text-lg">Build Up Area</p>
+              <p className="tracking-tighter font-medium text-lg">{project.builtUpArea || "N/A"}</p>
+
               {project.brochureUrl && (
                 <a
                   href={project.brochureUrl}
