@@ -91,13 +91,10 @@ const ProjectDetailPage = () => {
               <p className="font-extrabold mt-5 tracking-tighter !leading-3">Address</p>
               <p className="tracking-tighter font-medium">{project.location || "N/A"}</p>
               <p className="font-extrabold mt-5 tracking-tighter !leading-3">Type</p>
-              <p className="tracking-tighter font-medium">{project.tags ? project.tags.join(", ") : "N/A"}</p>
-              <p className="font-extrabold mt-5 tracking-tighter !leading-3">Year of Completion</p>
-              <p className="tracking-tighter font-medium">{project.yearOfCompletion || "N/A"}</p>
-              <p className="font-extrabold mt-5 tracking-tighter !leading-3">Architect</p>
-              <p className="tracking-tighter font-medium">{project.architect || "N/A"}</p>
-              <p className="font-extrabold mt-5 tracking-tighter !leading-3">Landscape Architect</p>
-              <p className="tracking-tighter font-medium">{project.landscapeArchitect || "N/A"}</p>
+              <p className="tracking-tighter font-medium">{project.type || "N/A"}</p>
+              <p className="font-extrabold mt-5 tracking-tighter !leading-3">Build Up Area</p>
+              <p className="tracking-tighter font-medium">{project.builtUpArea || "N/A"}</p>
+
               {project.brochureUrl && (
                 <a
                   href={project.brochureUrl}
