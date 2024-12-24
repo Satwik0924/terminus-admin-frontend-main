@@ -1,9 +1,10 @@
+import { cn } from "@/lib/utils";
 import axios from "axios";
 import { motion, useAnimation } from "framer-motion";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import Footer from "../components/Footer";
 import Balancer from "react-wrap-balancer";
+import Footer from "../components/Footer";
 
 const Projects = () => {
   const [projects, setProjects] = useState([]);
@@ -228,8 +229,16 @@ const Projects = () => {
                       <h2 className="font-bold text-2xl tracking-tight text-black line-clamp-1 text-ellipsis">
                         {project.title}
                       </h2>
-                      <div className="flex items-center space-x-2">
-                        <p className="text-xl text-foreground leading-3 tracking-tighter">{`${project.location}${project.yearOfCompletion ? ", " + project.yearOfCompletion : ""}`}</p>
+                      <div>
+                        <p className="text-xl text-foreground leading-7 tracking-tighter">{project.location}</p>
+                        <p
+                          className={cn(
+                            "text-xl text-foreground leading-4 tracking-tighter",
+                            project.yearOfCompletion ? "" : "opacity-0"
+                          )}
+                        >
+                          {project.yearOfCompletion ?? "0"}
+                        </p>
                       </div>
 
                       <div className="grid grid-cols-2 gap-2 w-full"></div>
@@ -255,7 +264,7 @@ const Projects = () => {
                 //   gridTemplateColumns: "repeat(auto-fit, minmax(120px, 1fr))",
                 //   gap: "16px",
                 // }}
-                className="grid grid-cols-[repeat(auto-fit,minmax(150px,1fr))] gap-4"
+                className="grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-4"
               >
                 {[
                   "ADP",
@@ -334,8 +343,16 @@ const Projects = () => {
                         <h2 className="font-bold text-2xl tracking-tight text-black mb-1 line-clamp-1 text-ellipsis">
                           {project.title}
                         </h2>
-                        <div className="flex items-center space-x-2">
-                          <p className="text-xl text-foreground leading-3 tracking-tighter">{`${project.location}${project.yearOfCompletion ? ", " + project.yearOfCompletion : ""}`}</p>
+                        <div>
+                          <p className="text-xl text-foreground leading-4 tracking-tighter">{project.location}</p>
+                          <p
+                            className={cn(
+                              "text-xl text-foreground leading-7 tracking-tighter",
+                              project.yearOfCompletion ? "" : "opacity-0"
+                            )}
+                          >
+                            {project.yearOfCompletion ?? "0"}
+                          </p>
                         </div>
 
                         <div className="grid grid-cols-2 gap-2 w-full"></div>
