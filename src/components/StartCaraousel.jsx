@@ -3,27 +3,10 @@ import { useEffect, useRef, useState } from "react";
 const CHANGE_IMAGE_INTERVAL = 6 * 1000;
 
 const Carousel = () => {
-  const images = [
-    "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5068988/image-6420d017-c5bd-4361-8ef3-da73f2d4dc76.jpg?e=webp",
-    "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5068988/image-df771d05-0bc8-4f7b-a4c9-7211ab5352b9.jpg?e=webp",
-    "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5068988/image-bf158649-9f0a-48b6-acd4-beba9731e014.jpg?e=webp",
-    "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5068988/image-11d6a912-c669-4449-9c2e-cd588515044f.jpg?e=webp",
-    "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5068988/image-18270383-28fe-447d-b206-e0a18e68950d.jpg?e=webp",
-    "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5068988/image-727410b2-8a87-43f9-bb12-b3ef77f01209.jpg?e=webp",
-  ];
+  // Fetch images from the public/assets directory with the naming convention "Artboard 1.png", "Artboard 2.png", etc.
+  const images = Array.from({ length: 6 }, (_, i) => `/assets/Artboard ${i + 1}.png`);
 
-  const newImages = [
-    "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5089501/image-85013ff6-f3ad-41dd-87ee-c092c998d08f.jpg?h=2279&e=webp",
-    "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5089501/image-9c546fcc-bfc9-4721-bd66-4e53a8f999e9.jpg?h=2279&e=webp",
-    "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5089501/image-350d38f6-eeac-4c97-8b8d-a11e5be4128e.jpg?h=2279&e=webp",
-    "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5089501/image-2425fe9a-eaf0-481e-b2b0-9437bf46796f.jpg?e=webp",
-    "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5089501/image-8e23df79-ec89-4d8b-be51-f273303ad26a.jpg?h=2279&e=webp",
-    "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5068988/image-18270383-28fe-447d-b206-e0a18e68950d.jpg?e=webp",
-    "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5089501/image-85013ff6-f3ad-41dd-87ee-c092c998d08f.jpg?h=2279&e=webp",
-    "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5089501/image-dae0fe18-7f27-4f70-9cd1-837f3407abaa.jpg?e=webp",
-  ];
-
-  const [currentIndex, setCurrentIndex] = useState(Math.floor((newImages.length - 1) / 2)); // Default to middle image
+  const [currentIndex, setCurrentIndex] = useState(Math.floor((images.length - 1) / 2)); // Default to middle image
   const [fade, setFade] = useState(false);
   const [carouselCursor, setCarouselCursor] = useState("default");
   const intervalRef = useRef(null);
@@ -44,7 +27,7 @@ const Carousel = () => {
   const goToNext = () => {
     setFade(true);
     setTimeout(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % newImages.length);
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
       setFade(false);
     }, 1000); // Fade duration
   };
@@ -52,12 +35,11 @@ const Carousel = () => {
   const goToPrev = () => {
     setFade(true);
     setTimeout(() => {
-      setCurrentIndex((prevIndex) => (prevIndex === 0 ? newImages.length - 1 : prevIndex - 1));
+      setCurrentIndex((prevIndex) => (prevIndex === 0 ? images.length - 1 : prevIndex - 1));
       setFade(false);
     }, 1000); // Fade duration
   };
 
-  // Automatically change images every 6 seconds
   useEffect(() => {
     resetInterval(); // Start the interval on component mount
     return () => clearInterval(intervalRef.current); // Cleanup on unmount
@@ -93,11 +75,13 @@ const Carousel = () => {
     <div
       onMouseMove={handleMousePointer}
       onMouseLeave={() => setCarouselCursor("default")}
-      className={`w-full sm:h-[120dvh] h-[400px] relative overflow-hidden  ${carouselCursor === "carousel-next" ? "cursor-next" : carouselCursor === "carousel-prev" ? "cursor-prev" : ""}`}
+      className={`w-full sm:h-[120dvh] h-[400px] relative overflow-hidden  ${
+        carouselCursor === "carousel-next" ? "cursor-next" : carouselCursor === "carousel-prev" ? "cursor-prev" : ""
+      }`}
       onClick={(e) => handleNavigation(e.clientX > e.currentTarget.offsetWidth / 2)}
     >
       <img
-        src={newImages[currentIndex]}
+        src={images[currentIndex]}
         alt={`Slide ${currentIndex + 1}`}
         className="w-full h-full object-cover absolute top-0 left-0 max-sm:object-fill"
         style={{
@@ -107,18 +91,17 @@ const Carousel = () => {
       />
 
       {/* Rotated Right-facing Arrow SVG */}
-
       <svg
         className="absolute bottom-4 left-1/2 transform -translate-x-1/2 rotate-90 cursor-pointer"
-        width="60"
-        height="60"
+        width="48"
+        height="48"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
         stroke="white"
         onClick={scrollToProjects}
       >
-        <path strokeLinecap="square" strokeLinejoin="miter" strokeWidth="4" d="M9 5l7 7-7 7" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="4" d="M9 5l7 7-7 7" />
       </svg>
     </div>
   );
