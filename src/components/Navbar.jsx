@@ -1,5 +1,7 @@
+import { cn } from "@/lib/utils";
 import { useCallback, useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import HalfLogo from "../assets/tg_logo_erminus.png";
 import fullLogo from "../assets/tg_logo_full.webp";
 import LogoT from "../assets/tg_logo_t.svg";
 import useWindowDimensions from "../hooks/useWindowDimensions";
@@ -22,7 +24,7 @@ const Navbar = () => {
 
   const handleScroll = useCallback(() => {
     const cur = window.scrollY;
-    setIsVisible(cur > 50);
+    setIsVisible(cur > 100);
     if (cur > 400) {
       setLogo(LogoT);
     } else {
@@ -127,14 +129,20 @@ const Navbar = () => {
       <div style={styles.container}>
         {/* Change this with the Logo */}
         <div className="flex-1">
-          <Link
-            to="/"
-            className={`inline-block relative overflow-hidden ${logo === fullLogo ? "lg:w-64 lg:h-64 w-52 h-52" : "w-8 h-8"}`}
-          >
-            <img src={logo} alt="Terminus" className="object-contain w-full h-full" />
+          <Link to="/" className={`relative overflow-hidden inline-block`}>
+            <div className="flex items-center relative">
+              <img src={LogoT} alt="T" className="object-contain h-10 w-10 absolute pr-2" />
+              <img
+                src={HalfLogo}
+                alt="Erminus"
+                className={cn(
+                  "object-contain lg:w-64 lg:h-64 w-52 h-52 transition-opacity duration-500 ease-out",
+                  isVisible ? "opacity-0" : "opacity-100"
+                )}
+              />
+            </div>
           </Link>
         </div>
-
         {/* Mobile Menu Button */}
         <div className="flex gap-5 items-center">
           <button onClick={toggleMenu} style={styles.menuButton}>
@@ -142,14 +150,13 @@ const Navbar = () => {
           </button>
           <ProjectSearch className="md:hidden" />
         </div>
-
         {/* Desktop Navigation */}
-        <ul style={styles.desktopNavList} className="max-lg:!flex-[1.5]">
+        <ul className="flex items-center justify-between list-none w-full m-0 pt-2 flex-1 max-lg:!flex-[1.5]">
           {navLinks.map((link) => (
             <li key={link.href}>
               <Link
                 to={link.href}
-                className="hover:text-primary-foreground text-[#727272] transition-opacity duration-200 ease-in-out xl:text-2xl text-lg font-bold"
+                className="hover:text-primary-foreground text-[#727272] transition-opacity duration-200 ease-in-out xl:text-[22px] text-base font-bold"
               >
                 {link.label}
               </Link>
@@ -159,7 +166,6 @@ const Navbar = () => {
             <ProjectSearch />
           </li>
         </ul>
-
         {/* Mobile Menu */}
         <div style={styles.mobileMenu}>
           <ul style={styles.mobileNavList}>
