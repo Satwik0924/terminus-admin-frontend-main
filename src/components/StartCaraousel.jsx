@@ -12,7 +12,18 @@ const Carousel = () => {
     "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5068988/image-727410b2-8a87-43f9-bb12-b3ef77f01209.jpg?e=webp",
   ];
 
-  const [currentIndex, setCurrentIndex] = useState(Math.floor((images.length - 1) / 2)); // Default to middle image
+  const newImages = [
+    "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5089501/image-85013ff6-f3ad-41dd-87ee-c092c998d08f.jpg?h=2279&e=webp",
+    "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5089501/image-9c546fcc-bfc9-4721-bd66-4e53a8f999e9.jpg?h=2279&e=webp",
+    "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5089501/image-350d38f6-eeac-4c97-8b8d-a11e5be4128e.jpg?h=2279&e=webp",
+    "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5089501/image-2425fe9a-eaf0-481e-b2b0-9437bf46796f.jpg?e=webp",
+    "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5089501/image-8e23df79-ec89-4d8b-be51-f273303ad26a.jpg?h=2279&e=webp",
+    "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5068988/image-18270383-28fe-447d-b206-e0a18e68950d.jpg?e=webp",
+    "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5089501/image-85013ff6-f3ad-41dd-87ee-c092c998d08f.jpg?h=2279&e=webp",
+    "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5089501/image-dae0fe18-7f27-4f70-9cd1-837f3407abaa.jpg?e=webp",
+  ];
+
+  const [currentIndex, setCurrentIndex] = useState(Math.floor((newImages.length - 1) / 2)); // Default to middle image
   const [fade, setFade] = useState(false);
   const [carouselCursor, setCarouselCursor] = useState("default");
   const intervalRef = useRef(null);
@@ -33,7 +44,7 @@ const Carousel = () => {
   const goToNext = () => {
     setFade(true);
     setTimeout(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % newImages.length);
       setFade(false);
     }, 1000); // Fade duration
   };
@@ -41,7 +52,7 @@ const Carousel = () => {
   const goToPrev = () => {
     setFade(true);
     setTimeout(() => {
-      setCurrentIndex((prevIndex) => (prevIndex === 0 ? images.length - 1 : prevIndex - 1));
+      setCurrentIndex((prevIndex) => (prevIndex === 0 ? newImages.length - 1 : prevIndex - 1));
       setFade(false);
     }, 1000); // Fade duration
   };
@@ -86,7 +97,7 @@ const Carousel = () => {
       onClick={(e) => handleNavigation(e.clientX > e.currentTarget.offsetWidth / 2)}
     >
       <img
-        src={images[currentIndex]}
+        src={newImages[currentIndex]}
         alt={`Slide ${currentIndex + 1}`}
         className="w-full h-full object-cover absolute top-0 left-0 max-sm:object-fill"
         style={{
@@ -99,15 +110,15 @@ const Carousel = () => {
 
       <svg
         className="absolute bottom-4 left-1/2 transform -translate-x-1/2 rotate-90 cursor-pointer"
-        width="48"
-        height="48"
+        width="60"
+        height="60"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
         stroke="white"
         onClick={scrollToProjects}
       >
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="4" d="M9 5l7 7-7 7" />
+        <path strokeLinecap="square" strokeLinejoin="miter" strokeWidth="4" d="M9 5l7 7-7 7" />
       </svg>
     </div>
   );

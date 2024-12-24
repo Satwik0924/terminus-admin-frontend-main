@@ -60,7 +60,7 @@ const AwardsComponent = ({ className }) => {
                 </div>
               </div>
               <div className="mt-4">
-                <h3 className="text-3xl tracking-tighter text-black line-clamp-1">{award.title}</h3>
+                <h3 className="text-2xl tracking-tighter text-black line-clamp-1">{award.title}</h3>
                 <p className="text-lg text-black tracking-tighter !leading-tight line-clamp-2">{award.description}</p>
               </div>
             </div>
