@@ -61,18 +61,18 @@ const ProjectDetailPage = () => {
 
   return (
     <div>
-      <div className="flex flex-col py-12 xl:px-12 max-w-full mx-10 text-gray-800">
+      <div className="flex flex-col py-12 max-w-full text-gray-800">
         {/* Top Section: Title, Location, Image */}
-        <div>
+        <div className="xl:mx-20 mx-10">
           <h1 className="text-8xl text-primary-foreground mb-2 tracking-tighter">{project.title}</h1>
           <p className="text-xl text-black mb-20 leading-5 tracking-tighter">{project.location}</p>
           {/* <p className="text-lg text-black mb-5 leading-8">
             Date {new Date(project.createdAt).toLocaleString("default", { month: "long", year: "numeric" })}
           </p> */}
         </div>
-        <div className="flex mb-24 max-xl:flex-col max-xl:gap-8">
+        <div className="flex mb-24 max-xl:flex-col max-xl:gap-8 xl:mx-20 mx-10">
           {/* Left Section: Image */}
-          <div className="flex-1 h-[60vh] flex">
+          <div className="flex-1 h-[70vh] flex">
             <img
               src={project.images && project.images[0]}
               alt={`${project.title} main`}
@@ -83,21 +83,21 @@ const ProjectDetailPage = () => {
           {/* Right Section: Text */}
           <div className="flex-1 flex justify-end">
             <div className="xl:w-[60%] w-full">
-              <p className="tracking-tighter text-foreground">
+              <p className="tracking-tighter text-lg text-foreground/70">
                 <Balancer>{project.description || "No description available."}</Balancer>
               </p>
-              <p className="font-extrabold mt-5 tracking-tighter !leading-3">Status</p>
-              <p className="tracking-tighter font-medium">{project.status}</p>
-              <p className="font-extrabold mt-5 tracking-tighter !leading-3">Address</p>
-              <p className="tracking-tighter font-medium">{project.location || "N/A"}</p>
-              <p className="font-extrabold mt-5 tracking-tighter !leading-3">Type</p>
-              <p className="tracking-tighter font-medium">{project.tags ? project.tags.join(", ") : "N/A"}</p>
-              <p className="font-extrabold mt-5 tracking-tighter !leading-3">Year of Completion</p>
-              <p className="tracking-tighter font-medium">{project.yearOfCompletion || "N/A"}</p>
-              <p className="font-extrabold mt-5 tracking-tighter !leading-3">Architect</p>
-              <p className="tracking-tighter font-medium">{project.architect || "N/A"}</p>
-              <p className="font-extrabold mt-5 tracking-tighter !leading-3">Landscape Architect</p>
-              <p className="tracking-tighter font-medium">{project.landscapeArchitect || "N/A"}</p>
+              <p className="font-extrabold mt-5 tracking-tighter !leading-3 text-lg">Status</p>
+              <p className="tracking-tighter font-medium text-lg">{project.status}</p>
+              <p className="font-extrabold mt-5 tracking-tighter !leading-3 text-lg">Address</p>
+              <p className="tracking-tighter font-medium text-lg">{project.location || "N/A"}</p>
+              <p className="font-extrabold mt-5 tracking-tighter !leading-3 text-lg">Type</p>
+              <p className="tracking-tighter font-medium text-lg">{project.tags ? project.tags.join(", ") : "N/A"}</p>
+              <p className="font-extrabold mt-5 tracking-tighter !leading-3 text-lg">Year of Completion</p>
+              <p className="tracking-tighter font-medium text-lg">{project.yearOfCompletion || "N/A"}</p>
+              <p className="font-extrabold mt-5 tracking-tighter !leading-3 text-lg">Architect</p>
+              <p className="tracking-tighter font-medium text-lg">{project.architect || "N/A"}</p>
+              <p className="font-extrabold mt-5 tracking-tighter !leading-3 text-lg">Landscape Architect</p>
+              <p className="tracking-tighter font-medium text-lg">{project.landscapeArchitect || "N/A"}</p>
               {project.brochureUrl && (
                 <a
                   href={project.brochureUrl}
@@ -129,18 +129,21 @@ const ProjectDetailPage = () => {
         {/* Additional Images Section */}
         {project.images && project.images.length > 0 && (
           <div className="mt-10 mb-24 space-y-36">
-            {project.images.map((imageUrl, index) => (
+            {project.images.slice(1).map((imageUrl, index) => (
               <img
                 key={index}
                 src={imageUrl}
                 alt={`Additional ${index + 1}`}
-                className="w-full mb-5 object-cover h-[80dvh] object-center"
+                className={cn(
+                  "w-full mb-5 object-cover h-[80dvh] object-center",
+                  index === project.images.length - 2 ? "!w-[60vh] ml-auto xl:mr-20 mr-10" : ""
+                )}
               />
             ))}
           </div>
         )}
         {relatedProjects.length > 0 && (
-          <div style={{ padding: "20px" }}>
+          <div className="xl:mx-20 mx-10 py-5">
             <h1 className="text-6xl text-primary-foreground font-bold mb-7">Related Projects</h1>
             <div className="grid gap-6 grid-cols-[repeat(auto-fit,minmax(250px,1fr))] flex-wrap gap-y-16">
               {relatedProjects.map((project) => (
