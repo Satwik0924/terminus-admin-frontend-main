@@ -297,7 +297,7 @@ const OfficeComponent = () => {
                     </div>
                   </a>
                   <p className="font-semibold mt-2 text-xl tracking-tight text-black">{member.name}</p>
-                  <p className="text-foreground">{member.role}</p>
+                  <p className="text-foreground !leading-tight">{member.role}</p>
                 </div>
               ))}
             </div>

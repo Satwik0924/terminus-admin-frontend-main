@@ -43,7 +43,7 @@ const AwardsComponent = ({ className }) => {
       {loading ? (
         <p className="text-center">Fetching our awards...</p>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 gap-y-16">
           {awardsData.map((award) => (
             <div key={award.id} className="overflow-hidden bg-white group relative">
               <div className="w-full h-[400px] overflow-hidden">
@@ -60,7 +60,7 @@ const AwardsComponent = ({ className }) => {
                 </div>
               </div>
               <div className="mt-4">
-                <h3 className="text-2xl tracking-tighter text-black line-clamp-1">{award.title}</h3>
+                <h3 className="text-[22px] tracking-tighter text-black line-clamp-1">{award.title}</h3>
                 <p className="text-lg text-black tracking-tighter !leading-tight line-clamp-2">{award.description}</p>
               </div>
             </div>

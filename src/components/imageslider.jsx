@@ -11,7 +11,7 @@ const ImageSlider = () => {
       link: "https://example.com/your-link2",
     },
     {
-      src: "https://assets.manutd.com/AssetPicker/images/0/0/10/126/687707/Legends-Profile_Cristiano-Ronaldo1523460877263.jpg",
+      src: "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5089501/image-4c92c200-0b12-4881-9dca-0d54008841f0.jpg?e=webp&cX=21&cY=219&cW=497&cH=730",
       link: "#",
     },
   ];
@@ -34,7 +34,7 @@ const ImageSlider = () => {
           <img
             src={images[currentIndex].src}
             alt={`Image ${currentIndex + 1}`}
-            className="w-full transition-transform duration-100 h-[75vh] object-cover object-center"
+            className="w-full transition-transform duration-100 h-[75vh] object-cover object-top"
           />
         </a>
       </div>

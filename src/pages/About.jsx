@@ -6,6 +6,7 @@ import NewsMedia from "@/components/NewsAndMedia";
 import OfficeComponent from "@/components/OfficeGrid";
 import { motion, useAnimation } from "framer-motion";
 import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 
 const About = () => {
   const [activeSection, setActiveSection] = useState("");
@@ -17,6 +18,8 @@ const About = () => {
   const controlsLifeSciences = useAnimation();
   const controlsRetail = useAnimation();
   const controlsEducation = useAnimation();
+
+  const location = useLocation();
 
   useEffect(() => {
     // Create intersection observer for navigation highlighting
@@ -80,6 +83,17 @@ const About = () => {
       });
     };
   }, []);
+
+  useEffect(() => {
+    if (location.hash) {
+      const element = document.getElementById(location.hash.substring(1));
+      if (element) {
+        const yOffset = -100;
+        const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+        window.scrollTo({ top: y, behavior: "smooth" });
+      }
+    }
+  }, [location]);
 
   return (
     <div id="head">

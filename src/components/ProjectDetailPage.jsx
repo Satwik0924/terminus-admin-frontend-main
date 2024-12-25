@@ -1,9 +1,9 @@
+import { cn } from "@/lib/utils";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Balancer from "react-wrap-balancer";
 import Footer from "./Footer";
-import { cn } from "@/lib/utils";
 
 const ProjectDetailPage = () => {
   const navigate = useNavigate();
@@ -72,7 +72,7 @@ const ProjectDetailPage = () => {
         </div>
         <div className="flex mb-24 max-xl:flex-col max-xl:gap-8 xl:mx-20 mx-10">
           {/* Left Section: Image */}
-          <div className="flex-1 h-[70vh] flex">
+          <div className="flex-1 h-[60vh] flex">
             <img
               src={project.images && project.images[0]}
               alt={`${project.title} main`}
@@ -83,7 +83,7 @@ const ProjectDetailPage = () => {
           {/* Right Section: Text */}
           <div className="flex-1 flex justify-end">
             <div className="xl:w-[60%] w-full">
-              <p className="tracking-tighter text-lg text-foreground/70">
+              <p className="tracking-tighter text-lg text-black">
                 <Balancer>{project.description || "No description available."}</Balancer>
               </p>
               <p className="font-extrabold mt-5 tracking-tighter !leading-3 text-lg">Status</p>
@@ -164,12 +164,12 @@ const ProjectDetailPage = () => {
                     </a>
                   </div>
                   <div className="p-0 bg-white">
-                    <h2 className="font-bold text-2xl tracking-tight text-black line-clamp-1">{project.title}</h2>
+                    <h2 className="font-bold text-[22px] tracking-tight text-black line-clamp-1">{project.title}</h2>
                     <div>
-                      <p className="text-xl text-foreground leading-4 tracking-tighter">{project.location}</p>
+                      <p className="text-lg text-foreground leading-4 tracking-tighter">{project.location}</p>
                       <p
                         className={cn(
-                          "text-xl text-foreground leading-7 tracking-tighter",
+                          "text-lg text-foreground leading-7 tracking-tighter",
                           project.yearOfCompletion ? "" : "opacity-0"
                         )}
                       >
