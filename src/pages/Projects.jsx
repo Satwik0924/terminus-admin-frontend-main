@@ -2,7 +2,7 @@ import { cn } from "@/lib/utils";
 import axios from "axios";
 import { motion, useAnimation } from "framer-motion";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Balancer from "react-wrap-balancer";
 import Footer from "../components/Footer";
 
@@ -14,6 +14,7 @@ const Projects = () => {
   const [lifeSciencesProjects, setLifeSciencesProjects] = useState([]);
   const [activeSection, setActiveSection] = useState("");
   const [filterStatus, setFilterStatus] = useState(""); // State to track active filter
+  const location = useLocation();
 
   const handleStatusClick = (status) => {
     if (filterStatus === status) {
@@ -47,10 +48,8 @@ const Projects = () => {
       try {
         const response = await axios.get("https://api.terminus-group.com/forms/project");
         if (response.data && response.data.length > 0) {
-          // console.log("projects data:", response.data);
           setProjects(response.data);
           categorizeProjects(response.data);
-          // console.log(response.data[0].description.substr(0, 88));
         }
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -73,7 +72,6 @@ const Projects = () => {
       }
     );
 
-    // Observe all sections for navigation
     const sections = ["commercial", "residential", "hospitality", "lifesciences", "retail", "education"];
     sections.forEach((id) => {
       const element = document.getElementById(id);
@@ -112,6 +110,7 @@ const Projects = () => {
     };
 
     window.addEventListener("scroll", handleScroll);
+
     return () => {
       window.removeEventListener("scroll", handleScroll);
       sections.forEach((id) => {
@@ -121,20 +120,22 @@ const Projects = () => {
     };
   }, []);
 
+  useEffect(() => {
+    if (location.hash) {
+      const element = document.getElementById(location.hash.substring(1));
+      if (element) {
+        const yOffset = -100;
+        const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+        window.scrollTo({ top: y, behavior: "smooth" });
+      }
+    }
+  }, [location]);
+
   return (
     <div>
       <div className="flex sm:!pb-32 !pb-16 xl:p-5 max-md:p-5 gap-32">
         {/* Side Sticky Section */}
-        <div
-          //   style={{
-          //     flex: "1",
-          //     position: "sticky",
-          //     top: "150px",
-          //     height: "100%",
-          //     display: window.innerWidth > 768 ? "block" : "none",
-          //   }}
-          className="sticky flex-1 top-[150px] h-full max-md:hidden"
-        >
+        <div className="sticky flex-1 top-[150px] h-full max-md:hidden">
           <ul className="list-none pl-8 xl:text-5xl text-3xl tracking-tighter -space-y-1">
             <li>
               <h1 className="mb-5 text-primary-foreground font-semibold">Key Projects</h1>
@@ -160,11 +161,11 @@ const Projects = () => {
             ))}
           </ul>
           <div className="grid mt-12 px-0 w-full pl-8">
-            <div className="grid grid-cols-2 max-[1440px]:grid-cols-1 w-full gap-3">
+            <div className="grid grid-cols-1 w-full gap-3">
               {["Completed", "Ongoing", "Launching Soon"].map((status, index) => (
                 <div
                   key={index}
-                  className="flex items-center justify-center"
+                  className="flex items-center justify-center max-w-[15rem]"
                   onClick={() => handleStatusClick(status)} // Use the new toggle logic
                 >
                   <span
@@ -201,10 +202,9 @@ const Projects = () => {
             </motion.h1>
 
             {/* Projects */}
-            <div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
+            <div style={{ padding: "20px" }}>
               <div className="grid grid-cols-4 max-[1440px]:grid-cols-3 max-xl:grid-cols-2 max-[569px]:grid-cols-1 gap-6 gap-y-24">
                 {commercialProjects.map((project) => (
-                  // ... Commercial projects content (unchanged)
                   <div key={project._id} className="overflow-hidden group">
                     <div className="relative w-full h-[400px] overflow-hidden mb-3">
                       <Link to={`/projects/${project._id}`} className="relative w-full h-full overflow-hidden">
@@ -226,14 +226,14 @@ const Projects = () => {
 
                     {/* Project Details */}
                     <div className="p-0 bg-white">
-                      <h2 className="font-bold text-2xl tracking-tight text-black line-clamp-1 text-ellipsis">
+                      <h2 className="font-bold text-[22px] tracking-tight text-black line-clamp-1 text-ellipsis">
                         {project.title}
                       </h2>
                       <div>
-                        <p className="text-xl text-foreground leading-7 tracking-tighter">{project.location}</p>
+                        <p className="text-lg text-foreground leading-7 tracking-tighter">{project.location}</p>
                         <p
                           className={cn(
-                            "text-xl text-foreground leading-4 tracking-tighter",
+                            "text-lg text-foreground leading-4 tracking-tighter",
                             project.yearOfCompletion ? "" : "opacity-0"
                           )}
                         >
@@ -340,14 +340,14 @@ const Projects = () => {
 
                       {/* Project Details */}
                       <div className="p-0 bg-white">
-                        <h2 className="font-bold text-2xl tracking-tight text-black mb-1 line-clamp-1 text-ellipsis">
+                        <h2 className="font-bold text-[22px] tracking-tight text-black mb-1 line-clamp-1 text-ellipsis">
                           {project.title}
                         </h2>
                         <div>
-                          <p className="text-xl text-foreground leading-4 tracking-tighter">{project.location}</p>
+                          <p className="text-lg text-foreground leading-4 tracking-tighter">{project.location}</p>
                           <p
                             className={cn(
-                              "text-xl text-foreground leading-7 tracking-tighter",
+                              "text-lg text-foreground leading-7 tracking-tighter",
                               project.yearOfCompletion ? "" : "opacity-0"
                             )}
                           >

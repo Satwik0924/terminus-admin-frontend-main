@@ -85,7 +85,7 @@ const ProjectsGrid = () => {
             {projects.map((project, index) => (
               <div
                 key={index}
-                className={`w-full h-[70dvh] max-sm:w-full overflow-hidden relative hover:scale-[1.03] transition-transform duration-500 ease-in-out bg-white flex flex-col justify-center`}
+                className={`w-full h-[60dvh] max-sm:w-full overflow-hidden relative hover:scale-[1.03] transition-transform duration-500 ease-in-out bg-white flex flex-col justify-center`}
               >
                 <div className="flex-grow">
                   <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
@@ -97,7 +97,7 @@ const ProjectsGrid = () => {
                   {/* "View Projects" at Bottom Left */}
                   <Link
                     to="/projects"
-                    className="text-primary-foreground hover:text-white transition-colors text-lg mx-auto gap-2 font-medium flex items-center font-serif"
+                    className="text-primary-foreground hover:text-white transition-colors text-lg mx-auto gap-2 font-medium flex items-center"
                   >
                     View Projects
                     <ArrowRight className="stroke-white size-6" />
