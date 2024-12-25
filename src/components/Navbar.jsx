@@ -32,6 +32,10 @@ const Navbar = () => {
     }
   }, []);
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -41,7 +45,9 @@ const Navbar = () => {
     if (location.hash) {
       const element = document.getElementById(location.hash.substring(1));
       if (element) {
-        element.scrollIntoView({ behavior: "smooth", block: "start" });
+        const yOffset = -100;
+        const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+        window.scrollTo({ top: y, behavior: "smooth" });
       }
     }
   }, [location]);
@@ -157,6 +163,9 @@ const Navbar = () => {
               <Link
                 to={link.href}
                 className="hover:text-primary-foreground text-[#727272] transition-opacity duration-200 ease-in-out xl:text-[22px] text-base font-bold"
+                onClick={() => {
+                  scrollToTop();
+                }}
               >
                 {link.label}
               </Link>
@@ -176,7 +185,10 @@ const Navbar = () => {
                   style={{
                     ...styles.navLink,
                   }}
-                  onClick={toggleMenu}
+                  onClick={() => {
+                    toggleMenu();
+                    scrollToTop();
+                  }}
                 >
                   {link.label}
                 </Link>

@@ -101,7 +101,7 @@ const Carousel = () => {
         stroke="white"
         onClick={scrollToProjects}
       >
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="4" d="M9 5l7 7-7 7" />
+        <path strokeLinecap="square" strokeLinejoin="miter" strokeWidth="4" d="M9 5l7 7-7 7" />
       </svg>
     </div>
   );
