@@ -70,7 +70,7 @@ const StatsSection = () => {
   }, [controlsLine1, controlsLine2, controlsLine3]);
 
   return (
-    <div style={{ margin: "0 0", position: "relative" }} className="sm:py-40 py-24">
+    <div id="stats" style={{ margin: "0 0", position: "relative" }} className="sm:py-40 py-24">
       <div className="sm:w-[90%] w-[95%] mx-auto font-bold xl:text-9xl sm:text-7xl text-5xl tracking-tighter">
         <motion.h1 id="line1" animate={controlsLine1} initial={{ color: "#D3D3D3" }}>
           5 MILLION SQ.FT. BUILT

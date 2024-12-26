@@ -12,7 +12,7 @@ const Carousel = () => {
   const intervalRef = useRef(null);
 
   const scrollToProjects = () => {
-    const projects = document.getElementById("explore-projects");
+    const projects = document.getElementById("stats");
     if (projects) projects.scrollIntoView({ behavior: "smooth", block: "nearest" });
   };
 
