@@ -429,7 +429,6 @@ const Projects = () => {
                 "/assets/image17.png",
                 "/assets/image19.png",
 
-                "/assets/image19.png",
                 "/assets/image20.png",
                 "/assets/image21.png",
                 "/assets/image22.png",
