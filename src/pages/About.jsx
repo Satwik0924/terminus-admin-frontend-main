@@ -112,8 +112,8 @@ const About = () => {
         >
           <ul className="list-none pl-8 text-5xl !leading-3 tracking-tight space-y-0">
             {[
-              { id: "commercial", label: "Team" },
-              { id: "residential", label: "News & Media" },
+              { id: "commercial", label: "About" },
+              { id: "residential", label: "Team" },
               { id: "hospitality", label: "Philanthropy" },
               { id: "lifesciences", label: "Awards" },
               { id: "retail", label: "Consultants & Partners" },
@@ -145,7 +145,7 @@ const About = () => {
             width: "100%",
           }}
         >
-          <div style={{ textAlign: "left" }}>
+          <div id="commercial" style={{ textAlign: "left" }}>
             <OfficeComponent />
             {/* <DrivenByMission /> */}
           </div>

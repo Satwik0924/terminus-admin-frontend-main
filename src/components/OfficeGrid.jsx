@@ -173,7 +173,7 @@ const OfficeComponent = () => {
         </div>
         <DrivenByMission />
         {/* Team Section */}
-        <div id="commercial" style={{ textAlign: "left" }}>
+        <div id="residential" style={{ textAlign: "left" }}>
           <motion.h1
             id="heading2"
             style={{
