@@ -1,6 +1,6 @@
 import { motion, useAnimation } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Balancer from "react-wrap-balancer";
 
@@ -33,17 +33,16 @@ const ProjectsGrid = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [headingAnimation]);
 
-  const projectRefs = useRef({});
-
-  const handleScrollToProject = (id) => {
-    const projectElement = projectRefs.current[id];
-    if (projectElement) {
-      window.scrollTo({
-        top: projectElement.offsetTop - 100, // Adjust offset for better visibility
-        behavior: "smooth",
-      });
+  useEffect(() => {
+    // Scroll to the section if the URL has a hash
+    const hash = window.location.hash;
+    if (hash) {
+      const targetElement = document.getElementById(hash.substring(1)); // Remove the '#' from the hash
+      if (targetElement) {
+        targetElement.scrollIntoView({ behavior: "smooth" });
+      }
     }
-  };
+  }, [window.location.hash]); // Run the effect whenever the hash changes
 
   const projects = [
     {
@@ -59,7 +58,7 @@ const ProjectsGrid = () => {
         "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5089501/image-c602d24d-ca60-4276-9563-169d82db46a8.jpg?w=421&e=webp&cX=523.3392857142858&cY=0&cW=1345.3214285714284&cH=3252",
     },
     {
-      id: "education",
+      id: "hospitality",
       title: "Hospitality",
       image:
         "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5089501/image-f972e3e1-d950-4d85-8d21-37b0b46a4771.jpg?w=421&e=webp&cX=463.5610119047619&cY=0&cW=352.8779761904762&cH=853",
@@ -103,7 +102,6 @@ const ProjectsGrid = () => {
             {projects.map((project) => (
               <div
                 key={project.id}
-                ref={(el) => (projectRefs.current[project.id] = el)} // Reference for each project
                 className="w-full h-[60dvh] max-sm:w-full overflow-hidden relative hover:scale-[1.03] transition-transform duration-500 ease-in-out bg-white flex flex-col justify-center"
               >
                 <div className="flex-grow">
@@ -114,13 +112,13 @@ const ProjectsGrid = () => {
                   <h2 className="text-white text-3xl font-bold">{project.title}</h2>
 
                   {/* "View Projects" with Dynamic ID */}
-                  <button
-                    onClick={() => handleScrollToProject(project.id)} // Scroll to the specific project
+                  <Link
+                    to={`/projects/#${project.id}`} // Update the Link to point to the section
                     className="text-primary-foreground hover:text-white transition-colors text-lg mx-auto gap-2 font-medium flex items-center"
                   >
                     View Projects
                     <ArrowRight className="stroke-white size-6" />
-                  </button>
+                  </Link>
                 </div>
               </div>
             ))}
