@@ -7,16 +7,12 @@ import LogoT from "../assets/tg_logo_t.svg";
 import useWindowDimensions from "../hooks/useWindowDimensions";
 import ProjectSearch from "./ProjectSearch";
 
-// const  =
-//   "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5036787/image-27f5270f-9dd9-4b1e-9dad-9d96ce0f1455.png?w=302&amp;e=webp&amp;nll=true&amp;cX=0&amp;cY=9&amp;cW=1299&amp;cH=172 2x;";
-
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { width: windowWidth } = useWindowDimensions();
   const pathname = useLocation().pathname;
   const [isVisible, setIsVisible] = useState(false);
   const [logo, setLogo] = useState(fullLogo);
-  const location = useLocation();
 
   const toggleMenu = () => {
     setIsMenuOpen((prev) => !prev);
@@ -41,17 +37,6 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [handleScroll]);
 
-  useEffect(() => {
-    if (location.hash) {
-      const element = document.getElementById(location.hash.substring(1));
-      if (element) {
-        const yOffset = -100;
-        const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
-        window.scrollTo({ top: y, behavior: "smooth" });
-      }
-    }
-  }, [location]);
-
   const styles = {
     container: {
       width: "95%",
@@ -61,7 +46,6 @@ const Navbar = () => {
       alignItems: "center",
       justifyContent: "space-between",
       height: "6rem",
-      overflow: "hidden",
     },
     menuButton: {
       display: "none",
@@ -79,14 +63,6 @@ const Navbar = () => {
       padding: 0,
       flex: 1,
     },
-    navLink: {
-      textDecoration: "none",
-      fontWeight: 500,
-      fontSize: "0.95rem",
-      letterSpacing: "-0.2px",
-      transition: "opacity 0.2s ease",
-      color: "#727272",
-    },
     mobileMenu: {
       display: "none",
       position: "absolute",
@@ -94,7 +70,6 @@ const Navbar = () => {
       right: 0,
       top: "6rem",
       boxShadow: "0 2px 5px rgba(0, 0, 0, 0.1)",
-      transition: "opacity 0.3s ease-in-out",
       backgroundColor: "white",
       opacity: 1,
     },
@@ -106,11 +81,9 @@ const Navbar = () => {
       margin: 0,
       padding: "16px 0",
       gap: "16px",
-      color: "#727272",
     },
   };
 
-  // Responsive adjustments
   const isMobile = windowWidth < 768;
   if (isMobile) {
     styles.menuButton.display = "block";
@@ -126,18 +99,23 @@ const Navbar = () => {
     { href: "/contact", label: "Contact" },
   ];
 
-  // shadow-md shadow-gray-200/50 backdrop-blur-2xl bg-white/30
-
   return (
     <nav
       className={`${pathname === "/" ? "fixed" : "sticky"} ${isVisible ? "bg-white" : "bg-transparent"} w-full top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out`}
     >
       <div style={styles.container}>
-        {/* Change this with the Logo */}
+        {/* Logo */}
         <div className="flex-1">
-          <Link to="/" className={`relative overflow-hidden inline-block`}>
+          <Link to="/" onClick={scrollToTop} className="relative overflow-hidden inline-block">
             <div className="flex items-center relative">
-              <img src={LogoT} alt="T" className="object-contain h-10 w-10 absolute pr-2" />
+              {/* T Logo */}
+              <img
+                src={LogoT}
+                alt="T"
+                className="object-contain h-10 w-10 absolute pr-2 cursor-pointer"
+                onClick={scrollToTop} // Ensure T logo always navigates to the top
+              />
+              {/* Erminus Logo */}
               <img
                 src={HalfLogo}
                 alt="Erminus"
@@ -163,9 +141,7 @@ const Navbar = () => {
               <Link
                 to={link.href}
                 className="hover:text-primary-foreground text-[#727272] transition-opacity duration-200 ease-in-out xl:text-[22px] text-base font-bold"
-                onClick={() => {
-                  scrollToTop();
-                }}
+                onClick={scrollToTop}
               >
                 {link.label}
               </Link>
@@ -182,13 +158,11 @@ const Navbar = () => {
               <li key={link.href}>
                 <Link
                   to={link.href}
-                  style={{
-                    ...styles.navLink,
-                  }}
                   onClick={() => {
                     toggleMenu();
                     scrollToTop();
                   }}
+                  style={{ color: "#727272" }}
                 >
                   {link.label}
                 </Link>
