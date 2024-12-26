@@ -226,7 +226,7 @@ const Projects = () => {
 
                     {/* Project Details */}
                     <div className="p-0 bg-white">
-                      <h2 className="font-bold text-[22px] tracking-tight text-black line-clamp-1 text-ellipsis">
+                      <h2 className="font-bold text-[lg] tracking-tight text-black line-clamp-1 text-ellipsis">
                         {project.title}
                       </h2>
                       <div>
@@ -340,7 +340,7 @@ const Projects = () => {
 
                       {/* Project Details */}
                       <div className="p-0 bg-white">
-                        <h2 className="font-bold text-[22px] tracking-tight text-black mb-1 line-clamp-1 text-ellipsis">
+                        <h2 className="font-bold text-[lg] tracking-tight text-black mb-1 line-clamp-1 text-ellipsis">
                           {project.title}
                         </h2>
                         <div>
