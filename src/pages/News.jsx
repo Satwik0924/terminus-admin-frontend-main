@@ -56,7 +56,7 @@ const News = () => {
         <NewsMedia className="ml-16" />
       </div>
 
-      <div id="awards" style={{ textAlign: "left", padding: "2rem 1rem" }}>
+      {/* <div id="awards" style={{ textAlign: "left", padding: "2rem 1rem" }}>
         <motion.h1
           animate={controlsAwards}
           initial={{ color: "#D3D3D3" }}
@@ -65,7 +65,7 @@ const News = () => {
           Awards
         </motion.h1>
         <AwardsComponent className="ml-16" />
-      </div>
+      </div> */}
 
       <Footer />
     </>

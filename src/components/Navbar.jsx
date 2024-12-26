@@ -122,7 +122,7 @@ const Navbar = () => {
   const navLinks = [
     { href: "/projects", label: "Projects" },
     { href: "/about", label: "About" },
-    { href: "/about#residential", label: "News & Media" },
+    { href: "/news", label: "News & Media" },
     { href: "/contact", label: "Contact" },
   ];
 
