@@ -11,33 +11,28 @@ const ProjectDetailPage = () => {
   const [project, setProject] = useState(null);
   const [relatedProjects, setRelatedProjects] = useState([]);
   const [youtubeVideoID, setYoutubeVideoID] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalImage, setModalImage] = useState("");
 
   useEffect(() => {
     if (!id || !Number.parseInt(id)) navigate("/projects");
 
     const fetchData = async () => {
       try {
-        // Fetch the current project
         const response = await axios.get(`https://api.terminus-group.com/forms/project/${id}`);
         const currentProject = response.data;
 
         if (currentProject) {
           setProject(currentProject);
 
-          // Fetch all projects
           const allProjectsResponse = await axios.get(`https://api.terminus-group.com/forms/project`);
           const allProjects = allProjectsResponse.data || [];
-
-          // Filter related projects by type
           const related = allProjects.filter(
             (proj) => proj.type === currentProject.type && proj._id !== currentProject._id
           );
           setRelatedProjects(related);
-        } else {
-          console.error("No project data found.");
         }
 
-        // Extract YouTube video ID if available
         const youtubeVideo = new URL(currentProject.youtubeVideoUrl);
         switch (youtubeVideo.hostname) {
           case "www.youtube.com":
@@ -55,6 +50,16 @@ const ProjectDetailPage = () => {
     fetchData();
   }, [id, navigate]);
 
+  const openModal = (image) => {
+    setModalImage(image);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setModalImage("");
+  };
+
   if (!project) {
     return <div className="text-center mt-12 font-sans">Loading Project Data...</div>;
   }
@@ -62,25 +67,20 @@ const ProjectDetailPage = () => {
   return (
     <div>
       <div className="flex flex-col py-12 max-w-full text-gray-800">
-        {/* Top Section: Title, Location, Image */}
         <div className="xl:mx-20 mx-10">
           <h1 className="text-8xl text-primary-foreground mb-3 tracking-tighter">{project.title}</h1>
           <p className="text-xl text-black mb-20 leading-5 tracking-tighter">{project.location}</p>
-          {/* <p className="text-lg text-black mb-5 leading-8">
-            Date {new Date(project.createdAt).toLocaleString("default", { month: "long", year: "numeric" })}
-          </p> */}
         </div>
+
         <div className="flex mb-24 max-xl:flex-col max-xl:gap-8 xl:mx-20 mx-10">
-          {/* Left Section: Image */}
           <div className="flex-1 h-[60vh] flex">
             <img
               src={project.images && project.images[0]}
               alt={`${project.title} main`}
-              className="w-full object-cover"
+              className="w-full object-cover cursor-pointer"
+              onClick={() => openModal(project.images && project.images[0])}
             />
           </div>
-
-          {/* Right Section: Text */}
           <div className="flex-1 flex justify-end">
             <div className="xl:w-[60%] w-full">
               <p className="tracking-tighter text-lg text-black">
@@ -96,36 +96,10 @@ const ProjectDetailPage = () => {
               <p className="tracking-tighter font-medium text-lg">{project.yearOfCompletion || "N/A"}</p>
               <p className="font-extrabold mt-5 tracking-tighter !leading-3 text-lg">Build Up Area</p>
               <p className="tracking-tighter font-medium text-lg">{project.builtUpArea || "N/A"}</p>
-
-              {project.brochureUrl && (
-                <a
-                  href={project.brochureUrl}
-                  className="inline-block mt-5 text-foreground font-bold tracking-tighter text-lg text-center "
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  download
-                >
-                  Download Brochure
-                </a>
-              )}
             </div>
           </div>
         </div>
 
-        {/* YouTube Video Section */}
-        {project.youtubeVideoUrl && youtubeVideoID.length > 0 && (
-          <div className="mt-10 mb-24">
-            <iframe
-              src={`https://www.youtube.com/embed/${youtubeVideoID}`}
-              title="Project Video"
-              className="w-full h-[80dvh] border-none"
-              allowFullScreen
-              loading="lazy"
-            ></iframe>
-          </div>
-        )}
-
-        {/* Additional Images Section */}
         {project.images && project.images.length > 0 && (
           <div className="mt-10 mb-24 space-y-36">
             {project.images.slice(1).map((imageUrl, index) => (
@@ -134,60 +108,24 @@ const ProjectDetailPage = () => {
                 src={imageUrl}
                 alt={`Additional ${index + 1}`}
                 className={cn(
-                  "w-full mb-5 object-cover h-[80dvh] object-center",
+                  "w-full mb-5 object-cover h-[80dvh] object-center cursor-pointer",
                   index === project.images.length - 2 ? "!w-[60vh] ml-auto xl:mr-20 mr-10" : ""
                 )}
+                onClick={() => openModal(imageUrl)}
               />
             ))}
           </div>
         )}
-        {relatedProjects.length > 0 && (
-          <div className="xl:mx-20 mx-10 py-5">
-            <h1 className="text-6xl text-primary-foreground font-bold mb-7">Related Projects</h1>
-            <div className="grid gap-6 grid-cols-[repeat(auto-fit,minmax(250px,1fr))] flex-wrap gap-y-16">
-              {relatedProjects.map((project) => (
-                <div key={project._id} className="overflow-hidden group">
-                  <div className="relative w-full h-[400px] overflow-hidden mb-3">
-                    <a href={`/projects/${project._id}`} className="relative w-full h-full overflow-hidden">
-                      <img
-                        src={project.images?.[0]}
-                        alt={project.title}
-                        className="w-full h-full object-cover transition duration-500 group-hover:blur-[2px]"
-                      />
-                      <div className="absolute inset-0 flex justify-top items-top bg-white/30 bg-opacity-70 opacity-0 group-hover:opacity-100 transition duration-500 [word-spacing:4px]">
-                        <div className="p-4">
-                          <p className="text-black text-left text-xl !line-clamp-4 !text-ellipsis">
-                            {project.description}
-                          </p>
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-                  <div className="p-0 bg-white">
-                    <h2 className="font-bold text-[22px] tracking-tight text-black line-clamp-1">{project.title}</h2>
-                    <div>
-                      <p className="text-lg text-foreground leading-4 tracking-tighter">{project.location}</p>
-                      <p
-                        className={cn(
-                          "text-lg text-foreground leading-7 tracking-tighter",
-                          project.yearOfCompletion ? "" : "opacity-0"
-                        )}
-                      >
-                        {project.yearOfCompletion ?? "0"}
-                      </p>
-                    </div>
-                    <div className="grid gap-2 mt-8">
-                      <span className="px-2 py-1 text-sm bg-foreground/20 text-foreground text-center font-bold transition duration-300 ease-in-out hover:bg-primary-foreground hover:text-white">
-                        {project.status}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
       </div>
+
+      {isModalOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-70 z-50 flex items-center justify-center">
+          <button onClick={closeModal} className="absolute top-5 left-5 text-white text-3xl font-bold">
+            &times;
+          </button>
+          <img src={modalImage} alt="Fullscreen view" className="max-w-full max-h-full" />
+        </div>
+      )}
       <Footer />
     </div>
   );
