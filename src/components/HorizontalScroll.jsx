@@ -51,7 +51,7 @@ export default function HorizontalScrollCarousel() {
   const headingColor = useTransform(scrollYProgress, [0, 0.2], ["#A0A0A0", "#F58220"]);
 
   return (
-    <section ref={targetRef} style={{ position: "relative", height: "400vh" }}>
+    <section ref={targetRef} style={{ position: "relative", height: "400vh" }} id="milestones">
       {/* Heading Section */}
 
       {/* Horizontal Scroll Section */}

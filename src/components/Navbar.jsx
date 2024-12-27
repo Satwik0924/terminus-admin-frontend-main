@@ -101,12 +101,12 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`${pathname === "/" ? "fixed" : "sticky"} ${isVisible ? "bg-white" : "bg-transparent"} w-full top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out`}
+      className={`${pathname === "/" ? "fixed" : "sticky"} ${isVisible ? "bg-white" : "bg-transparent"} w-full top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out overflow-hidden`}
     >
       <div style={styles.container}>
         {/* Logo */}
         <div className="flex-1">
-          <Link to="/" onClick={scrollToTop} className="relative overflow-hidden inline-block">
+          <Link to="/" onClick={scrollToTop} className="relative inline-block">
             <div className="flex items-center relative">
               {/* T Logo */}
               <img
