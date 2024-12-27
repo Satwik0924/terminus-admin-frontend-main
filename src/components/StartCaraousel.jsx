@@ -11,7 +11,7 @@ const Carousel = () => {
 
   const scrollToProjects = () => {
     const projects = document.getElementById("stats");
-    if (projects) projects.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    if (projects) projects.scrollIntoView({ behavior: "instant", block: "nearest" });
   };
 
   const resetInterval = () => {

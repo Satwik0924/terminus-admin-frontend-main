@@ -39,7 +39,7 @@ const ProjectsGrid = () => {
     if (hash) {
       const targetElement = document.getElementById(hash.substring(1)); // Remove the '#' from the hash
       if (targetElement) {
-        targetElement.scrollIntoView({ behavior: "smooth" });
+        targetElement.scrollIntoView({ behavior: "instant" });
       }
     }
   }, [window.location.hash]); // Run the effect whenever the hash changes
