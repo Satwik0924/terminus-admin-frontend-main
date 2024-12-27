@@ -117,7 +117,52 @@ const ProjectDetailPage = () => {
           </div>
         )}
       </div>
-
+      {relatedProjects.length > 0 && (
+        <div className="xl:mx-20 mx-10 py-5">
+          <h1 className="text-6xl text-primary-foreground font-bold mb-7">Related Projects</h1>
+          <div className="grid gap-6 grid-cols-[repeat(auto-fit,minmax(250px,1fr))] flex-wrap gap-y-16">
+            {relatedProjects.map((project) => (
+              <div key={project._id} className="overflow-hidden group">
+                <div className="relative w-full h-[400px] overflow-hidden mb-3">
+                  <a href={`/projects/${project._id}`} className="relative w-full h-full overflow-hidden">
+                    <img
+                      src={project.images?.[0]}
+                      alt={project.title}
+                      className="w-full h-full object-cover transition duration-500 group-hover:blur-[2px]"
+                    />
+                    <div className="absolute inset-0 flex justify-top items-top bg-white/30 bg-opacity-70 opacity-0 group-hover:opacity-100 transition duration-500 [word-spacing:4px]">
+                      <div className="p-4">
+                        <p className="text-black text-left text-xl !line-clamp-4 !text-ellipsis">
+                          {project.description}
+                        </p>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+                <div className="p-0 bg-white">
+                  <h2 className="font-bold text-2xl tracking-tight text-black line-clamp-1">{project.title}</h2>
+                  <div>
+                    <p className="text-xl text-foreground leading-4 tracking-tighter">{project.location}</p>
+                    <p
+                      className={cn(
+                        "text-xl text-foreground leading-7 tracking-tighter",
+                        project.yearOfCompletion ? "" : "opacity-0"
+                      )}
+                    >
+                      {project.yearOfCompletion ?? "0"}
+                    </p>
+                  </div>
+                  <div className="grid gap-2 mt-8">
+                    <span className="px-2 py-1 text-sm bg-foreground/20 text-foreground text-center font-bold transition duration-300 ease-in-out hover:bg-primary-foreground hover:text-white">
+                      {project.status}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
       {isModalOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-70 z-50 flex items-center justify-center">
           <button onClick={closeModal} className="absolute top-5 left-5 text-white text-3xl font-bold">
