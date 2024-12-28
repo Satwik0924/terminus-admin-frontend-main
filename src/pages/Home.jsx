@@ -1,9 +1,9 @@
 import ContactSection from "../components/ContactUs";
 import Footer from "../components/Footer";
-import HorizontalScrollCarousel from "../components/HorizontalScroll";
 import ProjectsGrid from "../components/ProjectGrid";
 import Carousel from "../components/StartCaraousel";
 import StatsSection from "../components/StatsSection";
+import Milestones from "@/components/Milestones";
 
 const Home = () => {
   return (
@@ -11,7 +11,8 @@ const Home = () => {
       <Carousel />
       <StatsSection />
       <ProjectsGrid />
-      <HorizontalScrollCarousel />
+      {/* <HorizontalScrollCarousel /> */}
+      <Milestones />
       <ContactSection />
       <Footer />
     </>
