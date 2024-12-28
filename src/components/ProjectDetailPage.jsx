@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Balancer from "react-wrap-balancer";
 import Footer from "./Footer";
@@ -13,6 +13,8 @@ const ProjectDetailPage = () => {
   const [youtubeVideoID, setYoutubeVideoID] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalImage, setModalImage] = useState("");
+  const [showEnquiryModal, setShowEnquiryModal] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     if (!id || !Number.parseInt(id)) navigate("/projects");
@@ -60,6 +62,117 @@ const ProjectDetailPage = () => {
     setModalImage("");
   };
 
+  const EnquiryModal = ({ onClose, onSubmit }) => {
+    const [formData, setFormData] = useState({
+      name: "",
+      phoneNumber: "",
+      emailId: "",
+      query: "",
+    });
+    const containerRef = useRef(null);
+
+    useEffect(() => {
+      const handleClickOutside = (event) => {
+        if (containerRef.current && !containerRef.current.contains(event.target)) {
+          onClose();
+        }
+      };
+
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => document.removeEventListener("mousedown", handleClickOutside);
+    }, []);
+
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      onSubmit(formData);
+      onClose();
+    };
+
+    return (
+      <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50">
+        <div className="bg-white p-8 rounded-lg w-full max-w-md" ref={containerRef}>
+          <h2 className="text-2xl font-bold text-center">Download Brochure</h2>
+          <p className="text-xs mb-6 text-center">Please fill out this form to continue to download the brochure</p>
+          <form onSubmit={handleSubmit}>
+            <div className="space-y-4">
+              <input
+                type="text"
+                placeholder="Your Name *"
+                required
+                className="w-full p-2 border rounded"
+                value={formData.name}
+                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                name="name"
+              />
+              <input
+                type="tel"
+                placeholder="Phone Number *"
+                required
+                className="w-full p-2 border rounded"
+                value={formData.phone}
+                onChange={(e) => setFormData({ ...formData, phoneNumber: e.target.value })}
+                name="phoneNumber"
+              />
+              <input
+                type="email"
+                placeholder="Email ID *"
+                required
+                className="w-full p-2 border rounded"
+                value={formData.email}
+                onChange={(e) => setFormData({ ...formData, emailId: e.target.value })}
+                name="emailId"
+              />
+              <textarea
+                placeholder="Your Query"
+                className="w-full p-2 border rounded"
+                value={formData.query}
+                onChange={(e) => setFormData({ ...formData, query: e.target.value })}
+                name="query"
+              />
+            </div>
+            <div className="mt-6 flex justify-end space-x-4">
+              <button type="button" onClick={onClose} className="px-4 py-2 text-foreground hover:text-foreground/90">
+                Cancel
+              </button>
+              <button
+                type="submit"
+                className="px-4 py-2 bg-primary-foreground/90 text-white rounded hover:bg-primary-foreground"
+              >
+                {isSubmitting ? "Submitting..." : "Submit & Download"}
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    );
+  };
+
+  const onSubmit = async (submittedData) => {
+    console.log("submittedData", submittedData);
+    try {
+      setIsSubmitting(true);
+      const formData = new FormData();
+      formData.append("name", submittedData.name);
+      formData.append("emailId", submittedData.emailId);
+      formData.append("phoneNumber", submittedData.phoneNumber);
+      formData.append("query", submittedData.query);
+
+      const response = await axios.post("http://localhost:8080/forms/enquiry", formData);
+
+      if (response.status === 201) {
+        window.open(project.brochureUrl, "_blank");
+        return;
+      }
+
+      throw new Error();
+    } catch (error) {
+      alert("There was an error submitting the form. Please try again later.");
+    } finally {
+      setIsSubmitting(false);
+      setShowEnquiryModal(false);
+    }
+  };
+
   if (!project) {
     return <div className="text-center mt-12 font-sans">Loading Project Data...</div>;
   }
@@ -96,6 +209,22 @@ const ProjectDetailPage = () => {
               <p className="tracking-tighter font-medium text-lg">{project.yearOfCompletion || "N/A"}</p>
               <p className="font-extrabold mt-5 tracking-tighter !leading-3 text-lg">Build Up Area</p>
               <p className="tracking-tighter font-medium text-lg">{project.builtUpArea || "N/A"}</p>
+              {project.brochureUrl && (
+                <>
+                  <button
+                    onClick={() => setShowEnquiryModal(true)}
+                    className="inline-block mt-5 text-foreground font-bold tracking-tighter text-lg text-center"
+                  >
+                    Download Brochure
+                  </button>
+                  {showEnquiryModal && (
+                    <EnquiryModal
+                      onClose={() => setShowEnquiryModal(false)}
+                      onSubmit={(formData) => onSubmit(formData)}
+                    />
+                  )}
+                </>
+              )}
             </div>
           </div>
         </div>
