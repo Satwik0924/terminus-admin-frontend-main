@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { motion, useAnimation } from "framer-motion";
+import { motion, useAnimation, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 
 const Milestones = () => {
@@ -214,15 +214,21 @@ const Milestones = () => {
       case "side-by-side-stacked":
         return index === 0 ? "col-span-1 row-span-2" : "col-span-1 row-span-1";
       case "stacked-side-by-side":
-        return index === 0 ? "col-span-2 row-span-1" : "col-span-1 max-h-[25vh]";
+        return index === 0 ? "col-span-2 row-span-1" : "col-span-1 lg:max-h-[25vh]";
       default:
         break;
     }
   };
 
+  const fadeVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1 },
+    exit: { opacity: 0 },
+  };
+
   return (
     <section className="flex flex-col justify-center items-center h-auto lg:py-40 py-20 w-full" id="explore-projects">
-      <div className="sm:w-[90%] w-full">
+      <div className="w-[90%]">
         {/* Heading */}
         <motion.h1
           id="milestones"
@@ -232,45 +238,66 @@ const Milestones = () => {
         >
           Milestones
         </motion.h1>
-        <div className="flex gap-24">
+        <div className="flex gap-24 max-lg:flex-col">
           {/* Years */}
-          <div>
+          <div className="flex lg:flex-col max-lg:gap-4 max-lg:flex-wrap">
             {Object.keys(milestones).map((year) => (
               <button
                 key={year}
                 onClick={() => setSelectedYear(year)}
-                className={`${selectedYear === year ? "text-primary-foreground" : "text-foreground/20"} text-6xl block font-medium`}
+                className={`${selectedYear === year ? "text-primary-foreground" : "text-foreground/20"} text-6xl max-sm:text-2xl font-medium hover:text-primary-foreground transition-colors duration-300 ease-out`}
               >
                 {year}
               </button>
             ))}
           </div>
           {/* Milestones */}
-          <div className="flex-grow w-full mt-6">
-            <div className="flex gap-10 w-full">
+          <div className={cn("flex-grow w-full mt-6")}>
+            <div className="flex gap-10 w-full max-lg:flex-col-reverse">
               {/* Content */}
               <div className="flex-1 space-y-8">
-                {milestones[selectedYear].title.map((title, index) => (
-                  <div className="space-y-2" key={title}>
-                    <h2 className="text-lg tracking-tighter font-extrabold text-foreground">{title}</h2>
-                    <p className="text-lg text-foreground !leading-tight tracking-tighter">
-                      {milestones[selectedYear].description[index] ?? ""}
-                    </p>
-                  </div>
-                ))}
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={selectedYear}
+                    initial="hidden"
+                    animate="visible"
+                    exit="exit"
+                    variants={fadeVariants}
+                    transition={{ duration: 0.5 }}
+                  >
+                    {milestones[selectedYear].title.map((title, index) => (
+                      <div className="space-y-2" key={title}>
+                        <h2 className="text-lg tracking-tighter font-extrabold text-foreground">{title}</h2>
+                        <p className="text-lg text-foreground !leading-tight tracking-tighter">
+                          {milestones[selectedYear].description[index] ?? ""}
+                        </p>
+                      </div>
+                    ))}
+                  </motion.div>
+                </AnimatePresence>
               </div>
               {/* Image */}
               <div className="flex-[2]">
-                <div className={cn("grid grid-cols-1", getImageContainerStyles())}>
-                  {milestones[selectedYear].image.map((src, index) => (
-                    <img
-                      key={src}
-                      src={src}
-                      alt="Milestone"
-                      className={cn("object-cover w-full h-full", getImageStyles(index))}
-                    />
-                  ))}
-                </div>
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={selectedYear}
+                    initial="hidden"
+                    animate="visible"
+                    exit="exit"
+                    variants={fadeVariants}
+                    transition={{ duration: 0.5 }}
+                    className={cn("grid grid-cols-1", getImageContainerStyles())}
+                  >
+                    {milestones[selectedYear].image.map((src, index) => (
+                      <img
+                        key={src}
+                        src={src}
+                        alt="Milestone"
+                        className={cn("object-cover w-full h-full", getImageStyles(index))}
+                      />
+                    ))}
+                  </motion.div>
+                </AnimatePresence>
               </div>
             </div>
           </div>
