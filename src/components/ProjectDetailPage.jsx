@@ -165,7 +165,7 @@ const ProjectDetailPage = () => {
       )}
       {isModalOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-70 z-50 flex items-center justify-center">
-          <button onClick={closeModal} className="absolute top-5 left-5 text-white text-3xl font-bold">
+          <button onClick={closeModal} className="absolute top-5 right-5 text-white text-3xl font-bold">
             &times;
           </button>
           <img src={modalImage} alt="Fullscreen view" className="max-w-full max-h-full" />
