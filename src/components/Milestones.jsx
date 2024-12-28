@@ -264,6 +264,7 @@ const Milestones = () => {
                     exit="exit"
                     variants={fadeVariants}
                     transition={{ duration: 0.5 }}
+                    className="space-y-10"
                   >
                     {milestones[selectedYear].title.map((title, index) => (
                       <div className="space-y-2" key={title}>
