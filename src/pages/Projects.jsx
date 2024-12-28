@@ -405,7 +405,10 @@ const Projects = () => {
               Retail
             </motion.h1>
 
-            {/* Projects */}
+            <p className="text-lg">
+              Across our various projects, we feature top-notch retail outlets that offer an unparalleled shopping and
+              lifestyle experience.
+            </p>
 
             {/* Logo Grid */}
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-9 mt-2">
@@ -466,12 +469,13 @@ const Projects = () => {
             </p>
 
             {/* Read More */}
-            <Link
-              to="#"
+            <a
+              href="https://cappella.in/"
+              target="_blank"
               className="text-md font-extrabold tracking-tighter text-foreground hover:text-primary-foreground"
             >
               Read More
-            </Link>
+            </a>
           </div>
         </div>
       </div>

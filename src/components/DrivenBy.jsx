@@ -94,6 +94,12 @@ const DrivenByMission = () => {
             </p>
 
             <p className="leading-snug tracking-tighter">
+              He has also made notable contributions to North America's hospitality industry by developing and operating
+              over 20 + hotels under major brands like Hilton, InterContinental, Choice Hotels, and Marriott, setting
+              new industry standards along the way.
+            </p>
+
+            <p className="leading-snug tracking-tighter">
               Relocating to India in 2007, Mr. Reddy established Terminus Group, a leading real estate development firm
               in Hyderabad. Under his guidance, the company has completed over six million square feet of construction,
               with an additional ten million square feet under development. Terminus operates across multiple sectors,
