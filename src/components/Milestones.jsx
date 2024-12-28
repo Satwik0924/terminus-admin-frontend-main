@@ -216,6 +216,9 @@ const Milestones = () => {
       case "stacked-side-by-side":
         return index === 0 ? "col-span-2 row-span-1" : "col-span-1 lg:max-h-[25vh]";
       default:
+        if (selectedYear === "2019") {
+          return "max-h-[75vh] object-contain";
+        }
         break;
     }
   };
