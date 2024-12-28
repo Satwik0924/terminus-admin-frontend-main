@@ -378,7 +378,7 @@ const Projects = () => {
                     // }}
                     className="grid grid-cols-[repeat(auto-fit,minmax(150px,1fr))] gap-4"
                   >
-                    {["Marriott", "JW Marriott", "IHCL", "Moxy", "Westin"].map((company, index) => (
+                    {["Marriott", "Courtyard", "IHCL", "Moxy", "Westin", "Renaissance"].map((company, index) => (
                       <p
                         key={index}
                         style={{
