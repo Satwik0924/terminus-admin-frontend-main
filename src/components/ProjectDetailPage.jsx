@@ -261,7 +261,9 @@ const ProjectDetailPage = () => {
       {relatedProjects.length > 0 && (
         <div className="xl:mx-20 mx-10 py-5">
           <h1 className="text-6xl text-primary-foreground font-bold mb-7">Related Projects</h1>
-          <div className="grid gap-6 grid-cols-[repeat(auto-fit,minmax(250px,1fr))] flex-wrap gap-y-16">
+          <div
+            className={`grid gap-6 flex-wrap gap-y-16 ${relatedProjects.length < 3 ? "md:grid-cols-3 grid-cols-1" : "grid-cols-[repeat(auto-fit,minmax(250px,1fr))]"}`}
+          >
             {relatedProjects.map((project) => (
               <div key={project._id} className="overflow-hidden group">
                 <div className="relative w-full h-[400px] overflow-hidden mb-3">

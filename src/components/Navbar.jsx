@@ -46,6 +46,7 @@ const Navbar = () => {
       alignItems: "center",
       justifyContent: "space-between",
       height: "6rem",
+      overflow: "hidden",
     },
     menuButton: {
       display: "none",
@@ -112,7 +113,7 @@ const Navbar = () => {
               <img
                 src={LogoT}
                 alt="T"
-                className="object-contain h-10 w-10 absolute pr-2 cursor-pointer"
+                className="object-contain lg:h-10 lg:w-10 h-[33px] w-[33px] absolute pr-2 cursor-pointer"
                 onClick={scrollToTop} // Ensure T logo always navigates to the top
               />
               {/* Erminus Logo */}
@@ -151,50 +152,30 @@ const Navbar = () => {
             <ProjectSearch />
           </li>
         </ul>
-        {/* Mobile Menu */}
-        <div
-          className={`md:hidden transition-opacity duration-500 ease-out absolute left-0 right-0 top-24 bg-white shadow-sm shadow-white z-50 ${isMenuOpen ? "opacity-100 border-y border-input" : "opacity-0"}`}
-        >
-          <ul className="flex flex-col items-center list-none m-0 p-4 gap-4">
-            {navLinks.map((link) => (
-              <li key={link.href}>
-                <Link
-                  to={link.href}
-                  onClick={() => {
-                    toggleMenu();
-                    scrollToTop();
-                  }}
-                  style={{ color: "#727272" }}
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
+      </div>
+      {/* Mobile Menu */}
+      <div
+        className={`md:hidden transition-opacity duration-500 ease-out absolute left-0 right-0 top-24 bg-white shadow-sm shadow-white z-50 ${isMenuOpen ? "opacity-100 border-y border-input" : "opacity-0"}`}
+      >
+        <ul className="flex flex-col items-center list-none m-0 p-4 gap-4">
+          {navLinks.map((link) => (
+            <li key={link.href}>
+              <Link
+                to={link.href}
+                onClick={() => {
+                  toggleMenu();
+                  scrollToTop();
+                }}
+                style={{ color: "#727272" }}
+              >
+                {link.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
       </div>
     </nav>
   );
 };
 
 export default Navbar;
-
-//  mobileMenu: {
-//       display: "none",
-//       position: "absolute",
-//       left: 0,
-//       right: 0,
-//       top: "6rem",
-//       boxShadow: "0 2px 5px rgba(0, 0, 0, 0.1)",
-//       backgroundColor: "white",
-//       opacity: 1,
-//     },
-//     mobileNavList: {
-//       display: "flex",
-//       flexDirection: "column",
-//       alignItems: "center",
-//       listStyle: "none",
-//       margin: 0,
-//       padding: "16px 0",
-//       gap: "16px",
-//     },
