@@ -21,11 +21,17 @@ const ContactSection = () => {
       {/* Map Section */}
       <div className="w-[95%] flex gap-6 max-lg:flex-col">
         <div className="flex-[2]">
-          <img
-            src={LocationMap} // Replace this with the actual map image or embed
-            alt="Map"
-            className="w-full h-full object-fill max-lg:min-h-64"
-          />
+          <a
+            href="https://maps.app.goo.gl/X9Q7WH8rPPXoWKqt5?g_st=com.google.maps.preview.copy"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              src={LocationMap} // Replace this with the actual map image or embed
+              alt="Map"
+              className="w-full h-full object-fill max-lg:min-h-64"
+            />
+          </a>
         </div>
 
         {/* Form Section */}
