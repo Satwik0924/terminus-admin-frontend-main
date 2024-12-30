@@ -197,9 +197,9 @@ const Milestones = () => {
       case "side-by-side":
         return "!grid-cols-2 gap-3";
       case "stacked-side-by-side":
-        return "!grid-cols-2 !grid-rows-2 gap-x-6 gap-y-3";
+        return "!grid-cols-2 !grid-rows-2 gap-3";
       case "side-by-side-stacked":
-        return "!grid-cols-2 !grid-rows-2 gap-x-6 gap-y-3";
+        return "!grid-cols-2 !grid-rows-2 gap-3";
       default:
         return "!place-items-center";
     }
