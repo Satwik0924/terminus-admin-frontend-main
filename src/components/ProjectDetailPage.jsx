@@ -147,6 +147,18 @@ const ProjectDetailPage = () => {
     );
   };
 
+  const capitalizeString = (str) => {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  };
+
+  const processType = (str) => {
+    if (str === "life_sciences") {
+      return "Life Sciences";
+    } else {
+      return capitalizeString(str);
+    }
+  };
+
   const onSubmit = async (submittedData) => {
     console.log("submittedData", submittedData);
     try {
@@ -204,10 +216,10 @@ const ProjectDetailPage = () => {
               <p className="font-extrabold mt-5 tracking-tighter !leading-3 text-lg">Address</p>
               <p className="tracking-tighter font-medium text-lg">{project.location || "N/A"}</p>
               <p className="font-extrabold mt-5 tracking-tighter !leading-3 text-lg">Type</p>
-              <p className="tracking-tighter font-medium text-lg">{project.type || "N/A"}</p>
+              <p className="tracking-tighter font-medium text-lg">{processType(project.type) || "N/A"}</p>
               <p className="font-extrabold mt-5 tracking-tighter !leading-3 text-lg">Year Of Completion</p>
               <p className="tracking-tighter font-medium text-lg">{project.yearOfCompletion || "N/A"}</p>
-              <p className="font-extrabold mt-5 tracking-tighter !leading-3 text-lg">Build Up Area</p>
+              <p className="font-extrabold mt-5 tracking-tighter !leading-3 text-lg">Built Up Area</p>
               <p className="tracking-tighter font-medium text-lg">{project.builtUpArea || "N/A"}</p>
               {project.brochureUrl && (
                 <>
@@ -237,8 +249,8 @@ const ProjectDetailPage = () => {
                 src={imageUrl}
                 alt={`Additional ${index + 1}`}
                 className={cn(
-                  "w-full mb-5 object-cover h-[80dvh] object-center cursor-pointer",
-                  index === project.images.length - 2 ? "!w-[60vh] ml-auto xl:mr-20 mr-10" : ""
+                  "w-full mb-5 object-contain h-[80dvh] object-center cursor-pointer",
+                  index === 0 ? "object-cover" : ""
                 )}
                 onClick={() => openModal(imageUrl)}
               />
