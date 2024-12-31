@@ -78,7 +78,7 @@ const ImageSlider = () => {
       </div>
 
       {/* Caption Below Slider */}
-      <div className="mt-4 text-right leading-tight tracking-tighter text-black text-md">
+      <div className="mt-4 text-left leading-tight tracking-tighter text-black text-md">
         {images[currentIndex].caption}
       </div>
 
