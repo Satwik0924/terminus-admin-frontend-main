@@ -114,6 +114,7 @@ const About = () => {
             {[
               { id: "commercial", label: "About" },
               { id: "residential", label: "Team" },
+              { id: "milestones", label: "Milestones" },
               { id: "hospitality", label: "Philanthropy" },
               { id: "lifesciences", label: "Awards" },
               { id: "retail", label: "Consultants & Partners" },
@@ -121,7 +122,7 @@ const About = () => {
             ].map(({ id, label }) => (
               <li key={id}>
                 <a
-                  href={`#${id}`}
+                  href={id === "milestones" ? `/#${id}` : `#${id}`}
                   className={`no-underline xl:text-4xl text-2xl transition-colors duration-300 !leading-10 ${
                     activeSection === id ? "text-[#F58220]" : "text-foreground hover:text-primary-foreground"
                   }`}
