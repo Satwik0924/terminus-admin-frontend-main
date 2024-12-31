@@ -6,7 +6,7 @@ const ImageSlider = () => {
       src: "/assets/i1.jpg",
       link: "",
       caption:
-        "Terminus is donated Rs.5 lakhs to Care-O-Safe on behalf of 100 valued well-wishers. With this contribution, we aim to improve the lives of over 2,300 individuals. Care-O-Safe manufactures reusable menstrual products, making menstrual care both eco-friendly and cost-effective.",
+        "Terminus has donated Rs.5 lakhs to Care-O-Safe on behalf of 100 valued well-wishers. With this contribution, we aim to improve the lives of over 2,300 individuals. Care-O-Safe manufactures reusable menstrual products, making menstrual care both eco-friendly and cost-effective.",
     },
     {
       src: "/assets/i2.jpg",

@@ -31,12 +31,12 @@ const ContactDetails = () => {
             We are always on the look-<br></br>out for talent to add to our growing, dynamic team. Please click<br></br>{" "}
             on the link below to view and apply for open positions.<br></br>
             <a
-              href="https://careers.terminus-global.com"
-              className="text-foreground font-bold"
+              href="https://docs.google.com/forms/d/1qss7Ji8uhSV_3U47Or-Y9z7Ny1P5oFi-7ImtmiheV6o/edit"
+              className="text-foreground font-semibold"
               target="_blank"
               rel="noopener noreferrer"
             >
-              Careers at Terminus
+              For Careers at Terminus, <strong>apply here</strong>
             </a>
           </p>
         </div>

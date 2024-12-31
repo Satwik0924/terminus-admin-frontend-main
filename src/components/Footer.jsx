@@ -10,9 +10,9 @@ const projectLinks = [
 ];
 
 const aboutLinks = [
-  { label: "Team", href: "/about#team" },
+  { label: "Team", href: "/about#residential" },
   { label: "News & Media", href: "/news" },
-  { label: "Philanthropy", href: "/about#philanthropy" },
+  { label: "Philanthropy", href: "/about#hospitality" },
 ];
 
 const contactLinks = [
