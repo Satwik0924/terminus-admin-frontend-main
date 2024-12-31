@@ -98,11 +98,11 @@ const ProjectsGrid = () => {
         {/* Responsive Grid */}
 
         <div className="flex justify-center items-center max-sm:px-10">
-          <div className="grid xl:grid-cols-6 lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-6">
+          <div className="grid xl:grid-cols-6 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-6">
             {projects.map((project) => (
               <div
                 key={project.id}
-                className="w-full h-[60dvh] max-sm:w-full overflow-hidden relative hover:scale-[1.03] transition-transform duration-500 ease-in-out bg-white flex flex-col justify-center"
+                className="w-full h-[80vh] sm:h-[60dvh] max-sm:w-full overflow-hidden relative hover:scale-[1.03] transition-transform duration-500 ease-in-out bg-white flex flex-col justify-center"
               >
                 <div className="flex-grow">
                   <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
