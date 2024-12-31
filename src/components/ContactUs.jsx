@@ -26,11 +26,7 @@ const ContactSection = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img
-              src={LocationMap} // Replace this with the actual map image or embed
-              alt="Map"
-              className="w-full h-full object-fill max-lg:min-h-64"
-            />
+            <img src={LocationMap} alt="Map" className="w-full h-full object-fill max-lg:min-h-64" />
           </a>
         </div>
 
@@ -68,7 +64,7 @@ const ContactSection = () => {
               <textarea
                 id="message"
                 name="message"
-                rows="4"
+                rows="5"
                 placeholder="Your Message"
                 className="w-full p-4 px-8 bg-foreground/5 placeholder:text-foreground placeholder:font-medium placeholder:text-lg outline-none"
               />

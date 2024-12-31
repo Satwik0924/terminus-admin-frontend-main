@@ -150,7 +150,7 @@ const About = () => {
             {/* <DrivenByMission /> */}
           </div>
 
-          <div id="residential" style={{ textAlign: "left" }}>
+          {/* <div id="residential" style={{ textAlign: "left" }}>
             <motion.h1
               animate={controlsResidential}
               initial={{ color: "#D3D3D3" }}
@@ -159,7 +159,7 @@ const About = () => {
               News & Media
             </motion.h1>
             <NewsMedia />
-          </div>
+          </div> */}
 
           <div id="hospitality" style={{ textAlign: "left" }}>
             <motion.h1

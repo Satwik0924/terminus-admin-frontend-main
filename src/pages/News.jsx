@@ -53,7 +53,7 @@ const News = () => {
         >
           News & Media
         </motion.h1>
-        <NewsMedia className="ml-16" />
+        <NewsMedia className="sm:ml-16 max-sm:mx-6" />
       </div>
 
       {/* <div id="awards" style={{ textAlign: "left", padding: "2rem 1rem" }}>

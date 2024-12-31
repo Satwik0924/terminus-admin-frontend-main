@@ -40,7 +40,7 @@ const NewsMedia = ({ className }) => {
   }, []);
 
   return (
-    <div id="news-section" className={cn("py-12 max-w-screen-xl", className)}>
+    <div id="news-section" className={cn("py-12", className)}>
       {loading ? (
         <p className="text-center">Fetching latest news...</p>
       ) : (
@@ -48,7 +48,8 @@ const NewsMedia = ({ className }) => {
           {newsData.map((news, index) => (
             <div
               key={news.id}
-              className={`overflow-hidden bg-white relative group ${index === 0 ? "xl:col-span-2" : index > 2 ? "xl:col-span-2" : "xl:col-span-1"}`}
+              //   className={`overflow-hidden bg-white relative group ${index === 0 ? "xl:col-span-2" : index > 2 ? "xl:col-span-2" : "xl:col-span-1"}`}
+              className={`overflow-hidden bg-white relative group`}
             >
               <a href={news.link} target="_blank" rel="noopener noreferrer" className="block text-inherit">
                 {/* Image container */}
