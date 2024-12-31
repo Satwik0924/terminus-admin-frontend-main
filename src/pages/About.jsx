@@ -191,7 +191,7 @@ const About = () => {
                       />
                     </div>
                     <h3 className="text-lg tracking-tighter text-black leading-tight mb-2">
-                      Rural Education Initiative
+                      Built the Bharosa Centre for Telangana Police
                     </h3>
                   </div>
 
@@ -206,8 +206,7 @@ const About = () => {
                     </div>
                     <h3 className="text-lg tracking-tighter text-black leading-tight mb-2">
                       {" "}
-                      CMD Mr. S.P. Reddy was felicitated by Telangana Home Minister Md. Mahmood Ali for his pivotal role
-                      and spearheading the development of the Telangana State Special Police Convention Centre
+                      Inauguration of the Telangana State Special Police Convention Centre
                     </h3>
                   </div>
 
@@ -221,8 +220,7 @@ const About = () => {
                       />
                     </div>
                     <h3 className="text-lg tracking-tighter text-black leading-tight mb-2">
-                      Contributed INR 1Cr to AIG Rural Outreach Program for advanced medical care in villages in August
-                      2021. Also established a specialized Inflammatory Bowel Disease (IBD) center at AIG
+                      Inauguration of the AIG Outreach Program
                     </h3>
                   </div>
                 </div>

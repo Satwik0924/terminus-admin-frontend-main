@@ -65,14 +65,14 @@
 .cursor-next {
   cursor:
     url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20version='1.1'%20viewBox='0%200%2059.9%2073.9'%3E%3Cdefs%3E%3Cstyle%3E.st0%20%7Bfill%3A%23fff%3B%7D%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cpath%20d='M-17.9%2C0h0Z'%2F%3E%3Cpath%20class='st0'%20d='M.2.1l36.7%2C36.8L0%2C73.7c5%2C0%2C9.9%2C0%2C14.9%2C0-1.1%2C0%2C3.9%2C0%2C8%2C0l37-37L23%2C0C15.4%2C0%2C7.8%2C0%2C.2.1Z'%2F%3E%3C%2Fsvg%3E")
-      16 16,
+      10 10,
     pointer;
 }
 
 .cursor-prev {
   cursor:
     url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20version='1.1'%20viewBox='0%200%2059.9%2073.9'%3E%3Cdefs%3E%3Cstyle%3E.st0%20%7Bfill%3A%23fff%3B%7D%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cpath%20d='M-17.9%2C0h0Z'%2F%3E%3Cpath%20class='st0'%20d='M59.7.1l-36.7%2C36.8L59.9%2C73.7c-5%2C0%2C-9.9%2C0%2C-14.9%2C0%201.1%2C0%2C-3.9%2C0%2C-8%2C0l-37-37L36.9%2C0C44.5%2C0%2C52.1%2C0%2C59.7.1Z'%2F%3E%3C%2Fsvg%3E")
-      16 16,
+      10 10,
     pointer;
 }
 
