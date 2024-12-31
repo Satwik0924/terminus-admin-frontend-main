@@ -42,55 +42,60 @@ const ConsultantsAndPartners = () => {
           {/* Logos */}
           {[
             {
-              src: "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5068988/image-8f5e2739-5e1a-46db-908c-889e23d399cc.png?e=webp&nll=true&cX=3&cY=0&cW=354&cH=100",
+              src: "/assets/Artboard 1 copy 2.png",
               alt: "Landbase Consulting",
             },
             {
-              src: "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5068988/image-6aa6c2ce-4282-4d9c-916f-70ea92aa5f9a.png?e=webp&nll=true&cX=0&cY=0&cW=360&cH=99",
+              src: "/assets/Artboard 1 copy 3.png",
               alt: "Emerzhent",
             },
             {
-              src: "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5068988/image-5d4a121b-3250-4425-899c-f33c37e84b05.png?e=webp&nll=true&cX=53&cY=0&cW=254&cH=100",
+              src: "/assets/Artboard 1 copy 4.png",
               alt: "Marriott",
             },
             {
-              src: "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5068988/image-f4cf40df-ec54-4b8e-8b03-216503c2afc1.png?e=webp&nll=true&cX=12&cY=0&cW=339&cH=100",
+              src: "/assets/Artboard 1 copy 5.png",
               alt: "PGP Architects",
             },
             {
-              src: "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5068988/image-fef74f86-68da-4332-8bb9-d5c0f8030bf2.png?e=webp&nll=true",
+              src: "/assets/Artboard 1 copy 6.png",
               alt: "IPDM Services",
             },
             {
-              src: "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5068988/image-9cacdbf4-f68a-4dae-a4e2-aa694dc1837b.png?w=343&e=webp&nll=true&cX=71&cY=0&cW=219&cH=100",
+              src: "/assets/Artboard 1 copy 7.png",
               alt: "Zaki & Associates",
             },
             {
-              src: "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5089501/image-38e84e26-2559-4871-89fb-9186f02e3fbd.png?w=372&e=webp&nll=true&cX=0&cY=643&cW=1763&cH=476",
+              src: "/assets/Artboard 1 copy 8.png",
               alt: "Studio Chintala",
             },
             {
-              src: "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5068988/image-9c57e515-69b2-4e8e-a8bc-d05e7c950094.png?e=webp&nll=true&cX=0&cY=1&cW=360&cH=97",
+              src: "/assets/Artboard 1 copy 9.png",
               alt: "Aufait",
             },
             {
-              src: "   https://i-p.rmcdn.net/6704dad37ea051caab873de5/5089501/image-a23a131d-e9d1-495a-a224-935e657c4333.jpg?e=webp&cX=0&cY=28&cW=189&cH=139",
-              alt: "Aufait",
+              src: "/assets/Artboard 1 copy 10.png",
+              alt: "Image Alt 1",
             },
             {
-              src: "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5089501/image-b14cb5af-4b65-4e26-8cc8-eec685f899c0.png?w=232&e=webp&nll=true&cX=16&cY=0&cW=274&cH=242",
+              src: "/assets/Artboard 1 copy 11.png",
+              alt: "Image Alt 2",
             },
             {
-              src: "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5089501/image-0993c830-eeb0-4c96-a426-e297027966d6.jpg?e=webp&cX=0&cY=28.181818181818187&cW=200&cH=143.63636363636363",
+              src: "/assets/Artboard 1 copy 12.png",
+              alt: "Image Alt 3",
             },
             {
-              src: "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5089501/image-a85f7340-4519-42bd-ac90-9a1451584a24.png?e=webp&nll=true",
+              src: "/assets/Artboard 1 copy 13.png",
+              alt: "Image Alt 4",
             },
             {
-              src: "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5089501/image-2af047c7-5d26-4ac1-81d2-5387245d4be9.png?w=327&e=webp&nll=true",
+              src: "/assets/Artboard 1 copy 14.png",
+              alt: "Image Alt 5",
             },
             {
-              src: "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5089501/image-cdcfd155-01a8-4884-9a25-2e63188b2137.png?w=327&e=webp&nll=true",
+              src: "/assets/Artboard 1 copy 15.png",
+              alt: "Image Alt 6",
             },
           ].map((logo, index) => (
             <div key={index}>

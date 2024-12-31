@@ -64,11 +64,30 @@ const ImageSlider = () => {
     setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
   };
 
+  const handleClick = (e) => {
+    const containerWidth = e.currentTarget.offsetWidth;
+    const clickPosition = e.nativeEvent.offsetX;
+
+    if (clickPosition < containerWidth / 2) {
+      prevSlide();
+    } else {
+      nextSlide();
+    }
+  };
+
   return (
     <div className="relative w-full mb-7">
       {/* Image Slider */}
-      <div className="relative group">
-        <a href={images[currentIndex].link} className="block relative">
+      <div className="relative group" onClick={handleClick}>
+        <a
+          href={images[currentIndex].link}
+          className="block relative"
+          onClick={(e) => {
+            if (!images[currentIndex].link) {
+              e.preventDefault(); // Prevent navigation if no link
+            }
+          }}
+        >
           <img
             src={images[currentIndex].src}
             alt={`Image ${currentIndex + 1}`}
@@ -83,18 +102,34 @@ const ImageSlider = () => {
       </div>
 
       {/* Left Arrow */}
-      <button onClick={prevSlide} className="absolute top-1/2 left-0 transform -translate-y-1/2 p-2">
+      <button
+        onClick={(e) => {
+          e.stopPropagation(); // Prevent event bubbling
+          prevSlide();
+        }}
+        className="absolute top-1/2 left-0 transform -translate-y-1/2 p-2"
+      >
         <svg className="w-10 h-9" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="white">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="4" d="M15 19l-7-7 7-7" />
         </svg>
       </button>
 
       {/* Right Arrow */}
-      <button onClick={nextSlide} className="absolute top-1/2 right-0 transform -translate-y-1/2 p-2">
+      <button
+        onClick={(e) => {
+          e.stopPropagation(); // Prevent event bubbling
+          nextSlide();
+        }}
+        className="absolute top-1/2 right-0 transform -translate-y-1/2 p-2"
+      >
         <svg className="w-10 h-8" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="white">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="4" d="M9 5l7 7-7 7" />
         </svg>
       </button>
+
+      {/* Invisible clickable areas on the left and right sides */}
+      <div className="absolute top-0 bottom-0 left-0 w-1/2 bg-transparent" onClick={prevSlide}></div>
+      <div className="absolute top-0 bottom-0 right-0 w-1/2 bg-transparent" onClick={nextSlide}></div>
     </div>
   );
 };
