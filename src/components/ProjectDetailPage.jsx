@@ -251,14 +251,14 @@ const ProjectDetailPage = () => {
 
         {project.images && project.images.length > 0 && (
           <div className="mt-10 mb-24 space-y-36">
-            {project.images.slice(1).map((imageUrl, index) => (
+            {project.images.slice(1).map((imageUrl, index, array) => (
               <img
                 key={index}
                 src={imageUrl}
                 alt={`Additional ${index + 1}`}
                 className={cn(
                   "w-full mb-5 object-contain h-[80dvh] object-center cursor-pointer",
-                  index === 0 ? "object-cover" : ""
+                  index === array.length - 1 ? "object-cover" : ""
                 )}
                 onClick={() => openModal(imageUrl)}
               />
