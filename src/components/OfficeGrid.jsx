@@ -192,7 +192,7 @@ const OfficeComponent = () => {
             The Team
           </motion.h1>
           <img
-            src="https://i-p.rmcdn.net/6704dad37ea051caab873de5/5068988/image-82fc00d4-be74-4e76-887a-d79cdf4ee721.jpg"
+            src="\src\assets\team.jpg"
             alt="The Team"
             style={{
               width: "100%",

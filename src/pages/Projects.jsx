@@ -420,7 +420,6 @@ const Projects = () => {
                 "/assets/image5.png",
                 "/assets/image6.png",
                 "/assets/image7.png",
-                "/assets/image8.png",
                 "/assets/image9.jpg",
                 "/assets/image10.png",
                 "/assets/image11.png",
@@ -436,6 +435,19 @@ const Projects = () => {
                 "/assets/image21.png",
                 "/assets/image22.png",
                 "/assets/image23.png",
+                "/assets/image24.png",
+                "/assets/image25.png",
+                "/assets/image26.png",
+                "/assets/image27.jpg",
+                "/assets/image28.png",
+                "/assets/image29.jpg",
+                "/assets/image30.jpg",
+                "/assets/image31.png",
+                "/assets/image32.jpg",
+                "/assets/image33.jpg",
+                "/assets/image34.png",
+                "/assets/image35.jpg",
+                "/assets/image36.jpg",
               ].map((logo, index) => (
                 <div key={index} className="flex items-center justify-center p-4">
                   <img src={logo} alt={`Logo ${index + 1}`} className="max-w-full h-auto" />
