@@ -169,7 +169,7 @@ const ProjectDetailPage = () => {
       formData.append("phoneNumber", submittedData.phoneNumber);
       formData.append("query", submittedData.query);
 
-      const response = await axios.post("http://localhost:8080/forms/enquiry", formData);
+      const response = await axios.post("https://api.terminus-group.com/forms/enquiry", formData);
 
       if (response.status === 201) {
         window.open(project.brochureUrl, "_blank");
