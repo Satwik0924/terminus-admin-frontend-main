@@ -11,6 +11,7 @@ const projectLinks = [
 
 const aboutLinks = [
   { label: "Team", href: "/about#residential" },
+  { label: "Milestones", href: "/#milestones" },
   { label: "News & Media", href: "/news" },
   { label: "Philanthropy", href: "/about#hospitality" },
 ];
