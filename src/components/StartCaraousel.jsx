@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 const CHANGE_IMAGE_INTERVAL = 6 * 1000;
 
 const Carousel = () => {
-  const images = Array.from({ length: 6 }, (_, i) => `/assets/Artboard ${i + 9}.png`);
+  const images = Array.from({ length: 8 }, (_, i) => `/assets/Artboard ${i + 9}.png`);
 
   const [currentIndex, setCurrentIndex] = useState(Math.floor((images.length - 1) / 2));
   const [fade, setFade] = useState(false);
