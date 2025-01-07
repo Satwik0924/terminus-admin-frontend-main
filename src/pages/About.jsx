@@ -123,6 +123,20 @@ const About = () => {
               <li key={id}>
                 <a
                   href={id === "milestones" ? `/#${id}` : `#${id}`}
+                  onClick={(e) => {
+                    if (id !== "milestones") {
+                      e.preventDefault(); // Prevent default anchor behavior for other links
+                      const targetElement = document.getElementById(id);
+                      if (targetElement) {
+                        const offset = 100; // Adjust this value for the margin
+                        const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                        window.scrollTo({
+                          top: elementPosition - offset,
+                          behavior: "smooth", // Smooth scrolling
+                        });
+                      }
+                    }
+                  }}
                   className={`no-underline xl:text-4xl text-2xl transition-colors duration-300 !leading-10 ${
                     activeSection === id ? "text-[#F58220]" : "text-foreground hover:text-primary-foreground"
                   }`}

@@ -1,4 +1,4 @@
-import LogoFooter from "../assets/tg_logo_full.webp";
+import LogoFooter from "../assets/tg_logo_full.png";
 
 const projectLinks = [
   { label: "Commercial", href: "/projects#commercial" },
@@ -21,6 +21,7 @@ const contactLinks = [
 ];
 
 const socialLinks = [
+  { label: "Linkedin", href: "https://www.linkedin.com/company/3801269/admin/dashboard/" },
   { label: "Facebook", href: "https://www.facebook.com/terminusindiaindia" },
   { label: "Instagram", href: "https://www.instagram.com/terminus_group_" },
   { label: "Twitter", href: "https://x.com/Terminus_Group_" },
@@ -31,7 +32,7 @@ const Footer = () => {
     <footer className="bg-white w-full">
       <div className="flex justify-between mx-auto py-16 lg:px-16 w-full">
         <div className="flex-1 max-lg:hidden">
-          <div className="h-52 w-52 overflow-hidden">
+          <div className="h-52 w-52  overflow-hidden">
             <img src={LogoFooter} alt="Terminus" className="object-cover h-auto w-full" />
           </div>
           <h1 className="text-2xl">{new Date().getFullYear()}</h1>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 100 100">
+  <!-- Generator: Adobe Illustrator 29.1.0, SVG Export Plug-In . SVG Version: 2.1.0 Build 142)  -->
+  <defs>
+    <style>
+      .st0 {
+        fill: #f58220;
+      }
+
+      .st1 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <rect class="st0" x="31" y="11" width="6" height="6"/>
+  <rect class="st0" x="37" y="17" width="6" height="6"/>
+  <rect class="st0" x="43" y="23" width="6" height="6"/>
+  <rect class="st0" x="49" y="29" width="6" height="6"/>
+  <rect class="st0" x="55" y="35" width="6" height="6"/>
+  <rect class="st0" x="61" y="41" width="6" height="6"/>
+  <rect class="st0" x="67" y="47" width="6" height="6"/>
+  <polygon class="st0" points="25 11 25 77 31 77 31 83 25 83 25 89 19 89 19 0 25 0 25 5 31 5 31 11 25 11"/>
+  <rect class="st0" x="43" y="71" width="6" height="12"/>
+  <rect class="st0" x="37" y="65" width="6" height="6"/>
+  <rect class="st0" x="31" y="71" width="6" height="6"/>
+  <rect class="st0" x="61" y="71" width="6" height="12"/>
+  <rect class="st0" x="67" y="83" width="6" height="11"/>
+  <rect class="st0" x="49" y="83" width="6" height="11"/>
+  <rect class="st0" x="55" y="94" width="12" height="6"/>
+  <polygon class="st1" points="55 59 55 71 61 71 61 83 67 83 67 94 55 94 55 83 49 83 49 71 43 71 43 65 37 65 37 71 31 71 31 77 25 77 25 11 31 11 31 17 37 17 37 23 43 23 43 29 49 29 49 35 55 35 55 41 61 41 61 47 67 47 67 53 73 53 73 59 55 59"/>
+  <polygon class="st0" points="85 59 85 65 61 65 61 71 55 71 55 59 73 59 73 53 79 53 79 59 85 59"/>
+</svg>
