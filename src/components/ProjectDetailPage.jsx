@@ -237,6 +237,14 @@ const ProjectDetailPage = () => {
                   )}
                 </>
               )}
+              <p>
+                <a
+                  href={project.websiteLink}
+                  className="text-md font-medium mt-5 py-5 tracking-tighter text-foreground hover:text-primary-foreground"
+                >
+                  View more
+                </a>
+              </p>
             </div>
           </div>
         </div>
