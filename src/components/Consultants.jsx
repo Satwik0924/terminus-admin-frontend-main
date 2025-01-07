@@ -97,6 +97,38 @@ const ConsultantsAndPartners = () => {
               src: "/assets/Artboard 1 copy 15.png",
               alt: "Image Alt 6",
             },
+            {
+              src: "/assets/Artboard 1 copy 16.png",
+              alt: "Image Alt 2",
+            },
+            {
+              src: "/assets/Artboard 1 copy 17.png",
+              alt: "Image Alt 3",
+            },
+            {
+              src: "/assets/Artboard 1 copy 18.png",
+              alt: "Image Alt 4",
+            },
+            {
+              src: "/assets/Artboard 1 copy 19.png",
+              alt: "Image Alt 5",
+            },
+            {
+              src: "/assets/Artboard 1 copy 20.png",
+              alt: "Image Alt 6",
+            },
+            {
+              src: "/assets/Artboard 1 copy 21.png",
+              alt: "Image Alt 4",
+            },
+            {
+              src: "/assets/Artboard 1 copy 22.png",
+              alt: "Image Alt 5",
+            },
+            {
+              src: "/assets/Artboard 1 copy 23.png",
+              alt: "Image Alt 6",
+            },
           ].map((logo, index) => (
             <div key={index}>
               <img
