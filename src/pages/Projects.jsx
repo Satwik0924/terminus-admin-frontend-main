@@ -257,7 +257,7 @@ const Projects = () => {
             {/* Clientele section */}
             <div className="p-5 my-16">
               {/* ... Clientele content (unchanged) ... */}
-              <p className="font-bold text-2xl mb-3 text-black tracking-tighter">Clientele</p>
+              <p className="font-bold text-xl mb-3 text-black tracking-tighter">Clientele</p>
               <div
                 // style={{
                 //   display: "grid",

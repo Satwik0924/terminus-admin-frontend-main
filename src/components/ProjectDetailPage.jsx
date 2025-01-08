@@ -237,32 +237,37 @@ const ProjectDetailPage = () => {
                   )}
                 </>
               )}
-              <p>
-                <a
-                  href={project.websiteLink}
-                  className="text-md font-medium mt-5 py-5 tracking-tighter text-foreground hover:text-primary-foreground"
-                >
-                  View more
-                </a>
-              </p>
+              {project.websiteLink && (
+                <p>
+                  <a
+                    href={project.websiteLink}
+                    className="text-md font-medium mt-5 py-5 tracking-tighter text-foreground hover:text-primary-foreground"
+                  >
+                    View more
+                  </a>
+                </p>
+              )}
             </div>
           </div>
         </div>
 
         {project.images && project.images.length > 0 && (
           <div className="mt-10 mb-24 space-y-36">
-            {project.images.slice(1).map((imageUrl, index, array) => (
-              <img
-                key={index}
-                src={imageUrl}
-                alt={`Additional ${index + 1}`}
-                className={cn(
-                  "w-full mb-5 object-contain h-[80dvh] object-center cursor-pointer",
-                  index === array.length - 1 ? "object-cover" : ""
-                )}
-                onClick={() => openModal(imageUrl)}
-              />
-            ))}
+            {project.images.slice(1).map((imageUrl, index) => {
+              const isLastImage = index === project.images.slice(1).length - 1;
+              return (
+                <img
+                  key={index}
+                  src={imageUrl}
+                  alt={`Additional ${index + 1}`}
+                  className={cn(
+                    "w-full mb-5 object-contain h-[80dvh] object-center cursor-pointer",
+                    isLastImage ? "object-cover" : ""
+                  )}
+                  onClick={() => openModal(imageUrl)}
+                />
+              );
+            })}
           </div>
         )}
       </div>
