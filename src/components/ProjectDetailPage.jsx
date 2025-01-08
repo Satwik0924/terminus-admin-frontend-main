@@ -27,22 +27,36 @@ const ProjectDetailPage = () => {
         if (currentProject) {
           setProject(currentProject);
 
+          // Extract YouTube video ID if URL exists
+          if (currentProject.youtubeVideoUrl) {
+            try {
+              const videoUrl = currentProject.youtubeVideoUrl;
+              let videoId = "";
+
+              // Handle different YouTube URL formats
+              if (videoUrl.includes("youtube.com/watch")) {
+                const url = new URL(videoUrl);
+                videoId = url.searchParams.get("v");
+              } else if (videoUrl.includes("youtu.be/")) {
+                videoId = videoUrl.split("youtu.be/")[1];
+              } else if (videoUrl.includes("youtube.com/embed/")) {
+                videoId = videoUrl.split("youtube.com/embed/")[1];
+              }
+
+              // Remove any additional parameters
+              videoId = videoId?.split("&")[0];
+              setYoutubeVideoID(videoId);
+            } catch (error) {
+              console.error("Error parsing YouTube URL:", error);
+            }
+          }
+
           const allProjectsResponse = await axios.get(`https://api.terminus-group.com/forms/project`);
           const allProjects = allProjectsResponse.data || [];
           const related = allProjects.filter(
             (proj) => proj.type === currentProject.type && proj._id !== currentProject._id
           );
           setRelatedProjects(related);
-        }
-
-        const youtubeVideo = new URL(currentProject.youtubeVideoUrl);
-        switch (youtubeVideo.hostname) {
-          case "www.youtube.com":
-            setYoutubeVideoID(youtubeVideo.searchParams.get("v"));
-            break;
-          case "youtu.be":
-            setYoutubeVideoID(youtubeVideo.pathname.slice(1));
-            break;
         }
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -80,12 +94,11 @@ const ProjectDetailPage = () => {
 
       document.addEventListener("mousedown", handleClickOutside);
       return () => document.removeEventListener("mousedown", handleClickOutside);
-    }, []);
+    }, [onClose]);
 
     const handleSubmit = (e) => {
       e.preventDefault();
       onSubmit(formData);
-      onClose();
     };
 
     return (
@@ -109,7 +122,7 @@ const ProjectDetailPage = () => {
                 placeholder="Phone Number *"
                 required
                 className="w-full p-2 border rounded"
-                value={formData.phone}
+                value={formData.phoneNumber}
                 onChange={(e) => setFormData({ ...formData, phoneNumber: e.target.value })}
                 name="phoneNumber"
               />
@@ -118,7 +131,7 @@ const ProjectDetailPage = () => {
                 placeholder="Email ID *"
                 required
                 className="w-full p-2 border rounded"
-                value={formData.email}
+                value={formData.emailId}
                 onChange={(e) => setFormData({ ...formData, emailId: e.target.value })}
                 name="emailId"
               />
@@ -160,7 +173,6 @@ const ProjectDetailPage = () => {
   };
 
   const onSubmit = async (submittedData) => {
-    console.log("submittedData", submittedData);
     try {
       setIsSubmitting(true);
       const formData = new FormData();
@@ -268,6 +280,23 @@ const ProjectDetailPage = () => {
                 />
               );
             })}
+          </div>
+        )}
+
+        {/* YouTube Video Section */}
+        {project.youtubeVideoUrl && youtubeVideoID && (
+          <div className="xl:mx-20 mx-10 mb-24">
+            <div className="max-w-full mx-auto">
+              <div className="relative w-full h-0 pb-[56.25%]">
+                <iframe
+                  className="absolute top-0 left-0 w-full h-full"
+                  src={`https://www.youtube.com/embed/${youtubeVideoID}`}
+                  title="YouTube video"
+                  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              </div>
+            </div>
           </div>
         )}
       </div>

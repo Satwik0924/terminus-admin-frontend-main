@@ -12,8 +12,10 @@ const projectLinks = [
 const aboutLinks = [
   { label: "Team", href: "/about#residential" },
   { label: "Milestones", href: "/#milestones" },
-  { label: "News & Media", href: "/news" },
   { label: "Philanthropy", href: "/about#hospitality" },
+  { label: "Awards", href: "/about#lifesciences" },
+  { label: "Consultants", href: "/about#retail" },
+  { label: "& Partners", href: "/about#retail" },
 ];
 
 const contactLinks = [
@@ -36,10 +38,10 @@ const Footer = () => {
           <div className="h-52 w-52  overflow-hidden">
             <img src={LogoFooter} alt="Terminus" className="object-cover h-auto w-full" />
           </div>
-          <h1 className="text-2xl">{new Date().getFullYear()}</h1>
+          <h1 className="font-medium text-black">{new Date().getFullYear()}</h1>
         </div>
         <div className="flex-1 max-lg:w-full">
-          <div className="grid grid-cols-3 gap-6 place-items-center items-start w-full max-sm:grid-cols-2">
+          <div className="grid grid-cols-4 gap-2 place-items-center items-start w-full max-sm:grid-cols-2">
             {/* Projects */}
             <ul className="space-y-1 text-md font-normal">
               <h3 className="text-primary-foreground font-medium tracking-tighter">Projects</h3>
@@ -68,6 +70,12 @@ const Footer = () => {
                 </li>
               ))}
             </ul>
+            <ul className="space-y-1 text-md font-normal">
+              <a href="/news">
+                <h3 className="text-primary-foreground font-medium tracking-tighter">News & Media</h3>
+              </a>
+            </ul>
+
             {/* Contact */}
             <ul className="space-y-1 text-md font-normal">
               <h3 className="text-primary-foreground font-medium tracking-tighter">Contact</h3>

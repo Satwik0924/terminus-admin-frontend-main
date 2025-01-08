@@ -116,7 +116,7 @@ const OfficeComponent = () => {
         {/* Top Section */}
         <div id="team" style={{ textAlign: "left", marginBottom: "3rem" }}>
           <img
-            src="https://c-p.rmcdn1.net/6704dad37ea051caab873de5/5089501/Image-6f2f2b02-4bf3-40e7-b6ba-f6a5ddfcafc7.gif"
+            src="terminus.gif"
             alt="Office Scene"
             style={{
               width: "100%",
@@ -192,7 +192,7 @@ const OfficeComponent = () => {
             The Team
           </motion.h1>
           <img
-            src="\src\assets\team.jpg"
+            src="team.jpg"
             alt="The Team"
             style={{
               width: "100%",

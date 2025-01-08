@@ -264,7 +264,7 @@ const Projects = () => {
                 //   gridTemplateColumns: "repeat(auto-fit, minmax(120px, 1fr))",
                 //   gap: "16px",
                 // }}
-                className="grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-4"
+                className="grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-4 text-xl"
               >
                 {[
                   "ADP",
@@ -285,7 +285,7 @@ const Projects = () => {
                       fontWeight: "bold",
                       marginTop: index === 0 ? "0" : "unset",
                     }}
-                    className="!text-foreground !font-bold !text-2xl"
+                    className="!text-foreground !font-bold "
                   >
                     {company}
                   </p>
@@ -369,7 +369,7 @@ const Projects = () => {
               </div>
               {title === "Hospitality" && (
                 <div className="p-5 my-16">
-                  <p className="font-bold text-2xl mb-3 text-black tracking-tighter">Clientele</p>
+                  <p className="font-bold text-xl mb-3 text-black tracking-tighter">Clientele</p>
                   <div
                     // style={{
                     //   display: "grid",
@@ -386,7 +386,7 @@ const Projects = () => {
                           fontWeight: "bold",
                           marginTop: index === 0 ? "0" : "unset", // No margin for the first company
                         }}
-                        className="!text-foreground !font-bold !text-2xl"
+                        className="!text-foreground !font-bold !text-xl"
                       >
                         {company}
                       </p>
