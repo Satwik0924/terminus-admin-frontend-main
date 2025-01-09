@@ -3,7 +3,7 @@ import { motion, useAnimation } from "framer-motion";
 import { useEffect, useState } from "react";
 import Balancer from "react-wrap-balancer";
 import DrivenByMission from "./DrivenBy";
-
+import VimeoEmbed from "./VideoEmbed";
 const OfficeComponent = () => {
   const [teamData, setTeamData] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -115,14 +115,8 @@ const OfficeComponent = () => {
       >
         {/* Top Section */}
         <div id="team" style={{ textAlign: "left", marginBottom: "3rem" }}>
-          <img
-            src="terminus.gif"
-            alt="Office Scene"
-            style={{
-              width: "100%",
-              height: "auto",
-            }}
-          />
+          <VimeoEmbed />
+
           <motion.h1
             id="heading1"
             // style={{
