@@ -237,7 +237,7 @@ const ProjectDetailPage = () => {
                 <>
                   <button
                     onClick={() => setShowEnquiryModal(true)}
-                    className="inline-block mt-5 mb-8 text-foreground font-bold tracking-tighter text-lg text-center"
+                    className="inline-block mt-5 mb-5 text-foreground font-bold tracking-tighter text-lg text-center"
                   >
                     Download Brochure
                   </button>
@@ -253,7 +253,7 @@ const ProjectDetailPage = () => {
                 <p>
                   <a
                     href={project.websiteLink}
-                    className="text-md font-medium mt-5 py-5 tracking-tighter text-foreground hover:text-primary-foreground"
+                    className=" text-foreground font-bold tracking-tighter text-lg text-center"
                   >
                     View more
                   </a>
