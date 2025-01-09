@@ -237,7 +237,7 @@ const ProjectDetailPage = () => {
                 <>
                   <button
                     onClick={() => setShowEnquiryModal(true)}
-                    className="inline-block mt-5 text-foreground font-bold tracking-tighter text-lg text-center"
+                    className="inline-block mt-5 mb-8 text-foreground font-bold tracking-tighter text-lg text-center"
                   >
                     Download Brochure
                   </button>
@@ -262,7 +262,22 @@ const ProjectDetailPage = () => {
             </div>
           </div>
         </div>
-
+        {/* YouTube Video Section */}
+        {project.youtubeVideoUrl && youtubeVideoID && (
+          <div className="xl:mx-20 mx-10 mb-24">
+            <div className="max-w-full mx-auto">
+              <div className="relative w-full h-0 pb-[56.25%]">
+                <iframe
+                  className="absolute top-0 left-0 w-full h-full"
+                  src={`https://www.youtube.com/embed/${youtubeVideoID}`}
+                  title="YouTube video"
+                  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              </div>
+            </div>
+          </div>
+        )}
         {project.images && project.images.length > 0 && (
           <div className="mt-10 mb-24 space-y-36">
             {project.images.slice(1).map((imageUrl, index) => {
@@ -280,23 +295,6 @@ const ProjectDetailPage = () => {
                 />
               );
             })}
-          </div>
-        )}
-
-        {/* YouTube Video Section */}
-        {project.youtubeVideoUrl && youtubeVideoID && (
-          <div className="xl:mx-20 mx-10 mb-24">
-            <div className="max-w-full mx-auto">
-              <div className="relative w-full h-0 pb-[56.25%]">
-                <iframe
-                  className="absolute top-0 left-0 w-full h-full"
-                  src={`https://www.youtube.com/embed/${youtubeVideoID}`}
-                  title="YouTube video"
-                  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                />
-              </div>
-            </div>
           </div>
         )}
       </div>
