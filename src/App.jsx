@@ -22,6 +22,7 @@ export default function App() {
             <Route path="/contact" Component={Contact} />
             <Route path="/projects" Component={Projects} />
             <Route path="/projects/:id" Component={ProjectDetailPage} />
+            <Route path="*" Component={Home} />
           </Routes>
         </div>
       </div>
