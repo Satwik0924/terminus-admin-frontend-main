@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, BrowserRouter as Router, Routes, useNavigate} from "react-router-dom";
+import { Route, BrowserRouter as Router, Routes} from "react-router-dom";
 import Navbar from "./components/Navbar";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
@@ -9,7 +9,6 @@ import Projects from "./pages/Projects";
 import ProjectDetailPage from "./components/ProjectDetailPage";
 
 export default function App() {
-  const navigate = useNavigate();
   return (
     <Router>
       <div>
@@ -23,7 +22,16 @@ export default function App() {
             <Route path="/contact" Component={Contact} />
             <Route path="/projects" Component={Projects} />
             <Route path="/projects/:id" Component={ProjectDetailPage} />
-            <Route path="/theline" Component={() => {window.location.href = "https://www.info.terminus-group.com/theline/"; return (<><\>);}} />
+                     <Route
+              path="/theline"
+              element={
+                (() => {
+                  window.location.href =
+                    "https://www.info.terminus-group.com/theline/";
+                  return null;
+                })()
+              }
+            />
             <Route path="*" Component={Home} />
           </Routes>
         </div>
