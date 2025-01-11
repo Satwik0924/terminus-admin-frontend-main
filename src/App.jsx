@@ -24,12 +24,12 @@ export default function App() {
             <Route path="/projects/:id" Component={ProjectDetailPage} />
                      <Route
               path="/theline"
-              element={
-                (() => {
+              Component={
+                () => {
                   window.location.href =
                     "https://www.info.terminus-group.com/theline/";
                   return null;
-                })()
+                }
               }
             />
             <Route path="*" Component={Home} />
