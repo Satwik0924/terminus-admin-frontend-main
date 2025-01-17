@@ -33,15 +33,18 @@ const socialLinks = [
 const Footer = () => {
   return (
     <footer className="bg-white w-full">
-      <div className="flex justify-between mx-auto py-16 lg:px-16 w-full">
-        <div className="flex-1 max-lg:hidden">
-          <div className="h-52 w-52  overflow-hidden">
+      <div className="flex flex-col lg:flex-row justify-between mx-auto py-2 px-6 lg:px-16 w-full">
+        {/* Logo Section */}
+        <div className="flex-1 mb-8 lg:mb-0">
+          <div className="h-52 w-52 mx-auto lg:mx-0 overflow-hidden">
             <img src={LogoFooter} alt="Terminus" className="object-cover h-auto w-full" />
           </div>
-          <h1 className="font-medium text-black">{new Date().getFullYear()}</h1>
+          <h1 className="font-medium text-black text-center lg:text-left">{new Date().getFullYear()}</h1>
         </div>
-        <div className="flex-1 max-lg:w-full">
-          <div className="grid grid-cols-4 gap-2 place-items-center items-start w-full max-sm:grid-cols-2">
+
+        {/* Links Section */}
+        <div className="flex-1">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6 place-items-center lg:place-items-start items-start w-full">
             {/* Projects */}
             <ul className="space-y-1 text-md font-normal">
               <h3 className="text-primary-foreground font-medium tracking-tighter">Projects</h3>
@@ -56,6 +59,7 @@ const Footer = () => {
                 </li>
               ))}
             </ul>
+
             {/* About */}
             <ul className="space-y-1 text-md font-normal">
               <h3 className="text-primary-foreground font-medium tracking-tighter">About</h3>
@@ -70,6 +74,8 @@ const Footer = () => {
                 </li>
               ))}
             </ul>
+
+            {/* News & Media */}
             <ul className="space-y-1 text-md font-normal">
               <a href="/news">
                 <h3 className="text-primary-foreground font-medium tracking-tighter">News & Media</h3>
