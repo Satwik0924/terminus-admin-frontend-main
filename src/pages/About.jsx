@@ -7,7 +7,7 @@ import OfficeComponent from "@/components/OfficeGrid";
 import { motion, useAnimation } from "framer-motion";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-
+import Dropdown from "@/components/Dropdown";
 const About = () => {
   const [activeSection, setActiveSection] = useState("");
 
@@ -96,7 +96,10 @@ const About = () => {
   //   }, [location]);
 
   return (
-    <div id="head">
+    <div id="">
+      <div className="lg:hidden">
+        <Dropdown activeSection={activeSection} setActiveSection={setActiveSection} />
+      </div>
       <div className="flex p-5">
         {/* Side Sticky Section */}
         <div
