@@ -145,58 +145,73 @@ const Navbar = () => {
         style={{ height: "100vh" }}
       >
         <ul className="flex flex-col items-start justify-start h-full list-none m-0 p-4 pt-6 gap-4 w-full">
-          {navLinks.map((link) => (
-            <li key={link.href} className="w-full">
-              {link.hasDropdown ? (
-                <div className="w-full">
-                  <div className="flex items-center justify-between w-full px-4">
-                    <Link
-                      to={link.href}
-                      onClick={() => {
-                        toggleMenu();
-                        scrollToTop();
-                      }}
-                      className="text-[#727272] no-underline"
-                    >
-                      {link.label}
-                    </Link>
-                    <button onClick={toggleAbout} className="bg-transparent border-none cursor-pointer p-2">
-                      <ChevronDown
-                        className={`transition-transform duration-300 text-sm ${isAboutOpen ? "rotate-180" : ""}`}
-                      />
-                    </button>
+          {navLinks.map((link) => {
+            const location = useLocation();
+            const isAboutPage = location.pathname === "/about";
+
+            return (
+              <li key={link.href} className="w-full">
+                {link.hasDropdown ? (
+                  <div className="w-full">
+                    {/* Main Link */}
+                    <div className="flex items-center justify-between w-full px-4">
+                      <Link
+                        to={link.href}
+                        onClick={() => {
+                          toggleMenu();
+                          scrollToTop();
+                        }}
+                        className="text-[#727272] no-underline"
+                      >
+                        {link.label}
+                      </Link>
+                      {/* Only show the dropdown arrow if on the About page */}
+                      {isAboutPage && (
+                        <button onClick={toggleAbout} className="bg-transparent border-none cursor-pointer p-2">
+                          <ChevronDown
+                            className={`transition-transform duration-300 text-sm ${isAboutOpen ? "rotate-180" : ""}`}
+                          />
+                        </button>
+                      )}
+                    </div>
+                    {/* Submenu: Visible only on the About page */}
+                    {isAboutPage && (
+                      <div
+                        className={`overflow-hidden transition-all duration-300 ${
+                          isAboutOpen ? "max-h-96" : "max-h-0"
+                        }`}
+                      >
+                        <ul className="list-none pl-8 gap-2 m-0">
+                          {link.subLinks.map((subLink) => (
+                            <li key={subLink.id} className="m-0">
+                              <button
+                                onClick={() => scrollToSection(subLink.id)}
+                                className="text-[#727272] hover:text-primary-foreground transition-colors duration-200 bg-transparent border-none cursor-pointer text-sm"
+                              >
+                                {subLink.label}
+                              </button>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
                   </div>
-                  <div
-                    className={`overflow-hidden transition-all duration-300 ${isAboutOpen ? "max-h-96" : "max-h-0"}`}
+                ) : (
+                  /* Regular Link */
+                  <Link
+                    to={link.href}
+                    onClick={() => {
+                      toggleMenu();
+                      scrollToTop();
+                    }}
+                    className="text-[#727272] px-4 no-underline"
                   >
-                    <ul className="list-none pl-8 gap-2 m-0">
-                      {link.subLinks.map((subLink) => (
-                        <li key={subLink.id} className="m-0">
-                          <button
-                            onClick={() => scrollToSection(subLink.id)}
-                            className="text-[#727272] hover:text-primary-foreground transition-colors duration-200 bg-transparent border-none cursor-pointer text-sm"
-                          >
-                            {subLink.label}
-                          </button>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              ) : (
-                <Link
-                  to={link.href}
-                  onClick={() => {
-                    toggleMenu();
-                    scrollToTop();
-                  }}
-                  className="text-[#727272] px-4 no-underline"
-                >
-                  {link.label}
-                </Link>
-              )}
-            </li>
-          ))}
+                    {link.label}
+                  </Link>
+                )}
+              </li>
+            );
+          })}
         </ul>
       </div>
     </nav>

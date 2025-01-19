@@ -2,7 +2,7 @@ import React from "react";
 
 const ContactDetails = () => {
   return (
-    <section className="max-w-4xl mx-11 px-11 pt-16 lg:max-w-4xl lg:mx-11 lg:px-11 lg:pt-16">
+    <section className="max-w-4xl mx-4 pt-16 lg:max-w-4xl lg:mx-11 lg:px-11 lg:pt-16">
       <div className="flex flex-col space-y-4">
         {/* Contact Section */}
         <div className="flex flex-col lg:flex-row lg:items-start text-xl text-black space-y-2 lg:space-y-0">

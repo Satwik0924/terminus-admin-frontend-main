@@ -2,9 +2,20 @@ import { cn } from "@/lib/utils";
 import axios from "axios";
 import { motion, useAnimation } from "framer-motion";
 import { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Balancer from "react-wrap-balancer";
 import Footer from "../components/Footer";
+
+const propertyTypes = [
+  { id: "commercial", label: "Commercial" },
+  { id: "residential", label: "Residential" },
+  { id: "hospitality", label: "Hospitality" },
+  { id: "lifesciences", label: "Life Sciences" },
+  { id: "retail", label: "Retail" },
+  { id: "education", label: "Education" },
+];
+
+const statusTypes = ["Completed", "Ongoing", "Launching Soon"];
 
 const Projects = () => {
   const [projects, setProjects] = useState([]);
@@ -14,7 +25,8 @@ const Projects = () => {
   const [lifeSciencesProjects, setLifeSciencesProjects] = useState([]);
   const [activeSection, setActiveSection] = useState("");
   const [filterStatus, setFilterStatus] = useState(""); // State to track active filter
-  const location = useLocation();
+  const [selectedPropertyType, setSelectedPropertyType] = useState("");
+  const [selectedStatus, setSelectedStatus] = useState("");
 
   const handleStatusClick = (status) => {
     if (filterStatus === status) {
@@ -120,16 +132,15 @@ const Projects = () => {
     };
   }, []);
 
-  //   useEffect(() => {
-  //     if (location.hash) {
-  //       const element = document.getElementById(location.hash.substring(1));
-  //       if (element) {
-  //         const yOffset = -100;
-  //         const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
-  //         window.scrollTo({ top: y, behavior: "instant" });
-  //       }
-  //     }
-  //   }, [location]);
+  // Helper function to generate button classes
+  const getButtonClasses = (isSelected) => {
+    const baseClasses = "text-sm px-6 py-2 border border-gray-500 transition-colors";
+    const activeClasses = "bg-orange-500 text-white border-orange-500";
+    const inactiveClasses =
+      "bg-gray-500/10 text-gray-600 border-gray-500 hover:bg-orange-500/10 hover:border-orange-500 hover:text-orange-500";
+
+    return `${baseClasses} ${isSelected ? activeClasses : inactiveClasses}`;
+  };
 
   return (
     <div>
@@ -140,14 +151,7 @@ const Projects = () => {
             <li>
               <h1 className="mb-5 text-primary-foreground font-semibold">Key Projects</h1>
             </li>
-            {[
-              { id: "commercial", label: "Commercial" },
-              { id: "residential", label: "Residential" },
-              { id: "hospitality", label: "Hospitality" },
-              { id: "lifesciences", label: "Life Sciences" },
-              { id: "retail", label: "Retail" },
-              { id: "education", label: "Education" },
-            ].map(({ id, label }) => (
+            {propertyTypes.map(({ id, label }) => (
               <li key={id}>
                 <a
                   href={`#${id}`}
@@ -162,7 +166,7 @@ const Projects = () => {
           </ul>
           <div className="grid mt-12 px-0 w-full pl-8">
             <div className="grid grid-cols-1 w-full gap-3">
-              {["Completed", "Ongoing", "Launching Soon"].map((status, index) => (
+              {statusTypes.map((status, index) => (
                 <div
                   key={index}
                   className="flex items-center justify-center max-w-[15rem]"
@@ -182,15 +186,44 @@ const Projects = () => {
         </div>
 
         {/* Main Content */}
-        <div
-          style={{
-            flex: "3",
-            display: "flex",
-            flexDirection: "column",
-            gap: "40px",
-            width: "100%",
-          }}
-        >
+        <div className="flex-[3] flex flex-col gap-10 w-full">
+          {/* For Mobile */}
+          <div className="text-gray-500 space-y-6 md:hidden">
+            <div className="space-y-3">
+              <h2 className="text-xl">Property Type:</h2>
+              <div className="flex flex-wrap gap-2">
+                {propertyTypes.map(({ id, label }) => (
+                  <a
+                    key={id}
+                    href={`#${id}`}
+                    onClick={() => setSelectedPropertyType(id)}
+                    className={getButtonClasses(selectedPropertyType === id)}
+                  >
+                    {label}
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            <div className="space-y-3">
+              <h2 className="text-xl">Status:</h2>
+              <div className="flex flex-wrap gap-2">
+                {statusTypes.map((status, index) => (
+                  <button
+                    key={index}
+                    onClick={() => {
+                      setSelectedStatus(status);
+                      handleStatusClick(status);
+                    }}
+                    className={getButtonClasses(selectedStatus === status)}
+                  >
+                    {status}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+
           {/* Commercial Section */}
           <div id="commercial" style={{ textAlign: "left" }}>
             <motion.h1
