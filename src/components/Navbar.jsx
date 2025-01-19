@@ -59,7 +59,7 @@ const Navbar = () => {
   }, [handleScroll]);
 
   const aboutSublinks = [
-    { id: "commercial", label: "Team" },
+    { id: "residential", label: "Team" },
     { id: "residential", label: "Milestones" },
     { id: "hospitality", label: "Philanthropy" },
     { id: "lifesciences", label: "Awards" },
@@ -139,8 +139,9 @@ const Navbar = () => {
         className={`md:hidden transition-all duration-300 ease-out absolute left-0 right-0 top-24 bg-white shadow-sm shadow-white z-50 ${
           isMenuOpen ? "opacity-100 border-y border-input" : "opacity-0 pointer-events-none"
         }`}
+        style={{ height: "100vh" }}
       >
-        <ul className="flex flex-col items-center justify-center justify-items-center list-none m-0 p-4 gap-4 w-full">
+        <ul className="flex flex-col items-start justify-start h-full list-none m-0 p-4 pt-6 gap-4 w-full">
           {navLinks.map((link) => (
             <li key={link.href} className="w-full">
               {link.hasDropdown ? (
@@ -157,15 +158,17 @@ const Navbar = () => {
                       {link.label}
                     </Link>
                     <button onClick={toggleAbout} className="bg-transparent border-none cursor-pointer p-2">
-                      <ChevronDown className={`transition-transform duration-300 ${isAboutOpen ? "rotate-180" : ""}`} />
+                      <ChevronDown
+                        className={`transition-transform duration-300 text-sm ${isAboutOpen ? "rotate-180" : ""}`}
+                      />
                     </button>
                   </div>
                   <div
                     className={`overflow-hidden transition-all duration-300 ${isAboutOpen ? "max-h-96" : "max-h-0"}`}
                   >
-                    <ul className="list-none pl-8 py-2 space-y-2">
+                    <ul className="list-none pl-8 gap-2 m-0">
                       {link.subLinks.map((subLink) => (
-                        <li key={subLink.id}>
+                        <li key={subLink.id} className="m-0">
                           <button
                             onClick={() => scrollToSection(subLink.id)}
                             className="text-[#727272] hover:text-primary-foreground transition-colors duration-200 bg-transparent border-none cursor-pointer text-sm"
