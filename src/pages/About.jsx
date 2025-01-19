@@ -97,9 +97,6 @@ const About = () => {
 
   return (
     <div id="">
-      <div className="lg:hidden">
-        <Dropdown activeSection={activeSection} setActiveSection={setActiveSection} />
-      </div>
       <div className="flex p-5">
         {/* Side Sticky Section */}
         <div
