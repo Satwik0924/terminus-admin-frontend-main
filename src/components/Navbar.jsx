@@ -44,6 +44,9 @@ const Navbar = () => {
         top: elementPosition - offset,
         behavior: "smooth",
       });
+    } else {
+      // Navigate to the external section
+      window.location.href = `/#${id}`;
     }
     setIsMenuOpen(false);
     setIsAboutOpen(false);
@@ -59,8 +62,8 @@ const Navbar = () => {
   }, [handleScroll]);
 
   const aboutSublinks = [
-    { id: "residential", label: "Team" },
-    { id: "residential", label: "Milestones" },
+    { id: "news", label: "Team" },
+    { id: "milestones", label: "Milestones" },
     { id: "hospitality", label: "Philanthropy" },
     { id: "lifesciences", label: "Awards" },
     { id: "retail", label: "Consultants & Partners" },
