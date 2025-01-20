@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, BrowserRouter as Router, Routes} from "react-router-dom";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
@@ -22,15 +22,12 @@ export default function App() {
             <Route path="/contact" Component={Contact} />
             <Route path="/projects" Component={Projects} />
             <Route path="/projects/:id" Component={ProjectDetailPage} />
-                     <Route
+            <Route
               path="/theline"
-              Component={
-                () => {
-                  window.location.href =
-                    "https://www.info.terminus-group.com/theline/";
-                  return null;
-                }
-              }
+              Component={() => {
+                window.location.href = "https://www.info.terminus-group.com/theline/";
+                return null;
+              }}
             />
             <Route path="*" Component={Home} />
           </Routes>
@@ -39,5 +36,3 @@ export default function App() {
     </Router>
   );
 }
-
-//
