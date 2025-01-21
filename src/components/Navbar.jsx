@@ -22,12 +22,6 @@ const Navbar = () => {
     });
   };
 
-  const toggleAbout = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    setIsAboutOpen((prev) => !prev);
-  };
-
   const handleScroll = useCallback(() => {
     const cur = window.scrollY;
     setIsVisible(cur > 100);
@@ -51,7 +45,7 @@ const Navbar = () => {
       window.location.href = `/#${id}`;
     }
     setIsMenuOpen(false);
-    setIsAboutOpen(false);
+    // setIsAboutOpen(false);
     document.body.style.overflow = "auto";
   };
 
@@ -70,6 +64,11 @@ const Navbar = () => {
       document.body.style.overflow = "auto";
     };
   }, [handleScroll]);
+
+  useEffect(() => {
+    // Automatically open the "About" dropdown if the user is on the "About" page
+    setIsAboutOpen(pathname === "/about");
+  }, [pathname]);
 
   const aboutSublinks = [
     { id: "news", label: "Team" },
@@ -129,7 +128,7 @@ const Navbar = () => {
         </div>
 
         {/* Desktop Navigation */}
-        <ul className="flex items-center gap-8 list-none w-full m-0 pt-2 flex-1 max-lg:!flex-[1.5] max-md:hidden">
+        <ul className="flex items-center justify-between list-none w-full m-0 pt-2 flex-1 max-lg:!flex-[1.5] max-md:hidden">
           {navLinks.map((link) => (
             <li key={link.href}>
               <Link
@@ -141,7 +140,7 @@ const Navbar = () => {
               </Link>
             </li>
           ))}
-          <li className="ml-auto">
+          <li>
             <ProjectSearch />
           </li>
         </ul>
@@ -154,71 +153,61 @@ const Navbar = () => {
         }`}
       >
         <ul className="flex flex-col items-start justify-start list-none m-0 p-4 pt-6 gap-6 w-full">
-          {navLinks.map((link) => {
-            const location = useLocation();
-            const isAboutPage = location.pathname === "/about";
-
-            return (
-              <li key={link.href} className="w-full">
-                {link.hasDropdown ? (
-                  <div className="w-full">
-                    <div className="flex items-center justify-between w-full px-4">
-                      {isAboutPage ? (
-                        <button
-                          onClick={toggleAbout}
-                          className="text-[#727272] bg-transparent border-none cursor-pointer p-0 text-left font-normal"
-                        >
-                          {link.label}
-                        </button>
-                      ) : (
-                        <Link
-                          to={link.href}
-                          onClick={() => {
-                            toggleMenu();
-                            scrollToTop();
-                          }}
-                          className="text-[#727272] no-underline"
-                        >
-                          {link.label}
-                        </Link>
-                      )}
-                    </div>
-                    {isAboutPage && (
-                      <div
-                        className={`overflow-hidden transition-all duration-300 ${
-                          isAboutOpen ? "max-h-96" : "max-h-0"
-                        }`}
+          {navLinks.map((link) => (
+            <li key={link.href} className="w-full">
+              {link.hasDropdown ? (
+                <div className="w-full">
+                  <div className="flex items-center justify-between w-full px-4">
+                    {pathname === "/about" ? (
+                      <span className="text-[#727272] bg-transparent border-none cursor-pointer p-0 text-left font-normal">
+                        {link.label}
+                      </span>
+                    ) : (
+                      <Link
+                        to={link.href}
+                        onClick={() => {
+                          toggleMenu();
+                          scrollToTop();
+                        }}
+                        className="text-[#727272] no-underline"
                       >
-                        <ul className="list-none pl-8 gap-2 m-0 pt-2">
-                          {link.subLinks.map((subLink) => (
-                            <li key={subLink.id} className="m-0 py-2">
-                              <button
-                                onClick={() => scrollToSection(subLink.id)}
-                                className="text-[#727272] hover:text-primary-foreground transition-colors duration-200 bg-transparent border-none cursor-pointer text-sm"
-                              >
-                                {subLink.label}
-                              </button>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
+                        {link.label}
+                      </Link>
                     )}
                   </div>
-                ) : (
-                  <Link
-                    to={link.href}
-                    onClick={() => {
-                      toggleMenu();
-                      scrollToTop();
-                    }}
-                    className="text-[#727272] px-4 no-underline"
-                  >
-                    {link.label}
-                  </Link>
-                )}
-              </li>
-            );
-          })}
+                  {pathname === "/about" && (
+                    <div
+                      className={`overflow-hidden transition-all duration-300 ${isAboutOpen ? "max-h-96" : "max-h-0"}`}
+                    >
+                      <ul className="list-none pl-8 gap-2 m-0 pt-2">
+                        {link.subLinks.map((subLink) => (
+                          <li key={subLink.id} className="m-0 py-2">
+                            <button
+                              onClick={() => scrollToSection(subLink.id)}
+                              className="text-[#727272] hover:text-primary-foreground transition-colors duration-200 bg-transparent border-none cursor-pointer text-sm"
+                            >
+                              {subLink.label}
+                            </button>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <Link
+                  to={link.href}
+                  onClick={() => {
+                    toggleMenu();
+                    scrollToTop();
+                  }}
+                  className="text-[#727272] px-4 no-underline"
+                >
+                  {link.label}
+                </Link>
+              )}
+            </li>
+          ))}
         </ul>
       </div>
     </nav>
