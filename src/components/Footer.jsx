@@ -35,11 +35,13 @@ const Footer = () => {
     <footer className="bg-white w-full">
       <div className="flex flex-col lg:flex-row justify-between mx-auto py-2 px-6 lg:px-16 w-full">
         {/* Logo Section */}
-        <div className="flex-1 mb-8 lg:mb-0">
-          <div className="h-52 w-52 mx-auto lg:mx-0 overflow-hidden">
-            <img src={LogoFooter} alt="Terminus" className="object-cover h-auto w-full" />
+        <div className="flex-1  lg:mb-0">
+          <div className="relative flex flex-col items-center lg:items-start">
+            <div className="h-36 w-38 lg:h-52 lg:w-52 overflow-hidden mb-0 p-0">
+              <img src={LogoFooter} alt="Terminus" className="object-cover p-0 m-0" />
+            </div>
+            <h1 className="mb-6 lg:block font-medium text-black lg:mt-2">{new Date().getFullYear()}</h1>
           </div>
-          <h1 className="font-medium text-black text-center lg:text-left">{new Date().getFullYear()}</h1>
         </div>
 
         {/* Links Section */}

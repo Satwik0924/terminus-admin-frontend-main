@@ -23,14 +23,14 @@ const Projects = () => {
   const [residentialProjects, setResidentialProjects] = useState([]);
   const [hospitalityProjects, setHospitalityProjects] = useState([]);
   const [lifeSciencesProjects, setLifeSciencesProjects] = useState([]);
-  const [activeSection, setActiveSection] = useState("");
+  const [activeSection, setActiveSection] = useState(null);
   const [filterStatus, setFilterStatus] = useState(""); // State to track active filter
-  const [selectedPropertyType, setSelectedPropertyType] = useState("");
   const [selectedStatus, setSelectedStatus] = useState("");
 
   const handleStatusClick = (status) => {
     if (filterStatus === status) {
       setFilterStatus(""); // Remove the filter
+      setSelectedStatus("");
       categorizeProjects(projects); // Show all projects again
     } else {
       setFilterStatus(status); // Apply the new filter
@@ -193,12 +193,7 @@ const Projects = () => {
               <h2 className="text-xl">Property Type:</h2>
               <div className="flex flex-wrap gap-2">
                 {propertyTypes.map(({ id, label }) => (
-                  <a
-                    key={id}
-                    href={`#${id}`}
-                    onClick={() => setSelectedPropertyType(id)}
-                    className={getButtonClasses(selectedPropertyType === id)}
-                  >
+                  <a key={id} href={`#${id}`} className="text-sm px-6 py-2 border border-gray-500 transition-colors">
                     {label}
                   </a>
                 ))}
