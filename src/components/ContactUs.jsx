@@ -31,7 +31,7 @@ const ContactSection = () => {
         </div>
 
         {/* Form Section */}
-        <div className="flex-1 px-2">
+        <div className="flex-1">
           <form className="h-full" onSubmit={mimicFormSubmission}>
             <div className="mb-4">
               <input
