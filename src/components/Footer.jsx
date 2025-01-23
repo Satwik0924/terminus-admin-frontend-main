@@ -35,9 +35,9 @@ const Footer = () => {
     <footer className="bg-white w-full">
       <div className="flex flex-col lg:flex-row justify-between mx-auto py-2 px-6 lg:px-16 w-full">
         {/* Logo Section */}
-        <div className="flex-1  lg:mb-0">
-          <div className="relative flex flex-col items-center lg:items-start">
-            <div className="h-36 w-38 lg:h-52 lg:w-52 overflow-hidden mb-0 p-0">
+        <div className="flex-1 lg:mb-0 max-lg:mb-10">
+          <div className="relative flex lg:flex-col max-lg:items-baseline max-lg:justify-between lg:items-start max-lg:flex-wrap max-lg:gap-3">
+            <div className="h-auto lg:h-52 w-52 overflow-hidden mb-0 p-0">
               <img src={LogoFooter} alt="Terminus" className="object-cover p-0 m-0" />
             </div>
             <h1 className="mb-6 lg:block font-medium text-black lg:mt-2">{new Date().getFullYear()}</h1>
@@ -45,8 +45,8 @@ const Footer = () => {
         </div>
 
         {/* Links Section */}
-        <div className="flex-1">
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6 place-items-center lg:place-items-start items-start w-full">
+        <div className="xl:flex-1 flex-[2]">
+          <div className="grid lg:grid-cols-4 gap-6 lg:place-items-start items-start w-full max-lg:grid-cols-[repeat(auto-fit,minmax(120px,1fr))]">
             {/* Projects */}
             <ul className="space-y-1 text-md font-normal">
               <h3 className="text-primary-foreground font-medium tracking-tighter">Projects</h3>
