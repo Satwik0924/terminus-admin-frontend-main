@@ -134,10 +134,9 @@ const Projects = () => {
 
   // Helper function to generate button classes
   const getButtonClasses = (isSelected) => {
-    const baseClasses = "text-sm px-6 py-2 border border-gray-500 transition-colors";
+    const baseClasses = "text-sm px-6 py-2 transition-colors";
     const activeClasses = "bg-orange-500 text-white border-orange-500";
-    const inactiveClasses =
-      "bg-gray-500/10 text-gray-600 border-gray-500 hover:bg-orange-500/10 hover:border-orange-500 hover:text-orange-500";
+    const inactiveClasses = "bg-foreground/20 text-foreground font-bold";
 
     return `${baseClasses} ${isSelected ? activeClasses : inactiveClasses}`;
   };
@@ -190,10 +189,14 @@ const Projects = () => {
           {/* For Mobile */}
           <div className="text-gray-500 space-y-6 md:hidden">
             <div className="space-y-3">
-              <h2 className="text-xl">Property Type:</h2>
+              <h2 className="text-xl font-semibold">Property Type:</h2>
               <div className="flex flex-wrap gap-2">
                 {propertyTypes.map(({ id, label }) => (
-                  <a key={id} href={`#${id}`} className="text-sm px-6 py-2 border border-gray-500 transition-colors">
+                  <a
+                    key={id}
+                    href={`#${id}`}
+                    className="text-sm text-foreground font-bold px-6 py-2 bg-foreground/20 transition-colors"
+                  >
                     {label}
                   </a>
                 ))}
@@ -201,7 +204,7 @@ const Projects = () => {
             </div>
 
             <div className="space-y-3">
-              <h2 className="text-xl">Status:</h2>
+              <h2 className="text-xl font-semibold">Status:</h2>
               <div className="flex flex-wrap gap-2">
                 {statusTypes.map((status, index) => (
                   <button
