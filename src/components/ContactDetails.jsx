@@ -3,7 +3,7 @@ import Balancer from "react-wrap-balancer";
 const ContactDetails = () => {
   return (
     <section className="w-full pt-16 lg:pt-16">
-      <div className="flex flex-col lg:space-y-4 space-y-7 w-[90%] mx-auto">
+      <div className="flex flex-col lg:space-y-4 space-y-7 w-[90%] mx-auto tracking-tighter">
         {/* Contact Section */}
         <div className="flex flex-col lg:flex-row lg:items-start text-lg text-black space-y-2 lg:space-y-0">
           <label className="font-bold w-full lg:w-32">Contact</label>
@@ -11,7 +11,7 @@ const ContactDetails = () => {
         </div>
 
         {/* Address Section */}
-        <div className="flex flex-col lg:flex-row lg:items-start text-black text-lg space-y-2 lg:space-y-0">
+        <div className="flex flex-col lg:flex-row lg:items-start text-black text-lg space-y-2 lg:space-y-0 leading-tight">
           <label className="font-bold w-full lg:w-32">Address</label>
           <p>
             25th Floor, ONE WEST Building, Sy. No.88/AA, 88/E,
@@ -26,9 +26,9 @@ const ContactDetails = () => {
         </div>
 
         {/* Message Section */}
-        <div className="flex flex-col lg:flex-row !mt-10">
+        <div className="flex flex-col lg:flex-row !mt-8">
           <label className="font-bold text-black w-full lg:w-32"></label>
-          <p className="text-black text-lg space-y-6">
+          <p className="text-black text-lg space-y-6 leading-tight">
             <Balancer>
               We are always on the look-
               <br />
