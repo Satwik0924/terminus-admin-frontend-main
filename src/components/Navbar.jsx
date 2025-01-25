@@ -141,7 +141,7 @@ const Navbar = () => {
             </li>
           ))}
           <li>
-            <ProjectSearch />
+            <ProjectSearch className="xl:!size-7 !size-5" />
           </li>
         </ul>
       </div>
