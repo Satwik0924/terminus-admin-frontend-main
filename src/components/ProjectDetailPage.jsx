@@ -205,7 +205,7 @@ const ProjectDetailPage = () => {
     <div>
       <div className="flex flex-col py-12 max-w-full text-gray-800">
         <div className="xl:mx-20 mx-10">
-          <h1 className="text-8xl text-primary-foreground mb-3 tracking-tighter">{project.title}</h1>
+          <h1 className="sm:text-8xl text-6xl text-primary-foreground mb-3 tracking-tighter">{project.title}</h1>
           <p className="text-xl text-black mb-20 leading-5 tracking-tighter">{project.location}</p>
         </div>
 
@@ -279,7 +279,7 @@ const ProjectDetailPage = () => {
           </div>
         )}
         {project.images && project.images.length > 0 && (
-          <div className="mt-10 mb-24 space-y-36">
+          <div className="mt-10 mb-24 lg:space-y-36 space-y-20">
             {project.images.slice(1).map((imageUrl, index) => {
               const isLastImage = index === project.images.slice(1).length - 1;
               return (
@@ -288,7 +288,7 @@ const ProjectDetailPage = () => {
                   src={imageUrl}
                   alt={`Additional ${index + 1}`}
                   className={cn(
-                    "w-full mb-5 object-contain h-[80dvh] object-center cursor-pointer",
+                    "w-full mb-5 object-contain sm:h-[80dvh] h-auto object-center cursor-pointer",
                     isLastImage ? "object-cover" : ""
                   )}
                   onClick={() => openModal(imageUrl)}
