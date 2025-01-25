@@ -120,11 +120,11 @@ const Navbar = () => {
         </div>
 
         {/* Mobile Menu Button */}
-        <div className="flex gap-5 items-center">
-          <button onClick={toggleMenu} className="md:hidden bg-transparent border-none cursor-pointer">
+        <div className="flex gap-2 items-center">
+          <ProjectSearch className="md:hidden size-8" />
+          <button onClick={toggleMenu} className="md:hidden bg-transparent border-none cursor-pointer text-4xl">
             {isMenuOpen ? "✕" : "☰"}
           </button>
-          <ProjectSearch className="md:hidden" />
         </div>
 
         {/* Desktop Navigation */}
