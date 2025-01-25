@@ -71,7 +71,7 @@ const ContactSection = () => {
             </div>
             <button
               type="submit"
-              className="bg-primary-foreground w-full text-white py-3 px-6 cursor-pointer sm:text-xl text-base font-medium"
+              className="bg-primary-foreground w-full text-white py-3 px-6 cursor-pointer sm:text-lg text-base font-medium"
             >
               {isLoading ? "Sending..." : "Get In Touch"}
             </button>

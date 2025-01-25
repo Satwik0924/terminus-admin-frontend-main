@@ -1,18 +1,17 @@
-import React from "react";
 import Balancer from "react-wrap-balancer";
 
 const ContactDetails = () => {
   return (
-    <section className="max-w-4xl mx-4 pt-16 lg:max-w-4xl lg:mx-11 lg:px-11 lg:pt-16">
-      <div className="flex flex-col lg:space-y-4 space-y-7">
+    <section className="w-full pt-16 lg:pt-16">
+      <div className="flex flex-col lg:space-y-4 space-y-7 w-[90%] mx-auto">
         {/* Contact Section */}
-        <div className="flex flex-col lg:flex-row lg:items-start text-xl text-black space-y-2 lg:space-y-0">
+        <div className="flex flex-col lg:flex-row lg:items-start text-lg text-black space-y-2 lg:space-y-0">
           <label className="font-bold w-full lg:w-32">Contact</label>
           <p>+91 95548 34567</p>
         </div>
 
         {/* Address Section */}
-        <div className="flex flex-col lg:flex-row lg:items-start text-black text-xl space-y-2 lg:space-y-0">
+        <div className="flex flex-col lg:flex-row lg:items-start text-black text-lg space-y-2 lg:space-y-0">
           <label className="font-bold w-full lg:w-32">Address</label>
           <p>
             25th Floor, ONE WEST Building, Sy. No.88/AA, 88/E,
@@ -21,7 +20,7 @@ const ContactDetails = () => {
         </div>
 
         {/* Email Section */}
-        <div className="flex flex-col lg:flex-row lg:items-center text-xl text-black space-y-2 lg:space-y-0">
+        <div className="flex flex-col lg:flex-row lg:items-center text-lg text-black space-y-2 lg:space-y-0">
           <label className="font-bold w-full lg:w-32">Email</label>
           <p className="text-foreground">info@terminus-global.com</p>
         </div>
@@ -29,7 +28,7 @@ const ContactDetails = () => {
         {/* Message Section */}
         <div className="flex flex-col lg:flex-row !mt-10">
           <label className="font-bold text-black w-full lg:w-32"></label>
-          <p className="text-black text-xl space-y-6">
+          <p className="text-black text-lg space-y-6">
             <Balancer>
               We are always on the look-
               <br />
