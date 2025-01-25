@@ -71,7 +71,7 @@ const Navbar = () => {
   }, [pathname]);
 
   const aboutSublinks = [
-    { id: "news", label: "Team" },
+    { id: "residential", label: "Team" },
     { id: "milestones", label: "Milestones" },
     { id: "hospitality", label: "Philanthropy" },
     { id: "lifesciences", label: "Awards" },
