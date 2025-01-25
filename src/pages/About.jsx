@@ -95,7 +95,7 @@ const About = () => {
   //   }, [location]);
 
   return (
-    <div id="">
+    <div>
       <div className="flex p-5">
         {/* Side Sticky Section */}
         <div
@@ -175,7 +175,7 @@ const About = () => {
             <NewsMedia />
           </div> */}
 
-          <div id="hospitality" style={{ textAlign: "left" }}>
+          <div id="hospitality" className="text-left px-5">
             <motion.h1
               animate={controlsHospitality}
               initial={{ color: "#D3D3D3" }}
@@ -248,7 +248,7 @@ const About = () => {
             </div>
           </div>
 
-          <div id="lifesciences" style={{ textAlign: "left" }}>
+          <div id="lifesciences" className="text-left px-5">
             <motion.h1
               animate={controlsLifeSciences}
               initial={{ color: "#D3D3D3" }}
@@ -259,7 +259,7 @@ const About = () => {
             <AwardsComponent />
           </div>
 
-          <div id="retail" style={{ textAlign: "left" }}>
+          <div id="retail" className="text-left px-5">
             <motion.h1
               animate={controlsRetail}
               initial={{ color: "#D3D3D3" }}
