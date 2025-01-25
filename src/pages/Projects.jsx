@@ -55,6 +55,22 @@ const Projects = () => {
     setLifeSciencesProjects(projects.filter((project) => project.type === "life_sciences"));
   };
 
+  const scrollToElementWithOffset = (element) => {
+    const yOffset = -100;
+    const y = element.getBoundingClientRect().top + window.scrollY + yOffset;
+    window.scrollTo({ top: y, behavior: "instant" });
+  };
+
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash) {
+      const targetElement = document.getElementById(hash.substring(1));
+      if (targetElement) {
+        scrollToElementWithOffset(targetElement);
+      }
+    }
+  }, [window.location.hash]);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -192,13 +208,13 @@ const Projects = () => {
               <h2 className="text-xl font-semibold">Property Type:</h2>
               <div className="grid grid-cols-2 text-center gap-2">
                 {propertyTypes.map(({ id, label }) => (
-                  <a
+                  <Link
                     key={id}
-                    href={`#${id}`}
+                    to={`#${id}`}
                     className="text-sm text-foreground font-bold px-6 py-2 bg-foreground/20 transition-colors"
                   >
                     {label}
-                  </a>
+                  </Link>
                 ))}
               </div>
             </div>
