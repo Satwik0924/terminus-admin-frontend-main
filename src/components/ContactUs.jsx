@@ -19,14 +19,14 @@ const ContactSection = () => {
   return (
     <section className="flex py-20 w-full items-center justify-center overflow-hidden">
       {/* Map Section */}
-      <div className="w-[95%] flex gap-6 max-lg:flex-col">
+      <div className="w-[90%] flex gap-6 max-lg:flex-col">
         <div className="flex-[2]">
           <a
             href="https://maps.app.goo.gl/X9Q7WH8rPPXoWKqt5?g_st=com.google.maps.preview.copy"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img src={LocationMap} alt="Map" className="w-full h-full object-fill max-lg:min-h-64" />
+            <img src={LocationMap} alt="Map" className="w-full h-full lg:object-fill object-contain" />
           </a>
         </div>
 
@@ -39,7 +39,7 @@ const ContactSection = () => {
                 id="name"
                 name="name"
                 placeholder="Your Name"
-                className="w-full p-4 px-8 bg-foreground/5 placeholder:text-foreground placeholder:font-medium placeholder:text-lg outline-none"
+                className="w-full p-4 px-8 bg-foreground/5 placeholder:text-foreground placeholder:font-medium sm:placeholder:text-lg placeholder:text-sm outline-none"
               />
             </div>
             <div className="mb-4">
@@ -48,7 +48,7 @@ const ContactSection = () => {
                 id="email"
                 name="email"
                 placeholder="Your Email"
-                className="w-full p-4 px-8 bg-foreground/5 placeholder:text-foreground placeholder:font-medium placeholder:text-lg outline-none"
+                className="w-full p-4 px-8 bg-foreground/5 placeholder:text-foreground placeholder:font-medium sm:placeholder:text-lg placeholder:text-sm outline-none"
               />
             </div>
             <div className="mb-4">
@@ -57,7 +57,7 @@ const ContactSection = () => {
                 id="phone"
                 name="phone"
                 placeholder="Your Phone Number"
-                className="w-full p-4 px-8 bg-foreground/5 placeholder:text-foreground placeholder:font-medium placeholder:text-lg outline-none"
+                className="w-full p-4 px-8 bg-foreground/5 placeholder:text-foreground placeholder:font-medium sm:placeholder:text-lg placeholder:text-sm outline-none"
               />
             </div>
             <div className="mb-4">
@@ -66,12 +66,12 @@ const ContactSection = () => {
                 name="message"
                 rows="5"
                 placeholder="Your Message"
-                className="w-full p-4 px-8 bg-foreground/5 placeholder:text-foreground placeholder:font-medium placeholder:text-lg outline-none"
+                className="w-full p-4 px-8 bg-foreground/5 placeholder:text-foreground placeholder:font-medium sm:placeholder:text-lg placeholder:text-sm outline-none"
               />
             </div>
             <button
               type="submit"
-              className="bg-primary-foreground w-full text-white py-3 px-6 cursor-pointer text-xl font-medium"
+              className="bg-primary-foreground w-full text-white py-3 px-6 cursor-pointer sm:text-xl text-sm font-medium"
             >
               {isLoading ? "Sending..." : "Get In Touch"}
             </button>

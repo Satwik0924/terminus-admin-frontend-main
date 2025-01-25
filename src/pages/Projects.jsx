@@ -190,7 +190,7 @@ const Projects = () => {
           <div className="text-gray-500 space-y-6 md:hidden">
             <div className="space-y-3">
               <h2 className="text-xl font-semibold">Property Type:</h2>
-              <div className="flex flex-wrap gap-2">
+              <div className="grid grid-cols-2 text-center gap-2">
                 {propertyTypes.map(({ id, label }) => (
                   <a
                     key={id}
@@ -205,7 +205,7 @@ const Projects = () => {
 
             <div className="space-y-3">
               <h2 className="text-xl font-semibold">Status:</h2>
-              <div className="flex flex-wrap gap-2">
+              <div className="grid grid-cols-2 text-center gap-2">
                 {statusTypes.map((status, index) => (
                   <button
                     key={index}

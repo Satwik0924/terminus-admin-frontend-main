@@ -85,7 +85,7 @@ const ProjectsGrid = () => {
 
   return (
     <section className="flex flex-col justify-center items-center h-auto lg:py-40 py-20 w-full" id="explore-projects">
-      <div className="sm:w-[90%] w-full">
+      <div className="w-[90%]">
         {/* Heading */}
         <motion.h1
           id="heading"
@@ -97,8 +97,8 @@ const ProjectsGrid = () => {
         </motion.h1>
         {/* Responsive Grid */}
 
-        <div className="flex justify-center items-center max-sm:px-10">
-          <div className="grid xl:grid-cols-6 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-6">
+        <div className="flex justify-center items-center">
+          <div className="grid xl:grid-cols-6 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-6 max-sm:gap-y-10">
             {projects.map((project) => (
               <div
                 key={project.id}
