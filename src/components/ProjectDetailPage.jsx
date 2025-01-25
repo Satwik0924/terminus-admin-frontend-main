@@ -279,7 +279,7 @@ const ProjectDetailPage = () => {
           </div>
         )}
         {project.images && project.images.length > 0 && (
-          <div className="mt-10 mb-24 lg:space-y-36 space-y-20">
+          <div className="mt-10 mb-24 lg:space-y-36 space-y-10 w-[90%] mx-auto">
             {project.images.slice(1).map((imageUrl, index) => {
               const isLastImage = index === project.images.slice(1).length - 1;
               return (
