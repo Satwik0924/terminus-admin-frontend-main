@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { motion, useAnimation } from "framer-motion";
+import { useAnimation } from "framer-motion";
+import { useEffect, useState } from "react";
 
 const ConsultantsAndPartners = () => {
   const controls = useAnimation();
@@ -34,11 +34,11 @@ const ConsultantsAndPartners = () => {
   }, [controls, hasTriggered]);
 
   return (
-    <div className="py-20 px-8 font-[Arial,sans-serif] flex items-left justify-left w-full">
-      <div className="sm:w-[90%] w-[95%]">
+    <div className="py-20 px-8 flex items-left justify-left w-full">
+      <div className="w-[90%]">
         {/* Section Header */}
 
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-16 px-4 justify-left items-left place-items-left">
+        <div className="grid grid-cols-2 xl:grid-cols-3 gap-16">
           {/* Logos */}
           {[
             {
@@ -131,17 +131,7 @@ const ConsultantsAndPartners = () => {
             },
           ].map((logo, index) => (
             <div key={index}>
-              <img
-                src={logo.src}
-                alt={logo.alt}
-                style={{
-                  width: "300px",
-                  height: "auto",
-                  objectFit: "contain",
-                  display: "block",
-                }}
-                className="max-md:!w-full"
-              />
+              <img src={logo.src} alt={logo.alt} className="h-auto lg:w-[300px] w-full object-contain block" />
             </div>
           ))}
         </div>

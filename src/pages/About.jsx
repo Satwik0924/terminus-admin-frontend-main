@@ -2,12 +2,11 @@ import AwardsComponent from "@/components/Awards";
 import ConsultantsAndPartners from "@/components/Consultants";
 import Footer from "@/components/Footer";
 import ImageSlider from "@/components/imageslider";
-import NewsMedia from "@/components/NewsAndMedia";
 import OfficeComponent from "@/components/OfficeGrid";
 import { motion, useAnimation } from "framer-motion";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import Dropdown from "@/components/Dropdown";
+
 const About = () => {
   const [activeSection, setActiveSection] = useState("");
 
