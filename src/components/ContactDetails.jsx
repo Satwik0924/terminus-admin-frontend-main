@@ -1,4 +1,5 @@
 import React from "react";
+import Balancer from "react-wrap-balancer";
 
 const ContactDetails = () => {
   return (
@@ -26,22 +27,24 @@ const ContactDetails = () => {
         </div>
 
         {/* Message Section */}
-        <div className="flex flex-col lg:flex-row">
+        <div className="flex flex-col lg:flex-row !mt-10">
           <label className="font-bold text-black w-full lg:w-32"></label>
           <p className="text-black text-xl space-y-6">
-            We are always on the look-
-            <br />
-            out for talent to add to our growing, dynamic team. Please click
-            <br /> on the link below to view and apply for open positions.
-            <br />
-            <a
-              href="https://docs.google.com/forms/d/1qss7Ji8uhSV_3U47Or-Y9z7Ny1P5oFi-7ImtmiheV6o/edit"
-              className="text-foreground font-semibold"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              For Careers at Terminus, <strong>apply here</strong>
-            </a>
+            <Balancer>
+              We are always on the look-
+              <br />
+              out for talent to add to our growing, dynamic team. Please click
+              <br /> on the link below to view and apply for open positions.
+              <br />
+              <a
+                href="https://docs.google.com/forms/d/1qss7Ji8uhSV_3U47Or-Y9z7Ny1P5oFi-7ImtmiheV6o/edit"
+                className="text-foreground font-semibold"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                For Careers at Terminus, <strong>apply here</strong>
+              </a>
+            </Balancer>
           </p>
         </div>
       </div>

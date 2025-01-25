@@ -39,7 +39,7 @@ const ContactSection = () => {
                 id="name"
                 name="name"
                 placeholder="Your Name"
-                className="w-full p-4 px-8 bg-foreground/5 placeholder:text-foreground placeholder:font-medium sm:placeholder:text-lg placeholder:text-sm outline-none"
+                className="w-full p-4 px-8 bg-foreground/5 placeholder:text-foreground placeholder:font-medium sm:placeholder:text-lg placeholder:text-base outline-none"
               />
             </div>
             <div className="mb-4">
@@ -48,7 +48,7 @@ const ContactSection = () => {
                 id="email"
                 name="email"
                 placeholder="Your Email"
-                className="w-full p-4 px-8 bg-foreground/5 placeholder:text-foreground placeholder:font-medium sm:placeholder:text-lg placeholder:text-sm outline-none"
+                className="w-full p-4 px-8 bg-foreground/5 placeholder:text-foreground placeholder:font-medium sm:placeholder:text-lg placeholder:text-base outline-none"
               />
             </div>
             <div className="mb-4">
@@ -57,7 +57,7 @@ const ContactSection = () => {
                 id="phone"
                 name="phone"
                 placeholder="Your Phone Number"
-                className="w-full p-4 px-8 bg-foreground/5 placeholder:text-foreground placeholder:font-medium sm:placeholder:text-lg placeholder:text-sm outline-none"
+                className="w-full p-4 px-8 bg-foreground/5 placeholder:text-foreground placeholder:font-medium sm:placeholder:text-lg placeholder:text-base outline-none"
               />
             </div>
             <div className="mb-4">
@@ -66,12 +66,12 @@ const ContactSection = () => {
                 name="message"
                 rows="5"
                 placeholder="Your Message"
-                className="w-full p-4 px-8 bg-foreground/5 placeholder:text-foreground placeholder:font-medium sm:placeholder:text-lg placeholder:text-sm outline-none"
+                className="w-full p-4 px-8 bg-foreground/5 placeholder:text-foreground placeholder:font-medium sm:placeholder:text-lg placeholder:text-base outline-none"
               />
             </div>
             <button
               type="submit"
-              className="bg-primary-foreground w-full text-white py-3 px-6 cursor-pointer sm:text-xl text-sm font-medium"
+              className="bg-primary-foreground w-full text-white py-3 px-6 cursor-pointer sm:text-xl text-base font-medium"
             >
               {isLoading ? "Sending..." : "Get In Touch"}
             </button>
