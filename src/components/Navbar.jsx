@@ -94,9 +94,9 @@ const Navbar = () => {
     <nav
       className={`${pathname === "/" ? "fixed" : "sticky"} ${
         isVisible || isMenuOpen ? "bg-white" : "bg-transparent"
-      } w-full top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out`}
+      } w-full h-16 top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out`}
     >
-      <div className="w-[95%] mx-auto px-4 flex items-center justify-between h-24 overflow-hidden">
+      <div className="w-[95%] mx-auto px-4 flex items-center justify-between h-20 overflow-hidden">
         {/* Logo */}
         <div className="flex-1">
           <Link to="/" onClick={scrollToTop} className="relative inline-block">
@@ -159,7 +159,7 @@ const Navbar = () => {
                 <div className="w-full">
                   <div className="flex items-center justify-between w-full px-4">
                     {pathname === "/about" ? (
-                      <span className="text-[#727272] bg-transparent border-none cursor-pointer p-0 text-left font-normal">
+                      <span className="hover:text-primary-foreground text-[#727272] transition-opacity duration-200 ease-in-out xl:text-[22px] text-base font-bold">
                         {link.label}
                       </span>
                     ) : (
