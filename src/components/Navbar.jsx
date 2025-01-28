@@ -159,7 +159,7 @@ const Navbar = () => {
                 <div className="w-full">
                   <div className="flex items-center justify-between w-full px-4">
                     {pathname === "/about" ? (
-                      <span className="hover:text-primary-foreground text-[#727272] transition-opacity duration-200 ease-in-out xl:text-[22px] text-base font-bold">
+                      <span className="hover:text-primary-foreground text-[#727272] transition-opacity duration-200 ease-in-out text-[22px] text-base font-bold">
                         {link.label}
                       </span>
                     ) : (
