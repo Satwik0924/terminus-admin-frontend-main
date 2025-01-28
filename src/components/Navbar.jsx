@@ -94,7 +94,7 @@ const Navbar = () => {
     <nav
       className={`${pathname === "/" ? "fixed" : "sticky"} ${
         isVisible || isMenuOpen ? "bg-white" : "bg-transparent"
-      } w-full h-16 top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out`}
+      } w-full h-18 top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out`}
     >
       <div className="w-[95%] mx-auto px-4 flex items-center justify-between h-20 overflow-hidden">
         {/* Logo */}
@@ -148,7 +148,7 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       <div
-        className={`md:hidden fixed inset-0 top-24 bg-white z-50 transition-all duration-300 ease-out ${
+        className={`md:hidden fixed inset-0 top-20 bg-white z-50 transition-all duration-300 ease-out ${
           isMenuOpen ? "opacity-100 border-y border-input" : "opacity-0 pointer-events-none"
         }`}
       >
