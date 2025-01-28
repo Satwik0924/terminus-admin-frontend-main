@@ -34,11 +34,11 @@ const ConsultantsAndPartners = () => {
   }, [controls, hasTriggered]);
 
   return (
-    <div className="lg:py-20 pb-20 px-8 flex items-left justify-left w-full">
-      <div className="w-[90%]">
+    <div className="lg:py-20 pb-20 sm:px-8 flex items-left justify-left w-full">
+      <div className="sm:w-[90%] w-full">
         {/* Section Header */}
 
-        <div className="grid grid-cols-2 xl:grid-cols-3 gap-16">
+        <div className="grid grid-cols-2 xl:grid-cols-3 sm:gap-16">
           {/* Logos */}
           {[
             {
