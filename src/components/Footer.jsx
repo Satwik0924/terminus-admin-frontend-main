@@ -1,3 +1,4 @@
+import { cn } from "@/lib/utils";
 import LogoFooter from "../assets/tg_logo_full.png";
 
 const projectLinks = [
@@ -33,20 +34,20 @@ const socialLinks = [
 const Footer = () => {
   return (
     <footer className="bg-white w-full">
-      <div className="flex flex-col lg:flex-row justify-between mx-auto pt-16 pb-4 px-6 lg:px-16 w-full">
+      <div className="flex justify-between mx-auto pt-16 pb-6 px-6 md:px-16 w-full max-lg:flex-col">
         {/* Logo Section */}
         <div className="flex-1 lg:mb-0 max-lg:mb-10">
-          <div className="relative flex lg:flex-col max-lg:items-baseline max-lg:justify-between lg:items-start max-lg:flex-wrap max-lg:gap-3">
+          <div className="relative flex md:flex-col max-md:items-baseline max-md:justify-between md:items-start max-md:flex-wrap max-md:gap-3">
             <div className="h-auto lg:h-52 w-52 overflow-hidden mb-0 p-0">
               <img src={LogoFooter} alt="Terminus" className="object-cover p-0 m-0" />
             </div>
-            <h1 className="mb-6 lg:block font-medium text-black lg:mt-2">{new Date().getFullYear()}</h1>
+            <h1 className="mb-6 font-medium text-black md:mt-2 max-lg:hidden">{new Date().getFullYear()}</h1>
           </div>
         </div>
 
         {/* Links Section */}
-        <div className="xl:flex-1 flex-[2]">
-          <div className="grid lg:grid-cols-4 gap-6 lg:place-items-start items-start w-full max-lg:grid-cols-[repeat(auto-fit,minmax(120px,1fr))]">
+        <div className="flex-1">
+          <div className="grid md:grid-cols-4 gap-6 md:place-items-start items-start w-full max-md:grid-cols-1">
             {/* Projects */}
             <ul className="space-y-1 text-md font-normal">
               <h3 className="text-primary-foreground font-medium tracking-tighter">Projects</h3>
@@ -100,12 +101,18 @@ const Footer = () => {
               <li className="h-6 my-3"></li> {/* Adds a subtle dividing line */}
               {socialLinks.map((project, index) => (
                 <li
-                  className="hover:underline hover:underline-offset-4 text-black tracking-tighter"
+                  className={cn(
+                    "hover:underline hover:underline-offset-4 text-black tracking-tighter",
+                    socialLinks.length - 1 === index ? "w-full flex items-center justify-between" : ""
+                  )}
                   key={`${project.label}-${index}`}
                 >
                   <a style={{ all: "unset" }} href={`${project.href}`}>
                     {project.label}
                   </a>
+                  {index === socialLinks.length - 1 && (
+                    <h1 className="font-medium text-black md:hidden">{new Date().getFullYear()}</h1>
+                  )}
                 </li>
               ))}
             </ul>

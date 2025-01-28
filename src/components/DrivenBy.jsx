@@ -79,7 +79,7 @@ const DrivenByMission = () => {
             className="w-[95%] h-auto mb-2"
           />
 
-          <h1 className="text-primary-foreground text-3xl font-bold mb-6">The Founder Chairman</h1>
+          <h1 className="text-primary-foreground sm:text-3xl text-2xl font-bold mb-6">The Founder Chairman</h1>
 
           <div className="space-y-3 max-w-xl !text-foreground/70">
             <p className="leading-snug tracking-tighter">

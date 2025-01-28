@@ -34,7 +34,7 @@ const ConsultantsAndPartners = () => {
   }, [controls, hasTriggered]);
 
   return (
-    <div className="py-20 px-8 flex items-left justify-left w-full">
+    <div className="lg:py-20 pb-20 px-8 flex items-left justify-left w-full">
       <div className="w-[90%]">
         {/* Section Header */}
 
