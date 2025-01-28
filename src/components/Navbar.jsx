@@ -159,9 +159,7 @@ const Navbar = () => {
                 <div className="w-full">
                   <div className="flex items-center justify-between w-full px-4">
                     {pathname === "/about" ? (
-                      <span className="hover:text-primary-foreground text-[#727272] transition-opacity duration-200 ease-in-out text-[22px] text-base font-bold">
-                        {link.label}
-                      </span>
+                      <span className="text-[#727272] text-[22px]">{link.label}</span>
                     ) : (
                       <Link
                         to={link.href}
@@ -169,7 +167,7 @@ const Navbar = () => {
                           toggleMenu();
                           scrollToTop();
                         }}
-                        className="text-[#727272] no-underline"
+                        className="text-[#727272] no-underline text-[22px]"
                       >
                         {link.label}
                       </Link>
@@ -184,7 +182,7 @@ const Navbar = () => {
                           <li key={subLink.id} className="m-0 py-2">
                             <button
                               onClick={() => scrollToSection(subLink.id)}
-                              className="text-[#727272] hover:text-primary-foreground transition-colors duration-200 bg-transparent border-none cursor-pointer text-sm"
+                              className="text-[#727272] hover:text-primary-foreground transition-colors duration-200 bg-transparent border-none cursor-pointer"
                             >
                               {subLink.label}
                             </button>
@@ -201,7 +199,7 @@ const Navbar = () => {
                     toggleMenu();
                     scrollToTop();
                   }}
-                  className="text-[#727272] px-4 no-underline"
+                  className="text-[#727272] px-4 no-underline text-[22px]"
                 >
                   {link.label}
                 </Link>

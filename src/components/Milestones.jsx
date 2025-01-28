@@ -241,7 +241,7 @@ const Milestones = () => {
         >
           Milestones
         </motion.h1>
-        <div className="flex gap-24 max-lg:flex-col">
+        <div className="flex sm:gap-24 gap-10 max-lg:flex-col">
           {/* Years */}
           <div className="flex lg:flex-col max-lg:gap-4 max-lg:flex-wrap">
             {Object.keys(milestones).map((year) => (
