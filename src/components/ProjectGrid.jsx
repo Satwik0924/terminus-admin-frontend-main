@@ -91,33 +91,33 @@ const ProjectsGrid = () => {
           id="heading"
           animate={headingAnimation}
           initial={{ color: "#A0A0A0" }}
-          className="md:text-[5.3rem] leading-none text-5xl mb-20 font-medium text-[#A0A0A0] text-left tracking-tighter"
+          className="md:text-[5.3rem] leading-none text-5xl sm:mb-20 mb-16 font-medium text-[#A0A0A0] text-left tracking-tighter"
         >
           <Balancer>Explore Our Projects</Balancer>
         </motion.h1>
         {/* Responsive Grid */}
 
         <div className="flex justify-center items-center">
-          <div className="grid xl:grid-cols-6 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-6 max-sm:gap-y-10">
+          <div className="grid xl:grid-cols-6 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-6 max-sm:gap-y-6">
             {projects.map((project) => (
               <div
                 key={project.id}
-                className="w-full h-[80vh] sm:h-[60dvh] max-sm:w-full overflow-hidden relative hover:scale-[1.03] transition-transform duration-500 ease-in-out bg-white flex flex-col justify-center"
+                className="w-full h-[10vh] sm:h-[60dvh] max-sm:w-full overflow-hidden relative hover:scale-[1.03] transition-transform duration-500 ease-in-out bg-white flex flex-col justify-center"
               >
                 <div className="flex-grow">
                   <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
                 </div>
 
-                <div className="absolute inset-0 p-8 flex flex-col justify-between items-center">
-                  <h2 className="text-white text-3xl font-bold">{project.title}</h2>
+                <div className="absolute inset-0 sm:p-8 max-sm:px-3 flex sm:flex-col justify-between items-center">
+                  <h2 className="text-white sm:text-3xl text-xl font-bold">{project.title}</h2>
 
                   {/* "View Projects" with Dynamic ID */}
                   <Link
                     to={`/projects/#${project.id}`} // Update the Link to point to the section
-                    className="text-primary-foreground hover:text-white transition-colors text-lg mx-auto gap-2 font-medium flex items-center"
+                    className="text-primary-foreground hover:text-white transition-colors sm:text-lg sm:mx-auto gap-2 font-medium flex items-center"
                   >
                     View Projects
-                    <ArrowRight className="stroke-white size-6" />
+                    <ArrowRight className="stroke-white sm:size-6 size-4" />
                   </Link>
                 </div>
               </div>
