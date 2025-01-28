@@ -206,10 +206,10 @@ const ProjectDetailPage = () => {
       <div className="flex flex-col py-12 max-w-full text-gray-800">
         <div className="xl:mx-20 mx-10">
           <h1 className="sm:text-8xl text-6xl text-primary-foreground mb-3 tracking-tighter">{project.title}</h1>
-          <p className="text-xl text-black mb-20 leading-5 tracking-tighter">{project.location}</p>
+          <p className="text-xl text-black xl:mb-20 mb-6 leading-5 tracking-tighter">{project.location}</p>
         </div>
 
-        <div className="flex mb-24 max-xl:flex-col max-xl:gap-8 xl:mx-20 mx-10">
+        <div className="flex xl:mb-24 mb-6 max-xl:flex-col max-xl:gap-8 xl:mx-20 mx-10">
           <div className="flex-1 h-[60vh] flex">
             <img
               src={project.images && project.images[0]}
@@ -220,7 +220,7 @@ const ProjectDetailPage = () => {
           </div>
           <div className="flex-1 flex justify-end">
             <div className="xl:w-[60%] w-full">
-              <p className="tracking-tighter text-lg text-black">
+              <p className="tracking-tighter text-lg text-black leading-tight">
                 <Balancer>{project.description || "No description available."}</Balancer>
               </p>
               <p className="font-extrabold mt-5 tracking-tighter !leading-3 text-lg">Status</p>
@@ -264,8 +264,8 @@ const ProjectDetailPage = () => {
         </div>
         {/* YouTube Video Section */}
         {project.youtubeVideoUrl && youtubeVideoID && (
-          <div className="xl:mx-20 mx-10 mb-24">
-            <div className="max-w-full mx-auto">
+          <div className="xl:mb-24 mb-6">
+            <div className="w-[90%] mx-auto">
               <div className="relative w-full h-0 pb-[56.25%]">
                 <iframe
                   className="absolute top-0 left-0 w-full h-full"
@@ -279,7 +279,7 @@ const ProjectDetailPage = () => {
           </div>
         )}
         {project.images && project.images.length > 0 && (
-          <div className="mt-10 mb-24 lg:space-y-36 space-y-10 w-[90%] mx-auto">
+          <div className="xl:mt-10 mb-24 xl:space-y-36 space-y-6 max-xl:w-[90%] mx-auto w-full">
             {project.images.slice(1).map((imageUrl, index) => {
               const isLastImage = index === project.images.slice(1).length - 1;
               return (
@@ -288,7 +288,7 @@ const ProjectDetailPage = () => {
                   src={imageUrl}
                   alt={`Additional ${index + 1}`}
                   className={cn(
-                    "w-full mb-5 object-contain sm:h-[80dvh] h-auto object-center cursor-pointer",
+                    "w-full mb-5 object-contain xl:h-[80dvh] h-auto object-center cursor-pointer",
                     isLastImage ? "object-cover" : ""
                   )}
                   onClick={() => openModal(imageUrl)}
