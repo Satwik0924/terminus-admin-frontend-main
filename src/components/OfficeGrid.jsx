@@ -282,11 +282,11 @@ const OfficeComponent = () => {
                   <div className="relative h-[400px] overflow-hidden w-full">
                     <img src={member.image} alt={member.name} className="w-full h-full object-cover object-center" />
                     {/* Hover overlay */}
-                    <div className="absolute inset-0 flex justify-top items-top bg-white/50 bg-opacity-70 opacity-0 group-hover:opacity-100 transition duration-500 [word-spacing:4px]">
+                    {/* <div className="absolute inset-0 flex justify-top items-top bg-white/50 bg-opacity-70 opacity-0 group-hover:opacity-100 transition duration-500 [word-spacing:4px]">
                       <div className="p-4">
                         <p className="text-black text-left text-lg font-semibold">View More</p>
                       </div>
-                    </div>
+                    </div> */}
                   </div>
 
                   <p className="font-semibold mt-2 text-xl tracking-tight text-black">{member.name}</p>
