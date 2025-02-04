@@ -1,3 +1,4 @@
+import { generateSlug } from "@/lib/helpers";
 import { cn } from "@/lib/utils";
 import axios from "axios";
 import { motion, useAnimation } from "framer-motion";
@@ -254,7 +255,13 @@ const Projects = () => {
                 {commercialProjects.map((project) => (
                   <div key={project._id} className="overflow-hidden group">
                     <div className="relative w-full h-[400px] overflow-hidden mb-3">
-                      <Link to={`/projects/${project._id}`} className="relative w-full h-full overflow-hidden">
+                      <Link
+                        to={{
+                          pathname: `/projects/${encodeURIComponent(generateSlug(project.title))}/${project._id}`,
+                          state: { id: project._id },
+                        }}
+                        className="relative w-full h-full overflow-hidden"
+                      >
                         {/* Image */}
                         <img
                           src={project.images?.[0]}
@@ -367,7 +374,12 @@ const Projects = () => {
                   {projects.map((project) => (
                     <div key={project._id} className="overflow-hidden group">
                       <div className="relative w-full h-[400px] overflow-hidden mb-3">
-                        <Link to={`/projects/${project._id}`} className="relative w-full h-full overflow-hidden">
+                        <Link
+                          to={{
+                            pathname: `/projects/${encodeURIComponent(generateSlug(project.title))}/${project._id}`,
+                          }}
+                          className="relative w-full h-full overflow-hidden"
+                        >
                           {/* Image */}
                           <img
                             src={project.images?.[0]}

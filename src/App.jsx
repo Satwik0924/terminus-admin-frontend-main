@@ -1,12 +1,11 @@
-import React from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
+import ProjectDetailPage from "./components/ProjectDetailPage";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Home from "./pages/Home";
 import News from "./pages/News";
 import Projects from "./pages/Projects";
-import ProjectDetailPage from "./components/ProjectDetailPage";
 
 export default function App() {
   return (
@@ -21,7 +20,7 @@ export default function App() {
             <Route path="/about" Component={About} />
             <Route path="/contact" Component={Contact} />
             <Route path="/projects" Component={Projects} />
-            <Route path="/projects/:id" Component={ProjectDetailPage} />
+            <Route path="/projects/:slug/:id" Component={ProjectDetailPage} />
             <Route
               path="/theline"
               Component={() => {
