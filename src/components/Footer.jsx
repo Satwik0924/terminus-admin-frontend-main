@@ -32,6 +32,7 @@ const socialLinks = [
 ];
 
 const Footer = () => {
+  const currentYear = new Date().getUTCFullYear();
   return (
     <footer className="bg-white w-full">
       <div className="flex justify-between mx-auto pt-16 pb-6 px-6 md:px-16 w-full max-lg:flex-col">
@@ -41,7 +42,6 @@ const Footer = () => {
             <div className="h-auto lg:h-52 w-52 overflow-hidden mb-0 p-0">
               <img src={LogoFooter} alt="Terminus" className="object-cover p-0 m-0" />
             </div>
-            <h1 className="mb-6 font-medium text-black md:mt-2 max-lg:hidden">{new Date().getFullYear()}</h1>
           </div>
         </div>
 
@@ -98,7 +98,7 @@ const Footer = () => {
                   </a>
                 </li>
               ))}
-              <li className="h-6 my-3"></li> {/* Adds a subtle dividing line */}
+              <li className="h-6 my-3"></li>
               {socialLinks.map((project, index) => (
                 <li
                   className={cn(
@@ -118,6 +118,9 @@ const Footer = () => {
             </ul>
           </div>
         </div>
+      </div>
+      <div className="text-center w-full py-4">
+        <span className=" text-black cursor-text">© Terminus Group {currentYear} All Rights Reserved.</span>
       </div>
     </footer>
   );
