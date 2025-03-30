@@ -1,5 +1,6 @@
 import { cn } from "@/lib/utils";
 import LogoFooter from "../assets/tg_logo_full.png";
+import { Link } from "react-router-dom";
 
 const projectLinks = [
   { label: "Commercial", href: "/projects#commercial" },
@@ -120,7 +121,12 @@ const Footer = () => {
         </div>
       </div>
       <div className="text-center w-full py-4">
-        <span className=" text-black cursor-text">© Terminus Group {currentYear} All Rights Reserved.</span>
+        <span className="text-black cursor-text">© Terminus Group {currentYear} All Rights Reserved.</span>
+        <div className="mt-2">
+          <Link to="/privacy-policy" className="text-black hover:underline hover:underline-offset-4 text-sm">
+            Privacy Policy
+          </Link>
+        </div>
       </div>
     </footer>
   );

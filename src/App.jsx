@@ -5,9 +5,10 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Home from "./pages/Home";
 import News from "./pages/News";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 import Projects from "./pages/Projects";
 
-export default function App() {
+function App() {
   return (
     <Router>
       <div>
@@ -21,6 +22,7 @@ export default function App() {
             <Route path="/contact" Component={Contact} />
             <Route path="/projects" Component={Projects} />
             <Route path="/projects/:slug/:id" Component={ProjectDetailPage} />
+            <Route path="/privacy-policy" Component={PrivacyPolicy} />
             <Route
               path="/theline"
               Component={() => {
@@ -35,3 +37,5 @@ export default function App() {
     </Router>
   );
 }
+
+export default App;
