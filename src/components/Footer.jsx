@@ -121,12 +121,10 @@ const Footer = () => {
         </div>
       </div>
       <div className="text-center w-full py-4">
-        <span className="text-black cursor-text">© Terminus Group {currentYear} All Rights Reserved.</span>
-        <div className="mt-2">
-          <Link to="/privacy-policy" className="text-black hover:underline hover:underline-offset-4 text-sm">
-            Privacy Policy
-          </Link>
-        </div>
+        <span className="text-black cursor-text">© Terminus Group {currentYear} All Rights Reserved.</span>{" "}
+        <Link to="/privacy-policy" className="text-primary hover:underline hover:underline-offset-4 font-medium">
+          Privacy Policy
+        </Link>
       </div>
     </footer>
   );
