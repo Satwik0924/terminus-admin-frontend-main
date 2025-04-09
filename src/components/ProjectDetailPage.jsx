@@ -176,6 +176,8 @@ const ProjectDetailPage = () => {
     try {
       setIsSubmitting(true);
       const formData = new FormData();
+      formData.append("projectName", project.title);
+      formData.append("projectType", project.type);
       formData.append("name", submittedData.name);
       formData.append("emailId", submittedData.emailId);
       formData.append("phoneNumber", submittedData.phoneNumber);
