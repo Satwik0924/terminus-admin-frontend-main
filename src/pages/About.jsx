@@ -5,6 +5,7 @@ import ImageSlider from "@/components/imageslider";
 import OfficeComponent from "@/components/OfficeGrid";
 import { motion, useAnimation } from "framer-motion";
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { useLocation } from "react-router-dom";
 
 const About = () => {
@@ -160,7 +161,16 @@ const About = () => {
           }}
         >
           <div id="commercial" style={{ textAlign: "left" }}>
-            <OfficeComponent />
+            <Helmet>
+              <title>About Us : Best Real Estate Developers in Hyderabad | Termius</title>{" "}
+              <meta
+                name="description"
+                content="Terminus Group, founded in 2010 and guided by Mr. S.P. Reddy's 25+ years of experience, is recognized as one of the best builders & construction companies in Hyderabad."
+              />
+            </Helmet>
+            <div className="w-[90%] mx-auto">
+              <OfficeComponent />
+            </div>
             {/* <DrivenByMission /> */}
           </div>
 

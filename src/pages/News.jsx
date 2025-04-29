@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
+import { motion, useAnimation } from "framer-motion";
+import { useEffect } from "react";
+import { Helmet } from "react-helmet-async";
 import Footer from "../components/Footer";
 import NewsMedia from "../components/NewsAndMedia";
-import AwardsComponent from "../components/Awards";
-import { motion, useAnimation } from "framer-motion";
 
 const News = () => {
   const controlsNews = useAnimation();
@@ -45,6 +45,13 @@ const News = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Terminus Group News | Latest Updates, Media Releases & Industry Insights</title>
+        <meta
+          name="description"
+          content="Stay informed with the latest press releases and news updates from Terminus Group, covering our recent projects, partnerships, and industry insights."
+        />
+      </Helmet>
       <div id="news-media" style={{ textAlign: "left", padding: "2rem 1rem" }}>
         <motion.h1
           animate={controlsNews}

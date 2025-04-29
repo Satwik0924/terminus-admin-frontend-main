@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Balancer from "react-wrap-balancer";
 import Footer from "../components/Footer";
+import { Helmet } from "react-helmet-async";
 
 const propertyTypes = [
   { id: "commercial", label: "Commercial" },
@@ -160,6 +161,13 @@ const Projects = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Terminus Group Projects | Smart Infrastructure & Real Estate Solutions</title>{" "}
+        <meta
+          name="description"
+          content="Discover how Terminus Group integrates sustainability, smart technology, and design excellence across its residential, commercial, and hospitality projects."
+        />
+      </Helmet>
       <div className="flex sm:!pb-32 !pb-16 xl:p-5 max-md:p-5 gap-32">
         {/* Side Sticky Section */}
         <div className="sticky flex-1 top-[150px] h-full max-md:hidden">
