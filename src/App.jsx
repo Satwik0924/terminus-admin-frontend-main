@@ -1,3 +1,4 @@
+import { Toaster } from "react-hot-toast";
 import { Navigate, Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import ProjectDetailPage from "./components/ProjectDetailPage";
@@ -10,31 +11,34 @@ import Projects from "./pages/Projects";
 
 function App() {
   return (
-    <Router>
-      <div>
-        <Navbar />
+    <>
+      <Toaster position="bottom-center" />
+      <Router>
         <div>
-          {/* Add padding to avoid content being hidden behind the navbar */}
-          <Routes>
-            <Route path="/" Component={Home} />
-            <Route path="/news" Component={News} />
-            <Route path="/about" Component={About} />
-            <Route path="/contact" Component={Contact} />
-            <Route path="/projects" Component={Projects} />
-            <Route path="/projects/:slug/:id" Component={ProjectDetailPage} />
-            <Route path="/privacy-policy" Component={PrivacyPolicy} />
-            <Route
-              path="/theline"
-              Component={() => {
-                window.location.href = "https://www.info.terminus-group.com/theline/";
-                return null;
-              }}
-            />
-            <Route path="*" element={<Navigate to="/" />} />
-          </Routes>
+          <Navbar />
+          <div>
+            {/* Add padding to avoid content being hidden behind the navbar */}
+            <Routes>
+              <Route path="/" Component={Home} />
+              <Route path="/news" Component={News} />
+              <Route path="/about" Component={About} />
+              <Route path="/contact" Component={Contact} />
+              <Route path="/projects" Component={Projects} />
+              <Route path="/projects/:slug/:id" Component={ProjectDetailPage} />
+              <Route path="/privacy-policy" Component={PrivacyPolicy} />
+              <Route
+                path="/theline"
+                Component={() => {
+                  window.location.href = "https://www.info.terminus-group.com/theline/";
+                  return null;
+                }}
+              />
+              <Route path="*" element={<Navigate to="/" />} />
+            </Routes>
+          </div>
         </div>
-      </div>
-    </Router>
+      </Router>
+    </>
   );
 }
 

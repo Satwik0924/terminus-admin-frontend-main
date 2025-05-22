@@ -1,19 +1,31 @@
-import React from "react";
+import { useState } from "react";
+import toast from "react-hot-toast";
 import LocationMap from "../assets/tg_location_map.png";
 
 const TIMER = 2 * 1000;
+const TOAST_DURATION = 5000;
 
 const ContactSection = () => {
-  const [isLoading, setIsLoading] = React.useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const mimicFormSubmission = async (event) => {
-    event.preventDefault();
+  const formSubmission = async (e) => {
+    e.preventDefault();
     setIsLoading(true);
-    await new Promise((resolve, _reject) => {
-      setTimeout(resolve, TIMER);
-    });
-    alert("Message sent successfully");
-    setIsLoading(false);
+    try {
+      toast.promise(
+        new Promise((resolve) => {
+          setTimeout(resolve, TIMER);
+        }),
+        {
+          loading: "Sending...",
+          success: "Message sent successfully.\n\n Thank you for contacting us. We will get back to you soon.",
+          error: "Failed to send message",
+          duration: TOAST_DURATION,
+        }
+      );
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -32,7 +44,7 @@ const ContactSection = () => {
 
         {/* Form Section */}
         <div className="flex-1">
-          <form className="h-full" onSubmit={mimicFormSubmission}>
+          <form className="h-full" onSubmit={formSubmission}>
             <div className="mb-4">
               <input
                 type="text"
@@ -40,6 +52,7 @@ const ContactSection = () => {
                 name="name"
                 placeholder="Your Name"
                 className="w-full p-4 px-8 bg-foreground/5 placeholder:text-foreground placeholder:font-medium sm:placeholder:text-lg placeholder:text-base outline-none"
+                required
               />
             </div>
             <div className="mb-4">
@@ -49,6 +62,7 @@ const ContactSection = () => {
                 name="email"
                 placeholder="Your Email"
                 className="w-full p-4 px-8 bg-foreground/5 placeholder:text-foreground placeholder:font-medium sm:placeholder:text-lg placeholder:text-base outline-none"
+                required
               />
             </div>
             <div className="mb-4">
@@ -58,6 +72,7 @@ const ContactSection = () => {
                 name="phone"
                 placeholder="Your Phone Number"
                 className="w-full p-4 px-8 bg-foreground/5 placeholder:text-foreground placeholder:font-medium sm:placeholder:text-lg placeholder:text-base outline-none"
+                required
               />
             </div>
             <div className="mb-4">
@@ -67,11 +82,13 @@ const ContactSection = () => {
                 rows="5"
                 placeholder="Your Message"
                 className="w-full p-4 px-8 bg-foreground/5 placeholder:text-foreground placeholder:font-medium sm:placeholder:text-lg placeholder:text-base outline-none"
+                required
               />
             </div>
             <button
               type="submit"
               className="bg-primary-foreground w-full text-white py-3 px-6 cursor-pointer sm:text-lg text-base font-medium"
+              disabled={isLoading}
             >
               {isLoading ? "Sending..." : "Get In Touch"}
             </button>
