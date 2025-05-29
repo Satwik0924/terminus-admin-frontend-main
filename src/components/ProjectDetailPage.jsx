@@ -255,7 +255,7 @@ const ProjectDetailPage = () => {
                 <p>
                   <a
                     href={project.websiteLink}
-                    className=" text-foreground font-bold tracking-tighter text-lg text-center"
+                    className="underline text-primary-foreground font-bold tracking-tighter text-lg text-center underline-offset-2"
                   >
                     View more
                   </a>
