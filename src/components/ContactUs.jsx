@@ -117,7 +117,15 @@ const ContactSection = () => {
                 placeholder="Your Message"
                 className="w-full p-4 px-8 bg-foreground/5 placeholder:text-foreground placeholder:font-medium sm:placeholder:text-lg placeholder:text-base outline-none"
                 value={formData.message}
-                onChange={handleInputChange}
+                onChange={(e) => {
+                  if (e.target.value.length > 500) {
+                    toast.error("Keep your message under 500 characters", {
+                      duration: TOAST_DURATION,
+                    });
+                    return;
+                  }
+                  handleInputChange(e);
+                }}
                 required
               />
             </div>
