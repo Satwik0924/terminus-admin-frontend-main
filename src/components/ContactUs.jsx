@@ -1,28 +1,52 @@
+import axios from "axios";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import LocationMap from "../assets/tg_location_map.png";
 
-const TIMER = 2 * 1000;
-const TOAST_DURATION = 5000;
+const TOAST_DURATION = 1500;
 
 const ContactSection = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
 
   const formSubmission = async (e) => {
     e.preventDefault();
     setIsLoading(true);
+
     try {
-      toast.promise(
-        new Promise((resolve) => {
-          setTimeout(resolve, TIMER);
-        }),
-        {
-          loading: "Sending...",
-          success: "Message sent successfully.\n\n Thank you for contacting us. We will get back to you soon.",
-          error: "Failed to send message",
-          duration: TOAST_DURATION,
-        }
-      );
+      const response = await axios.post("https://api.terminus-group.com/forms/contact", formData);
+
+      if (response.status === 201) {
+        toast.success(
+          "Message sent successfully. Thank you for contacting us. We will get back to you as soon as possible.",
+          {
+            duration: TOAST_DURATION,
+          }
+        );
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          message: "",
+        });
+        e.target.reset();
+      }
+    } catch (error) {
+      console.error("Error submitting contact form:", error);
+      toast.error("Failed to send message. Please try again later.", { duration: TOAST_DURATION });
     } finally {
       setIsLoading(false);
     }
@@ -52,6 +76,8 @@ const ContactSection = () => {
                 name="name"
                 placeholder="Your Name"
                 className="w-full p-4 px-8 bg-foreground/5 placeholder:text-foreground placeholder:font-medium sm:placeholder:text-lg placeholder:text-base outline-none"
+                value={formData.name}
+                onChange={handleInputChange}
                 required
               />
             </div>
@@ -62,6 +88,8 @@ const ContactSection = () => {
                 name="email"
                 placeholder="Your Email"
                 className="w-full p-4 px-8 bg-foreground/5 placeholder:text-foreground placeholder:font-medium sm:placeholder:text-lg placeholder:text-base outline-none"
+                value={formData.email}
+                onChange={handleInputChange}
                 required
               />
             </div>
@@ -72,6 +100,12 @@ const ContactSection = () => {
                 name="phone"
                 placeholder="Your Phone Number"
                 className="w-full p-4 px-8 bg-foreground/5 placeholder:text-foreground placeholder:font-medium sm:placeholder:text-lg placeholder:text-base outline-none"
+                value={formData.phone}
+                onChange={handleInputChange}
+                pattern="[0-9]+"
+                title="Please enter a valid phone number (numbers only)"
+                maxLength={10}
+                minLength={10}
                 required
               />
             </div>
@@ -82,12 +116,14 @@ const ContactSection = () => {
                 rows="5"
                 placeholder="Your Message"
                 className="w-full p-4 px-8 bg-foreground/5 placeholder:text-foreground placeholder:font-medium sm:placeholder:text-lg placeholder:text-base outline-none"
+                value={formData.message}
+                onChange={handleInputChange}
                 required
               />
             </div>
             <button
               type="submit"
-              className="bg-primary-foreground w-full text-white py-3 px-6 cursor-pointer sm:text-lg text-base font-medium"
+              className="bg-primary-foreground w-full text-white py-3 px-6 cursor-pointer sm:text-lg text-base font-medium disabled:opacity-50 disabled:cursor-not-allowed"
               disabled={isLoading}
             >
               {isLoading ? "Sending..." : "Get In Touch"}
