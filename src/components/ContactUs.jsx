@@ -101,7 +101,14 @@ const ContactSection = () => {
                 placeholder="Your Phone Number"
                 className="w-full p-4 px-8 bg-foreground/5 placeholder:text-foreground placeholder:font-medium sm:placeholder:text-lg placeholder:text-base outline-none"
                 value={formData.phone}
-                onChange={handleInputChange}
+                onChange={(e) => {
+                  // Only allow numeric characters
+                  const numericValue = e.target.value.replace(/[^0-9]/g, "");
+                  setFormData((prev) => ({
+                    ...prev,
+                    phone: numericValue,
+                  }));
+                }}
                 pattern="[0-9]+"
                 title="Please enter a valid phone number (numbers only)"
                 maxLength={10}
