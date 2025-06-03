@@ -118,12 +118,19 @@ const ProjectDetailPage = () => {
                 name="name"
               />
               <input
-                type="tel"
+                type="text"
                 placeholder="Phone Number *"
                 required
                 className="w-full p-2 border rounded"
                 value={formData.phoneNumber}
-                onChange={(e) => setFormData({ ...formData, phoneNumber: e.target.value })}
+                onChange={(e) => {
+                  const numericValue = e.target.value.replace(/[^0-9]/g, "");
+                  setFormData({ ...formData, phoneNumber: numericValue });
+                }}
+                pattern="[0-9]+"
+                title="Please enter a valid phone number (numbers only)"
+                maxLength={10}
+                minLength={10}
                 name="phoneNumber"
               />
               <input
