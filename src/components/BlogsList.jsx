@@ -1,9 +1,9 @@
 import { SERVER_URL } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import axios from "axios";
-import { useEffect, useState, useCallback } from "react";
-import { Link } from "react-router-dom";
 import { debounce } from "lodash";
+import { useCallback, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const BlogsList = ({ className }) => {
   const [blogsData, setBlogsData] = useState([]);
@@ -174,7 +174,7 @@ const BlogsList = ({ className }) => {
                         {formatDate(blog.createdAt)}
                       </time>
                     </div>
-                    <h3 className="text-lg font-semibold text-black line-clamp-2 leading-snug tracking-tighter !leading-snug mb-2">
+                    <h3 className="text-lg font-semibold text-black line-clamp-2 tracking-tighter !leading-snug mb-2">
                       {blog.title}
                     </h3>
                     <p className="text-base leading-6 tracking-tighter text-foreground line-clamp-3">{blog.summary}</p>
