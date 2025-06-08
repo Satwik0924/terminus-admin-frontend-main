@@ -1,3 +1,4 @@
+import { SERVER_URL } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import axios from "axios";
 import { ArrowUpRight, Search } from "lucide-react";
@@ -37,7 +38,7 @@ export default function ProjectSearch({ className }) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("https://api.terminus-group.com/forms/project");
+        const response = await axios.get(`${SERVER_URL}/forms/project`);
         if (response.data && response.data.length > 0) {
           console.log("projects data:", response.data);
           categorizeProjects(response.data);
@@ -79,7 +80,7 @@ export default function ProjectSearch({ className }) {
               {commercialProjects.map((project) => (
                 <CommandItem
                   onSelect={() => {
-                    handleNavigation(`/projects/${project._id}`);
+                    handleNavigation(`/projects/${project.slug}`);
                   }}
                   key={project._id}
                 >
@@ -95,7 +96,7 @@ export default function ProjectSearch({ className }) {
               {residentialProjects.map((project) => (
                 <CommandItem
                   onSelect={() => {
-                    handleNavigation(`/projects/${project._id}`);
+                    handleNavigation(`/projects/${project.slug}`);
                   }}
                   key={project._id}
                 >
@@ -110,7 +111,7 @@ export default function ProjectSearch({ className }) {
               {hospitalityProjects.map((project) => (
                 <CommandItem
                   onSelect={() => {
-                    handleNavigation(`/projects/${project._id}`);
+                    handleNavigation(`/projects/${project.slug}`);
                   }}
                   key={project._id}
                 >
@@ -125,7 +126,7 @@ export default function ProjectSearch({ className }) {
               {lifeSciencesProjects.map((project) => (
                 <CommandItem
                   onSelect={() => {
-                    handleNavigation(`/projects/${project._id}`);
+                    handleNavigation(`/projects/${project.slug}`);
                   }}
                   key={project._id}
                 >

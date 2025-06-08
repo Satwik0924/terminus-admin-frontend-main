@@ -1,3 +1,4 @@
+import { SERVER_URL } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import axios from "axios";
 import { useEffect, useRef, useState } from "react";
@@ -7,7 +8,7 @@ import Footer from "./Footer";
 
 const ProjectDetailPage = () => {
   const navigate = useNavigate();
-  const { id } = useParams();
+  const { slug } = useParams();
   const [project, setProject] = useState(null);
   const [relatedProjects, setRelatedProjects] = useState([]);
   const [youtubeVideoID, setYoutubeVideoID] = useState("");
@@ -17,11 +18,11 @@ const ProjectDetailPage = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
-    if (!id || !Number.parseInt(id)) navigate("/projects");
+    if (!slug) navigate("/projects");
 
     const fetchData = async () => {
       try {
-        const response = await axios.get(`https://api.terminus-group.com/forms/project/${id}`);
+        const response = await axios.get(`${SERVER_URL}/forms/project/${slug}`);
         const currentProject = response.data;
 
         if (currentProject) {
@@ -51,7 +52,7 @@ const ProjectDetailPage = () => {
             }
           }
 
-          const allProjectsResponse = await axios.get(`https://api.terminus-group.com/forms/project`);
+          const allProjectsResponse = await axios.get(`${SERVER_URL}/forms/project`);
           const allProjects = allProjectsResponse.data || [];
           const related = allProjects.filter(
             (proj) => proj.type === currentProject.type && proj._id !== currentProject._id
@@ -64,7 +65,7 @@ const ProjectDetailPage = () => {
     };
 
     fetchData();
-  }, [id, navigate]);
+  }, [slug, navigate]);
 
   const openModal = (image) => {
     setModalImage(image);
@@ -183,7 +184,7 @@ const ProjectDetailPage = () => {
       formData.append("phoneNumber", submittedData.phoneNumber);
       formData.append("query", submittedData.query);
 
-      const response = await axios.post("https://api.terminus-group.com/forms/enquiry", formData);
+      const response = await axios.post(`${SERVER_URL}/forms/enquiry`, formData);
 
       if (response.status === 201) {
         window.open(project.brochureUrl, "_blank");
@@ -309,7 +310,7 @@ const ProjectDetailPage = () => {
             {relatedProjects.map((project) => (
               <div key={project._id} className="overflow-hidden group">
                 <div className="relative w-full h-[400px] overflow-hidden mb-3">
-                  <a href={`/projects/${project._id}`} className="relative w-full h-full overflow-hidden">
+                  <a href={`/projects/${project.slug}`} className="relative w-full h-full overflow-hidden">
                     <img
                       src={project.images?.[0]}
                       alt={project.title}

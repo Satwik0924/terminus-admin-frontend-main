@@ -6,14 +6,10 @@ import NewsMedia from "../components/NewsAndMedia";
 
 const News = () => {
   const controlsNews = useAnimation();
-  const controlsAwards = useAnimation();
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = [
-        { id: "news-media", controls: controlsNews },
-        { id: "awards", controls: controlsAwards },
-      ];
+      const sections = [{ id: "news-media", controls: controlsNews }];
 
       sections.forEach(({ id, controls }) => {
         const section = document.getElementById(id);
@@ -41,7 +37,7 @@ const News = () => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [controlsNews, controlsAwards]);
+  }, [controlsNews]);
 
   return (
     <>
@@ -62,18 +58,6 @@ const News = () => {
         </motion.h1>
         <NewsMedia className="sm:ml-16 max-sm:mx-6" />
       </div>
-
-      {/* <div id="awards" style={{ textAlign: "left", padding: "2rem 1rem" }}>
-        <motion.h1
-          animate={controlsAwards}
-          initial={{ color: "#D3D3D3" }}
-          className="md:text-[5.3rem] leading-none text-5xl px-10  py-10 font-medium text-[#A0A0A0] text-left tracking-tighter"
-        >
-          Awards
-        </motion.h1>
-        <AwardsComponent className="ml-16" />
-      </div> */}
-
       <Footer />
     </>
   );

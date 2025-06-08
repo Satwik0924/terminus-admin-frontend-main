@@ -1,3 +1,4 @@
+import { SERVER_URL } from "@/lib/constants";
 import axios from "axios";
 import { useState } from "react";
 import toast from "react-hot-toast";
@@ -27,7 +28,7 @@ const ContactSection = () => {
     setIsLoading(true);
 
     try {
-      const response = await axios.post("https://api.terminus-group.com/forms/contact", formData);
+      const response = await axios.post(`${SERVER_URL}/forms/contact`, formData);
 
       if (response.status === 201) {
         toast.success(

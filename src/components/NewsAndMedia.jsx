@@ -1,3 +1,4 @@
+import { SERVER_URL } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -10,7 +11,7 @@ const NewsMedia = ({ className }) => {
   useEffect(() => {
     const fetchNewsData = async () => {
       try {
-        const response = await axios.get("https://api.terminus-group.com/forms/news");
+        const response = await axios.get(`${SERVER_URL}/forms/news`);
         const transformedData = response.data.map((news) => ({
           id: news._id,
           title: news.header,
@@ -45,18 +46,15 @@ const NewsMedia = ({ className }) => {
         <p className="text-center">Fetching latest news...</p>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-10 w-full sm:gap-y-24">
-          {newsData.map((news, index) => (
-            <div
-              key={news.id}
-              //   className={`overflow-hidden bg-white relative group ${index === 0 ? "xl:col-span-2" : index > 2 ? "xl:col-span-2" : "xl:col-span-1"}`}
-              className={`overflow-hidden bg-white relative group`}
-            >
+          {newsData.map((news) => (
+            <div key={news.id} className={`overflow-hidden bg-white relative group`}>
               <a href={news.link} target="_blank" rel="noopener noreferrer" className="block text-inherit">
                 {/* Image container */}
                 <div className="relative">
                   <img
                     src={news.image}
                     alt={news.title}
+                    loading="lazy"
                     className="w-full h-[400px] object-cover transition-opacity duration-500 ease-in-out group-hover:opacity-80"
                   />
                   {/* Hover overlay */}
@@ -67,7 +65,7 @@ const NewsMedia = ({ className }) => {
                   </div>
                 </div>
                 {/* Content */}
-                <div className="">
+                <div>
                   <h3 className="text-lg mt-3 tracking-tighter !leading-snug font-semibold text-black line-clamp-1">
                     {news.title}
                   </h3>

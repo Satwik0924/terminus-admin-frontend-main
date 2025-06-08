@@ -1,12 +1,12 @@
-import { generateSlug } from "@/lib/helpers";
+import { SERVER_URL } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import axios from "axios";
 import { motion, useAnimation } from "framer-motion";
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import Balancer from "react-wrap-balancer";
 import Footer from "../components/Footer";
-import { Helmet } from "react-helmet-async";
 
 const propertyTypes = [
   { id: "commercial", label: "Commercial" },
@@ -76,7 +76,7 @@ const Projects = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("https://api.terminus-group.com/forms/project");
+        const response = await axios.get(`${SERVER_URL}/forms/project`);
         if (response.data && response.data.length > 0) {
           setProjects(response.data);
           categorizeProjects(response.data);
@@ -265,8 +265,7 @@ const Projects = () => {
                     <div className="relative w-full h-[400px] overflow-hidden mb-3">
                       <Link
                         to={{
-                          pathname: `/projects/${encodeURIComponent(generateSlug(project.title))}/${project._id}`,
-                          state: { id: project._id },
+                          pathname: `/projects/${project.slug}`,
                         }}
                         className="relative w-full h-full overflow-hidden"
                       >
@@ -384,7 +383,7 @@ const Projects = () => {
                       <div className="relative w-full h-[400px] overflow-hidden mb-3">
                         <Link
                           to={{
-                            pathname: `/projects/${encodeURIComponent(generateSlug(project.title))}/${project._id}`,
+                            pathname: `/projects/${project.slug}`,
                           }}
                           className="relative w-full h-full overflow-hidden"
                         >

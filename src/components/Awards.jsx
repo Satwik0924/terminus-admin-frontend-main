@@ -1,3 +1,4 @@
+import { SERVER_URL } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -10,7 +11,7 @@ const AwardsComponent = ({ className }) => {
   useEffect(() => {
     const fetchAwardsData = async () => {
       try {
-        const response = await axios.get("https://api.terminus-group.com/forms/awards");
+        const response = await axios.get(`${SERVER_URL}/forms/awards`);
         const transformedData = response.data.map((award) => ({
           id: award._id,
           title: award.name,

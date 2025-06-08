@@ -1,3 +1,4 @@
+import { SERVER_URL } from "@/lib/constants";
 import axios from "axios";
 import { motion, useAnimation } from "framer-motion";
 import { useEffect, useState } from "react";
@@ -11,7 +12,7 @@ const OfficeComponent = () => {
   useEffect(() => {
     const fetchTeamData = async () => {
       try {
-        const response = await axios.get("https://api.terminus-group.com/forms/team");
+        const response = await axios.get(`${SERVER_URL}/forms/team`);
         const transformedData = response.data.map((member) => ({
           id: member._id,
           name: member.name,

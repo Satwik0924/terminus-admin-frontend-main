@@ -2,6 +2,7 @@ import { Toaster } from "react-hot-toast";
 import { Navigate, Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import ProjectDetailPage from "./components/ProjectDetailPage";
+import { ProjectRedirect } from "./components/ProjectRedirect";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Home from "./pages/Home";
@@ -24,7 +25,8 @@ function App() {
               <Route path="/about" Component={About} />
               <Route path="/contact" Component={Contact} />
               <Route path="/projects" Component={Projects} />
-              <Route path="/projects/:slug/:id" Component={ProjectDetailPage} />
+              <Route path="/projects/:slug/:id" element={<ProjectRedirect />} />
+              <Route path="/projects/:slug" Component={ProjectDetailPage} />
               <Route path="/privacy-policy" Component={PrivacyPolicy} />
               <Route
                 path="/theline"
