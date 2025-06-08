@@ -4,6 +4,8 @@ import Navbar from "./components/Navbar";
 import ProjectDetailPage from "./components/ProjectDetailPage";
 import { ProjectRedirect } from "./components/ProjectRedirect";
 import About from "./pages/About";
+import Blogs from "./pages/Blogs";
+import BlogDetail from "./pages/BlogDetail";
 import Contact from "./pages/Contact";
 import Home from "./pages/Home";
 import News from "./pages/News";
@@ -21,6 +23,8 @@ function App() {
             {/* Add padding to avoid content being hidden behind the navbar */}
             <Routes>
               <Route path="/" Component={Home} />
+              <Route path="/blogs" Component={Blogs} />
+              <Route path="/blogs/:slug" Component={BlogDetail} />
               <Route path="/news" Component={News} />
               <Route path="/about" Component={About} />
               <Route path="/contact" Component={Contact} />

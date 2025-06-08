@@ -86,6 +86,7 @@ const Navbar = () => {
       subLinks: aboutSublinks,
     },
     { href: "/projects", label: "Projects" },
+    { href: "/blogs", label: "Blogs" },
     { href: "/news", label: "News & Media" },
     { href: "/contact", label: "Contact" },
   ];
