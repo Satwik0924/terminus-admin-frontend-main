@@ -105,7 +105,13 @@ const ProjectsGrid = () => {
                 className="w-full h-[10vh] sm:h-[60dvh] max-sm:w-full overflow-hidden relative hover:scale-[1.03] transition-transform duration-500 ease-in-out bg-white flex flex-col justify-center"
               >
                 <div className="flex-grow">
-                  <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-full object-cover"
+                  />
                 </div>
 
                 <div className="absolute inset-0 sm:p-8 max-sm:px-3 flex sm:flex-col justify-between items-center">

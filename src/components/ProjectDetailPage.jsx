@@ -224,6 +224,8 @@ const ProjectDetailPage = () => {
             <img
               src={project.images && project.images[0]}
               alt={`${project.title} main`}
+              loading="lazy"
+              decoding="async"
               className="w-full object-cover cursor-pointer"
               onClick={() => openModal(project.images && project.images[0])}
             />
@@ -297,6 +299,8 @@ const ProjectDetailPage = () => {
                   key={index}
                   src={imageUrl}
                   alt={`Additional ${index + 1}`}
+                  loading="lazy"
+                  decoding="async"
                   className={cn(
                     "w-full mb-5 object-contain xl:h-[80dvh] h-auto object-center cursor-pointer",
                     isLastImage ? "object-cover" : ""
@@ -321,6 +325,8 @@ const ProjectDetailPage = () => {
                     <img
                       src={project.images?.[0]}
                       alt={project.title}
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-full object-cover transition duration-500 group-hover:blur-[2px]"
                     />
                     <div className="absolute inset-0 flex justify-top items-top bg-white/30 bg-opacity-70 opacity-0 group-hover:opacity-100 transition duration-500 [word-spacing:4px]">

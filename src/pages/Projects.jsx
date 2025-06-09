@@ -273,6 +273,8 @@ const Projects = () => {
                         <img
                           src={project.images?.[0]}
                           alt={project.title}
+                          loading="lazy"
+                          decoding="async"
                           className="w-full h-full object-cover transition duration-500 group-hover:blur-[2px]"
                         />
                         <div className="absolute inset-0 flex justify-top items-top bg-white/50 bg-opacity-70 opacity-0 group-hover:opacity-100 transition duration-500 [word-spacing:4px]">
@@ -391,6 +393,8 @@ const Projects = () => {
                           <img
                             src={project.images?.[0]}
                             alt={project.title}
+                            loading="lazy"
+                            decoding="async"
                             className="w-full h-full object-cover object-center transition duration-500 group-hover:blur-[2px]"
                           />
                           {/* Overlay description */}

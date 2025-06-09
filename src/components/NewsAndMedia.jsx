@@ -55,6 +55,7 @@ const NewsMedia = ({ className }) => {
                     src={news.image}
                     alt={news.title}
                     loading="lazy"
+                    decoding="async"
                     className="w-full h-[400px] object-cover transition-opacity duration-500 ease-in-out group-hover:opacity-80"
                   />
                   {/* Hover overlay */}
