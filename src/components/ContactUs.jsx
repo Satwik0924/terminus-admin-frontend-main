@@ -8,6 +8,7 @@ const TOAST_DURATION = 1500;
 
 const ContactSection = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -31,12 +32,6 @@ const ContactSection = () => {
       const response = await axios.post(`${SERVER_URL}/forms/contact`, formData);
 
       if (response.status === 201) {
-        toast.success(
-          "Message sent successfully. Thank you for contacting us. We will get back to you as soon as possible.",
-          {
-            duration: TOAST_DURATION,
-          }
-        );
         setFormData({
           name: "",
           email: "",
@@ -44,6 +39,12 @@ const ContactSection = () => {
           message: "",
         });
         e.target.reset();
+        setShowSuccess(true);
+
+        // Auto redirect back to form after 4 seconds
+        setTimeout(() => {
+          setShowSuccess(false);
+        }, 4000);
       }
     } catch (error) {
       console.error("Error submitting contact form:", error);
@@ -52,6 +53,94 @@ const ContactSection = () => {
       setIsLoading(false);
     }
   };
+
+  // Success Page Component
+  const SuccessPage = () => (
+    <>
+      <div className="fixed inset-0 bg-white z-50 flex items-center justify-center animate-fadeIn">
+        <div className="text-center max-w-md mx-auto px-6">
+          {/* Success Animation */}
+          <div className="mb-8">
+            <div className="w-24 h-24 mx-auto mb-6 relative">
+              <div className="w-24 h-24 rounded-full border-4 border-green-500 animate-pulse"></div>
+              <div className="absolute inset-0 flex items-center justify-center">
+                <svg
+                  className="w-12 h-12 text-green-500 animate-bounce"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  style={{
+                    animation: "checkmark 0.6s ease-in-out 0.3s both",
+                    animationName: "checkmark",
+                  }}
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          {/* Success Message */}
+          <h1
+            className="text-3xl font-bold text-gray-900 mb-4"
+            style={{ animation: "slideUp 0.6s ease-out 0.5s both" }}
+          >
+            Thank You!
+          </h1>
+          <p className="text-lg text-gray-600 mb-6" style={{ animation: "slideUp 0.6s ease-out 0.7s both" }}>
+            Your message has been sent successfully. We'll get back to you as soon as possible.
+          </p>
+
+          {/* Auto redirect message */}
+          <p className="text-sm text-gray-500" style={{ animation: "slideUp 0.6s ease-out 0.9s both" }}>
+            Redirecting back to contact form in a few seconds...
+          </p>
+        </div>
+      </div>
+
+      {/* Custom CSS animations */}
+      <style>{`
+        @keyframes slideUp {
+          from { 
+            opacity: 0; 
+            transform: translateY(30px); 
+          }
+          to { 
+            opacity: 1; 
+            transform: translateY(0); 
+          }
+        }
+        
+        @keyframes checkmark {
+          0% { 
+            opacity: 0; 
+            transform: scale(0.3) rotate(-45deg); 
+          }
+          50% { 
+            opacity: 1; 
+            transform: scale(1.1) rotate(-10deg); 
+          }
+          100% { 
+            opacity: 1; 
+            transform: scale(1) rotate(0deg); 
+          }
+        }
+
+        .animate-fadeIn {
+          animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+      `}</style>
+    </>
+  );
+
+  if (showSuccess) {
+    return <SuccessPage />;
+  }
 
   return (
     <section className="flex py-20 w-full items-center justify-center overflow-hidden">

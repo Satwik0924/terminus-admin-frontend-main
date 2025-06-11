@@ -2,7 +2,7 @@ import { SERVER_URL } from "@/lib/constants";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
-import { useParams, useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Footer from "../components/Footer";
 
 const BlogDetail = () => {
@@ -108,11 +108,11 @@ const BlogDetail = () => {
             <p className="text-xl text-gray-600 leading-relaxed mb-8">{blog.summary}</p>
 
             {/* Featured Image */}
-            <div className="mb-8">
+            <div className="mb-8 aspect-[16/9]">
               <img
                 src={blog.thumbnailImage}
                 alt={blog.title}
-                className="w-full h-64 sm:h-80 lg:h-96 object-cover rounded-lg shadow-lg"
+                className="w-full h-full object-cover rounded-lg shadow-lg"
               />
             </div>
           </div>

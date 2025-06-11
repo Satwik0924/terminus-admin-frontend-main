@@ -153,12 +153,12 @@ const BlogsList = ({ className }) => {
               <div key={blog._id} className="overflow-hidden bg-white relative group">
                 <Link to={`/blogs/${blog.slug}`} className="block text-inherit hover:no-underline">
                   {/* Image container */}
-                  <div className="relative">
+                  <div className="relative aspect-[16/9]">
                     <img
                       src={blog.thumbnailImage}
                       alt={blog.title}
                       loading="lazy"
-                      className="w-full h-[400px] object-cover transition-opacity duration-500 ease-in-out group-hover:opacity-80"
+                      className="w-full h-full object-cover transition-opacity duration-500 ease-in-out group-hover:opacity-80"
                     />
                     {/* Hover overlay */}
                     <div className="absolute inset-0 flex justify-top items-top bg-white/50 bg-opacity-70 opacity-0 group-hover:opacity-100 transition duration-500 [word-spacing:4px]">
