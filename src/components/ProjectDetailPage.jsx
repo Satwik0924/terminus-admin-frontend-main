@@ -2,9 +2,11 @@ import { SERVER_URL } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import axios from "axios";
 import { useEffect, useRef, useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { useNavigate, useParams } from "react-router-dom";
 import Balancer from "react-wrap-balancer";
 import Footer from "./Footer";
+import { getProjectMetaTags } from "../data/projectMetaTags";
 
 const ProjectDetailPage = () => {
   const navigate = useNavigate();
@@ -26,6 +28,8 @@ const ProjectDetailPage = () => {
         const currentProject = response.data;
 
         if (currentProject) {
+          console.log("✅ Project loaded:", currentProject);
+          console.log("📸 Project images:", currentProject.images);
           setProject(currentProject);
 
           // Extract YouTube video ID if URL exists
@@ -52,12 +56,29 @@ const ProjectDetailPage = () => {
             }
           }
 
-          const allProjectsResponse = await axios.get(`${SERVER_URL}/forms/project`);
-          const allProjects = allProjectsResponse.data || [];
-          const related = allProjects.filter(
-            (proj) => proj.type === currentProject.type && proj._id !== currentProject._id
-          );
-          setRelatedProjects(related);
+          // Fetch related projects
+          try {
+            const allProjectsResponse = await axios.get(`${SERVER_URL}/forms/project`);
+            const allProjectsData = allProjectsResponse.data;
+            
+            console.log("🔗 All projects response:", allProjectsData);
+            
+            // Handle different API response structures
+            const allProjects = Array.isArray(allProjectsData) ? allProjectsData : (allProjectsData?.data || []);
+            
+            console.log("📋 Processed all projects:", allProjects);
+            console.log("🎯 Current project type:", currentProject.type);
+            
+            const related = allProjects.filter(
+              (proj) => proj.type === currentProject.type && proj._id !== currentProject._id
+            );
+            
+            console.log("🔗 Related projects found:", related);
+            setRelatedProjects(related);
+          } catch (relatedError) {
+            console.error("Error fetching related projects:", relatedError);
+            setRelatedProjects([]);
+          }
         }
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -169,10 +190,12 @@ const ProjectDetailPage = () => {
   };
 
   const capitalizeString = (str) => {
+    if (!str || typeof str !== 'string') return 'N/A';
     return str.charAt(0).toUpperCase() + str.slice(1);
   };
 
   const processType = (str) => {
+    if (!str || typeof str !== 'string') return 'N/A';
     if (str === "life_sciences") {
       return "Life Sciences";
     } else {
@@ -211,12 +234,67 @@ const ProjectDetailPage = () => {
     return <div className="text-center mt-12 font-sans">Loading Project Data...</div>;
   }
 
+  // Get meta tags for this specific project
+  const projectMeta = getProjectMetaTags(slug);
+  
+  // Generate meta tags - use project's custom meta tags if available, otherwise fallback to defaults
+  const metaTitle = projectMeta.metaTitle || `${project.title || 'Project'} | Terminus Group`;
+  const metaDescription = projectMeta.metaDescription || project.description || `Discover ${project.title || 'this project'} by Terminus Group - premium real estate project in Hyderabad.`;
+  const metaImage = project.images?.[0] || "https://terminus-group.com/assets/og-image-default.jpg";
+  const canonicalUrl = `https://terminus-group.com/projects/${project.slug || slug}`;
+
   return (
     <div>
+      <Helmet>
+        <title>{metaTitle}</title>
+        <meta name="description" content={metaDescription} />
+        
+        {/* Open Graph Meta Tags */}
+        <meta property="og:title" content={metaTitle} />
+        <meta property="og:description" content={metaDescription} />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:image" content={metaImage} />
+        <meta property="og:site_name" content="Terminus Group" />
+        
+        {/* Twitter Meta Tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={metaTitle} />
+        <meta name="twitter:description" content={metaDescription} />
+        <meta name="twitter:image" content={metaImage} />
+        
+        {/* Additional SEO Meta Tags */}
+        <meta name="keywords" content={`${project.title || 'project'}, terminus group, hyderabad real estate, ${project.type || 'real estate'} project, ${project.location || 'hyderabad'}`} />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href={canonicalUrl} />
+        
+        {/* Schema.org structured data */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "RealEstateProject",
+            "name": project.title || 'Project',
+            "description": metaDescription,
+            "url": canonicalUrl,
+            "image": metaImage,
+            "location": {
+              "@type": "Place",
+              "address": project.location || 'Hyderabad'
+            },
+            "developer": {
+              "@type": "Organization",
+              "name": "Terminus Group"
+            },
+            "status": project.status || 'Available',
+            "yearBuilt": project.yearOfCompletion || new Date().getFullYear()
+          })}
+        </script>
+      </Helmet>
+
       <div className="flex flex-col py-12 max-w-full text-gray-800">
         <div className="xl:mx-20 mx-10">
-          <h1 className="sm:text-8xl text-6xl text-primary-foreground mb-3 tracking-tighter">{project.title}</h1>
-          <p className="text-xl text-black xl:mb-20 mb-6 leading-5 tracking-tighter">{project.location}</p>
+          <h1 className="sm:text-8xl text-6xl text-primary-foreground mb-3 tracking-tighter">{project.title || 'Project Title'}</h1>
+          <p className="text-xl text-black xl:mb-20 mb-6 leading-5 tracking-tighter">{project.location || 'Location'}</p>
         </div>
 
         <div className="flex xl:mb-24 mb-6 max-xl:flex-col max-xl:gap-8 xl:mx-20 mx-10">
@@ -274,6 +352,7 @@ const ProjectDetailPage = () => {
             </div>
           </div>
         </div>
+        
         {/* YouTube Video Section */}
         {project.youtubeVideoUrl && youtubeVideoID && (
           <div className="xl:mb-24 mb-6">
@@ -290,7 +369,9 @@ const ProjectDetailPage = () => {
             </div>
           </div>
         )}
-        {project.images && project.images.length > 0 && (
+        
+        {/* Additional Images */}
+        {project.images && project.images.length > 1 && (
           <div className="xl:mt-10 mb-24 xl:space-y-36 space-y-6 max-xl:w-[90%] mx-auto w-full">
             {project.images.slice(1).map((imageUrl, index) => {
               const isLastImage = index === project.images.slice(1).length - 1;
@@ -298,7 +379,7 @@ const ProjectDetailPage = () => {
                 <img
                   key={index}
                   src={imageUrl}
-                  alt={`Additional ${index + 1}`}
+                  alt={`${project.title} - Image ${index + 2}`}
                   loading="lazy"
                   decoding="async"
                   className={cn(
@@ -312,19 +393,21 @@ const ProjectDetailPage = () => {
           </div>
         )}
       </div>
-      {relatedProjects.length > 0 && (
+      
+      {/* Related Projects */}
+      {relatedProjects && relatedProjects.length > 0 && (
         <div className="xl:mx-20 mx-10 py-5">
           <h1 className="text-6xl text-primary-foreground font-bold mb-7">Related Projects</h1>
           <div
             className={`grid gap-6 flex-wrap gap-y-16 ${relatedProjects.length < 3 ? "md:grid-cols-3 grid-cols-1" : "grid-cols-[repeat(auto-fit,minmax(250px,1fr))]"}`}
           >
-            {relatedProjects.map((project) => (
-              <div key={project._id} className="overflow-hidden group">
+            {relatedProjects.map((relatedProject) => (
+              <div key={relatedProject._id || relatedProject.id} className="overflow-hidden group">
                 <div className="relative w-full h-[400px] overflow-hidden mb-3">
-                  <a href={`/projects/${project.slug}`} className="relative w-full h-full overflow-hidden">
+                  <a href={`/projects/${relatedProject.slug}`} className="relative w-full h-full overflow-hidden">
                     <img
-                      src={project.images?.[0]}
-                      alt={project.title}
+                      src={relatedProject.images?.[0] || relatedProject.image}
+                      alt={relatedProject.title}
                       loading="lazy"
                       decoding="async"
                       className="w-full h-full object-cover transition duration-500 group-hover:blur-[2px]"
@@ -332,28 +415,28 @@ const ProjectDetailPage = () => {
                     <div className="absolute inset-0 flex justify-top items-top bg-white/30 bg-opacity-70 opacity-0 group-hover:opacity-100 transition duration-500 [word-spacing:4px]">
                       <div className="p-4">
                         <p className="text-black text-left text-xl !line-clamp-4 !text-ellipsis">
-                          {project.description}
+                          {relatedProject.description}
                         </p>
                       </div>
                     </div>
                   </a>
                 </div>
                 <div className="p-0 bg-white">
-                  <h2 className="font-bold text-2xl tracking-tight text-black line-clamp-1">{project.title}</h2>
+                  <h2 className="font-bold text-2xl tracking-tight text-black line-clamp-1">{relatedProject.title}</h2>
                   <div>
-                    <p className="text-xl text-foreground leading-4 tracking-tighter">{project.location}</p>
+                    <p className="text-xl text-foreground leading-4 tracking-tighter">{relatedProject.location}</p>
                     <p
                       className={cn(
                         "text-xl text-foreground leading-7 tracking-tighter",
-                        project.yearOfCompletion ? "" : "opacity-0"
+                        relatedProject.yearOfCompletion ? "" : "opacity-0"
                       )}
                     >
-                      {project.yearOfCompletion ?? "0"}
+                      {relatedProject.yearOfCompletion ?? "0"}
                     </p>
                   </div>
                   <div className="grid gap-2 mt-8">
                     <span className="px-2 py-1 text-sm bg-foreground/20 text-foreground text-center font-bold transition duration-300 ease-in-out hover:bg-primary-foreground hover:text-white">
-                      {project.status}
+                      {relatedProject.status || 'Available'}
                     </span>
                   </div>
                 </div>
@@ -362,6 +445,7 @@ const ProjectDetailPage = () => {
           </div>
         </div>
       )}
+      
       {isModalOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-70 z-50 flex items-center justify-center">
           <button onClick={closeModal} className="absolute top-5 right-5 text-white text-3xl font-bold">
@@ -370,6 +454,7 @@ const ProjectDetailPage = () => {
           <img src={modalImage} alt="Fullscreen view" className="max-w-full max-h-full" />
         </div>
       )}
+      
       <Footer />
     </div>
   );
