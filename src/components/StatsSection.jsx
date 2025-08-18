@@ -73,11 +73,11 @@ const StatsSection = () => {
     <div id="stats" style={{ margin: "0 0", position: "relative" }} className="sm:py-40 py-24">
       <div className="w-[90%] mx-auto font-bold xl:text-9xl sm:text-7xl text-5xl tracking-tighter">
         <motion.h1 id="line1" animate={controlsLine1} initial={{ color: "#D3D3D3" }}>
-          6 MILLION SQ.FT. BUILT
+          7 MILLION SQ.FT. BUILT
         </motion.h1>
 
         <motion.h2 id="line2" animate={controlsLine2} initial={{ color: "#D3D3D3" }} className="mt-6 xl:mb-72 mb-56">
-          10 MILLION SQ.FT. <br></br> IN THE PIPELINE
+          11 MILLION SQ.FT. <br></br> IN THE PIPELINE
         </motion.h2>
 
         <motion.h2 id="line3" animate={controlsLine3} initial={{ color: "#D3D3D3" }}>

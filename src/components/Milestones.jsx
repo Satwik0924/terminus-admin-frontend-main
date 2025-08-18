@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 const Milestones = () => {
   const headingAnimation = useAnimation();
 
-  const [selectedYear, setSelectedYear] = useState("2010");
+  const [selectedYear, setSelectedYear] = useState("2012");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -44,7 +44,7 @@ const Milestones = () => {
   }, [window.location.hash]);
 
   const milestones = {
-    2010: {
+    2012: {
       title: ["SLN TERMINUS"],
       description: [
         "A pioneering Mixed-use commercial building located on Kondapur-Gachibowli Road, Hyderabad. It has a fine mix of premium office spaces, fine dining, retail, and a multiplex that attracts thousands of footfalls every day.",
