@@ -22,8 +22,14 @@ const BlogsList = ({ className }) => {
   );
 
   const fetchBlogsData = async (page = 1, search = "") => {
+    const timer = setTimeout(() => {
+      if (search.trim()) {
+        setLoading(true);
+      } else {
+        setLoading(false);
+      }
+    }, 250);
     try {
-      setLoading(true);
       const params = new URLSearchParams({
         page: page.toString(),
         limit: "12",
@@ -40,9 +46,10 @@ const BlogsList = ({ className }) => {
       setCurrentPage(pagination.currentPage);
       setTotalPages(pagination.totalPages);
       setTotalBlogs(pagination.totalBlogs);
-      setLoading(false);
     } catch (error) {
       console.error("Error fetching blogs data:", error);
+    } finally {
+      clearTimeout(timer);
       setLoading(false);
     }
   };
@@ -158,6 +165,7 @@ const BlogsList = ({ className }) => {
                       src={blog.thumbnailImage}
                       alt={blog.title}
                       loading="lazy"
+                      decoding="async"
                       className="w-full h-full object-cover transition-opacity duration-500 ease-in-out group-hover:opacity-80"
                     />
                     {/* Hover overlay */}

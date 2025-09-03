@@ -60,19 +60,19 @@ const ProjectDetailPage = () => {
           try {
             const allProjectsResponse = await axios.get(`${SERVER_URL}/forms/project`);
             const allProjectsData = allProjectsResponse.data;
-            
+
             console.log("🔗 All projects response:", allProjectsData);
-            
+
             // Handle different API response structures
-            const allProjects = Array.isArray(allProjectsData) ? allProjectsData : (allProjectsData?.data || []);
-            
+            const allProjects = Array.isArray(allProjectsData) ? allProjectsData : allProjectsData?.data || [];
+
             console.log("📋 Processed all projects:", allProjects);
             console.log("🎯 Current project type:", currentProject.type);
-            
+
             const related = allProjects.filter(
               (proj) => proj.type === currentProject.type && proj._id !== currentProject._id
             );
-            
+
             console.log("🔗 Related projects found:", related);
             setRelatedProjects(related);
           } catch (relatedError) {
@@ -190,12 +190,12 @@ const ProjectDetailPage = () => {
   };
 
   const capitalizeString = (str) => {
-    if (!str || typeof str !== 'string') return 'N/A';
+    if (!str || typeof str !== "string") return "N/A";
     return str.charAt(0).toUpperCase() + str.slice(1);
   };
 
   const processType = (str) => {
-    if (!str || typeof str !== 'string') return 'N/A';
+    if (!str || typeof str !== "string") return "N/A";
     if (str === "life_sciences") {
       return "Life Sciences";
     } else {
@@ -236,10 +236,13 @@ const ProjectDetailPage = () => {
 
   // Get meta tags for this specific project
   const projectMeta = getProjectMetaTags(slug);
-  
+
   // Generate meta tags - use project's custom meta tags if available, otherwise fallback to defaults
-  const metaTitle = projectMeta.metaTitle || `${project.title || 'Project'} | Terminus Group`;
-  const metaDescription = projectMeta.metaDescription || project.description || `Discover ${project.title || 'this project'} by Terminus Group - premium real estate project in Hyderabad.`;
+  const metaTitle = projectMeta.metaTitle || `${project.title || "Project"} | Terminus Group`;
+  const metaDescription =
+    projectMeta.metaDescription ||
+    project.description ||
+    `Discover ${project.title || "this project"} by Terminus Group - premium real estate project in Hyderabad.`;
   const metaImage = project.images?.[0] || "https://terminus-group.com/assets/og-image-default.jpg";
   const canonicalUrl = `https://terminus-group.com/projects/${project.slug || slug}`;
 
@@ -248,7 +251,7 @@ const ProjectDetailPage = () => {
       <Helmet>
         <title>{metaTitle}</title>
         <meta name="description" content={metaDescription} />
-        
+
         {/* Open Graph Meta Tags */}
         <meta property="og:title" content={metaTitle} />
         <meta property="og:description" content={metaDescription} />
@@ -256,45 +259,52 @@ const ProjectDetailPage = () => {
         <meta property="og:url" content={canonicalUrl} />
         <meta property="og:image" content={metaImage} />
         <meta property="og:site_name" content="Terminus Group" />
-        
+
         {/* Twitter Meta Tags */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={metaTitle} />
         <meta name="twitter:description" content={metaDescription} />
         <meta name="twitter:image" content={metaImage} />
-        
+
         {/* Additional SEO Meta Tags */}
-        <meta name="keywords" content={`${project.title || 'project'}, terminus group, hyderabad real estate, ${project.type || 'real estate'} project, ${project.location || 'hyderabad'}`} />
+        <meta
+          name="keywords"
+          content={`${project.title || "project"}, terminus group, hyderabad real estate, ${project.type || "real estate"} project, ${project.location || "hyderabad"}`}
+        />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href={canonicalUrl} />
-        
+
         {/* Schema.org structured data */}
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "RealEstateProject",
-            "name": project.title || 'Project',
-            "description": metaDescription,
-            "url": canonicalUrl,
-            "image": metaImage,
-            "location": {
+            name: project.title || "Project",
+            description: metaDescription,
+            url: canonicalUrl,
+            image: metaImage,
+            location: {
               "@type": "Place",
-              "address": project.location || 'Hyderabad'
+              address: project.location || "Hyderabad",
             },
-            "developer": {
+            developer: {
               "@type": "Organization",
-              "name": "Terminus Group"
+              name: "Terminus Group",
             },
-            "status": project.status || 'Available',
-            "yearBuilt": project.yearOfCompletion || new Date().getFullYear()
+            status: project.status || "Available",
+            yearBuilt: project.yearOfCompletion || new Date().getFullYear(),
           })}
         </script>
       </Helmet>
 
       <div className="flex flex-col py-12 max-w-full text-gray-800">
         <div className="xl:mx-20 mx-10">
-          <h1 className="sm:text-8xl text-6xl text-primary-foreground mb-3 tracking-tighter">{project.title || 'Project Title'}</h1>
-          <p className="text-xl text-black xl:mb-20 mb-6 leading-5 tracking-tighter">{project.location || 'Location'}</p>
+          <h1 className="sm:text-8xl text-6xl text-primary-foreground mb-3 tracking-tighter">
+            {project.title || "Project Title"}
+          </h1>
+          <p className="text-xl text-black xl:mb-20 mb-6 leading-5 tracking-tighter">
+            {project.location || "Location"}
+          </p>
         </div>
 
         <div className="flex xl:mb-24 mb-6 max-xl:flex-col max-xl:gap-8 xl:mx-20 mx-10">
@@ -352,7 +362,7 @@ const ProjectDetailPage = () => {
             </div>
           </div>
         </div>
-        
+
         {/* YouTube Video Section */}
         {project.youtubeVideoUrl && youtubeVideoID && (
           <div className="xl:mb-24 mb-6">
@@ -369,7 +379,7 @@ const ProjectDetailPage = () => {
             </div>
           </div>
         )}
-        
+
         {/* Additional Images */}
         {project.images && project.images.length > 1 && (
           <div className="xl:mt-10 mb-24 xl:space-y-36 space-y-6 max-xl:w-[90%] mx-auto w-full">
@@ -393,7 +403,7 @@ const ProjectDetailPage = () => {
           </div>
         )}
       </div>
-      
+
       {/* Related Projects */}
       {relatedProjects && relatedProjects.length > 0 && (
         <div className="xl:mx-20 mx-10 py-5">
@@ -436,7 +446,7 @@ const ProjectDetailPage = () => {
                   </div>
                   <div className="grid gap-2 mt-8">
                     <span className="px-2 py-1 text-sm bg-foreground/20 text-foreground text-center font-bold transition duration-300 ease-in-out hover:bg-primary-foreground hover:text-white">
-                      {relatedProject.status || 'Available'}
+                      {relatedProject.status || "Available"}
                     </span>
                   </div>
                 </div>
@@ -445,7 +455,7 @@ const ProjectDetailPage = () => {
           </div>
         </div>
       )}
-      
+
       {isModalOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-70 z-50 flex items-center justify-center">
           <button onClick={closeModal} className="absolute top-5 right-5 text-white text-3xl font-bold">
@@ -454,7 +464,7 @@ const ProjectDetailPage = () => {
           <img src={modalImage} alt="Fullscreen view" className="max-w-full max-h-full" />
         </div>
       )}
-      
+
       <Footer />
     </div>
   );

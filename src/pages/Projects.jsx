@@ -11,34 +11,40 @@ import Footer from "../components/Footer";
 const sectionMeta = {
   commercial: {
     title: "Terminus Group : corporate office & rentals spaces in Hyderabad",
-    description: "Find premium commercial office spaces in Hyderabad with Terminus Group – trusted developers of high-end rental spaces for modern businesses."
+    description:
+      "Find premium commercial office spaces in Hyderabad with Terminus Group – trusted developers of high-end rental spaces for modern businesses.",
   },
   residential: {
     title: "Terminus Group : Premium Residential Projects in Hyderabad",
-    description: "Top residential developments in Hyderabad by Terminus Group, offering luxury apartments and modern homes in prime locations with exceptional amenities"
+    description:
+      "Top residential developments in Hyderabad by Terminus Group, offering luxury apartments and modern homes in prime locations with exceptional amenities",
   },
   hospitality: {
     title: "Terminus Group : Best Hospitality Projects in Hyderabad",
-    description: "Madison platform, Terminus Group enhances hospitality infrastructure in Hyderabad by developing and managing mid-market luxury hotels across key city locations."
+    description:
+      "Madison platform, Terminus Group enhances hospitality infrastructure in Hyderabad by developing and managing mid-market luxury hotels across key city locations.",
   },
   lifesciences: {
     title: "Terminus Group : Hospitality infrastructure in hyderabad",
-    description: "Explore high-quality hotel projects in Hyderabad and groundbreaking life sciences facilities in Genome Valley by Terminus Group, designed to support innovation and growth."
+    description:
+      "Explore high-quality hotel projects in Hyderabad and groundbreaking life sciences facilities in Genome Valley by Terminus Group, designed to support innovation and growth.",
   },
   retail: {
     title: "Terminus Group : Best Retail Developers in Hyderabad",
-    description: "Terminus Group, the best builders in Hyderabad, offers thoughtfully designed retail spaces that bring shopping, food, and entertainment together under one roof."
+    description:
+      "Terminus Group, the best builders in Hyderabad, offers thoughtfully designed retail spaces that bring shopping, food, and entertainment together under one roof.",
   },
   education: {
     title: "Terminus Group : Education Infrastructure Development in Hyderabad",
-    description: "Terminus Group partners with leading education infrastructure companies to develop state-of-the-art educational facilities in Hyderabad."
+    description:
+      "Terminus Group partners with leading education infrastructure companies to develop state-of-the-art educational facilities in Hyderabad.",
   },
   default: {
     title: "Terminus Group Projects | Smart Infrastructure & Real Estate Solutions",
-    description: "Discover how Terminus Group integrates sustainability, smart technology, and design excellence across its residential, commercial, and hospitality projects."
-  }
+    description:
+      "Discover how Terminus Group integrates sustainability, smart technology, and design excellence across its residential, commercial, and hospitality projects.",
+  },
 };
-
 
 const propertyTypes = [
   { id: "commercial", label: "Commercial" },
@@ -60,7 +66,7 @@ const Projects = () => {
   const [activeSection, setActiveSection] = useState(null);
   const [filterStatus, setFilterStatus] = useState(""); // State to track active filter
   const [selectedStatus, setSelectedStatus] = useState("");
-  const [currentHash, setCurrentHash] = useState('');
+  const [currentHash, setCurrentHash] = useState("");
 
   const handleStatusClick = (status) => {
     if (filterStatus === status) {
@@ -84,10 +90,22 @@ const Projects = () => {
 
   // Categorize projects into different sections based on type
   const categorizeProjects = (projects) => {
-    setCommercialProjects(projects.filter((project) => project.type === "commercial"));
-    setResidentialProjects(projects.filter((project) => project.type === "residential"));
-    setHospitalityProjects(projects.filter((project) => project.type === "hospitality"));
-    setLifeSciencesProjects(projects.filter((project) => project.type === "life_sciences"));
+    // Sort projects by status: Ongoing, Launching Soon, Completed
+    const statusOrder = {
+      Ongoing: 1,
+      "Launching soon": 2,
+      Completed: 3,
+    };
+
+    const sortedProjects = projects.sort((a, b) => {
+      const statusA = statusOrder[a.status] || 999;
+      const statusB = statusOrder[b.status] || 999;
+      return statusA - statusB;
+    });
+    setCommercialProjects(sortedProjects.filter((project) => project.type === "commercial"));
+    setResidentialProjects(sortedProjects.filter((project) => project.type === "residential"));
+    setHospitalityProjects(sortedProjects.filter((project) => project.type === "hospitality"));
+    setLifeSciencesProjects(sortedProjects.filter((project) => project.type === "life_sciences"));
   };
 
   const scrollToElementWithOffset = (element) => {
@@ -96,13 +114,13 @@ const Projects = () => {
     window.scrollTo({ top: y, behavior: "instant" });
   };
 
-   const getCurrentMeta = () => {
+  const getCurrentMeta = () => {
     return sectionMeta[currentHash] || sectionMeta.default;
   };
 
   useEffect(() => {
     const updateHash = () => {
-      const hash = window.location.hash.replace('#', '');
+      const hash = window.location.hash.replace("#", "");
       setCurrentHash(hash);
     };
 
@@ -110,10 +128,10 @@ const Projects = () => {
     updateHash();
 
     // Listen for hash changes
-    window.addEventListener('hashchange', updateHash);
+    window.addEventListener("hashchange", updateHash);
 
     return () => {
-      window.removeEventListener('hashchange', updateHash);
+      window.removeEventListener("hashchange", updateHash);
     };
   }, []);
 
@@ -215,11 +233,11 @@ const Projects = () => {
 
   return (
     <div>
-         <Helmet>
+      <Helmet>
         <title>{getCurrentMeta().title}</title>
         <meta name="description" content={getCurrentMeta().description} />
       </Helmet>
-      
+
       <div className="flex sm:!pb-32 !pb-16 xl:p-5 max-md:p-5 gap-32">
         {/* Side Sticky Section */}
         <div className="sticky flex-1 top-[150px] h-full max-md:hidden">
