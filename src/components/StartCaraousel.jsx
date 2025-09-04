@@ -65,7 +65,7 @@ const Carousel = () => {
     <div
       onMouseMove={handleMousePointer}
       onMouseLeave={() => setCarouselCursor("default")}
-      className={`w-full h-screen relative overflow-hidden ${
+      className={`w-full lg:h-screen relative overflow-hidden ${
         carouselCursor === "carousel-next" ? "cursor-next" : carouselCursor === "carousel-prev" ? "cursor-prev" : ""
       }`}
       onClick={(e) => handleNavigation(e.clientX > e.currentTarget.offsetWidth / 2)}
@@ -73,7 +73,7 @@ const Carousel = () => {
       <img
         src={images[currentIndex]}
         alt={`Slide ${currentIndex + 1}`}
-        className="w-full h-full object-cover absolute top-0 left-0"
+        className="w-full h-full object-cover lg:absolute lg:top-0 lg:left-0 max-lg:object-contain max-lg:h-auto"
         style={{
           opacity: fade ? 0 : 1,
           transition: "opacity 1.5s ease-in-out",

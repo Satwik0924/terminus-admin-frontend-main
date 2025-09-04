@@ -70,13 +70,18 @@ const StatsSection = () => {
   }, [controlsLine1, controlsLine2, controlsLine3]);
 
   return (
-    <div id="stats" style={{ margin: "0 0", position: "relative" }} className="sm:py-40 py-24">
-      <div className="w-[90%] mx-auto font-bold xl:text-9xl sm:text-7xl text-5xl tracking-tighter">
+    <div id="stats" style={{ margin: "0 0", position: "relative" }} className="sm:py-40 max-sm:pt-20">
+      <div className="w-[90%] mx-auto font-bold xl:text-9xl sm:text-7xl text-4xl tracking-tighter">
         <motion.h1 id="line1" animate={controlsLine1} initial={{ color: "#D3D3D3" }}>
           7 MILLION SQ.FT. BUILT
         </motion.h1>
 
-        <motion.h2 id="line2" animate={controlsLine2} initial={{ color: "#D3D3D3" }} className="mt-6 xl:mb-72 mb-56">
+        <motion.h2
+          id="line2"
+          animate={controlsLine2}
+          initial={{ color: "#D3D3D3" }}
+          className="sm:mt-6 xl:mb-72 sm:mb-56 mb-16 mt-2"
+        >
           11 MILLION SQ.FT. <br></br> IN THE PIPELINE
         </motion.h2>
 
