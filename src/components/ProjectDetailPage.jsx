@@ -314,7 +314,7 @@ const ProjectDetailPage = () => {
               alt={`${project.title} main`}
               loading="lazy"
               decoding="async"
-              className="w-full object-cover cursor-pointer"
+              className="w-full object-contain cursor-pointer"
               onClick={() => openModal(project.images && project.images[0])}
             />
           </div>
