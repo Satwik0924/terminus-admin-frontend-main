@@ -92,9 +92,9 @@ const Projects = () => {
   const categorizeProjects = (projects) => {
     // Sort projects by status: Ongoing, Launching Soon, Completed
     const statusOrder = {
-      Ongoing: 1,
-      "Launching soon": 2,
-      Completed: 3,
+      Completed: 1,
+      Ongoing: 2,
+      "Launching soon": 3,
     };
 
     const sortedProjects = projects.sort((a, b) => {
