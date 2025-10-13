@@ -7,7 +7,7 @@ const ContactDetails = () => {
         {/* Contact Section */}
         <div className="flex flex-col lg:flex-row lg:items-start text-lg text-black space-y-2 lg:space-y-0">
           <label className="font-bold w-full lg:w-32">Contact</label>
-          <p>+91 95548 34567</p>
+          <p>+91 95974 03030</p>
         </div>
 
         {/* Address Section */}
