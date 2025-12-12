@@ -24,12 +24,32 @@ const ProjectDetailPage = () => {
 
     const fetchData = async () => {
       try {
-        const response = await axios.get(`${SERVER_URL}/forms/project/${slug}`);
+        const response = await axios.get(`${SERVER_URL}/forms/project/${slug}`, {
+          maxRedirects: 5, // Allow following redirects
+          validateStatus: (status) => status < 500, // Don't throw on 3xx redirects
+        });
+
+        // If we get a 404, the project doesn't exist
+        if (response.status === 404) {
+          console.error("Project not found");
+          navigate("/projects");
+          return;
+        }
+
         const currentProject = response.data;
 
         if (currentProject) {
           console.log("✅ Project loaded:", currentProject);
           console.log("📸 Project images:", currentProject.images);
+
+          // Check if the slug in the URL is different from the project's current slug
+          // This happens when an old slug was used and we got redirected
+          if (currentProject.slug && currentProject.slug !== slug) {
+            console.log(`🔀 Redirecting from old slug "${slug}" to new slug "${currentProject.slug}"`);
+            // Update the URL without reloading the page
+            window.history.replaceState(null, "", `/projects/${currentProject.slug}`);
+          }
+
           setProject(currentProject);
 
           // Extract YouTube video ID if URL exists
