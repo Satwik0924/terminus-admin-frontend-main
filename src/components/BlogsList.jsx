@@ -42,7 +42,13 @@ const BlogsList = ({ className }) => {
       const response = await axios.get(`${SERVER_URL}/forms/blogs?${params}`);
       const { blogs, pagination } = response.data;
 
-      setBlogsData(blogs);
+      // Map blogs to include displayDate (customPublishDate or createdAt)
+      const blogsWithDisplayDate = blogs.map((blog) => ({
+        ...blog,
+        displayDate: blog.customPublishDate || blog.createdAt,
+      }));
+
+      setBlogsData(blogsWithDisplayDate);
       setCurrentPage(pagination.currentPage);
       setTotalPages(pagination.totalPages);
       setTotalBlogs(pagination.totalBlogs);
@@ -178,8 +184,8 @@ const BlogsList = ({ className }) => {
                   {/* Content */}
                   <div>
                     <div className="flex items-center justify-between mt-3 mb-2">
-                      <time className="text-sm text-gray-500" dateTime={blog.createdAt}>
-                        {formatDate(blog.createdAt)}
+                      <time className="text-sm text-gray-500" dateTime={blog.displayDate}>
+                        {formatDate(blog.displayDate)}
                       </time>
                     </div>
                     <h3 className="text-lg font-semibold text-black line-clamp-2 tracking-tighter !leading-snug mb-2">

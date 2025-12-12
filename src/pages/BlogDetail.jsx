@@ -17,7 +17,10 @@ const BlogDetail = () => {
       try {
         setLoading(true);
         const response = await axios.get(`${SERVER_URL}/forms/blogs/${slug}`);
-        setBlog(response.data);
+        const blogData = response.data;
+        // Add displayDate for rendering (customPublishDate or createdAt)
+        blogData.displayDate = blogData.customPublishDate || blogData.createdAt;
+        setBlog(blogData);
         setLoading(false);
       } catch (error) {
         console.error("Error fetching blog:", error);
@@ -96,8 +99,8 @@ const BlogDetail = () => {
             </button>
 
             <div className="mb-6">
-              <time className="text-sm text-gray-500" dateTime={blog.createdAt}>
-                {formatDate(blog.createdAt)}
+              <time className="text-sm text-gray-500" dateTime={blog.displayDate}>
+                {formatDate(blog.displayDate)}
               </time>
             </div>
 
