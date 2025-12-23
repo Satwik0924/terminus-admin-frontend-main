@@ -6,7 +6,8 @@ import { Helmet } from "react-helmet-async";
 import { useNavigate, useParams } from "react-router-dom";
 import Balancer from "react-wrap-balancer";
 import Footer from "./Footer";
-import { getProjectMetaTags } from "../data/projectMetaTags";
+// OLD: Static meta tags file (commented out - now using CMS data)
+// import { getProjectMetaTags } from "../data/projectMetaTags";
 
 const ProjectDetailPage = () => {
   const navigate = useNavigate();
@@ -254,13 +255,18 @@ const ProjectDetailPage = () => {
     return <div className="text-center mt-12 font-sans">Loading Project Data...</div>;
   }
 
-  // Get meta tags for this specific project
-  const projectMeta = getProjectMetaTags(slug);
+  // OLD: Get meta tags from static file (commented out)
+  // const projectMeta = getProjectMetaTags(slug);
+  // const metaTitle = projectMeta.metaTitle || `${project.title || "Project"} | Terminus Group`;
+  // const metaDescription =
+  //   projectMeta.metaDescription ||
+  //   project.description ||
+  //   `Discover ${project.title || "this project"} by Terminus Group - premium real estate project in Hyderabad.`;
 
-  // Generate meta tags - use project's custom meta tags if available, otherwise fallback to defaults
-  const metaTitle = projectMeta.metaTitle || `${project.title || "Project"} | Terminus Group`;
+  // NEW: Use meta title and description from CMS (project data)
+  const metaTitle = project.metaTitle || `${project.title || "Project"} | Terminus Group`;
   const metaDescription =
-    projectMeta.metaDescription ||
+    project.metaDescription ||
     project.description ||
     `Discover ${project.title || "this project"} by Terminus Group - premium real estate project in Hyderabad.`;
   const metaImage = project.images?.[0] || "https://terminus-group.com/assets/og-image-default.jpg";
@@ -383,6 +389,16 @@ const ProjectDetailPage = () => {
           </div>
         </div>
 
+        {/* Project Content Section (Rich Text from Quill Editor) */}
+        {project.project_content && (
+          <div className="xl:mx-20 mx-10 xl:mb-24 mb-6">
+            <div
+              className="prose prose-lg max-w-none project-content"
+              dangerouslySetInnerHTML={{ __html: project.project_content }}
+            />
+          </div>
+        )}
+
         {/* YouTube Video Section */}
         {project.youtubeVideoUrl && youtubeVideoID && (
           <div className="xl:mb-24 mb-6">
@@ -400,26 +416,27 @@ const ProjectDetailPage = () => {
           </div>
         )}
 
-        {/* Additional Images */}
+        {/* Gallery Section */}
         {project.images && project.images.length > 1 && (
-          <div className="xl:mt-10 mb-24 xl:space-y-36 space-y-6 max-xl:w-[90%] mx-auto w-full">
-            {project.images.slice(1).map((imageUrl, index) => {
-              const isLastImage = index === project.images.slice(1).length - 1;
-              return (
-                <img
+          <div className="xl:mx-20 mx-10 mb-24">
+            <h2 className="text-4xl font-bold text-primary-foreground mb-8 tracking-tight">Gallery</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {project.images.slice(1).map((imageUrl, index) => (
+                <div
                   key={index}
-                  src={imageUrl}
-                  alt={`${project.title} - Image ${index + 2}`}
-                  loading="lazy"
-                  decoding="async"
-                  className={cn(
-                    "w-full mb-5 object-contain xl:h-[80dvh] h-auto object-center cursor-pointer",
-                    isLastImage ? "object-cover" : ""
-                  )}
+                  className="overflow-hidden rounded-lg cursor-pointer hover:opacity-90 transition-opacity h-64"
                   onClick={() => openModal(imageUrl)}
-                />
-              );
-            })}
+                >
+                  <img
+                    src={imageUrl}
+                    alt={`${project.title} - Image ${index + 2}`}
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         )}
       </div>
