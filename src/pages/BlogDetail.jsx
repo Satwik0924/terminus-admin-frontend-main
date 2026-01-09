@@ -104,11 +104,7 @@ const BlogDetail = () => {
               </time>
             </div>
 
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight tracking-tight">
-              {blog.title}
-            </h1>
-
-            <p className="text-xl text-gray-600 leading-relaxed mb-8">{blog.summary}</p>
+            
 
             {/* Featured Image */}
             <div className="mb-8 aspect-[16/9]">
