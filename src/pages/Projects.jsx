@@ -331,7 +331,7 @@ const Projects = () => {
             <div style={{ padding: "20px" }}>
               <div className="grid grid-cols-4 max-[1440px]:grid-cols-3 max-xl:grid-cols-2 max-[569px]:grid-cols-1 gap-6 gap-y-24">
                 {commercialProjects.map((project) => (
-                  <div key={project._id} className="overflow-hidden group">
+                  <div key={project._id} className="overflow-hidden group flex flex-col">
                     <div className="relative w-full h-[400px] overflow-hidden mb-3">
                       <Link
                         to={{
@@ -358,23 +358,21 @@ const Projects = () => {
                     </div>
 
                     {/* Project Details */}
-                    <div className="p-0 bg-white">
-                      <h2 className="font-bold text-xl tracking-tight text-black line-clamp-1 text-ellipsis">
-                        {project.title}
-                      </h2>
-                      <div>
-                        <p className="text-lg text-foreground leading-7 tracking-tighter">{project.location}</p>
-                        <p
-                          className={cn(
-                            "text-lg text-foreground leading-4 tracking-tighter",
-                            project.yearOfCompletion ? "" : "opacity-0"
-                          )}
-                        >
-                          {project.yearOfCompletion ?? "0"}
-                        </p>
+                    <div className="p-0 bg-white flex flex-col flex-1">
+                      <div className="flex-1">
+                        <h2 className="font-bold text-xl tracking-tight text-black break-words">{project.title}</h2>
+                        <div>
+                          <p className="text-lg text-foreground leading-7 tracking-tighter">{project.location}</p>
+                          <p
+                            className={cn(
+                              "text-lg text-foreground leading-4 tracking-tighter",
+                              project.yearOfCompletion ? "" : "opacity-0"
+                            )}
+                          >
+                            {project.yearOfCompletion ?? "0"}
+                          </p>
+                        </div>
                       </div>
-
-                      <div className="grid grid-cols-2 gap-2 w-full"></div>
 
                       <div className="grid grid-cols-1 gap-2 mt-8">
                         <span className="px-2 py-1 text-sm bg-foreground/20 text-foreground text-center font-bold transition duration-300 ease-in-out hover:bg-primary-foreground hover:text-white">
@@ -451,7 +449,7 @@ const Projects = () => {
               <div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
                 <div className="grid grid-cols-4 max-[1440px]:grid-cols-3 max-xl:grid-cols-2 max-[569px]:grid-cols-1 gap-6 gap-y-24">
                   {projects.map((project) => (
-                    <div key={project._id} className="overflow-hidden group">
+                    <div key={project._id} className="overflow-hidden group flex flex-col">
                       <div className="relative w-full h-[400px] overflow-hidden mb-3">
                         <Link
                           to={{
@@ -479,23 +477,23 @@ const Projects = () => {
                       </div>
 
                       {/* Project Details */}
-                      <div className="p-0 bg-white">
-                        <h2 className="font-bold text-xl tracking-tight text-black mb-1 line-clamp-1 text-ellipsis">
-                          {project.title}
-                        </h2>
-                        <div>
-                          <p className="text-lg text-foreground leading-4 tracking-tighter">{project.location}</p>
-                          <p
-                            className={cn(
-                              "text-lg text-foreground leading-7 tracking-tighter",
-                              project.yearOfCompletion ? "" : "opacity-0"
-                            )}
-                          >
-                            {project.yearOfCompletion ?? "0"}
-                          </p>
+                      <div className="p-0 bg-white flex flex-col flex-1">
+                        <div className="flex-1">
+                          <h2 className="font-bold text-xl tracking-tight text-black mb-1 break-words">
+                            {project.title}
+                          </h2>
+                          <div>
+                            <p className="text-lg text-foreground leading-4 tracking-tighter">{project.location}</p>
+                            <p
+                              className={cn(
+                                "text-lg text-foreground leading-7 tracking-tighter",
+                                project.yearOfCompletion ? "" : "opacity-0"
+                              )}
+                            >
+                              {project.yearOfCompletion ?? "0"}
+                            </p>
+                          </div>
                         </div>
-
-                        <div className="grid grid-cols-2 gap-2 w-full"></div>
 
                         <div className="grid grid-cols-1 gap-2 mt-8">
                           <span className="px-2 py-1 text-sm bg-foreground/20 text-foreground text-center font-bold transition duration-300 ease-in-out hover:bg-primary-foreground hover:text-white">
