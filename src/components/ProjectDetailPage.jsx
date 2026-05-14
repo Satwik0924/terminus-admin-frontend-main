@@ -380,10 +380,16 @@ const ProjectDetailPage = () => {
                   )}
                 </>
               )}
-              {project.websiteLink && (
+              {(project.websiteLink || slug === "the-line-apartments-narsingi") && (
                 <p>
                   <a
-                    href={project.websiteLink}
+                    href={
+                      slug === "the-line-apartments-narsingi"
+                        ? "https://theline.terminus-group.com/"
+                        : project.websiteLink
+                    }
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="underline text-primary-foreground font-bold tracking-tighter text-lg text-center underline-offset-2"
                   >
                     View more
