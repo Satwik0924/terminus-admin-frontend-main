@@ -162,11 +162,12 @@ const About = () => {
         >
           <div id="commercial" style={{ textAlign: "left" }}>
             <Helmet>
-              <title>About Us : Best Real Estate Developers in Hyderabad | Termius</title>{" "}
+              <title>About Terminus Group | Trusted Real Estate Developers in Hyderabad</title>
               <meta
                 name="description"
-                content="Terminus Group, founded in 2010 and guided by Mr. S.P. Reddy's 25+ years of experience, is recognized as one of the best builders & construction companies in Hyderabad."
+                content="Founded in 2010, Terminus Group delivers premium residential and commercial developments in Hyderabad backed by 25+ years of industry expertise."
               />
+              <link rel="canonical" href="https://terminus-group.com/about" />
             </Helmet>
             <div className="w-[90%] mx-auto">
               <OfficeComponent />
@@ -186,13 +187,13 @@ const About = () => {
           </div> */}
 
           <div id="hospitality" className="text-left px-5">
-            <motion.h1
+            <motion.h2
               animate={controlsHospitality}
               initial={{ color: "#D3D3D3" }}
               className="md:text-[5.3rem] leading-none text-5xl pt-10 font-medium text-[#A0A0A0] text-left tracking-tighter"
             >
               Philanthrophy
-            </motion.h1>
+            </motion.h2>
             <div className="philanthropy-section text-left w-full pb-8">
               <div className="philanthropy-text mb-6 mt-2 left text-foreground/70">
                 <p className="text-lg text-left !leading-snug tracking-tighter">
@@ -259,24 +260,24 @@ const About = () => {
           </div>
 
           <div id="lifesciences" className="text-left px-5">
-            <motion.h1
+            <motion.h2
               animate={controlsLifeSciences}
               initial={{ color: "#D3D3D3" }}
               className="md:text-[5.3rem] leading-none text-5xl py-10 font-medium text-[#A0A0A0] text-left tracking-tighter"
             >
               Awards
-            </motion.h1>
+            </motion.h2>
             <AwardsComponent />
           </div>
 
           <div id="retail" className="text-left px-5">
-            <motion.h1
+            <motion.h2
               animate={controlsRetail}
               initial={{ color: "#D3D3D3" }}
               className="md:text-[5.3rem] leading-none text-5xl py-10 font-medium text-[#A0A0A0] text-left tracking-tighter"
             >
               Consultants & Partners
-            </motion.h1>
+            </motion.h2>
             <ConsultantsAndPartners />
           </div>
 

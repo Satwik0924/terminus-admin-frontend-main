@@ -455,7 +455,7 @@ const ProjectDetailPage = () => {
       {/* Related Projects */}
       {relatedProjects && relatedProjects.length > 0 && (
         <div className="xl:mx-20 mx-10 py-5">
-          <h1 className="text-6xl text-primary-foreground font-bold mb-7">Related Projects</h1>
+          <h2 className="text-6xl text-primary-foreground font-bold mb-7">Related Projects</h2>
           <div
             className={`grid gap-6 flex-wrap gap-y-16 ${relatedProjects.length < 3 ? "md:grid-cols-3 grid-cols-1" : "grid-cols-[repeat(auto-fit,minmax(250px,1fr))]"}`}
           >

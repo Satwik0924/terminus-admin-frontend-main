@@ -81,12 +81,12 @@ const ContactSection = () => {
           </div>
 
           {/* Success Message */}
-          <h1
+          <h2
             className="text-3xl font-bold text-gray-900 mb-4"
             style={{ animation: "slideUp 0.6s ease-out 0.5s both" }}
           >
             Thank You!
-          </h1>
+          </h2>
           <p className="text-lg text-gray-600 mb-6" style={{ animation: "slideUp 0.6s ease-out 0.7s both" }}>
             Your message has been sent successfully. We'll get back to you as soon as possible.
           </p>

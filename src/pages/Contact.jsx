@@ -7,11 +7,12 @@ const Contact = () => {
   return (
     <>
       <Helmet>
-        <title>Contact Terminus Group | Get in Touch with Our Team</title>
+        <title>Contact Terminus Group | Real Estate Developers in Hyderabad</title>
         <meta
           name="description"
-          content="For further inquiries about us, feel free to get in touch. Contact: +91 95548 34567"
+          content="Connect with Terminus Group for residential and commercial property inquiries, project details, partnerships, and customer support in Hyderabad."
         />
+        <link rel="canonical" href="https://terminus-group.com/contact" />
       </Helmet>
       <ContactDetails />
       <ContactSection />

@@ -73,13 +73,13 @@ export default function HorizontalScrollCarousel() {
           //   }}
           className="left-[5%] top-[12%] absolute"
         >
-          <motion.h1
+          <motion.h2
             style={{ color: headingColor }}
             initial={{ color: "#A0A0A0" }}
             className="transition-colors duration-900 ease-in-out md:text-[5rem] leading-none text-5xl mb-10 text-[#A0A0A0] text-left tracking-tighter"
           >
             Milestones
-          </motion.h1>
+          </motion.h2>
         </div>
         <motion.div
           style={{

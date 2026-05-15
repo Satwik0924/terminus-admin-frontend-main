@@ -233,14 +233,14 @@ const Milestones = () => {
     <section className="flex flex-col justify-center items-center h-auto lg:py-40 py-20 w-full" id="explore-projects">
       <div className="w-[90%]">
         {/* Heading */}
-        <motion.h1
+        <motion.h2
           id="milestones"
           animate={headingAnimation}
           initial={{ color: "#A0A0A0" }}
           className="md:text-[5.3rem] leading-none text-5xl mb-10 font-medium text-[#A0A0A0] text-left tracking-tighter"
         >
           Milestones
-        </motion.h1>
+        </motion.h2>
         <div className="flex sm:gap-24 gap-10 max-lg:flex-col">
           {/* Years */}
           <div className="flex lg:flex-col max-lg:gap-4 max-lg:flex-wrap">
