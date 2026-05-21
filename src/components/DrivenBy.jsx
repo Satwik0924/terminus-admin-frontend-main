@@ -34,14 +34,14 @@ const DrivenByMission = () => {
   return (
     <div className="font-sans w-full flex items-left justify-left">
       <div className="w-full items-left justify-left">
-        <motion.h1
+        <motion.h2
           id="missionTitle"
           animate={controlsTitle}
           initial={{ color: "#D3D3D3" }}
           className="transition-colors duration-900 ease-in-out md:text-[5.3rem] leading-none text-5xl mb-10 text-[#A0A0A0] text-left tracking-tight"
         >
           Driven by a Mission
-        </motion.h1>
+        </motion.h2>
 
         {/* <div className="flex items-start mb-28 gap-6 flex-col-reverse lg:flex-row max-lg:text-left max-lg:items-center">
             <div className="flex-1 text-lg xl:text-2xl text-[rgba(114,114,114,0.6)] !leading-7 tracking-tighter">
@@ -79,7 +79,7 @@ const DrivenByMission = () => {
             className="w-[95%] h-auto mb-2"
           />
 
-          <h1 className="text-primary-foreground sm:text-3xl text-2xl font-bold mb-6">The Founder Chairman</h1>
+          <h2 className="text-primary-foreground sm:text-3xl text-2xl font-bold mb-6">The Founder Chairman</h2>
 
           <div className="space-y-3 max-w-xl !text-foreground/70">
             <p className="leading-snug tracking-tighter">

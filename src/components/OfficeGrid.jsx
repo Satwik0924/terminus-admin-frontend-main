@@ -120,15 +120,6 @@ const OfficeComponent = () => {
 
           <motion.h1
             id="heading1"
-            // style={{
-            //   height: "60px",
-            //   width: "100%",
-            //   fontWeight: "500",
-            //   fontSize: "5rem",
-            //   letterSpacing: "-2px",
-            //   lineHeight: "60px",
-            //   marginBottom: "1rem",
-            // }}
             className="text-8xl tracking-tighter mt-16 mb-5"
             animate={controlsLine1}
             initial={{ color: "#D3D3D3" }}
@@ -169,7 +160,7 @@ const OfficeComponent = () => {
         <DrivenByMission />
         {/* Team Section */}
         <div id="residential" className="text-left">
-          <motion.h1
+          <motion.h2
             id="heading2"
             style={{
               height: "60px",
@@ -185,7 +176,7 @@ const OfficeComponent = () => {
             initial={{ color: "#D3D3D3" }}
           >
             The Team
-          </motion.h1>
+          </motion.h2>
           <img
             src="team.jpg"
             alt="The Team"
@@ -257,7 +248,7 @@ const OfficeComponent = () => {
 
         {/* Team Members Section */}
         <div id="news">
-          <motion.h1
+          <motion.h2
             id="heading3"
             style={{
               height: "60px",
@@ -273,7 +264,7 @@ const OfficeComponent = () => {
             initial={{ color: "#D3D3D3" }}
           >
             Leadership
-          </motion.h1>
+          </motion.h2>
           {loading ? (
             <p className="text-foreground/70 text-lg">Getting the team ready...</p>
           ) : (

@@ -42,11 +42,12 @@ const Blogs = () => {
   return (
     <>
       <Helmet>
-        <title>Terminus Group Blogs | Insights, Ideas & Industry Expertise</title>
+        <title>Real Estate & Construction Blogs | Terminus Group Hyderabad</title>
         <meta
           name="description"
-          content="Explore insights and expert perspectives from Terminus Group through our blog posts covering architecture, design, sustainability, and industry trends."
+          content="Read the latest blogs on real estate trends, architecture, smart living, construction innovation, and sustainable development in Hyderabad."
         />
+        <link rel="canonical" href="https://terminus-group.com/blogs" />
       </Helmet>
       <div id="blogs-section" style={{ textAlign: "left", padding: "2rem 1rem" }}>
         <motion.h1

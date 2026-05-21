@@ -238,7 +238,12 @@ const ProjectDetailPage = () => {
       const response = await axios.post(`${SERVER_URL}/forms/enquiry`, formData);
 
       if (response.status === 201) {
-        window.open(project.brochureUrl, "_blank");
+        if (slug === "the-line-apartments-narsingi") {
+          window.open("/LINE_Brochure.pdf", "_blank");
+          window.location.href = "https://info.terminus-group.com/theline/thank-you.html";
+        } else {
+          window.open(project.brochureUrl, "_blank");
+        }
         return;
       }
 
@@ -359,7 +364,7 @@ const ProjectDetailPage = () => {
               <p className="tracking-tighter font-medium text-lg">{project.yearOfCompletion || "N/A"}</p>
               <p className="font-extrabold mt-5 tracking-tighter !leading-3 text-lg">Built Up Area</p>
               <p className="tracking-tighter font-medium text-lg">{project.builtUpArea || "N/A"}</p>
-              {project.brochureUrl && (
+              {(project.brochureUrl || slug === "the-line-apartments-narsingi") && (
                 <>
                   <button
                     onClick={() => setShowEnquiryModal(true)}
@@ -375,10 +380,16 @@ const ProjectDetailPage = () => {
                   )}
                 </>
               )}
-              {project.websiteLink && (
+              {(project.websiteLink || slug === "the-line-apartments-narsingi") && (
                 <p>
                   <a
-                    href={project.websiteLink}
+                    href={
+                      slug === "the-line-apartments-narsingi"
+                        ? "https://theline.terminus-group.com/"
+                        : project.websiteLink
+                    }
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="underline text-primary-foreground font-bold tracking-tighter text-lg text-center underline-offset-2"
                   >
                     View more
@@ -444,7 +455,7 @@ const ProjectDetailPage = () => {
       {/* Related Projects */}
       {relatedProjects && relatedProjects.length > 0 && (
         <div className="xl:mx-20 mx-10 py-5">
-          <h1 className="text-6xl text-primary-foreground font-bold mb-7">Related Projects</h1>
+          <h2 className="text-6xl text-primary-foreground font-bold mb-7">Related Projects</h2>
           <div
             className={`grid gap-6 flex-wrap gap-y-16 ${relatedProjects.length < 3 ? "md:grid-cols-3 grid-cols-1" : "grid-cols-[repeat(auto-fit,minmax(250px,1fr))]"}`}
           >

@@ -40,9 +40,9 @@ const sectionMeta = {
       "Terminus Group partners with leading education infrastructure companies to develop state-of-the-art educational facilities in Hyderabad.",
   },
   default: {
-    title: "Terminus Group Projects | Smart Infrastructure & Real Estate Solutions",
+    title: "Luxury Residential & Commercial Projects in Hyderabad | Terminus Group",
     description:
-      "Discover how Terminus Group integrates sustainability, smart technology, and design excellence across its residential, commercial, and hospitality projects.",
+      "Explore Terminus Group projects featuring modern architecture, smart infrastructure, sustainable design, and premium real estate developments in Hyderabad.",
   },
 };
 
@@ -236,6 +236,7 @@ const Projects = () => {
       <Helmet>
         <title>{getCurrentMeta().title}</title>
         <meta name="description" content={getCurrentMeta().description} />
+        <link rel="canonical" href="https://terminus-group.com/projects" />
       </Helmet>
 
       <div className="flex sm:!pb-32 !pb-16 xl:p-5 max-md:p-5 gap-32">
@@ -319,13 +320,13 @@ const Projects = () => {
 
           {/* Commercial Section */}
           <div id="commercial" style={{ textAlign: "left" }}>
-            <motion.h1
+            <motion.h2
               animate={controlsCommercial}
               initial={{ color: "#D3D3D3" }}
               className="xl:text-[5.3rem] leading-none text-6xl py-10 font-medium text-[#A0A0A0] text-left tracking-tighter"
             >
               Commercial
-            </motion.h1>
+            </motion.h2>
 
             {/* Projects */}
             <div style={{ padding: "20px" }}>
@@ -437,13 +438,13 @@ const Projects = () => {
             },
           ].map(({ id, title, projects, controls }) => (
             <div key={id} id={id} style={{ textAlign: "left" }}>
-              <motion.h1
+              <motion.h2
                 animate={controls}
                 initial={{ color: "#D3D3D3" }}
                 className="md:text-[5.3rem] leading-none text-5xl py-10 font-medium text-[#A0A0A0] text-left tracking-tighter"
               >
                 {title}
-              </motion.h1>
+              </motion.h2>
 
               {/* Projects */}
               <div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
@@ -535,13 +536,13 @@ const Projects = () => {
             </div>
           ))}
           <div id="retail" style={{ textAlign: "left" }}>
-            <motion.h1
+            <motion.h2
               animate={controlsRetail}
               initial={{ color: "#D3D3D3" }}
               className="md:text-[5.3rem] leading-none text-5xl py-10 font-medium text-[#A0A0A0] text-left tracking-tighter"
             >
               Retail
-            </motion.h1>
+            </motion.h2>
 
             <p className="text-lg">
               Across our various projects, we feature top-notch retail outlets that offer an unparalleled shopping and
@@ -595,13 +596,13 @@ const Projects = () => {
           </div>
 
           <div id="education" style={{ textAlign: "left" }}>
-            <motion.h1
+            <motion.h2
               animate={controlsEducation}
               initial={{ color: "#D3D3D3" }}
               className="md:text-[5.3rem] leading-none text-5xl mt-10 pb-3 font-medium text-[#A0A0A0] text-left tracking-tighter"
             >
               Education
-            </motion.h1>
+            </motion.h2>
 
             {/* Description */}
             <p className="text-md xl:text-lg text-foreground mb-8 tracking-tigher !leading-tight [word-spacing:1px] max-w-xl">

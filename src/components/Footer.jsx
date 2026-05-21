@@ -112,7 +112,7 @@ const Footer = () => {
                     {project.label}
                   </a>
                   {index === socialLinks.length - 1 && (
-                    <h1 className="font-medium text-black md:hidden">{new Date().getFullYear()}</h1>
+                    <h2 className="font-medium text-black md:hidden">{new Date().getFullYear()}</h2>
                   )}
                 </li>
               ))}

@@ -87,14 +87,14 @@ const ProjectsGrid = () => {
     <section className="flex flex-col justify-center items-center h-auto lg:py-40 py-20 w-full" id="explore-projects">
       <div className="w-[90%]">
         {/* Heading */}
-        <motion.h1
+        <motion.h2
           id="heading"
           animate={headingAnimation}
           initial={{ color: "#A0A0A0" }}
           className="md:text-[5.3rem] leading-none text-5xl sm:mb-20 mb-16 font-medium text-[#A0A0A0] text-left tracking-tighter"
         >
           <Balancer>Explore Our Projects</Balancer>
-        </motion.h1>
+        </motion.h2>
         {/* Responsive Grid */}
 
         <div className="flex justify-center items-center">

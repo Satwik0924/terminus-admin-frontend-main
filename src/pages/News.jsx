@@ -42,11 +42,12 @@ const News = () => {
   return (
     <>
       <Helmet>
-        <title>Terminus Group News | Latest Updates, Media Releases & Industry Insights</title>
+        <title>Terminus Group News & Project Updates Hyderabad</title>
         <meta
           name="description"
-          content="Stay informed with the latest press releases and news updates from Terminus Group, covering our recent projects, partnerships, and industry insights."
+          content="Get the latest updates from Terminus Group including project launches, partnerships, construction milestones, and real estate industry news."
         />
+        <link rel="canonical" href="https://terminus-group.com/news" />
       </Helmet>
       <div id="news-media" style={{ textAlign: "left", padding: "2rem 1rem" }}>
         <motion.h1
