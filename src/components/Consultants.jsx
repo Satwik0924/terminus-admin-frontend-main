@@ -61,10 +61,10 @@ const ConsultantsAndPartners = () => {
               src: "/assets/Artboard 1 copy 6.png",
               alt: "IPDM Services",
             },
-            {
-              src: "/assets/Artboard 1 copy 7.png",
-              alt: "Zaki & Associates",
-            },
+            // {
+            //   src: "/assets/Artboard 1 copy 7.png",
+            //   alt: "Zaki & Associates",
+            // },
             {
               src: "/assets/Artboard 1 copy 8.png",
               alt: "Studio Chintala",
