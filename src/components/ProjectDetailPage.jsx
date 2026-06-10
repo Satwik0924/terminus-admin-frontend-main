@@ -241,6 +241,8 @@ const ProjectDetailPage = () => {
         if (slug === "the-line-apartments-narsingi") {
           window.open("/LINE_Brochure.pdf", "_blank");
           window.location.href = "https://info.terminus-group.com/theline/thank-you.html";
+        } else if (slug === "the-pointe-villas-gollur") {
+          window.open("/assets/The_Pointe_Mini_brochure.pdf", "_blank");
         } else {
           window.open(project.brochureUrl, "_blank");
         }
@@ -364,7 +366,9 @@ const ProjectDetailPage = () => {
               <p className="tracking-tighter font-medium text-lg">{project.yearOfCompletion || "N/A"}</p>
               <p className="font-extrabold mt-5 tracking-tighter !leading-3 text-lg">Built Up Area</p>
               <p className="tracking-tighter font-medium text-lg">{project.builtUpArea || "N/A"}</p>
-              {(project.brochureUrl || slug === "the-line-apartments-narsingi") && (
+              {(project.brochureUrl ||
+                slug === "the-line-apartments-narsingi" ||
+                slug === "the-pointe-villas-gollur") && (
                 <>
                   <button
                     onClick={() => setShowEnquiryModal(true)}
