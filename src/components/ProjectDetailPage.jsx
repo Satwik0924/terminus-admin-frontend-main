@@ -3,6 +3,7 @@ import { cn } from "@/lib/utils";
 import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 import { Helmet } from "react-helmet-async";
+import toast from "react-hot-toast";
 import { useNavigate, useParams } from "react-router-dom";
 import Balancer from "react-wrap-balancer";
 import Footer from "./Footer";
@@ -19,6 +20,10 @@ const ProjectDetailPage = () => {
   const [modalImage, setModalImage] = useState("");
   const [showEnquiryModal, setShowEnquiryModal] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [inlineFormData, setInlineFormData] = useState({ name: "", email: "", phone: "", message: "" });
+  const [isInlineSubmitting, setIsInlineSubmitting] = useState(false);
+  const [inlineSuccess, setInlineSuccess] = useState(false);
+  const [landscapeImage, setLandscapeImage] = useState(null);
 
   useEffect(() => {
     if (!slug) navigate("/projects");
@@ -258,6 +263,65 @@ const ProjectDetailPage = () => {
     }
   };
 
+  const handleInlineSubmit = async (e) => {
+    e.preventDefault();
+    setIsInlineSubmitting(true);
+    try {
+      const fd = new FormData();
+      fd.append("projectName", project.title);
+      fd.append("projectType", project.type);
+      fd.append("name", inlineFormData.name);
+      fd.append("emailId", inlineFormData.email);
+      fd.append("phoneNumber", inlineFormData.phone);
+      fd.append("query", inlineFormData.message);
+      const response = await axios.post(`${SERVER_URL}/forms/enquiry`, fd);
+      if (response.status === 201) {
+        setInlineFormData({ name: "", email: "", phone: "", message: "" });
+        setInlineSuccess(true);
+        setTimeout(() => setInlineSuccess(false), 4000);
+      }
+    } catch (err) {
+      toast.error("Failed to send. Please try again later.", { duration: 1500 });
+    } finally {
+      setIsInlineSubmitting(false);
+    }
+  };
+
+  const inlineFormSlugs = ["the-pointe-villas-gollur", "the-line-apartments-narsingi"];
+
+  useEffect(() => {
+    if (!project?.images || !inlineFormSlugs.includes(slug)) {
+      setLandscapeImage(null);
+      return;
+    }
+    let cancelled = false;
+    (async () => {
+      for (const url of project.images) {
+        const isLandscape = await new Promise((resolve) => {
+          const img = new Image();
+          img.onload = () => resolve(img.naturalWidth > img.naturalHeight);
+          img.onerror = () => resolve(false);
+          img.src = url;
+        });
+        if (cancelled) return;
+        if (isLandscape) {
+          setLandscapeImage(url);
+          return;
+        }
+      }
+      if (!cancelled) setLandscapeImage(project.images[0]);
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [project, slug]);
+  const inlineFormHeading =
+    slug === "the-pointe-villas-gollur"
+      ? "Enquire About The Pointe Villas"
+      : slug === "the-line-apartments-narsingi"
+        ? "Enquire About The Line Apartments"
+        : "";
+
   if (!project) {
     return <div className="text-center mt-12 font-sans">Loading Project Data...</div>;
   }
@@ -453,6 +517,98 @@ const ProjectDetailPage = () => {
               ))}
             </div>
           </div>
+        )}
+
+        {/* Inline Enquiry Form — only for specific projects */}
+        {inlineFormSlugs.includes(slug) && landscapeImage && (
+          <section className="flex pb-20 w-full items-center justify-center overflow-hidden">
+            <div className="w-[90%] grid lg:grid-cols-2 gap-6 h-auto items-stretch">
+              <div className="max-lg:h-72 overflow-hidden">
+                <img
+                  src={landscapeImage}
+                  alt={project.title}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="flex flex-col">
+                <h2 className="text-3xl font-bold text-primary-foreground mb-6 tracking-tight">
+                  {inlineFormHeading}
+                </h2>
+                {inlineSuccess ? (
+                  <div className="bg-foreground/5 p-8 text-center">
+                    <h3 className="text-2xl font-bold text-primary-foreground mb-3">Thank You!</h3>
+                    <p className="text-foreground">We'll get back to you soon.</p>
+                  </div>
+                ) : (
+                  <form className="h-full" onSubmit={handleInlineSubmit}>
+                    <div className="mb-4">
+                      <input
+                        type="text"
+                        name="name"
+                        placeholder="Your Name"
+                        className="w-full p-4 px-8 bg-foreground/5 placeholder:text-foreground placeholder:font-medium sm:placeholder:text-lg placeholder:text-base outline-none"
+                        value={inlineFormData.name}
+                        onChange={(e) => setInlineFormData((p) => ({ ...p, name: e.target.value }))}
+                        required
+                      />
+                    </div>
+                    <div className="mb-4">
+                      <input
+                        type="email"
+                        name="email"
+                        placeholder="Your Email"
+                        className="w-full p-4 px-8 bg-foreground/5 placeholder:text-foreground placeholder:font-medium sm:placeholder:text-lg placeholder:text-base outline-none"
+                        value={inlineFormData.email}
+                        onChange={(e) => setInlineFormData((p) => ({ ...p, email: e.target.value }))}
+                        required
+                      />
+                    </div>
+                    <div className="mb-4">
+                      <input
+                        type="text"
+                        name="phone"
+                        placeholder="Your Phone Number"
+                        className="w-full p-4 px-8 bg-foreground/5 placeholder:text-foreground placeholder:font-medium sm:placeholder:text-lg placeholder:text-base outline-none"
+                        value={inlineFormData.phone}
+                        onChange={(e) => {
+                          const numericValue = e.target.value.replace(/[^0-9]/g, "");
+                          setInlineFormData((p) => ({ ...p, phone: numericValue }));
+                        }}
+                        pattern="[0-9]+"
+                        title="Please enter a valid phone number (numbers only)"
+                        maxLength={10}
+                        minLength={10}
+                        required
+                      />
+                    </div>
+                    <div className="mb-4">
+                      <textarea
+                        name="message"
+                        rows="5"
+                        placeholder="Your Message"
+                        className="w-full p-4 px-8 bg-foreground/5 placeholder:text-foreground placeholder:font-medium sm:placeholder:text-lg placeholder:text-base outline-none"
+                        value={inlineFormData.message}
+                        onChange={(e) => {
+                          if (e.target.value.length > 500) {
+                            toast.error("Keep your message under 500 characters", { duration: 1500 });
+                            return;
+                          }
+                          setInlineFormData((p) => ({ ...p, message: e.target.value }));
+                        }}
+                      />
+                    </div>
+                    <button
+                      type="submit"
+                      className="bg-primary-foreground w-full text-white py-3 px-6 cursor-pointer sm:text-lg text-base font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+                      disabled={isInlineSubmitting}
+                    >
+                      {isInlineSubmitting ? "Sending..." : "Submit"}
+                    </button>
+                  </form>
+                )}
+              </div>
+            </div>
+          </section>
         )}
       </div>
 
