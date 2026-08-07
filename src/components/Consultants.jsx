@@ -77,18 +77,18 @@ const ConsultantsAndPartners = () => {
               src: "/assets/Artboard 1 copy 10.png",
               alt: "Image Alt 1",
             },
-            {
-              src: "/assets/Artboard 1 copy 11.png",
-              alt: "Image Alt 2",
-            },
+            // {
+            //   src: "/assets/Artboard 1 copy 11.png",
+            //   alt: "Madison",
+            // },
             {
               src: "/assets/Artboard 1 copy 12.png",
               alt: "Image Alt 3",
             },
-            {
-              src: "/assets/Artboard 1 copy 13.png",
-              alt: "Image Alt 4",
-            },
+            // {
+            //   src: "/assets/Artboard 1 copy 13.png",
+            //   alt: "GV Research Platform",
+            // },
             {
               src: "/assets/Artboard 1 copy 14.png",
               alt: "Image Alt 5",
@@ -117,10 +117,10 @@ const ConsultantsAndPartners = () => {
               src: "/assets/Artboard 1 copy 20.png",
               alt: "Image Alt 6",
             },
-            {
-              src: "/assets/Artboard 1 copy 21.png",
-              alt: "Image Alt 4",
-            },
+            // {
+            //   src: "/assets/Artboard 1 copy 21.png",
+            //   alt: "Image Alt 4",
+            // },
             {
               src: "/assets/Artboard 1 copy 22.png",
               alt: "Image Alt 5",
