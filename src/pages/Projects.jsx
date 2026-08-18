@@ -517,19 +517,21 @@ const Projects = () => {
                     // }}
                     className="grid grid-cols-[repeat(auto-fit,minmax(150px,1fr))] gap-4"
                   >
-                    {["Marriott", "Courtyard", "IHCL", "Moxy", "Westin", "Renaissance"].map((company, index) => (
-                      <p
-                        key={index}
-                        style={{
-                          textAlign: "left",
-                          fontWeight: "bold",
-                          marginTop: index === 0 ? "0" : "unset", // No margin for the first company
-                        }}
-                        className="!text-foreground !font-bold !text-xl"
-                      >
-                        {company}
-                      </p>
-                    ))}
+                    {["Marriott", "Courtyard", "IHCL", "Moxy", "Fairfield", "Westin", "Renaissance"].map(
+                      (company, index) => (
+                        <p
+                          key={index}
+                          style={{
+                            textAlign: "left",
+                            fontWeight: "bold",
+                            marginTop: index === 0 ? "0" : "unset", // No margin for the first company
+                          }}
+                          className="!text-foreground !font-bold !text-xl"
+                        >
+                          {company}
+                        </p>
+                      )
+                    )}
                   </div>
                 </div>
               )}
@@ -554,22 +556,16 @@ const Projects = () => {
               {[
                 "/assets/image1.jpg",
                 "/assets/image2.png",
-                "/assets/image3.png",
                 "/assets/image4.png",
                 "/assets/image5.png",
                 "/assets/image6.png",
                 "/assets/image7.png",
                 "/assets/image9.jpg",
                 "/assets/image10.png",
-                "/assets/image11.png",
                 "/assets/image12.png",
-                "/assets/image13.png",
                 "/assets/image14.png",
-
-                "/assets/image16.png",
                 "/assets/image17.png",
                 "/assets/image19.png",
-
                 "/assets/image20.png",
                 "/assets/image21.png",
                 "/assets/image22.png",
@@ -578,14 +574,10 @@ const Projects = () => {
                 "/assets/image25.png",
                 "/assets/image26.png",
                 "/assets/image27.jpg",
-                "/assets/image28.png",
                 "/assets/image29.jpg",
-                "/assets/image30.jpg",
                 "/assets/image31.png",
                 "/assets/image32.jpg",
-                "/assets/image33.jpg",
                 "/assets/image34.png",
-                "/assets/image35.jpg",
                 "/assets/image36.jpg",
               ].map((logo, index) => (
                 <div key={index} className="flex items-center justify-center p-4">
