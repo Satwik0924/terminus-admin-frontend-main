@@ -137,17 +137,21 @@ const Milestones = () => {
       imageType: "side-by-side",
     },
     2024: {
-      title: ["THE SWITCH  – Hi Tech City", "Renaissance Hotel - Hi Tech City", "The Switch"],
+      title: ["THE SWITCH  – Hi Tech City", "Renaissance Hotel - Hi Tech City"],
       description: [
         "A mixed-use development, containing world class retail and office space,   featuring a Renaissance Hotel, set on a 2.7-acre plot.",
         "The Renaissance Hotel offers an exceptional hospitality experience. With a spacious banquet hall perfect for hosting events, it combining elegance and functionality, making it the ideal destination for both leisure and celebrations.",
-        "An upcoming mixed-use project thoughtfully designed to integrate retail spaces, office spaces, and a premium hotel. This dynamic development is set to redefine urban living, seamlessly blending work, leisure, and lifestyle under one roof",
       ],
       image: ["/assets/Scene 15_1-2.jpg"],
       imageType: "stacked",
     },
     2025: {
-      title: ["ARANYA - GANDIPET", "FiDi 9 – FINANCIAL DISTRICT", "Moxy Hotel - FINANCIAL DISTRICT", "Aloma Completed"],
+      title: [
+        "ARANYA - GANDIPET",
+        "FiDi 9 – FINANCIAL DISTRICT",
+        "Moxy Hotel - FINANCIAL DISTRICT",
+        "ALOMA - Completed",
+      ],
       description: [
         "A premium luxury villa community blending luxury, serenity, and exclusivity in Gandipet's scenic hills.",
         "A mixed-use development, containing world class retail and office space, featuring a Moxy Hotel ",
@@ -162,24 +166,24 @@ const Milestones = () => {
       imageType: "side-by-side-stacked",
     },
     2026: {
-      title: [
-        "THE HIGHLINE",
-        "ONE NORTH – GENOME VALLEY",
-        "GINGER BY IHCL– GENOME VALLEY - OPENED",
-        "Two West",
-        "Fairfield",
-      ],
+      title: ["GINGER BY IHCL– GENOME VALLEY - OPENED", "TWO WEST - NARSINGI", "FAIRFIELD - SRI CITY"],
       description: [
-        "An upcoming premium residential development featuring G+30 floors and 504 thoughtfully designed apartments, spread across 3.5 acres of land.",
-        "A premier life sciences project spanning 40 acres with a built-up area of 20 lakh sft.",
         "A select-service hotel featuring 100 keys on a 1-acre plot",
         "Grade-A office space located at a prime business destination. The project is strategically situated with excellent connectivity to Gachibowli, Financial District, and HITEC City, making it highly accessible. Surrounded by top corporates, the perfect ecosystem for global businesses to thrive. This modern workspace is designed to meet international standards, catering to the dynamic needs of MNCs.",
         "The Fairfield Hotel by Marriott is an upcoming select services hotel offering 120 well-appointed keys. Designed for modern travelers, it will provide comfortable and efficient accommodations with a focus on quality and convenience.",
       ],
+      image: ["/assets/Fasade-(AMP5699).jpg", "/assets/View_01_IMPACT3D_TERMINUS_TWO_WEST.png"],
+      imageType: "side-by-side",
+    },
+    Upcoming: {
+      title: ["THE HIGHLINE", "ONE NORTH – GENOME VALLEY"],
+      description: [
+        "An upcoming premium residential development featuring G+30 floors and 504 thoughtfully designed apartments, spread across 3.5 acres of land.",
+        "A premier life sciences project spanning 40 acres with a built-up area of 20 lakh sft.",
+      ],
       image: [
         "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5089501/image-f70fe009-dec0-425f-9e39-19dc06e5b216.jpg?w=904&e=webp&cX=49.13583815028892&cY=0&cW=1901.7283236994222&cH=2719",
         "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5089501/image-f0869896-e580-45f4-88c2-130f5a762875.jpg?w=840&e=webp&cX=675.792507204611&cY=0&cW=648.4149855907782&cH=1000",
-        "/assets/Fasade-(AMP5699).jpg",
       ],
       imageType: "side-by-side",
     },
