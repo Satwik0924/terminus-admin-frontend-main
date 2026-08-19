@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { motion, useAnimation, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion, useAnimation } from "framer-motion";
 import { useEffect, useState } from "react";
 
 const Milestones = () => {
@@ -132,40 +132,49 @@ const Milestones = () => {
       ],
       image: [
         "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5089501/image-1402200a-c553-4fd8-ac5f-1c816299276d.jpg?w=904&e=webp&cX=2036&cY=0&cW=1928&cH=2748",
+        "/assets/BuildingElevation_NightFinal.png",
       ],
-      imageType: "single",
+      imageType: "side-by-side",
     },
     2024: {
-      title: ["THE SWITCH  – Hi Tech City", "Renaissance Hotel - Hi Tech City"],
+      title: ["THE SWITCH  – Hi Tech City", "Renaissance Hotel - Hi Tech City", "The Switch"],
       description: [
         "A mixed-use development, containing world class retail and office space,   featuring a Renaissance Hotel, set on a 2.7-acre plot.",
-        "A 200 room key hotel and banquet  set to be completed in 2027",
+        "The Renaissance Hotel offers an exceptional hospitality experience. With a spacious banquet hall perfect for hosting events, it combining elegance and functionality, making it the ideal destination for both leisure and celebrations.",
+        "An upcoming mixed-use project thoughtfully designed to integrate retail spaces, office spaces, and a premium hotel. This dynamic development is set to redefine urban living, seamlessly blending work, leisure, and lifestyle under one roof",
       ],
       image: ["/assets/Scene 15_1-2.jpg"],
       imageType: "stacked",
     },
     2025: {
-      title: ["ARANYA - GANDIPET", "FiDi 9 – FINANCIAL DISTRICT", "Moxy Hotel - FINANCIAL DISTRICT"],
+      title: ["ARANYA - GANDIPET", "FiDi 9 – FINANCIAL DISTRICT", "Moxy Hotel - FINANCIAL DISTRICT", "Aloma Completed"],
       description: [
         "A premium luxury villa community blending luxury, serenity, and exclusivity in Gandipet's scenic hills.",
         "A mixed-use development, containing world class retail and office space, featuring a Moxy Hotel ",
-        "Terminus group signs to open the 1st Moxy hotel in Hyderabad, the 160 room hotel will debut in late 2026. ",
+        "Terminus group signs to open the 1st Moxy hotel in Hyderabad, the 160 room hotel will debut in late 2026.",
+        "An exclusive plotted development located strategically in the serene surroundings featuring exceptional landscaping and amenities, elevating modern living",
       ],
       image: [
-        // "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5089501/image-f70fe009-dec0-425f-9e39-19dc06e5b216.jpg?w=904&e=webp&cX=49.13583815028892&cY=0&cW=1901.7283236994222&cH=2719",
         "/assets/9Fidi-Elevation Render.jpeg",
         "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5089501/image-de2d134a-a862-466f-b8d9-805af701773d.jpg?w=1808&e=webp&cX=0&cY=49.46797520661164&cW=2667&cH=1901.0640495867767",
-        // "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5089501/image-a7f0b5f5-5672-42c3-a910-5f8eb4aa4ff9.jpg?w=882&e=webp&cX=0&cY=558&cW=1668&cH=735",
-        // "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5089501/image-f0869896-e580-45f4-88c2-130f5a762875.jpg?w=840&e=webp&cX=675.792507204611&cY=0&cW=648.4149855907782&cH=1000",
+        "/assets/project-677cd640d4c339fbb7184c82-image-0-1765549253394.jpg",
       ],
-      imageType: "stacked",
+      imageType: "side-by-side-stacked",
     },
     2026: {
-      title: ["THE HIGHLINE", "ONE NORTH – GENOME VALLEY", "GINGER BY IHCL– GENOME VALLEY - OPENED"],
+      title: [
+        "THE HIGHLINE",
+        "ONE NORTH – GENOME VALLEY",
+        "GINGER BY IHCL– GENOME VALLEY - OPENED",
+        "Two West",
+        "Fairfield",
+      ],
       description: [
         "An upcoming premium residential development featuring G+30 floors and 504 thoughtfully designed apartments, spread across 3.5 acres of land.",
         "A premier life sciences project spanning 40 acres with a built-up area of 20 lakh sft.",
         "A select-service hotel featuring 100 keys on a 1-acre plot",
+        "Grade-A office space located at a prime business destination. The project is strategically situated with excellent connectivity to Gachibowli, Financial District, and HITEC City, making it highly accessible. Surrounded by top corporates, the perfect ecosystem for global businesses to thrive. This modern workspace is designed to meet international standards, catering to the dynamic needs of MNCs.",
+        "The Fairfield Hotel by Marriott is an upcoming select services hotel offering 120 well-appointed keys. Designed for modern travelers, it will provide comfortable and efficient accommodations with a focus on quality and convenience.",
       ],
       image: [
         "https://i-p.rmcdn.net/6704dad37ea051caab873de5/5089501/image-f70fe009-dec0-425f-9e39-19dc06e5b216.jpg?w=904&e=webp&cX=49.13583815028892&cY=0&cW=1901.7283236994222&cH=2719",
