@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/react";
 import { Toaster } from "react-hot-toast";
 import { Navigate, Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
@@ -44,6 +45,7 @@ function App() {
           </div>
         </div>
       </Router>
+      <Analytics />
     </>
   );
 }

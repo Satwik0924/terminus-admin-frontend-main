@@ -169,7 +169,7 @@ const Milestones = () => {
       title: ["GINGER BY IHCL– GENOME VALLEY - OPENED", "TWO WEST - NARSINGI", "FAIRFIELD - SRI CITY"],
       description: [
         "A select-service hotel featuring 100 keys on a 1-acre plot",
-        "Grade-A office space located at a prime business destination. The project is strategically situated with excellent connectivity to Gachibowli, Financial District, and HITEC City, making it highly accessible. Surrounded by top corporates, the perfect ecosystem for global businesses to thrive. This modern workspace is designed to meet international standards, catering to the dynamic needs of MNCs.",
+        "Grade-A office space located at a prime business destination. The project is strategically situated with excellent connectivity to Gachibowli, Financial District, and HITEC City, making it highly accessible.",
         "The Fairfield Hotel by Marriott is an upcoming select services hotel offering 120 well-appointed keys. Designed for modern travelers, it will provide comfortable and efficient accommodations with a focus on quality and convenience.",
       ],
       image: ["/assets/Fasade-(AMP5699).jpg", "/assets/View_01_IMPACT3D_TERMINUS_TWO_WEST.png"],
