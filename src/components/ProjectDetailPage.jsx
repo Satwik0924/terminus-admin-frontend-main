@@ -30,10 +30,16 @@ const ProjectDetailPage = () => {
 
     const fetchData = async () => {
       try {
-        const response = await axios.get(`${SERVER_URL}/forms/project/${slug}`, {
-          maxRedirects: 5, // Allow following redirects
-          validateStatus: (status) => status < 500, // Don't throw on 3xx redirects
-        });
+        const [response, allProjectsResult] = await Promise.all([
+          axios.get(`${SERVER_URL}/forms/project/${slug}`, {
+            maxRedirects: 5, // Allow following redirects
+            validateStatus: (status) => status < 500, // Don't throw on 3xx redirects
+          }),
+          axios.get(`${SERVER_URL}/forms/project`).catch((relatedError) => {
+            console.error("Error fetching related projects:", relatedError);
+            return null;
+          }),
+        ]);
 
         // If we get a 404, the project doesn't exist
         if (response.status === 404) {
@@ -45,13 +51,9 @@ const ProjectDetailPage = () => {
         const currentProject = response.data;
 
         if (currentProject) {
-          console.log("✅ Project loaded:", currentProject);
-          console.log("📸 Project images:", currentProject.images);
-
           // Check if the slug in the URL is different from the project's current slug
           // This happens when an old slug was used and we got redirected
           if (currentProject.slug && currentProject.slug !== slug) {
-            console.log(`🔀 Redirecting from old slug "${slug}" to new slug "${currentProject.slug}"`);
             // Update the URL without reloading the page
             window.history.replaceState(null, "", `/projects/${currentProject.slug}`);
           }
@@ -82,27 +84,15 @@ const ProjectDetailPage = () => {
             }
           }
 
-          // Fetch related projects
-          try {
-            const allProjectsResponse = await axios.get(`${SERVER_URL}/forms/project`);
-            const allProjectsData = allProjectsResponse.data;
-
-            console.log("🔗 All projects response:", allProjectsData);
-
+          if (allProjectsResult) {
+            const allProjectsData = allProjectsResult.data;
             // Handle different API response structures
             const allProjects = Array.isArray(allProjectsData) ? allProjectsData : allProjectsData?.data || [];
-
-            console.log("📋 Processed all projects:", allProjects);
-            console.log("🎯 Current project type:", currentProject.type);
-
             const related = allProjects.filter(
               (proj) => proj.type === currentProject.type && proj._id !== currentProject._id
             );
-
-            console.log("🔗 Related projects found:", related);
             setRelatedProjects(related);
-          } catch (relatedError) {
-            console.error("Error fetching related projects:", relatedError);
+          } else {
             setRelatedProjects([]);
           }
         }
@@ -294,26 +284,7 @@ const ProjectDetailPage = () => {
       setLandscapeImage(null);
       return;
     }
-    let cancelled = false;
-    (async () => {
-      for (const url of project.images) {
-        const isLandscape = await new Promise((resolve) => {
-          const img = new Image();
-          img.onload = () => resolve(img.naturalWidth > img.naturalHeight);
-          img.onerror = () => resolve(false);
-          img.src = url;
-        });
-        if (cancelled) return;
-        if (isLandscape) {
-          setLandscapeImage(url);
-          return;
-        }
-      }
-      if (!cancelled) setLandscapeImage(project.images[0]);
-    })();
-    return () => {
-      cancelled = true;
-    };
+    setLandscapeImage(project.images[0]);
   }, [project, slug]);
   const inlineFormHeading =
     slug === "the-pointe-villas-gollur"
@@ -409,7 +380,7 @@ const ProjectDetailPage = () => {
             <img
               src={project.images && project.images[0]}
               alt={`${project.title} main`}
-              loading="lazy"
+              fetchPriority="high"
               decoding="async"
               className="w-full object-contain cursor-pointer"
               onClick={() => openModal(project.images && project.images[0])}
