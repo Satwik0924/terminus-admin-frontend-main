@@ -233,10 +233,10 @@ const ProjectDetailPage = () => {
       const response = await axios.post(`${SERVER_URL}/forms/enquiry`, formData);
 
       if (response.status === 201) {
-        if (slug === "the-line-apartments-narsingi") {
+        if (project.slug === "the-line-apartments-narsingi") {
           window.open("/LINE_Brochure.pdf", "_blank");
           window.location.href = "https://info.terminus-group.com/theline/thank-you.html";
-        } else if (slug === "the-pointe-villas-gollur") {
+        } else if (project.slug === "the-pointe-villas-gollur") {
           window.open("/assets/The_Pointe_Mini_brochure.pdf", "_blank");
         } else {
           window.open(project.brochureUrl, "_blank");
@@ -280,16 +280,16 @@ const ProjectDetailPage = () => {
   const inlineFormSlugs = ["the-pointe-villas-gollur", "the-line-apartments-narsingi"];
 
   useEffect(() => {
-    if (!project?.images || !inlineFormSlugs.includes(slug)) {
+    if (!project?.images || !inlineFormSlugs.includes(project?.slug)) {
       setLandscapeImage(null);
       return;
     }
     setLandscapeImage(project.images[0]);
-  }, [project, slug]);
+  }, [project]);
   const inlineFormHeading =
-    slug === "the-pointe-villas-gollur"
+    project?.slug === "the-pointe-villas-gollur"
       ? "Enquire About The Pointe Villas"
-      : slug === "the-line-apartments-narsingi"
+      : project?.slug === "the-line-apartments-narsingi"
         ? "Enquire About The Line Apartments"
         : "";
 
@@ -402,8 +402,8 @@ const ProjectDetailPage = () => {
               <p className="font-extrabold mt-5 tracking-tighter !leading-3 text-lg">Built Up Area</p>
               <p className="tracking-tighter font-medium text-lg">{project.builtUpArea || "N/A"}</p>
               {(project.brochureUrl ||
-                slug === "the-line-apartments-narsingi" ||
-                slug === "the-pointe-villas-gollur") && (
+                project.slug === "the-line-apartments-narsingi" ||
+                project.slug === "the-pointe-villas-gollur") && (
                 <>
                   <button
                     onClick={() => setShowEnquiryModal(true)}
@@ -419,11 +419,11 @@ const ProjectDetailPage = () => {
                   )}
                 </>
               )}
-              {(project.websiteLink || slug === "the-line-apartments-narsingi") && (
+              {(project.websiteLink || project.slug === "the-line-apartments-narsingi") && (
                 <p>
                   <a
                     href={
-                      slug === "the-line-apartments-narsingi"
+                      project.slug === "the-line-apartments-narsingi"
                         ? "https://theline.terminus-group.com/"
                         : project.websiteLink
                     }
@@ -491,7 +491,7 @@ const ProjectDetailPage = () => {
         )}
 
         {/* Inline Enquiry Form — only for specific projects */}
-        {inlineFormSlugs.includes(slug) && landscapeImage && (
+        {inlineFormSlugs.includes(project?.slug) && landscapeImage && (
           <section className="flex pb-20 w-full items-center justify-center overflow-hidden">
             <div className="w-[90%] grid lg:grid-cols-2 gap-6 h-auto items-stretch">
               <div className="max-lg:h-72 overflow-hidden">
