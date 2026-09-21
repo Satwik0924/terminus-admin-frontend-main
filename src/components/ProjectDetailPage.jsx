@@ -233,10 +233,10 @@ const ProjectDetailPage = () => {
       const response = await axios.post(`${SERVER_URL}/forms/enquiry`, formData);
 
       if (response.status === 201) {
-        if (project.slug === "the-line-apartments-narsingi") {
+        if (project.slug === "the-line-apartments") {
           window.open("/LINE_Brochure.pdf", "_blank");
           window.location.href = "https://info.terminus-group.com/theline/thank-you.html";
-        } else if (project.slug === "the-pointe-villas-gollur") {
+        } else if (project.slug === "the-pointe-villas") {
           window.open("/assets/The_Pointe_Mini_brochure.pdf", "_blank");
         } else {
           window.open(project.brochureUrl, "_blank");
@@ -277,7 +277,7 @@ const ProjectDetailPage = () => {
     }
   };
 
-  const inlineFormSlugs = ["the-pointe-villas-gollur", "the-line-apartments-narsingi"];
+  const inlineFormSlugs = ["the-pointe-villas", "the-line-apartments"];
 
   useEffect(() => {
     if (!project?.images || !inlineFormSlugs.includes(project?.slug)) {
@@ -287,9 +287,9 @@ const ProjectDetailPage = () => {
     setLandscapeImage(project.images[0]);
   }, [project]);
   const inlineFormHeading =
-    project?.slug === "the-pointe-villas-gollur"
+    project?.slug === "the-pointe-villas"
       ? "Enquire About The Pointe Villas"
-      : project?.slug === "the-line-apartments-narsingi"
+      : project?.slug === "the-line-apartments"
         ? "Enquire About The Line Apartments"
         : "";
 
@@ -402,8 +402,8 @@ const ProjectDetailPage = () => {
               <p className="font-extrabold mt-5 tracking-tighter !leading-3 text-lg">Built Up Area</p>
               <p className="tracking-tighter font-medium text-lg">{project.builtUpArea || "N/A"}</p>
               {(project.brochureUrl ||
-                project.slug === "the-line-apartments-narsingi" ||
-                project.slug === "the-pointe-villas-gollur") && (
+                project.slug === "the-line-apartments" ||
+                project.slug === "the-pointe-villas") && (
                 <>
                   <button
                     onClick={() => setShowEnquiryModal(true)}
@@ -419,11 +419,11 @@ const ProjectDetailPage = () => {
                   )}
                 </>
               )}
-              {(project.websiteLink || project.slug === "the-line-apartments-narsingi") && (
+              {(project.websiteLink || project.slug === "the-line-apartments") && (
                 <p>
                   <a
                     href={
-                      project.slug === "the-line-apartments-narsingi"
+                      project.slug === "the-line-apartments"
                         ? "https://theline.terminus-group.com/"
                         : project.websiteLink
                     }
